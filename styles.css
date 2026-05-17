@@ -1770,9 +1770,15 @@ img { display: block; max-width: 100%; }
 body[data-scrolled="1"] .nav { top: 8px; }
 body[data-scrolled="1"] .nav-inner {
   padding-top: 7px; padding-bottom: 7px;
-  background: var(--glass-bg-strong);
+  background: rgba(20, 28, 35, 0.82);
   border-color: var(--border-2);
   box-shadow: 0 10px 30px -18px rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.06) inset;
+}
+/* Light mode: keep the light glass */
+@media (prefers-color-scheme: light) {
+  body[data-scrolled="1"] .nav-inner {
+    background: rgba(255, 255, 255, 0.82);
+  }
 }
 .nav-inner { transition: padding .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease; }
 
