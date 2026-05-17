@@ -425,6 +425,7 @@ function _resolveProgram(p) {
 }
 
 function BrandHeader({ active = "home", isKeystone = false, program: programProp, onMobileOpen }) {
+  const t = (typeof useT !== 'undefined') ? useT() : (k, fb) => fb || k;
   const programKey = programProp || (isKeystone ? "keystone" : null);
   const prog = _resolveProgram(programKey);
   const nav = prog ? prog.nav : VERIDYNE_NAV;
@@ -508,9 +509,13 @@ function BrandHeader({ active = "home", isKeystone = false, program: programProp
             })}
           </div>
         )}
-        <a href="#contact" className="btn btn-ghost nav-cta desktop-only">
-          Get in touch <span className="arr"><IconArrow size={12} /></span>
-        </a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginLeft: 4 }}>
+          {typeof SettingsPanel !== 'undefined' && <SettingsPanel />}
+          {typeof LangPanel !== 'undefined' && <LangPanel />}
+          <a href="#contact" className="btn btn-ghost nav-cta desktop-only" style={{ marginLeft: 2 }}>
+            {t('nav.getInTouch', 'Get in touch')} <span className="arr"><IconArrow size={12} /></span>
+          </a>
+        </div>
         <button className="nav-mobile-btn" onClick={onMobileOpen} aria-label="Open menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
             <path d="M4 7 H20" /><path d="M4 12 H20" /><path d="M4 17 H20" />
@@ -523,6 +528,7 @@ function BrandHeader({ active = "home", isKeystone = false, program: programProp
 
 function MobileMenu({ open, onClose, isKeystone = false, program: programProp }) {
   if (!open) return null;
+  const t = (typeof useT !== 'undefined') ? useT() : (k, fb) => fb || k;
   const programKey = programProp || (isKeystone ? "keystone" : null);
   const prog = _resolveProgram(programKey);
   const sections = prog ? prog.nav : VERIDYNE_NAV;
@@ -548,7 +554,7 @@ function MobileMenu({ open, onClose, isKeystone = false, program: programProp })
         </div>
       </div>
 
-      <div className="mm-section-label">Navigate</div>
+      <div className="mm-section-label">{t('mobile.navigate','Navigate')}</div>
       <div className="mm-grid">
         {sections.map((s, i) => (
           <a key={i} className="mm-card" href={s.href} onClick={onClose}
@@ -567,7 +573,7 @@ function MobileMenu({ open, onClose, isKeystone = false, program: programProp })
         ))}
       </div>
 
-      <div className="mm-section-label">Programs</div>
+      <div className="mm-section-label">{t('mobile.programs','Programs')}</div>
       <div className="mm-pills">
         <a className="mm-pill" data-program="keystone"  href="keystone.html"  onClick={onClose}><KeystoneMark size={14} /> Keystone</a>
         <a className="mm-pill" data-program="continuum" href="continuum.html" onClick={onClose}><ContinuumMark size={14} /> Continuum</a>
@@ -575,7 +581,7 @@ function MobileMenu({ open, onClose, isKeystone = false, program: programProp })
         <a className="mm-pill" data-program="synapse"   href="synapse.html"   onClick={onClose}><SynapseMark size={14} /> Synapse</a>
       </div>
 
-      <div className="mm-section-label">Reach us</div>
+      <div className="mm-section-label">{t('mobile.reachUs','Reach us')}</div>
       <div className="mm-contact">
         <a className="mm-contact-row" href="mailto:solutions@veridyne.eu">
           <IconMail /> <span>solutions@veridyne.eu</span>
@@ -590,9 +596,11 @@ function MobileMenu({ open, onClose, isKeystone = false, program: programProp })
 
 // ─── Footer ────────────────────────────────────────────────────────────────
 function Footer({ isKeystone = false, program: programProp }) {
+  const t = (typeof useT !== 'undefined') ? useT() : (k, fb) => fb || k;
   const programKey = programProp || (isKeystone ? "keystone" : null);
   const prog = _resolveProgram(programKey);
   const homeHref = prog ? "index.html" : "#top";
+  const s = (key, fb) => t('footer.' + key, fb);
   return (
     <footer className="footer">
       <div className="wrap">
@@ -618,40 +626,40 @@ function Footer({ isKeystone = false, program: programProp }) {
               )}
             </a>
             <p style={{ color: 'var(--text-dim)', fontSize: 14, maxWidth: '34ch', margin: 0 }}>
-              Architecture, migration, and review for Auth0 and Okta. Europe-based, working worldwide.
+              {s('tagline','Architecture, migration, and review for Auth0 and Okta. Europe-based, working worldwide.')}
             </p>
           </div>
           <div className="footer-col">
-            <h5>Programs</h5>
-            <a href="keystone.html">Keystone — Fixed PS</a>
-            <a href="continuum.html">Continuum — Long-term</a>
-            <a href="catalyst.html">Catalyst — Workshops</a>
-            <a href="synapse.html">Synapse — AI</a>
+            <h5>{s('programs','Programs')}</h5>
+            <a href="keystone.html">{s('keystone','Keystone — Fixed PS')}</a>
+            <a href="continuum.html">{s('continuum','Continuum — Long-term')}</a>
+            <a href="catalyst.html">{s('catalyst','Catalyst — Workshops')}</a>
+            <a href="synapse.html">{s('synapse','Synapse — AI')}</a>
           </div>
           <div className="footer-col">
-            <h5>Services</h5>
-            <a href={prog ? "index.html#services" : "#services"}>Architecture & Design</a>
-            <a href={prog ? "index.html#services" : "#services"}>Migration & Integration</a>
-            <a href={prog ? "index.html#services" : "#services"}>Fine-Grained Authorization</a>
-            <a href={prog ? "index.html#services" : "#services"}>AI Integrations with IAM</a>
-            <a href={prog ? "index.html#services" : "#services"}>IAM Solution Reviews</a>
+            <h5>{s('services','Services')}</h5>
+            <a href={prog ? "index.html#services" : "#services"}>{s('svcArch','Architecture & Design')}</a>
+            <a href={prog ? "index.html#services" : "#services"}>{s('svcMigrate','Migration & Integration')}</a>
+            <a href={prog ? "index.html#services" : "#services"}>{s('svcFga','Fine-Grained Authorization')}</a>
+            <a href={prog ? "index.html#services" : "#services"}>{s('svcAi','AI Integrations with IAM')}</a>
+            <a href={prog ? "index.html#services" : "#services"}>{s('svcReview','IAM Solution Reviews')}</a>
           </div>
           <div className="footer-col">
-            <h5>Company</h5>
-            <a href={prog ? "index.html#about" : "#about"}>About</a>
-            <a href={prog ? "index.html#approach" : "#approach"}>Approach</a>
-            <a href={prog ? "index.html#contact" : "#contact"}>Contact</a>
+            <h5>{s('company','Company')}</h5>
+            <a href={prog ? "index.html#about" : "#about"}>{s('about','About')}</a>
+            <a href={prog ? "index.html#approach" : "#approach"}>{s('approach','Approach')}</a>
+            <a href={prog ? "index.html#contact" : "#contact"}>{s('contactLink','Contact')}</a>
           </div>
           <div className="footer-col">
-            <h5>Contact</h5>
+            <h5>{s('contact','Contact')}</h5>
             <a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>
             <a href="https://wa.me/40755577744" target="_blank" rel="noopener">WhatsApp · +40 755 577 744</a>
             <a href="https://www.linkedin.com/company/122224295" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
         <div className="footer-meta">
-          <span>© 2026 Veridyne Solutions · Europe-based, working worldwide</span>
-          <span>Designed for trust · OIDC · SAML · SCIM · FGA</span>
+          <span>{s('copyright','© 2026 Veridyne Solutions · Europe-based, working worldwide')}</span>
+          <span>{s('designedFor','Designed for trust · OIDC · SAML · SCIM · FGA')}</span>
         </div>
       </div>
     </footer>
@@ -660,6 +668,8 @@ function Footer({ isKeystone = false, program: programProp }) {
 
 // ─── Contact form (shared) ─────────────────────────────────────────────────
 function ContactForm({ accent = "copper", initialTopic = "Architecture & Design" }) {
+  const t = (typeof useT !== 'undefined') ? useT() : (k, fb) => fb || k;
+  const ct = (key, fb) => t('contact.' + key, fb);
   const [data, setData] = React.useState({
     name: "", email: "", company: "", topic: initialTopic, message: ""
   });
@@ -686,9 +696,9 @@ function ContactForm({ accent = "copper", initialTopic = "Architecture & Design"
   const submit = (e) => {
     e.preventDefault();
     const er = {};
-    if (!data.name.trim()) er.name = "Required";
-    if (!/^\S+@\S+\.\S+$/.test(data.email)) er.email = "Email not valid";
-    if (!data.message.trim() || data.message.trim().length < 12) er.message = "Tell us a bit more";
+    if (!data.name.trim()) er.name = ct('errRequired','Required');
+    if (!/^\S+@\S+\.\S+$/.test(data.email)) er.email = ct('errEmail','Email not valid');
+    if (!data.message.trim() || data.message.trim().length < 12) er.message = ct('errMessage','Tell us a bit more');
     setErrors(er);
     if (Object.keys(er).length) return;
 
@@ -718,14 +728,14 @@ function ContactForm({ accent = "copper", initialTopic = "Architecture & Design"
     return (
       <div className="form glass form-success">
         <div className="check"><IconMail /></div>
-        <h4>Draft opened.</h4>
-        <p>Your mail client should now have a pre-filled draft addressed to <strong>solutions@veridyne.eu</strong>. Review it, then hit Send from there — nothing has been sent yet.</p>
+        <h4>{ct('successTitle','Draft opened.')}</h4>
+        <p>{ct('successBody','Your mail client should now have a pre-filled draft addressed to')} <strong>solutions@veridyne.eu</strong>. {ct('successBodyRest','Review it, then hit Send from there — nothing has been sent yet.')}</p>
         <p style={{ fontSize: 13, color: 'var(--text-dimmer)', marginTop: 4 }}>
-          Nothing happened? Email us directly at <a href="mailto:solutions@veridyne.eu" style={{ color: 'var(--accent)' }}>solutions@veridyne.eu</a>.
+          {ct('successFallback','Nothing happened? Email us directly at')} <a href="mailto:solutions@veridyne.eu" style={{ color: 'var(--accent)' }}>solutions@veridyne.eu</a>.
         </p>
         <button className="btn btn-ghost" style={{ marginTop: 12 }}
                 onClick={() => { setSent(false); setData({ name:"", email:"", company:"", topic: initialTopic, message:"" }); }}>
-          Compose another
+          {ct('composeAnother','Compose another')}
         </button>
       </div>
     );
@@ -736,52 +746,45 @@ function ContactForm({ accent = "copper", initialTopic = "Architecture & Design"
       <div className="form-note">
         <IconMail />
         <span>
-          <strong>This opens a draft in your mail client</strong> — nothing is sent from this page. Fill it in below and we&rsquo;ll prepare the message addressed to <a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>. You review and send it from your own inbox, so you keep the copy.
+          <strong>{ct('formNote','This opens a draft in your mail client — nothing is sent from this page.')}</strong> {ct('formNoteRest',"Fill it in below and we'll prepare the message addressed to")} <a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>. {ct('reviewSend','You review and send it from your own inbox, so you keep the copy.')}
         </span>
       </div>
       <div className="form-row">
         <div className={"field" + (errors.name ? " error" : "")}>
-          <label>Name</label>
-          <input value={data.name} onChange={set("name")} placeholder="Your name" autoComplete="name" />
+          <label>{ct('labelName','Name')}</label>
+          <input value={data.name} onChange={set("name")} placeholder={ct('placeholderName','Your name')} autoComplete="name" />
           {errors.name && <span className="err">{errors.name}</span>}
         </div>
         <div className={"field" + (errors.email ? " error" : "")}>
-          <label>Email</label>
-          <input value={data.email} onChange={set("email")} placeholder="you@company.com" type="email" autoComplete="email" />
+          <label>{ct('labelEmail','Email')}</label>
+          <input value={data.email} onChange={set("email")} placeholder={ct('placeholderEmail','you@company.com')} type="email" autoComplete="email" />
           {errors.email && <span className="err">{errors.email}</span>}
         </div>
       </div>
       <div className="form-row">
         <div className="field">
-          <label>Company</label>
-          <input value={data.company} onChange={set("company")} placeholder="Optional" autoComplete="organization" />
+          <label>{ct('labelCompany','Company')}</label>
+          <input value={data.company} onChange={set("company")} placeholder={ct('placeholderCompany','Optional')} autoComplete="organization" />
         </div>
         <div className="field">
-          <label>Topic</label>
+          <label>{ct('labelTopic','Topic')}</label>
           <select value={data.topic} onChange={set("topic")}>
-            <option>Architecture & Design</option>
-            <option>Migration & Integration</option>
-            <option>Fine-Grained Authorization</option>
-            <option>Workshops & Training</option>
-            <option>IAM Solution Review</option>
-            <option>Keystone engagement</option>
-            <option>Continuum (long-term)</option>
-            <option>Catalyst (workshops)</option>
-            <option>Synapse (AI)</option>
-            <option>Something else</option>
+            {(t('contact.topics') || ["Architecture & Design","Migration & Integration","Fine-Grained Authorization","Workshops & Training","IAM Solution Review","Keystone engagement","Continuum (long-term)","Catalyst (workshops)","Synapse (AI)","Something else"]).map(o => (
+              <option key={o}>{o}</option>
+            ))}
           </select>
         </div>
       </div>
       <div className={"field" + (errors.message ? " error" : "")}>
-        <label>What can we help with?</label>
+        <label>{ct('labelMessage','What can we help with?')}</label>
         <textarea value={data.message} onChange={set("message")}
-                  placeholder="Auth0 multi-tenant rollout, Okta migration, OIDC review, internal workshop&hellip;" />
+                  placeholder={ct('placeholderMessage','Auth0 multi-tenant rollout, Okta migration, OIDC review, internal workshop…')} />
         {errors.message && <span className="err">{errors.message}</span>}
       </div>
       <div className="form-submit">
-        <span className="small">Opens a pre-filled draft in your default mail app</span>
+        <span className="small">{ct('submitHint','Opens a pre-filled draft in your default mail app')}</span>
         <button type="submit" className="btn btn-primary">
-          <IconMail /> Open draft in mail <span className="arr"><IconArrow /></span>
+          <IconMail /> {ct('submitBtn','Open draft in mail')} <span className="arr"><IconArrow /></span>
         </button>
       </div>
     </form>

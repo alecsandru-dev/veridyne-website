@@ -1,6 +1,8 @@
 // app.jsx — Veridyne Solutions main site
 
 function App() {
+  const tr = (typeof useT !== 'undefined') ? useT() : (k, fb) => fb || k;
+  const TX = (key, fb) => tr(key, fb);
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [heroVariant, setHeroVariant] = React.useState(0);
@@ -35,35 +37,26 @@ function App() {
     root.style.setProperty("--accent-2", a.b);
   }, [t.glass, t.accent]);
 
-  // Hero variants — three takes on the headline.
-  // Word-by-word reveal uses segments instead of JSX.
-  const heroes = [
-    {
-      eyebrow: "Identity, designed like infrastructure",
-      segments: [
-        { text: "Auth that holds " },
-        { text: "weight.", className: "accent" },
-      ],
-      lede: "Veridyne designs, migrates to, and reviews identity on Auth0 and Okta. Years of hands-on experience. We hand your team the architecture and the implementation guide — the keyboard is theirs.",
-    },
-    {
-      eyebrow: "Design · Migration · Review",
-      segments: [
-        { text: "Identity is ", className: "alt" },
-        { text: "load-bearing." },
-      ],
-      lede: "We are the team you bring in when SSO, federation, and access policy stop being a feature and start being part of the foundation. We design it like it.",
-    },
-    {
-      eyebrow: "Auth0 · Okta · FGA",
-      segments: [
-        { text: "Quiet, durable " },
-        { text: "identity.", className: "accent" },
-      ],
-      lede: "Specialist professional services for Auth0 and Okta — architecture design, migrations from legacy IAM, fine-grained authorization, reviews, and workshops that leave your team faster than they were.",
-    },
+  // Hero variants — loaded from translations with English fallback
+  const _heroVars = TX('home.hero.variants') || [
+    { eyebrow: "Identity, designed like infrastructure",
+      seg1: "Auth that holds ", seg2: "weight.", seg2class: "accent",
+      lede: "Veridyne designs, migrates to, and reviews identity on Auth0 and Okta. Years of hands-on experience. We hand your team the architecture and the implementation guide — the keyboard is theirs." },
+    { eyebrow: "Design · Migration · Review",
+      seg1: "Identity is ", seg1class: "alt", seg2: "load-bearing.",
+      lede: "We are the team you bring in when SSO, federation, and access policy stop being a feature and start being part of the foundation. We design it like it." },
+    { eyebrow: "Auth0 · Okta · FGA",
+      seg1: "Quiet, durable ", seg2: "identity.", seg2class: "accent",
+      lede: "Specialist professional services for Auth0 and Okta — architecture design, migrations from legacy IAM, fine-grained authorization, reviews, and workshops that leave your team faster than they were." },
   ];
-  const hero = heroes[heroVariant % heroes.length];
+  const _hv = _heroVars[heroVariant % _heroVars.length];
+  const hero = {
+    eyebrow: _hv.eyebrow,
+    segments: _hv.seg1class
+      ? [{ text: _hv.seg1, className: _hv.seg1class }, { text: _hv.seg2 }]
+      : [{ text: _hv.seg1 }, { text: _hv.seg2, className: _hv.seg2class }],
+    lede: _hv.lede,
+  };
 
   return (
     <>
@@ -123,30 +116,30 @@ function App() {
             <div>
               <div className="hm-head">
                 <span className="hm-icon"><IconCompass /></span>
-                <div className="label">Practice</div>
+                <div className="label">{TX('home.heroPractice','Practice')}</div>
               </div>
               <div className="value">Identity</div>
             </div>
             <div>
               <div className="hm-head">
                 <span className="hm-icon"><IconLayers /></span>
-                <div className="label">Specialty</div>
+                <div className="label">{TX('home.heroSpecialty','Specialty')}</div>
               </div>
               <div className="value">Auth0 · Okta</div>
             </div>
             <div>
               <div className="hm-head">
                 <span className="hm-icon"><IconBriefcase /></span>
-                <div className="label">Engagements</div>
+                <div className="label">{TX('home.heroEngagements','Engagements')}</div>
               </div>
-              <div className="value">Design, Migration, Review</div>
+              <div className="value">{TX('home.heroEngagementsVal','Design, Migration, Review')}</div>
             </div>
             <div>
               <div className="hm-head">
                 <span className="hm-icon"><IconGlobe /></span>
-                <div className="label">Based</div>
+                <div className="label">{TX('home.heroBased','Based')}</div>
               </div>
-              <div className="value">Europe, worldwide</div>
+              <div className="value">{TX('home.heroBasedVal','Europe, worldwide')}</div>
             </div>
           </div>
         </Reveal>
@@ -158,12 +151,12 @@ function App() {
           <div className="sec-head">
             <Reveal>
               <div>
-                <span className="eyebrow">What we do</span>
-                <h2>Six practices.<br /><span className="alt">One discipline.</span></h2>
+                <span className="eyebrow">{TX('home.services.eyebrow','What we do')}</span>
+                <h2>{TX('home.services.h2a','Six practices.')}<br /><span className="alt">{TX('home.services.h2b','One discipline.')}</span></h2>
               </div>
             </Reveal>
             <Reveal delay={150}>
-              <p>Auth0 and Okta only &mdash; that&rsquo;s where we go deep. Everything else, we integrate with, migrate from, or design around. Pick the shape that fits.</p>
+              <p>{TX('home.services.desc',"Auth0 and Okta only — that's where we go deep. Everything else, we integrate with, migrate from, or design around. Pick the shape that fits.")}</p>
             </Reveal>
           </div>
 
@@ -279,12 +272,12 @@ function App() {
           <div className="sec-head">
             <Reveal>
               <div>
-                <span className="eyebrow">Four programs</span>
-                <h2>One framework.<br /><span className="alt">Four ways to engage.</span></h2>
+                <span className="eyebrow">{TX('home.programs.eyebrow','Four programs')}</span>
+                <h2>{TX('home.programs.h2a','One framework.')}<br /><span className="alt">{TX('home.programs.h2b','Four ways to engage.')}</span></h2>
               </div>
             </Reveal>
             <Reveal delay={150}>
-              <p>Same identity discipline, four shapes. Pick the program that fits the work: focused delivery, ongoing partnership, sharper people, or AI-era auth.</p>
+              <p>{TX('home.programs.desc','Same identity discipline, four shapes. Pick the program that fits the work: focused delivery, ongoing partnership, sharper people, or AI-era auth.')}</p>
             </Reveal>
           </div>
 
@@ -418,12 +411,12 @@ function App() {
           <div className="sec-head">
             <Reveal>
               <div>
-                <span className="eyebrow">How we work</span>
-                <h2>Slow at the start,<br /><span className="alt">fast everywhere after.</span></h2>
+                <span className="eyebrow">{TX('home.approach.eyebrow','How we work')}</span>
+                <h2>{TX('home.approach.h2a','Slow at the start,')}<br /><span className="alt">{TX('home.approach.h2b','fast everywhere after.')}</span></h2>
               </div>
             </Reveal>
             <Reveal delay={150}>
-              <p>We spend the first phase getting the model right. The rest of the engagement is executing against it &mdash; with your team, on visible artefacts. Every stage produces something concrete you can review.</p>
+              <p>{TX('home.approach.desc',"We spend the first phase getting the model right. The rest of the engagement is executing against it — with your team, on visible artefacts. Every stage produces something concrete you can review.")}</p>
             </Reveal>
           </div>
 
@@ -564,19 +557,19 @@ function App() {
             <div className="stats glass">
               <div>
                 <div className="v"><CountUp value={40} suffix="+" /></div>
-                <div className="l">Identity engagements</div>
+                <div className="l">{TX('home.stats.engagements','Identity engagements')}</div>
               </div>
               <div>
                 <div className="v"><CountUp value={15} /></div>
-                <div className="l">Regulated industries</div>
+                <div className="l">{TX('home.stats.industries','Regulated industries')}</div>
               </div>
               <div>
                 <div className="v"><CountUp value={6} suffix=" wks" /></div>
-                <div className="l">Median Keystone delivery</div>
+                <div className="l">{TX('home.stats.keystone','Median Keystone delivery')}</div>
               </div>
               <div>
                 <div className="v" style={{ fontSize: 'clamp(22px, 2.4vw, 32px)', lineHeight: 1.15 }}>Worldwide</div>
-                <div className="l">Europe-based delivery</div>
+                <div className="l">{TX('home.stats.reach','Europe-based delivery')}</div>
               </div>
             </div>
           </Reveal>
@@ -602,8 +595,8 @@ function App() {
         <div className="wrap" style={{ maxWidth: 880 }}>
           <div className="sec-head" style={{ gridTemplateColumns: '1fr' }}>
             <div>
-              <span className="eyebrow">Common questions</span>
-              <h2>Before you write,<br /><span className="alt">you might be wondering&hellip;</span></h2>
+              <span className="eyebrow">{TX('home.faq.eyebrow','Common questions')}</span>
+              <h2>{TX('home.faq.h2a','Before you write,')}<br /><span className="alt">{TX('home.faq.h2b','you might be wondering…')}</span></h2>
             </div>
           </div>
           <FAQ />
@@ -615,10 +608,10 @@ function App() {
         <div className="wrap">
           <div className="sec-head">
             <div>
-              <span className="eyebrow">Let&rsquo;s talk</span>
-              <h2>Start with the<br /><span className="alt">shortest message that works.</span></h2>
+              <span className="eyebrow">{TX('contact.eyebrow',"Let's talk")}</span>
+              <h2>{TX('contact.h2a','Start with the')}<br /><span className="alt">{TX('contact.h2b','shortest message that works.')}</span></h2>
             </div>
-            <p>We read every note, reply within one business day, and won&rsquo;t put you in a sequence.</p>
+            <p>{TX('contact.note',"We read every note, reply within one business day, and won't put you in a sequence.")}</p>
           </div>
 
           <div className="contact-grid">
@@ -677,7 +670,9 @@ function App() {
 
 // FAQ component
 function FAQ() {
-  const items = [
+  const tr = (typeof useT !== 'undefined') ? useT() : (k, fb) => fb || k;
+  const _faqItems = tr('home.faq.items');
+  const items = _faqItems || [
     { q: "Are you an Auth0 or Okta partner?",
       a: "No — intentionally. We've worked deeply with both Auth0 (by Okta) and Okta Workforce/Customer Identity for years, but we stay independent. That keeps our advice on platform choice, FGA fit, and trade-offs honest — not anchored to a commercial agreement." },
     { q: "How do Keystone, Continuum, Catalyst and Synapse differ?",
