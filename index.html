@@ -1,43 +1,168 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Veridyne Solutions — Identity, built like infrastructure</title>
-  <meta name="description" content="Veridyne Solutions: architecture, build, and review for Auth0, Okta, and IAM. Workshops, training, and our flagship Keystone professional services engagement." />
-
-  <link rel="icon" type="image/png" href="/logos/veridyne-symbol.png" />
-
-  <!-- System font stack (SF Pro on Apple, Segoe UI on Windows) — no webfonts needed -->
-
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Tweak defaults (persisted by host) -->
-  <script>
-    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-      "glass": "moderate",
-      "accent": "copper"
-    }/*EDITMODE-END*/;
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veridyne Solutions — Identity consulting and software products</title>
+<meta name="description" content="Veridyne Solutions is a Europe-based team providing Auth0 and Okta identity & access consulting, and building software products such as Roiall and Rentolio.">
+<link rel="canonical" href="https://www.veridyne.eu/">
+<meta name="theme-color" content="#0B1F3B">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Veridyne Solutions">
+<meta property="og:title" content="Veridyne Solutions — Identity, done right.">
+<meta property="og:description" content="Auth0 and Okta consulting, and software products built by the same team.">
+<meta property="og:url" content="https://www.veridyne.eu/">
+<meta property="og:image" content="https://www.veridyne.eu/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<script src="/main.js" defer></script>
 </head>
 <body>
-  <div id="root"></div>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- React + Babel -->
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<header class="site-header">
+  <nav class="nav" aria-label="Main">
+    <a class="nav-logo" href="/" aria-label="Veridyne Solutions home">
+      <img src="/assets/veridyne-wordmark.png" alt="" width="190" height="38">
+    </a>
+    <div class="nav-links">
+      <a href="#consulting">Consulting</a>
+      <a href="#products">Products</a>
+      <a href="#how">How we work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
 
-  <script src="translations.js"></script>
-  <script type="text/babel" src="settings-panel.jsx"></script>
-  <script type="text/babel" src="i18n.jsx"></script>
-  <script type="text/babel" src="tweaks-panel.jsx"></script>
-  <script type="text/babel" src="motion.jsx"></script>
-  <script type="text/babel" src="shared-components.jsx"></script>
-  <script type="text/babel" src="app.jsx"></script>
+<main id="main">
+  <section class="hero" id="top">
+    <h1 class="display">Identity, done right.</h1>
+    <p class="lede">Auth0 and Okta consulting, and software products built by the same team.</p>
+    <div class="actions">
+      <a class="btn btn-dark" href="#contact">Book a call</a>
+      <a class="more" href="#products">See our products ›</a>
+    </div>
+  </section>
 
-  <style>
-    @keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
-  </style>
+  <div class="tiles">
+
+    <section class="tile tile-navy on-navy stack center" id="consulting">
+      <h2 class="h-section">Identity &amp; access consulting</h2>
+      <p class="lede">We plan, set up and review how customers and staff sign in. On Auth0 and Okta, documented so your team can own it.</p>
+      <ul class="chips">
+        <li>New Auth0 &amp; Okta setups</li>
+        <li>Migrations from older systems</li>
+        <li>Security reviews</li>
+        <li>Developer training</li>
+      </ul>
+      <div class="actions">
+        <a class="btn btn-cyan" href="#contact">Talk to us</a>
+        <a class="more" href="#how">How we work ›</a>
+      </div>
+    </section>
+
+    <section class="tile tile-mist stack center" id="products">
+      <h2 class="h-section">Software products</h2>
+      <p class="lede">Applications we build, host and support ourselves. License one, and start using it.</p>
+      <div class="products">
+        <article class="product product-light">
+          <h3><img src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="122" height="34"></h3>
+          <p>Shows businesses what their creator and influencer deals really bring in: real customers, confirmed at the counter.</p>
+          <a class="more" href="https://roiall.ro">Visit roiall.ro ›</a>
+          <img class="shot" src="/assets/roiall-dashboard.png" alt="Roiall dashboard showing customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy">
+        </article>
+        <article class="product product-dark">
+          <h3>Rentolio</h3>
+          <p>Rent, bills and meter readings for a rented home, shared by renter and landlord. Snap a bill and it reads itself.</p>
+          <a class="more" href="https://www.rentolio.app">Visit rentolio.app ›</a>
+          <img class="shot" src="/assets/rentolio.png" alt="Rentolio app sign-in screen with the house-and-bill logo and the tagline Space. Bills. Sorted." width="1360" height="660" loading="lazy">
+        </article>
+      </div>
+    </section>
+
+    <section class="tile tile-outline" id="how">
+      <div class="how">
+        <h2 class="h-section">Simple, from the first call.</h2>
+        <ol class="steps">
+          <li><h3>A short call</h3><p>Free, 30 minutes, with the person who would do the work.</p></li>
+          <li><h3>A clear proposal</h3><p>Scope, timeline and price in writing. Or the product that fits.</p></li>
+          <li><h3>Work you can keep</h3><p>Full documentation at handover, and we stay reachable after.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="tile tile-navy on-navy" id="contact">
+      <div class="contact">
+        <div class="contact-intro">
+          <img src="/assets/veridyne-icon-dark.png" alt="" width="52" height="34">
+          <h2 class="display">Let's talk.</h2>
+          <p>Tell us about your project, or which product you'd like to see. We reply within one working day.</p>
+          <div class="contact-direct">
+            <a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>
+            <a href="tel:+40755577744">+40 755 577 744</a>
+          </div>
+        </div>
+
+        <form class="form" id="contact-form" action="/api/contact" method="post" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" maxlength="100" required>
+            </div>
+            <div class="field">
+              <label for="cf-email">Work email</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" maxlength="200" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-company">Company <span class="opt">(optional)</span></label>
+              <input id="cf-company" name="company" type="text" autocomplete="organization" maxlength="150">
+            </div>
+            <div class="field">
+              <label for="cf-topic">About</label>
+              <select id="cf-topic" name="topic">
+                <option>Identity &amp; access consulting</option>
+                <option>Roiall</option>
+                <option>Rentolio</option>
+                <option>Something else</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" maxlength="4000" required></textarea>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="cf-website">Leave this empty</label>
+            <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form-foot">
+            <p class="form-note">We only use your details to reply to you. See our <a href="/privacy">privacy notice</a>.</p>
+            <button class="btn btn-cyan" type="submit">Send message</button>
+          </div>
+          <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer">
+    <p class="legal"><strong>VERIDYNE SOLUTIONS S.R.L.</strong> · CUI 51635423 · Reg. Com. J2025027184005 · EUID ROONRC.J2025027184005<br>Registered office: Str. Guliver nr. 13, bl. C1, sc. 1, et. 5, ap. 49, Sector 6, Bucharest, Romania</p>
+    <div class="footer-bottom">
+      <span>Copyright © 2026 Veridyne Solutions S.R.L. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="/privacy">Privacy</a>
+        <a class="employee" href="/employees"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Employee sign-in</a>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
