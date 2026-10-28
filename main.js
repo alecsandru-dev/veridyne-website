@@ -5,6 +5,14 @@
   var status = document.getElementById('cf-status');
   if (!form || !status) return;
 
+  // Links such as "Request early access" pick the matching topic.
+  document.querySelectorAll('a[data-topic]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var select = document.getElementById('cf-topic');
+      if (select) select.value = link.getAttribute('data-topic');
+    });
+  });
+
   var FALLBACK = 'Please email us at <a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a> instead.';
 
   function show(kind, html) {
