@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Veridyne Solutions — Auth0 and Okta consulting, and our own software</title>
-<meta name="description" content="Veridyne Solutions is a Bucharest identity consultancy. We set up, migrate and review Auth0 and Okta, and build our own software: AuthCanvas, Roiall and SA Sparring.">
+<meta name="description" content="Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds AuthCanvas, Roiall and SA Sparring.">
 <link rel="canonical" href="https://www.veridyne.eu/">
-<meta name="theme-color" content="#0B1F3B">
+<meta name="theme-color" content="#FFFFFF">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Veridyne Solutions">
 <meta property="og:title" content="Veridyne Solutions — Identity, done right.">
-<meta property="og:description" content="Auth0 and Okta consulting, and software products built by the same team.">
+<meta property="og:description" content="Auth0 and Okta professional services, and software products we build ourselves.">
 <meta property="og:url" content="https://www.veridyne.eu/">
 <meta property="og:image" content="https://www.veridyne.eu/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,190 +24,225 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
+<header class="site-header" id="top">
+  <div class="site-header-inner">
+    <a class="wordmark" href="/" aria-label="Veridyne Solutions home">
+      <img src="/assets/veridyne-wordmark.png" alt="" width="190" height="38">
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#authcanvas">AuthCanvas</a>
+      <a href="#roiall">Roiall</a>
+      <a href="#sa-sparring">SA Sparring</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
 <main id="main">
 
-  <!-- Hero: narrow talk, wide headline -->
-  <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="hero-talk">
-      <a class="wordmark" href="/" aria-label="Veridyne Solutions home">
-        <img src="/assets/veridyne-wordmark.png" alt="" width="190" height="38">
+  <!-- Hero: who we are, then the two halves of the company side by side -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="pill rise"><span class="pill-dot"></span>Identity and access, Auth0 and Okta</p>
+      <h1 id="hero-title" class="rise">Secure sign-in, built right from the first login.</h1>
+      <p class="lead rise">Veridyne is a technology company in Bucharest. Our consultants design and secure how your customers and staff sign in, and our product team builds software of its own.</p>
+      <div class="hero-actions rise">
+        <a class="btn" href="#contact" data-topic="Identity &amp; access consulting">Book a free call</a>
+        <a class="link-more" href="#products">See our products</a>
+      </div>
+    </div>
+
+    <!-- A sign-in moving through its checks: decorative, the text above says it all -->
+    <div class="flow rise" aria-hidden="true">
+      <div class="flow-card flow-login">
+        <img src="/assets/veridyne-icon-dark.png" alt="" width="52" height="34">
+        <p class="flow-h">Sign in</p>
+        <p class="flow-field">elena@company.com</p>
+        <p class="flow-btn"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="4"/><path d="M2 21c0-3.3 2.7-6 6-6M14 13l2-2 2 2v6l-2 2-2-2z"/></svg>Continue with passkey</p>
+      </div>
+      <div class="flow-wire"><span></span></div>
+      <div class="flow-card flow-checks">
+        <p class="flow-h">Checks</p>
+        <ul>
+          <li><i></i>Passkey verified</li>
+          <li><i></i>Known device</li>
+          <li><i></i>Risk score low</li>
+          <li><i></i>Role: finance-viewer</li>
+        </ul>
+      </div>
+      <div class="flow-wire"><span></span></div>
+      <div class="flow-card flow-token">
+        <svg class="flow-shield" viewBox="0 0 32 32"><path d="M16 3l11 4.5V15c0 7.5-4.8 12-11 14C9.8 27 5 22.5 5 15V7.5z"/><path d="M11 16l3.5 3.5L21.5 12"/></svg>
+        <p class="flow-h">Access granted</p>
+        <code>sub: auth0|8f2c41…<br>amr: ["mfa"]<br>exp: 15 min</code>
+      </div>
+    </div>
+
+    <div class="split">
+      <a class="split-tile split-services rise" href="#services">
+        <span class="split-kind">Professional Services</span>
+        <span class="split-title">Auth0 and Okta consulting</span>
+        <span class="split-text">Setups, migrations, security reviews and training, by the people who do the work.</span>
+        <span class="split-more">Explore services</span>
+        <img src="/assets/photos/veridyne-hq.jpg" alt="The Veridyne Solutions logo on the front of our headquarters building" width="396" height="364">
       </a>
-      <p class="hero-line">Auth0 and Okta consulting from Bucharest, and software we build ourselves.</p>
-      <a class="btn" href="#contact">Book a call</a>
-    </div>
-    <div class="hero-wide">
-      <nav class="hero-nav" aria-label="Main">
-        <a href="#consulting">Consulting</a>
-        <a href="#migrations">Migrations</a>
-        <a href="#products">Products</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <h1 class="hero-title lines" id="hero-title">
-        <span class="line"><span data-line style="--i:0">Identity,</span></span>
-        <span class="line"><span data-line style="--i:1">done right.</span></span>
-      </h1>
-      <figure class="hero-picture">
-        <div class="hero-figure-block">
-          <p class="figure">30 min</p>
-          <p>Free first call, with the person who would do the work.</p>
-        </div>
-        <div class="hero-photo">
-          <img class="museum" src="/assets/museum/key.jpg" alt="A wrought-iron key from the 15th century, its bit cut into a lattice of notches" width="1500" height="917" fetchpriority="high">
-        </div>
-      </figure>
+      <a class="split-tile split-products rise" href="#products">
+        <span class="split-kind">Products</span>
+        <span class="split-title">Software we build</span>
+        <span class="split-text">AuthCanvas, Roiall and SA Sparring. Built, hosted and supported by us.</span>
+        <span class="split-more">See the products</span>
+        <span class="split-shots" aria-hidden="true">
+          <img src="/assets/sa-sparring.png" alt="" width="1720" height="940">
+          <img src="/assets/authcanvas.png" alt="" width="1536" height="760">
+          <img src="/assets/roiall-dashboard.png" alt="" width="1600" height="810">
+        </span>
+      </a>
     </div>
   </section>
 
-  <!-- Consulting: statement tiles -->
-  <section class="consulting" id="consulting" aria-labelledby="consulting-title">
-    <div class="board">
-      <h2 class="tile tile-slogan" id="consulting-title"><span>Identity</span> <span>consulting</span></h2>
-      <p class="tile tile-word" aria-hidden="true"><span>Auth0</span><span>Okta</span></p>
-      <figure class="tile tile-photo">
-        <img class="museum" src="/assets/museum/seal-middelburg.jpg" alt="The wax seal of the town of Middelburg, about 1374, still hanging from its parchment strip" width="1271" height="1500" loading="lazy">
-      </figure>
+  <!-- ===================== PROFESSIONAL SERVICES ===================== -->
+  <section class="services" id="services" aria-labelledby="services-title">
+    <div class="intro rise">
+      <p class="division">Professional Services</p>
+      <h2 id="services-title">Auth0 and Okta,<br> set up properly.</h2>
+      <p class="lead">We plan, build and review how customers and staff sign in. Every engagement ends with documentation your team can own.</p>
     </div>
-    <div class="consulting-text">
-      <ul class="services">
-        <li>New Auth0 and Okta setups</li>
-        <li>Migrations off legacy logins</li>
-        <li>Security reviews</li>
-        <li>Developer training</li>
+
+    <ul class="service-grid">
+      <li class="service rise">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="14" width="22" height="14" rx="3"/><path d="M10 14V10a6 6 0 0 1 12 0v4"/></svg>
+        <h3>New setups</h3>
+        <p>A new Auth0 or Okta tenant planned and configured from an empty start: applications, connections, roles and branding.</p>
+      </li>
+      <li class="service rise">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 11h18l-5-5M27 21H9l5 5"/></svg>
+        <h3>Migrations</h3>
+        <p>Off ADFS, SiteMinder, Ping, Keycloak, Cognito or a login you built yourselves. Users keep their passwords wherever the old system allows it.</p>
+      </li>
+      <li class="service rise">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l10 4v7c0 7-4.5 11-10 13C10.5 26 6 22 6 15V8z"/><path d="M11.5 16l3 3 6-6"/></svg>
+        <h3>Security reviews</h3>
+        <p>A review of the setup you already run, with findings ranked by risk and a fix for each one.</p>
+      </li>
+      <li class="service rise">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 10l-6 6 6 6M21 10l6 6-6 6"/></svg>
+        <h3>Developer training</h3>
+        <p>Hands-on sessions for the developers who will own the setup after we leave.</p>
+      </li>
+    </ul>
+
+    <div class="security rise">
+      <h3>Secure by default</h3>
+      <ul>
+        <li><strong>Passkeys and MFA</strong><span>Phishing-resistant sign-in wherever your users can take it.</span></li>
+        <li><strong>Least privilege</strong><span>Roles and scopes that give each app and person only what they need.</span></li>
+        <li><strong>Short-lived tokens</strong><span>Sessions and refresh rules set for your risk, not left at defaults.</span></li>
+        <li><strong>Logs you can audit</strong><span>Sign-in events streamed to where your team already looks.</span></li>
       </ul>
-      <p>We plan, set up and review how customers and staff sign in, on Auth0 and Okta. New setups from an empty tenant. Migrations off ADFS, SiteMinder, Ping, Keycloak, Cognito or a login you built yourselves, with users keeping their passwords wherever the old system allows it. Security reviews of the setup you already run. Training for the developers who will own it.</p>
-      <p>Every engagement ends with documentation your team can work from, and the person you speak to on the first call is the one who does the work.</p>
-      <a class="link-strong" href="#contact">Talk to us about your setup</a>
-    </div>
-  </section>
-
-  <!-- Migrations: two giant words compared, with the live lookup -->
-  <section class="migrations" id="migrations" aria-labelledby="migrations-title">
-    <div class="mig-head reveal">
-      <h2 id="migrations-title">Where are you moving from?</h2>
-      <p>Every old login system lets go of its users differently. Pick yours and the platform you are moving to: this is the short version of what we check first. Can passwords come along, which second factors survive, and what happens to the user IDs your apps rely on.</p>
     </div>
 
-
-    <div class="specimens" aria-hidden="true">
-      <div class="specimen specimen-from"><p class="spec-word" id="spec-from">ADFS</p></div>
-      <div class="specimen specimen-to"><p class="spec-word" id="spec-to">Auth0</p></div>
-    </div>
-
-    <form class="mig-pick" id="mig-pick" aria-label="Choose your migration" onsubmit="return false">
-      <fieldset>
-        <legend>From</legend>
-        <div class="chooser">
-          <label><input type="radio" name="from" value="adfs" checked><span>AD and ADFS</span></label>
-          <label><input type="radio" name="from" value="siteminder"><span>SiteMinder</span></label>
-          <label><input type="radio" name="from" value="pingfed"><span>PingFederate</span></label>
-          <label><input type="radio" name="from" value="pingone"><span>PingOne</span></label>
-          <label><input type="radio" name="from" value="keycloak"><span>Keycloak</span></label>
-          <label><input type="radio" name="from" value="cognito"><span>AWS Cognito</span></label>
-          <label><input type="radio" name="from" value="gigya"><span>SAP CDC (Gigya)</span></label>
-          <label><input type="radio" name="from" value="janrain"><span>Akamai (Janrain)</span></label>
-          <label><input type="radio" name="from" value="homegrown"><span>Your own login</span></label>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>To</legend>
-        <div class="chooser">
-          <label><input type="radio" name="to" value="auth0" checked><span>Auth0</span></label>
-          <label><input type="radio" name="to" value="okta"><span>Okta</span></label>
-        </div>
-      </fieldset>
-    </form>
-
-    <div class="findings" id="findings" aria-live="polite">
-      <p class="finding-path" id="f-path">Connect first, move later</p>
-      <dl>
-        <div><dt>Passwords</dt><dd id="f-passwords">AD password hashes don’t export in a form Auth0 can use. Staff usually keep signing in against AD through Auth0’s AD/LDAP connector, so nobody resets a password.</dd></div>
-        <div><dt>Second factors</dt><dd id="f-mfa">Phone numbers and email factors carry over. Passkeys and push apps are tied to the old domain and always need re-enrolling.</dd></div>
-        <div><dt>User IDs</dt><dd id="f-ids">You can keep each user’s old ID on import. Auth0 adds a prefix (auth0|…), so apps that compare the raw sub claim need a small change.</dd></div>
-        <div><dt>Watch for</dt><dd id="f-watch">Auth0 accepts ADFS as a WS-Fed connection directly, so your apps can move before your users do.</dd></div>
-      </dl>
-      <p class="findings-note">From the research behind AuthCanvas, our migration design tool. Every case is checked against your own tenant before we commit to a plan.</p>
-    </div>
-  </section>
-
-  <!-- Products: small index, large picture -->
-  <section class="products" id="products" aria-labelledby="products-title">
-    <div class="products-stage">
-      <div class="products-side">
-        <h2 id="products-title">Software we&nbsp;build</h2>
-        <div class="product-notes">
-          <article class="product-note is-current" data-product="0">
-            <p><strong class="product-status">Our premier product, in private alpha.</strong> AuthCanvas is where teams moving off a legacy login draw the journeys they want on Auth0, Okta or Entra ID. Every block and connection is checked as they go, and ACE, our AI identity expert, recommends how to build each step.</p>
-            <a class="link-strong" href="#contact" data-topic="AuthCanvas early access">Request early access</a>
-          </article>
-          <article class="product-note" data-product="1">
-            <p>Roiall shows businesses what their creator and influencer deals really bring in: real customers, confirmed at the counter.</p>
-            <a class="link-strong" href="https://roiall.ro">Visit roiall.ro</a>
-          </article>
-          <article class="product-note" data-product="2">
-            <p>SA Sparring is a practice ground for Auth0 solutions architects. A simulated customer pushes back on every call, and each answer is graded like a senior SA would grade it.</p>
-            <a class="link-strong" href="https://www.auth0shell.dev">Visit auth0shell.dev</a>
-          </article>
-        </div>
-        <ol class="product-index">
-          <li class="is-current"><a href="#product-0" data-go="0"><span class="pi-name">AuthCanvas</span><span class="pi-kind">Migration design</span></a></li>
-          <li><a href="#product-1" data-go="1"><span class="pi-name">Roiall</span><span class="pi-kind">Creator marketing</span></a></li>
-          <li><a href="#product-2" data-go="2"><span class="pi-name">SA Sparring</span><span class="pi-kind">Call practice</span></a></li>
+    <div class="engagement">
+      <div class="engagement-text rise">
+        <h3>How an engagement works</h3>
+        <ol class="steps">
+          <li><strong>A free 30-minute call</strong><span>With the person who would do the work.</span></li>
+          <li><strong>A written proposal</strong><span>Scope, timeline and price, agreed before anything starts.</span></li>
+          <li><strong>The work, on your tenant</strong><span>You see every change as it happens.</span></li>
+          <li><strong>Handover</strong><span>Full documentation, and we stay reachable after.</span></li>
         </ol>
+        <a class="btn" href="#contact" data-topic="Identity &amp; access consulting">Book a call</a>
       </div>
-      <div class="products-pictures">
-        <figure class="pp pp-authcanvas is-current" id="product-0" data-ui>
-          <img src="/assets/authcanvas.png" alt="AuthCanvas: a login flow drawn as connected blocks, with ACE's recommendation for the MFA step in the side panel" width="1536" height="760" loading="lazy">
-        </figure>
-        <figure class="pp pp-roiall" id="product-1" data-ui>
-          <img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy">
-        </figure>
-        <figure class="pp pp-sparring" id="product-2" data-ui>
-          <img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy">
-        </figure>
-      </div>
+      <figure class="engagement-photo rise">
+        <img src="/assets/photos/veridyne-card.jpg" alt="A Veridyne Solutions business card with the logo printed in blue and silver" width="346" height="364" loading="lazy">
+      </figure>
     </div>
-    <div class="products-track" aria-hidden="true"><span></span><span></span><span></span></div>
   </section>
 
-  <!-- How we work: stages as one bar -->
-  <section class="how" id="how" aria-labelledby="how-title">
-    <h2 id="how-title" class="reveal">From first call to handover</h2>
-    <ol class="stage-bar" data-ui>
-      <li class="stage stage-call" style="--grow:1">
-        <p class="stage-time">Thirty minutes</p>
-        <p class="stage-what">First, a free call with the person who would do the work.</p>
-      </li>
-      <li class="stage stage-proposal" style="--grow:1.6">
-        <p class="stage-time">Within a week</p>
-        <p class="stage-what">Then a written proposal: scope, timeline and price. Or the product that fits.</p>
-      </li>
-      <li class="stage stage-work" style="--grow:5">
-        <p class="stage-time">Weeks, agreed up front</p>
-        <p class="stage-what">Then the work, on your own tenant, with you seeing every change.</p>
-      </li>
-      <li class="stage stage-handover" style="--grow:1.4">
-        <p class="stage-time">A day, then on call</p>
-        <p class="stage-what">Last, a handover with full documentation. We stay reachable after.</p>
-      </li>
-    </ol>
+  <!-- ===================== PRODUCTS ===================== -->
+  <section class="products-intro" id="products" aria-labelledby="products-title">
+    <div class="intro rise">
+      <p class="division">Products</p>
+      <h2 id="products-title">Software we build,<br> host and support.</h2>
+      <p class="lead">Separate from our consulting work: three products, each made for its own users.</p>
+    </div>
+    <nav class="product-switch rise" aria-label="Products">
+      <a class="sw-ac" href="#authcanvas"><img src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315"></a>
+      <a href="#roiall"><img src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317"></a>
+      <a class="sw-sas" href="#sa-sparring"><span class="sas-mark">SA <em>Sparring</em></span></a>
+    </nav>
+  </section>
+
+  <!-- AuthCanvas -->
+  <section class="product product-ac" id="authcanvas" aria-labelledby="ac-title">
+    <div class="product-head rise">
+      <p class="badge">Private alpha</p>
+      <h2 id="ac-title"><img class="product-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315"></h2>
+      <p class="product-tagline">Design the login before you build it.</p>
+      <p class="product-lead">Teams moving off a legacy login draw the journeys they want on Auth0, Okta or Entra ID. Every block is checked as they go.</p>
+      <div class="product-actions">
+        <a class="btn btn-ac" href="#contact" data-topic="AuthCanvas early access">Request early access</a>
+      </div>
+    </div>
+    <figure class="product-shot rise">
+      <img src="/assets/authcanvas.png" alt="AuthCanvas: a login flow drawn as connected blocks, with ACE's recommendation for the MFA step in the side panel" width="1536" height="760" loading="lazy">
+    </figure>
+    <ul class="features rise">
+      <li><h3>Draw the journey</h3><p>Customers, apps and sign-in steps as blocks you connect.</p></li>
+      <li><h3>Checked as you go</h3><p>Every block and connection is validated while you design.</p></li>
+      <li><h3>ACE, our identity expert</h3><p>An AI adviser recommends how to build each step.</p></li>
+    </ul>
+  </section>
+
+  <!-- Roiall -->
+  <section class="product product-roiall" id="roiall" aria-labelledby="roiall-title">
+    <div class="product-head rise">
+      <h2 id="roiall-title"><img class="product-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317"></h2>
+      <p class="product-tagline">See what creator deals really bring in.</p>
+      <p class="product-lead">Roiall shows businesses the real customers their creator and influencer deals bring, confirmed at the counter.</p>
+      <div class="product-actions">
+        <a class="btn btn-roiall" href="https://roiall.ro">Visit roiall.ro</a>
+      </div>
+    </div>
+    <figure class="product-shot rise">
+      <img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy">
+    </figure>
+    <ul class="features rise">
+      <li><h3>Real customers</h3><p>Each visit is confirmed at the counter, not guessed from clicks.</p></li>
+      <li><h3>Cost per customer</h3><p>What every customer from a creator actually cost you.</p></li>
+      <li><h3>Week by week</h3><p>See which campaigns and creators keep working.</p></li>
+    </ul>
+  </section>
+
+  <!-- SA Sparring -->
+  <section class="product product-sas" id="sa-sparring" aria-labelledby="sas-title">
+    <div class="product-head rise">
+      <h2 id="sas-title" class="sas-mark sas-title">SA <em>Sparring</em></h2>
+      <p class="product-tagline">Practice the call. Get graded.</p>
+      <p class="product-lead">A practice ground for Auth0 solutions architects. A simulated customer pushes back on every call.</p>
+      <div class="product-actions">
+        <a class="btn btn-sas" href="https://www.auth0shell.dev">Visit auth0shell.dev</a>
+      </div>
+    </div>
+    <figure class="product-shot rise">
+      <img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy">
+    </figure>
+    <ul class="features rise">
+      <li><h3>Real conversations</h3><p>Customer scenarios built on how Auth0 calls actually go.</p></li>
+      <li><h3>Graded answers</h3><p>Each answer is graded the way a senior SA would grade it.</p></li>
+      <li><h3>By invitation</h3><p>Sign in with Google or GitHub once you are invited.</p></li>
+    </ul>
   </section>
 
   <!-- Contact -->
   <section class="contact" id="contact" aria-labelledby="contact-title">
-    <div class="contact-talk reveal">
-      <h2 id="contact-title">Let’s talk</h2>
-      <p class="contact-line">Moving to Auth0 or Okta, or curious about our products? Tell us where you are.</p>
-      <div class="contact-card">
-        <img class="museum" src="/assets/museum/portrait-signet.jpg" alt="Detail of a 16th-century portrait: a man holds up his signet ring, the way identity was proven then" width="275" height="400" loading="lazy">
-        <div>
-          <a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>
-          <a href="tel:+40755577744">+40 755 577 744</a>
-          <p>Bucharest, Romania. We reply within one working day.</p>
-        </div>
-      </div>
+    <div class="contact-head rise">
+      <h2 id="contact-title">Let’s talk.</h2>
+      <p class="lead">A consulting project or one of our products: tell us where you are. We reply within one working day.</p>
+      <p class="contact-direct"><a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a><a href="tel:+40755577744">+40 755 577 744</a></p>
     </div>
 
-    <form class="form reveal" id="contact-form" action="/api/contact" method="post" novalidate>
+    <form class="form rise" id="contact-form" action="/api/contact" method="post" novalidate>
       <div class="form-row">
         <div class="field">
           <label for="cf-name">Name</label>
@@ -244,7 +279,7 @@
       </div>
       <div class="form-foot">
         <p class="form-note">We only use your details to reply to you. See our <a href="/privacy">privacy notice</a>.</p>
-        <button class="btn btn-accent" type="submit">Send message</button>
+        <button class="btn" type="submit">Send message</button>
       </div>
       <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
     </form>
@@ -252,37 +287,37 @@
 </main>
 
 <footer class="site-footer">
-  <p class="footer-name" aria-hidden="true">Veridyne</p>
-  <div class="footer-row">
-    <ul class="footer-places">
-      <li><a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a></li>
-      <li><a href="tel:+40755577744">+40 755 577 744</a></li>
-      <li>Bucharest, Romania</li>
-    </ul>
-    <nav class="footer-links" aria-label="Footer">
-      <div>
-        <h2>Consulting</h2>
-        <a href="#consulting">What we do</a>
-        <a href="#migrations">Migrations</a>
-        <a href="#how">How we work</a>
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <img src="/assets/veridyne-wordmark.png" alt="Veridyne Solutions" width="190" height="38" loading="lazy">
+        <p><a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a><br><a href="tel:+40755577744">+40 755 577 744</a><br>Bucharest, Romania</p>
       </div>
-      <div>
-        <h2>Products</h2>
-        <a href="#products">AuthCanvas</a>
-        <a href="https://roiall.ro">Roiall</a>
-        <a href="https://www.auth0shell.dev">SA Sparring</a>
-      </div>
-      <div>
-        <h2>Company</h2>
-        <a href="/privacy">Privacy</a>
-        <a class="employee" href="https://team.veridyne.eu/auth/login">Employee sign-in</a>
-        <a href="#top">Back to top</a>
-      </div>
-    </nav>
-  </div>
-  <div class="footer-legal">
-    <p><strong>VERIDYNE SOLUTIONS S.R.L.</strong>, CUI 51635423, Reg. Com. J2025027184005, EUID ROONRC.J2025027184005. Registered office: Str. Guliver nr. 13, bl. C1, sc. 1, et. 5, ap. 49, Sector 6, Bucharest. © 2026.</p>
-    <p>Pictures: Key (15th century), Seal impression of Middelburg (about 1374), Conrad Faber von Kreuznach, Portrait of a Man with a Moor’s Head on His Signet Ring (1524–1553), The Metropolitan Museum of Art, CC0, via Wikimedia Commons.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <div>
+          <h2>Professional Services</h2>
+          <a href="#services">Auth0 and Okta consulting</a>
+          <a href="#services">Migrations</a>
+          <a href="#services">Security reviews</a>
+        </div>
+        <div>
+          <h2>Products</h2>
+          <a href="#authcanvas">AuthCanvas</a>
+          <a href="https://roiall.ro">Roiall</a>
+          <a href="https://www.auth0shell.dev">SA Sparring</a>
+        </div>
+        <div>
+          <h2>Company</h2>
+          <a href="#contact">Contact</a>
+          <a href="/privacy">Privacy</a>
+          <a href="https://team.veridyne.eu/auth/login">Employee sign-in</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-legal">
+      <p><strong>VERIDYNE SOLUTIONS S.R.L.</strong> · CUI 51635423 · Reg. Com. J2025027184005 · EUID ROONRC.J2025027184005<br>Registered office: Str. Guliver nr. 13, bl. C1, sc. 1, et. 5, ap. 49, Sector 6, Bucharest, Romania</p>
+      <p>Copyright © 2026 Veridyne Solutions S.R.L. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 </body>
