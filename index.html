@@ -9,8 +9,8 @@
 <meta name="theme-color" content="#FFFFFF">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Veridyne Solutions">
-<meta property="og:title" content="Veridyne Solutions — Identity, done right.">
-<meta property="og:description" content="Auth0 and Okta professional services, and software products we build ourselves.">
+<meta property="og:title" content="Veridyne Solutions — Auth0 and Okta consulting, and our own software">
+<meta property="og:description" content="Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds AuthCanvas, Roiall and SA Sparring.">
 <meta property="og:url" content="https://www.veridyne.eu/">
 <meta property="og:image" content="https://www.veridyne.eu/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
-<script>document.documentElement.classList.add('js')</script>
+<script src="/js-flag.js"></script>
 <script src="/main.js" defer></script>
 </head>
 <body>
@@ -31,18 +31,17 @@
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span></button>
     <nav class="nav-links" id="site-nav" aria-label="Main">
-      <a href="#services">Services</a>
-      <a href="#approach">How we work</a>
-      <a href="#products">Products</a>
+      <a href="/services">Services</a>
+      <a href="/services#approach">How we work</a>
+      <a href="/#products">Products</a>
       <a class="nav-employee" href="https://team.veridyne.eu/auth/login"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Employee sign-in</a>
-      <a class="nav-cta" href="#contact">Contact</a>
+      <a class="nav-cta" href="/#contact">Contact</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- Hero: who we are, then the two halves of the company side by side -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
       <p class="pill rise"><span class="pill-dot"></span>Identity and access, Auth0 and Okta</p>
@@ -50,7 +49,7 @@
       <p class="lead rise">Veridyne is a technology company in Bucharest. Our consultants design and secure how your customers and staff sign in, and our product team builds software of its own.</p>
       <div class="hero-actions rise">
         <a class="btn" href="#contact" data-topic="Identity &amp; access consulting">Book a free call</a>
-        <a class="link-more" href="#products">See our products</a>
+        <a class="link-more" href="/services">Our services</a>
       </div>
     </div>
 
@@ -81,7 +80,7 @@
     </div>
 
     <div class="split">
-      <a class="split-tile split-services rise" href="#services">
+      <a class="split-tile split-services rise" href="/services">
         <span class="split-kind">Professional Services</span>
         <span class="split-title">Auth0 and Okta consulting</span>
         <span class="split-text">Setups, migrations, security reviews and training, by the people who do the work.</span>
@@ -102,140 +101,82 @@
     </div>
   </section>
 
-  <!-- ===================== PROFESSIONAL SERVICES ===================== -->
-  <section class="services" id="services" aria-labelledby="services-title">
+  <section class="services services-home" id="services" aria-labelledby="services-title">
     <div class="intro rise">
       <p class="division">Professional Services</p>
       <h2 id="services-title">Auth0 and Okta,<br> set up properly.</h2>
-      <p class="lead">We plan, build and review how customers and staff sign in. Every engagement ends with documentation your team can own.</p>
+      <p class="lead">We plan, build and review how customers and staff sign in, secure by default and documented for your team.</p>
     </div>
-
-    <ul class="service-grid">
+    <ul class="service-grid service-grid-compact">
       <li class="service rise">
         <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="14" width="22" height="14" rx="3"/><path d="M10 14V10a6 6 0 0 1 12 0v4"/></svg>
         <h3>New setups</h3>
-        <p>A new Auth0 or Okta tenant planned and configured from an empty start: applications, connections, roles and branding.</p>
+        <p>A new Auth0 or Okta tenant, planned and configured.</p>
       </li>
       <li class="service rise">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 11h18l-5-5M27 21H9l5 5"/></svg>
         <h3>Migrations</h3>
-        <p>Off ADFS, SiteMinder, Ping, Keycloak, Cognito or a login you built yourselves. Users keep their passwords wherever the old system allows it.</p>
+        <p>Off ADFS, SiteMinder, Ping, Keycloak, Cognito or your own login.</p>
       </li>
       <li class="service rise">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l10 4v7c0 7-4.5 11-10 13C10.5 26 6 22 6 15V8z"/><path d="M11.5 16l3 3 6-6"/></svg>
         <h3>Security reviews</h3>
-        <p>A review of the setup you already run, with findings ranked by risk and a fix for each one.</p>
+        <p>Findings ranked by risk, with a fix for each one.</p>
       </li>
       <li class="service rise">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 10l-6 6 6 6M21 10l6 6-6 6"/></svg>
         <h3>Developer training</h3>
-        <p>Hands-on sessions for the developers who will own the setup after we leave.</p>
+        <p>Hands-on sessions for the team who will own it.</p>
       </li>
     </ul>
-
-    <div class="security rise">
-      <h3>Secure by default</h3>
-      <ul>
-        <li><strong>Passkeys and MFA</strong><span>Phishing-resistant sign-in wherever your users can take it.</span></li>
-        <li><strong>Least privilege</strong><span>Roles and scopes that give each app and person only what they need.</span></li>
-        <li><strong>Short-lived tokens</strong><span>Sessions and refresh rules set for your risk, not left at defaults.</span></li>
-        <li><strong>Logs you can audit</strong><span>Sign-in events streamed to where your team already looks.</span></li>
+    <div class="services-foot rise">
+      <ul class="chips" aria-label="Secure by default">
+        <li>Passkeys and MFA</li><li>Least privilege</li><li>Short-lived tokens</li><li>Auditable logs</li>
       </ul>
-    </div>
-
-    <div class="engagement" id="approach">
-      <div class="engagement-text rise">
-        <h3>How an engagement works</h3>
-        <ol class="steps">
-          <li><strong>A free 30-minute call</strong><span>With the person who would do the work.</span></li>
-          <li><strong>A written proposal</strong><span>Scope, timeline and price, agreed before anything starts.</span></li>
-          <li><strong>The work, on your tenant</strong><span>You see every change as it happens.</span></li>
-          <li><strong>Handover</strong><span>Full documentation, and we stay reachable after.</span></li>
-        </ol>
-        <a class="btn" href="#contact" data-topic="Identity &amp; access consulting">Book a call</a>
-      </div>
-      <figure class="engagement-photo rise">
-        <img src="/assets/photos/veridyne-card.jpg" alt="A Veridyne Solutions business card with the logo printed in blue and silver" width="346" height="364" loading="lazy">
-      </figure>
+      <a class="link-more" href="/services">How we work</a>
     </div>
   </section>
 
-  <!-- ===================== PRODUCTS ===================== -->
-  <section class="products-intro" id="products" aria-labelledby="products-title">
+  <section class="products-home" id="products" aria-labelledby="products-title">
     <div class="intro rise">
       <p class="division">Products</p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
       <p class="lead">Separate from our consulting work: three products, each made for its own users.</p>
     </div>
-    <nav class="product-switch rise" aria-label="Products">
-      <a class="sw-ac" href="#authcanvas"><img src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315"></a>
-      <a href="#roiall"><img src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317"></a>
-      <a class="sw-sas" href="#sa-sparring"><span class="sas-mark">SA <em>Sparring</em></span></a>
-    </nav>
-  </section>
-
-  <!-- AuthCanvas -->
-  <section class="product product-ac" id="authcanvas" aria-labelledby="ac-title">
-    <div class="product-head rise">
-      <p class="badge">Private alpha</p>
-      <h2 id="ac-title"><img class="product-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315"></h2>
-      <p class="product-tagline">Design the login before you build it.</p>
-      <p class="product-lead">Teams moving off a legacy login draw the journeys they want on Auth0, Okta or Entra ID. Every block is checked as they go.</p>
-      <div class="product-actions">
-        <a class="btn btn-ac" href="#contact" data-topic="AuthCanvas early access">Request early access</a>
-      </div>
+    <div class="pcards">
+      <a class="pcard pcard-authcanvas rise" href="/authcanvas">
+        <span class="pcard-top">
+          <img class="pcard-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315">
+          <span class="badge">Private alpha</span>
+        </span>
+        <span class="pcard-tagline">Design the login before you build it.</span>
+        <span class="pcard-text">Draw identity journeys on Auth0, Okta or Entra ID, checked as you go.</span>
+        <span class="pcard-more">Learn more</span>
+        <span class="pcard-shot"><img src="/assets/authcanvas.png" alt="AuthCanvas: a login flow drawn as connected blocks, with ACE's recommendation for the MFA step in the side panel" width="1536" height="760" loading="lazy"></span>
+      </a>
+      <a class="pcard pcard-roiall rise" href="/roiall">
+        <span class="pcard-top">
+          <img class="pcard-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317">
+          
+        </span>
+        <span class="pcard-tagline">See what creator deals really bring in.</span>
+        <span class="pcard-text">The real customers your creator and influencer deals bring in.</span>
+        <span class="pcard-more">Learn more</span>
+        <span class="pcard-shot"><img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy"></span>
+      </a>
+      <a class="pcard pcard-sa-sparring rise" href="/sa-sparring">
+        <span class="pcard-top">
+          <span class="sas-mark pcard-logo">SA <em>Sparring</em></span>
+          
+        </span>
+        <span class="pcard-tagline">Practice the call. Get graded.</span>
+        <span class="pcard-text">A practice ground for Auth0 solutions architects, graded like a senior SA would.</span>
+        <span class="pcard-more">Learn more</span>
+        <span class="pcard-shot"><img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy"></span>
+      </a>
     </div>
-    <figure class="product-shot rise">
-      <img src="/assets/authcanvas.png" alt="AuthCanvas: a login flow drawn as connected blocks, with ACE's recommendation for the MFA step in the side panel" width="1536" height="760" loading="lazy">
-    </figure>
-    <ul class="features rise">
-      <li><h3>Draw the journey</h3><p>Customers, apps and sign-in steps as blocks you connect.</p></li>
-      <li><h3>Checked as you go</h3><p>Every block and connection is validated while you design.</p></li>
-      <li><h3>ACE, our identity expert</h3><p>An AI adviser recommends how to build each step.</p></li>
-    </ul>
   </section>
 
-  <!-- Roiall -->
-  <section class="product product-roiall" id="roiall" aria-labelledby="roiall-title">
-    <div class="product-head rise">
-      <h2 id="roiall-title"><img class="product-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317"></h2>
-      <p class="product-tagline">See what creator deals really bring in.</p>
-      <p class="product-lead">Roiall shows businesses the real customers their creator and influencer deals bring, confirmed at the counter.</p>
-      <div class="product-actions">
-        <a class="btn btn-roiall" href="https://roiall.ro">Visit roiall.ro</a>
-      </div>
-    </div>
-    <figure class="product-shot rise">
-      <img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy">
-    </figure>
-    <ul class="features rise">
-      <li><h3>Real customers</h3><p>Each visit is confirmed at the counter, not guessed from clicks.</p></li>
-      <li><h3>Cost per customer</h3><p>What every customer from a creator actually cost you.</p></li>
-      <li><h3>Week by week</h3><p>See which campaigns and creators keep working.</p></li>
-    </ul>
-  </section>
-
-  <!-- SA Sparring -->
-  <section class="product product-sas" id="sa-sparring" aria-labelledby="sas-title">
-    <div class="product-head rise">
-      <h2 id="sas-title" class="sas-mark sas-title">SA <em>Sparring</em></h2>
-      <p class="product-tagline">Practice the call. Get graded.</p>
-      <p class="product-lead">A practice ground for Auth0 solutions architects. A simulated customer pushes back on every call.</p>
-      <div class="product-actions">
-        <a class="btn btn-sas" href="https://www.auth0shell.dev">Visit auth0shell.dev</a>
-      </div>
-    </div>
-    <figure class="product-shot rise">
-      <img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy">
-    </figure>
-    <ul class="features rise">
-      <li><h3>Real conversations</h3><p>Customer scenarios built on how Auth0 calls actually go.</p></li>
-      <li><h3>Graded answers</h3><p>Each answer is graded the way a senior SA would grade it.</p></li>
-      <li><h3>By invitation</h3><p>Sign in with Google or GitHub once you are invited.</p></li>
-    </ul>
-  </section>
-
-  <!-- Contact -->
   <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="contact-head rise">
       <h2 id="contact-title">Let’s talk.</h2>
@@ -297,19 +238,19 @@
       <nav class="footer-links" aria-label="Footer">
         <div>
           <h2>Professional Services</h2>
-          <a href="#services">Auth0 and Okta consulting</a>
-          <a href="#services">Migrations</a>
-          <a href="#services">Security reviews</a>
+          <a href="/services">Auth0 and Okta consulting</a>
+          <a href="/services#security">Secure by default</a>
+          <a href="/services#approach">How we work</a>
         </div>
         <div>
           <h2>Products</h2>
-          <a href="#authcanvas">AuthCanvas</a>
-          <a href="https://roiall.ro">Roiall</a>
-          <a href="https://www.auth0shell.dev">SA Sparring</a>
+          <a href="/authcanvas">AuthCanvas</a>
+          <a href="/roiall">Roiall</a>
+          <a href="/sa-sparring">SA Sparring</a>
         </div>
         <div>
           <h2>Company</h2>
-          <a href="#contact">Contact</a>
+          <a href="/#contact">Contact</a>
           <a href="/privacy">Privacy</a>
           <a href="https://team.veridyne.eu/auth/login">Employee sign-in</a>
         </div>

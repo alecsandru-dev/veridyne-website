@@ -9,22 +9,22 @@
     },
     {
       "source": "/keystone",
-      "destination": "/#consulting",
+      "destination": "/services",
       "permanent": true
     },
     {
       "source": "/continuum",
-      "destination": "/#consulting",
+      "destination": "/services",
       "permanent": true
     },
     {
       "source": "/catalyst",
-      "destination": "/#consulting",
+      "destination": "/services",
       "permanent": true
     },
     {
       "source": "/synapse",
-      "destination": "/#consulting",
+      "destination": "/services",
       "permanent": true
     },
     {

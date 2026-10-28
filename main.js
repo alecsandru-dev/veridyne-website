@@ -70,6 +70,15 @@
     update();
   }
 
+  /* ---------- Links from other pages arrive as /?topic=…#contact ---------- */
+  var topicParam = new URLSearchParams(window.location.search).get('topic');
+  var topicSelect = document.getElementById('cf-topic');
+  if (topicParam && topicSelect) {
+    Array.prototype.forEach.call(topicSelect.options, function (o) {
+      if (o.value === topicParam) topicSelect.value = topicParam;
+    });
+  }
+
   /* ---------- Links that pick a contact topic ---------- */
   document.querySelectorAll('a[data-topic]').forEach(function (link) {
     link.addEventListener('click', function () {
