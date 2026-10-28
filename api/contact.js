@@ -3,7 +3,7 @@
 // CONTACT_TO (defaults to solutions@veridyne.eu).
 
 const LIMITS = { name: 100, email: 200, company: 150, topic: 60, message: 4000 };
-const TOPICS = ['Identity & access consulting', 'Roiall', 'Rentolio', 'Something else'];
+const TOPICS = ['Identity & access consulting', 'Roiall', 'SA Sparring', 'Something else'];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function field(body, key) {
