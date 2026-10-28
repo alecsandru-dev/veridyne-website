@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Veridyne Solutions — Identity consulting and software products</title>
-<meta name="description" content="Veridyne Solutions is a Europe-based team providing Auth0 and Okta identity & access consulting, and building software products such as AuthCanvas, Roiall and SA Sparring.">
+<title>Veridyne Solutions — Auth0 and Okta consulting, and our own software</title>
+<meta name="description" content="Veridyne Solutions is a Bucharest identity consultancy. We set up, migrate and review Auth0 and Okta, and build our own software: AuthCanvas, Roiall and SA Sparring.">
 <link rel="canonical" href="https://www.veridyne.eu/">
 <meta name="theme-color" content="#0B1F3B">
 <meta property="og:type" content="website">
@@ -18,172 +18,271 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
+<script>document.documentElement.classList.add('js')</script>
 <script src="/main.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <nav class="nav" aria-label="Main">
-    <a class="nav-logo" href="/" aria-label="Veridyne Solutions home">
-      <img src="/assets/veridyne-wordmark.png" alt="" width="190" height="38">
-    </a>
-    <div class="nav-links">
-      <a href="#consulting">Consulting</a>
-      <a href="#products">Products</a>
-      <a href="#how">How we work</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-</header>
-
 <main id="main">
-  <section class="hero" id="top">
-    <h1 class="display">Identity, done right.</h1>
-    <p class="lede">Auth0 and Okta consulting, and software products built by the same team.</p>
-    <div class="actions">
-      <a class="btn btn-dark" href="#contact">Book a call</a>
-      <a class="more" href="#products">See our products ›</a>
+
+  <!-- Hero: narrow talk, wide headline -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-talk">
+      <a class="wordmark" href="/" aria-label="Veridyne Solutions home">
+        <img src="/assets/veridyne-wordmark.png" alt="" width="190" height="38">
+      </a>
+      <p class="hero-line">Auth0 and Okta consulting from Bucharest, and software we build ourselves.</p>
+      <a class="btn" href="#contact">Book a call</a>
+    </div>
+    <div class="hero-wide">
+      <nav class="hero-nav" aria-label="Main">
+        <a href="#consulting">Consulting</a>
+        <a href="#migrations">Migrations</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <h1 class="hero-title lines" id="hero-title">
+        <span class="line"><span data-line style="--i:0">Identity,</span></span>
+        <span class="line"><span data-line style="--i:1">done right.</span></span>
+      </h1>
+      <figure class="hero-picture">
+        <div class="hero-figure-block">
+          <p class="figure">30 min</p>
+          <p>Free first call, with the person who would do the work.</p>
+        </div>
+        <div class="hero-photo">
+          <img class="museum" src="/assets/museum/key.jpg" alt="A wrought-iron key from the 15th century, its bit cut into a lattice of notches" width="1500" height="917" fetchpriority="high">
+        </div>
+      </figure>
     </div>
   </section>
 
-  <div class="tiles">
-
-    <section class="tile tile-navy on-navy stack center" id="consulting">
-      <h2 class="h-section">Identity &amp; access consulting</h2>
-      <p class="lede">We plan, set up and review how customers and staff sign in. On Auth0 and Okta, documented so your team can own it.</p>
-      <ul class="chips">
-        <li>New Auth0 &amp; Okta setups</li>
-        <li>Migrations from older systems</li>
+  <!-- Consulting: statement tiles -->
+  <section class="consulting" id="consulting" aria-labelledby="consulting-title">
+    <div class="board">
+      <h2 class="tile tile-slogan" id="consulting-title"><span>Identity</span> <span>consulting</span></h2>
+      <p class="tile tile-word" aria-hidden="true"><span>Auth0</span><span>Okta</span></p>
+      <figure class="tile tile-photo">
+        <img class="museum" src="/assets/museum/seal-middelburg.jpg" alt="The wax seal of the town of Middelburg, about 1374, still hanging from its parchment strip" width="1271" height="1500" loading="lazy">
+      </figure>
+    </div>
+    <div class="consulting-text">
+      <ul class="services">
+        <li>New Auth0 and Okta setups</li>
+        <li>Migrations off legacy logins</li>
         <li>Security reviews</li>
         <li>Developer training</li>
       </ul>
-      <div class="actions">
-        <a class="btn btn-cyan" href="#contact">Talk to us</a>
-        <a class="more" href="#how">How we work ›</a>
-      </div>
-    </section>
+      <p>We plan, set up and review how customers and staff sign in, on Auth0 and Okta. New setups from an empty tenant. Migrations off ADFS, SiteMinder, Ping, Keycloak, Cognito or a login you built yourselves, with users keeping their passwords wherever the old system allows it. Security reviews of the setup you already run. Training for the developers who will own it.</p>
+      <p>Every engagement ends with documentation your team can work from, and the person you speak to on the first call is the one who does the work.</p>
+      <a class="link-strong" href="#contact">Talk to us about your setup</a>
+    </div>
+  </section>
 
-    <section class="tile tile-mist stack center" id="products">
-      <h2 class="h-section">Software products</h2>
-      <p class="lede">Applications we build, host and support ourselves. License one, and start using it.</p>
-      <article class="premier" aria-labelledby="authcanvas-title">
-        <div class="premier-copy">
-          <p class="premier-tag"><span class="dot" aria-hidden="true"></span>Premier · Private alpha</p>
-          <h3 id="authcanvas-title"><img src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315"></h3>
-          <p class="premier-lede">Design your identity flows before you migrate them.</p>
-          <p>Moving from a legacy IAM to Auth0, Okta or Microsoft Entra ID? Draw the login journeys you want on a canvas. AuthCanvas checks every block and connection as you go, and ACE, our AI identity expert, reviews the design and recommends how to build each step on your target platform.</p>
-          <ul class="premier-points">
-            <li>Instant checks on every connection, with one-click fixes</li>
-            <li>ACE review with platform-specific recommendations</li>
-            <li>From draft to a frozen MVP design pack</li>
-          </ul>
-          <div class="actions">
-            <a class="btn btn-cyan" href="#contact" data-topic="AuthCanvas early access">Request early access</a>
-            <span class="premier-note">Invitation only, for selected migration projects.</span>
-          </div>
+  <!-- Migrations: two giant words compared, with the live lookup -->
+  <section class="migrations" id="migrations" aria-labelledby="migrations-title">
+    <div class="mig-head reveal">
+      <h2 id="migrations-title">Where are you moving from?</h2>
+      <p>Every old login system lets go of its users differently. Pick yours and the platform you are moving to: this is the short version of what we check first. Can passwords come along, which second factors survive, and what happens to the user IDs your apps rely on.</p>
+    </div>
+
+
+    <div class="specimens" aria-hidden="true">
+      <div class="specimen specimen-from"><p class="spec-word" id="spec-from">ADFS</p></div>
+      <div class="specimen specimen-to"><p class="spec-word" id="spec-to">Auth0</p></div>
+    </div>
+
+    <form class="mig-pick" id="mig-pick" aria-label="Choose your migration" onsubmit="return false">
+      <fieldset>
+        <legend>From</legend>
+        <div class="chooser">
+          <label><input type="radio" name="from" value="adfs" checked><span>AD and ADFS</span></label>
+          <label><input type="radio" name="from" value="siteminder"><span>SiteMinder</span></label>
+          <label><input type="radio" name="from" value="pingfed"><span>PingFederate</span></label>
+          <label><input type="radio" name="from" value="pingone"><span>PingOne</span></label>
+          <label><input type="radio" name="from" value="keycloak"><span>Keycloak</span></label>
+          <label><input type="radio" name="from" value="cognito"><span>AWS Cognito</span></label>
+          <label><input type="radio" name="from" value="gigya"><span>SAP CDC (Gigya)</span></label>
+          <label><input type="radio" name="from" value="janrain"><span>Akamai (Janrain)</span></label>
+          <label><input type="radio" name="from" value="homegrown"><span>Your own login</span></label>
         </div>
-        <div class="premier-shot">
-          <img src="/assets/authcanvas.png" alt="AuthCanvas workspace: a login flow drawn as connected blocks, with ACE's recommendation for the MFA step shown in a side panel" width="1536" height="760" loading="lazy">
+      </fieldset>
+      <fieldset>
+        <legend>To</legend>
+        <div class="chooser">
+          <label><input type="radio" name="to" value="auth0" checked><span>Auth0</span></label>
+          <label><input type="radio" name="to" value="okta"><span>Okta</span></label>
         </div>
-      </article>
+      </fieldset>
+    </form>
 
-      <div class="products">
-        <article class="product product-light">
-          <h3><img src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="122" height="34"></h3>
-          <p>Shows businesses what their creator and influencer deals really bring in: real customers, confirmed at the counter.</p>
-          <a class="more" href="https://roiall.ro">Visit roiall.ro ›</a>
-          <img class="shot" src="/assets/roiall-dashboard.png" alt="Roiall dashboard showing customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy">
-        </article>
-        <article class="product product-dark">
-          <h3>SA Sparring</h3>
-          <p>A practice ground for Auth0 solutions architects. A simulated customer pushes back on every call, and each answer is graded like a senior SA would grade it.</p>
-          <a class="more" href="https://www.auth0shell.dev">Visit auth0shell.dev ›</a>
-          <img class="shot" src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen with the chat-bubbles logo and the tagline Practice the call. Get graded." width="1720" height="940" loading="lazy">
-        </article>
-      </div>
-    </section>
+    <div class="findings" id="findings" aria-live="polite">
+      <p class="finding-path" id="f-path">Connect first, move later</p>
+      <dl>
+        <div><dt>Passwords</dt><dd id="f-passwords">AD password hashes don’t export in a form Auth0 can use. Staff usually keep signing in against AD through Auth0’s AD/LDAP connector, so nobody resets a password.</dd></div>
+        <div><dt>Second factors</dt><dd id="f-mfa">Phone numbers and email factors carry over. Passkeys and push apps are tied to the old domain and always need re-enrolling.</dd></div>
+        <div><dt>User IDs</dt><dd id="f-ids">You can keep each user’s old ID on import. Auth0 adds a prefix (auth0|…), so apps that compare the raw sub claim need a small change.</dd></div>
+        <div><dt>Watch for</dt><dd id="f-watch">Auth0 accepts ADFS as a WS-Fed connection directly, so your apps can move before your users do.</dd></div>
+      </dl>
+      <p class="findings-note">From the research behind AuthCanvas, our migration design tool. Every case is checked against your own tenant before we commit to a plan.</p>
+    </div>
+  </section>
 
-    <section class="tile tile-outline" id="how">
-      <div class="how">
-        <h2 class="h-section">Simple, from the first call.</h2>
-        <ol class="steps">
-          <li><h3>A short call</h3><p>Free, 30 minutes, with the person who would do the work.</p></li>
-          <li><h3>A clear proposal</h3><p>Scope, timeline and price in writing. Or the product that fits.</p></li>
-          <li><h3>Work you can keep</h3><p>Full documentation at handover, and we stay reachable after.</p></li>
+  <!-- Products: small index, large picture -->
+  <section class="products" id="products" aria-labelledby="products-title">
+    <div class="products-stage">
+      <div class="products-side">
+        <h2 id="products-title">Software we&nbsp;build</h2>
+        <div class="product-notes">
+          <article class="product-note is-current" data-product="0">
+            <p><strong class="product-status">Our premier product, in private alpha.</strong> AuthCanvas is where teams moving off a legacy login draw the journeys they want on Auth0, Okta or Entra ID. Every block and connection is checked as they go, and ACE, our AI identity expert, recommends how to build each step.</p>
+            <a class="link-strong" href="#contact" data-topic="AuthCanvas early access">Request early access</a>
+          </article>
+          <article class="product-note" data-product="1">
+            <p>Roiall shows businesses what their creator and influencer deals really bring in: real customers, confirmed at the counter.</p>
+            <a class="link-strong" href="https://roiall.ro">Visit roiall.ro</a>
+          </article>
+          <article class="product-note" data-product="2">
+            <p>SA Sparring is a practice ground for Auth0 solutions architects. A simulated customer pushes back on every call, and each answer is graded like a senior SA would grade it.</p>
+            <a class="link-strong" href="https://www.auth0shell.dev">Visit auth0shell.dev</a>
+          </article>
+        </div>
+        <ol class="product-index">
+          <li class="is-current"><a href="#product-0" data-go="0"><span class="pi-name">AuthCanvas</span><span class="pi-kind">Migration design</span></a></li>
+          <li><a href="#product-1" data-go="1"><span class="pi-name">Roiall</span><span class="pi-kind">Creator marketing</span></a></li>
+          <li><a href="#product-2" data-go="2"><span class="pi-name">SA Sparring</span><span class="pi-kind">Call practice</span></a></li>
         </ol>
       </div>
-    </section>
-
-    <section class="tile tile-navy on-navy" id="contact">
-      <div class="contact">
-        <div class="contact-intro">
-          <img src="/assets/veridyne-icon-dark.png" alt="" width="52" height="34">
-          <h2 class="display">Let's talk.</h2>
-          <p>Tell us about your project, or which product you'd like to see. We reply within one working day.</p>
-          <div class="contact-direct">
-            <a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>
-            <a href="tel:+40755577744">+40 755 577 744</a>
-          </div>
-        </div>
-
-        <form class="form" id="contact-form" action="/api/contact" method="post" novalidate>
-          <div class="form-row">
-            <div class="field">
-              <label for="cf-name">Name</label>
-              <input id="cf-name" name="name" type="text" autocomplete="name" maxlength="100" required>
-            </div>
-            <div class="field">
-              <label for="cf-email">Work email</label>
-              <input id="cf-email" name="email" type="email" autocomplete="email" maxlength="200" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label for="cf-company">Company <span class="opt">(optional)</span></label>
-              <input id="cf-company" name="company" type="text" autocomplete="organization" maxlength="150">
-            </div>
-            <div class="field">
-              <label for="cf-topic">About</label>
-              <select id="cf-topic" name="topic">
-                <option>Identity &amp; access consulting</option>
-                <option>AuthCanvas early access</option>
-                <option>Roiall</option>
-                <option>SA Sparring</option>
-                <option>Something else</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label for="cf-message">Message</label>
-            <textarea id="cf-message" name="message" rows="5" maxlength="4000" required></textarea>
-          </div>
-          <div class="hp" aria-hidden="true">
-            <label for="cf-website">Leave this empty</label>
-            <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
-          </div>
-          <div class="form-foot">
-            <p class="form-note">We only use your details to reply to you. See our <a href="/privacy">privacy notice</a>.</p>
-            <button class="btn btn-cyan" type="submit">Send message</button>
-          </div>
-          <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
-        </form>
+      <div class="products-pictures">
+        <figure class="pp pp-authcanvas is-current" id="product-0" data-ui>
+          <img src="/assets/authcanvas.png" alt="AuthCanvas: a login flow drawn as connected blocks, with ACE's recommendation for the MFA step in the side panel" width="1536" height="760" loading="lazy">
+        </figure>
+        <figure class="pp pp-roiall" id="product-1" data-ui>
+          <img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy">
+        </figure>
+        <figure class="pp pp-sparring" id="product-2" data-ui>
+          <img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy">
+        </figure>
       </div>
-    </section>
+    </div>
+    <div class="products-track" aria-hidden="true"><span></span><span></span><span></span></div>
+  </section>
 
-  </div>
+  <!-- How we work: stages as one bar -->
+  <section class="how" id="how" aria-labelledby="how-title">
+    <h2 id="how-title" class="reveal">From first call to handover</h2>
+    <ol class="stage-bar" data-ui>
+      <li class="stage stage-call" style="--grow:1">
+        <p class="stage-time">Thirty minutes</p>
+        <p class="stage-what">First, a free call with the person who would do the work.</p>
+      </li>
+      <li class="stage stage-proposal" style="--grow:1.6">
+        <p class="stage-time">Within a week</p>
+        <p class="stage-what">Then a written proposal: scope, timeline and price. Or the product that fits.</p>
+      </li>
+      <li class="stage stage-work" style="--grow:5">
+        <p class="stage-time">Weeks, agreed up front</p>
+        <p class="stage-what">Then the work, on your own tenant, with you seeing every change.</p>
+      </li>
+      <li class="stage stage-handover" style="--grow:1.4">
+        <p class="stage-time">A day, then on call</p>
+        <p class="stage-what">Last, a handover with full documentation. We stay reachable after.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="contact-talk reveal">
+      <h2 id="contact-title">Let’s talk</h2>
+      <p class="contact-line">Moving to Auth0 or Okta, or curious about our products? Tell us where you are.</p>
+      <div class="contact-card">
+        <img class="museum" src="/assets/museum/portrait-signet.jpg" alt="Detail of a 16th-century portrait: a man holds up his signet ring, the way identity was proven then" width="275" height="400" loading="lazy">
+        <div>
+          <a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>
+          <a href="tel:+40755577744">+40 755 577 744</a>
+          <p>Bucharest, Romania. We reply within one working day.</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="form reveal" id="contact-form" action="/api/contact" method="post" novalidate>
+      <div class="form-row">
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" maxlength="100" required>
+        </div>
+        <div class="field">
+          <label for="cf-email">Work email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" maxlength="200" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="cf-company">Company <span class="opt">(optional)</span></label>
+          <input id="cf-company" name="company" type="text" autocomplete="organization" maxlength="150">
+        </div>
+        <div class="field">
+          <label for="cf-topic">About</label>
+          <select id="cf-topic" name="topic">
+            <option>Identity &amp; access consulting</option>
+            <option>AuthCanvas early access</option>
+            <option>Roiall</option>
+            <option>SA Sparring</option>
+            <option>Something else</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" rows="5" maxlength="4000" required></textarea>
+      </div>
+      <div class="hp" aria-hidden="true">
+        <label for="cf-website">Leave this empty</label>
+        <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="form-foot">
+        <p class="form-note">We only use your details to reply to you. See our <a href="/privacy">privacy notice</a>.</p>
+        <button class="btn btn-accent" type="submit">Send message</button>
+      </div>
+      <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
 </main>
 
 <footer class="site-footer">
-  <div class="footer">
-    <p class="legal"><strong>VERIDYNE SOLUTIONS S.R.L.</strong> · CUI 51635423 · Reg. Com. J2025027184005 · EUID ROONRC.J2025027184005<br>Registered office: Str. Guliver nr. 13, bl. C1, sc. 1, et. 5, ap. 49, Sector 6, Bucharest, Romania</p>
-    <div class="footer-bottom">
-      <span>Copyright © 2026 Veridyne Solutions S.R.L. All rights reserved.</span>
-      <div class="footer-links">
-        <a href="/privacy">Privacy</a>
-        <a class="employee" href="https://team.veridyne.eu/auth/login"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Employee sign-in</a>
+  <p class="footer-name" aria-hidden="true">Veridyne</p>
+  <div class="footer-row">
+    <ul class="footer-places">
+      <li><a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a></li>
+      <li><a href="tel:+40755577744">+40 755 577 744</a></li>
+      <li>Bucharest, Romania</li>
+    </ul>
+    <nav class="footer-links" aria-label="Footer">
+      <div>
+        <h2>Consulting</h2>
+        <a href="#consulting">What we do</a>
+        <a href="#migrations">Migrations</a>
+        <a href="#how">How we work</a>
       </div>
-    </div>
+      <div>
+        <h2>Products</h2>
+        <a href="#products">AuthCanvas</a>
+        <a href="https://roiall.ro">Roiall</a>
+        <a href="https://www.auth0shell.dev">SA Sparring</a>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <a href="/privacy">Privacy</a>
+        <a class="employee" href="https://team.veridyne.eu/auth/login">Employee sign-in</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-legal">
+    <p><strong>VERIDYNE SOLUTIONS S.R.L.</strong>, CUI 51635423, Reg. Com. J2025027184005, EUID ROONRC.J2025027184005. Registered office: Str. Guliver nr. 13, bl. C1, sc. 1, et. 5, ap. 49, Sector 6, Bucharest. © 2026.</p>
+    <p>Pictures: Key (15th century), Seal impression of Middelburg (about 1374), Conrad Faber von Kreuznach, Portrait of a Man with a Moor’s Head on His Signet Ring (1524–1553), The Metropolitan Museum of Art, CC0, via Wikimedia Commons.</p>
   </div>
 </footer>
 </body>
