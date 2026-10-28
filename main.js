@@ -8,6 +8,26 @@
   onScrollHeader();
   window.addEventListener('scroll', onScrollHeader, { passive: true });
 
+  /* ---------- Phone menu ---------- */
+  var toggle = document.querySelector('.nav-toggle');
+  if (header && toggle) {
+    function setMenu(open) {
+      header.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.querySelector('.nav-toggle-label').textContent = open ? 'Close' : 'Menu';
+    }
+    toggle.addEventListener('click', function () { setMenu(!header.classList.contains('menu-open')); });
+    header.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && header.classList.contains('menu-open')) { setMenu(false); toggle.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (header.classList.contains('menu-open') && !header.contains(e.target)) setMenu(false);
+    });
+  }
+
   /* ---------- Entrances: siblings come in one after another ---------- */
   var targets = document.querySelectorAll('.rise');
   var groups = new Map();
