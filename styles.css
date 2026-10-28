@@ -636,3 +636,160 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) and (max-width: 760px) {
   .flow-login, .flow-checks { display: none; }
 }
+
+/* ---------- Secure sign-in gateway ----------
+   States on .gate-panel[data-state]: opening (ring scans, lock open) → ready → going (hand-off). */
+.gate {
+  padding: 0; border: 0; background: transparent; color: #fff;
+  width: calc(100% - 32px); max-width: 540px; max-height: calc(100% - 32px); overflow: visible;
+}
+.gate::backdrop { background: rgba(6, 18, 36, 0.55); backdrop-filter: blur(10px) saturate(1.2); -webkit-backdrop-filter: blur(10px) saturate(1.2); }
+.gate[open]::backdrop { animation: gate-fade 360ms var(--ease) both; }
+.gate[open] .gate-panel { animation: gate-in 520ms var(--ease) both; }
+@keyframes gate-fade { from { opacity: 0; } }
+@keyframes gate-in { from { opacity: 0; transform: translateY(14px) scale(0.97); } }
+
+.gate-panel {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;
+  padding: 36px 28px 26px; border-radius: 28px; color: #fff;
+  background:
+    radial-gradient(120% 70% at 50% -12%, rgba(0, 180, 255, 0.26), transparent 62%),
+    linear-gradient(180deg, #0D2443 0%, #081629 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+/* faint circuit grid, strongest behind the emblem */
+.gate-panel::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 26px 26px; background-position: center -1px;
+  -webkit-mask-image: radial-gradient(70% 45% at 50% 0%, #000, transparent); mask-image: radial-gradient(70% 45% at 50% 0%, #000, transparent);
+}
+.gate-panel h2 { font-size: clamp(24px, 4vw, 30px); line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; margin: 2px 0 0; color: #fff; }
+.gate-sub { margin: 0; color: rgba(255, 255, 255, 0.72); font-size: 15px; max-width: 34ch; }
+
+/* emblem: a ring that scans, then closes around a lock that clicks shut */
+.gate-emblem { position: relative; width: 92px; height: 92px; display: grid; place-items: center; margin-bottom: 4px; }
+.gate-emblem::after {
+  content: ""; position: absolute; inset: 6px; border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(0, 180, 255, 0.5); opacity: 0;
+}
+.gate-ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gate-ring circle { fill: none; stroke-width: 3; }
+.gate-track { stroke: rgba(255, 255, 255, 0.1); }
+.gate-sweep {
+  stroke: var(--cyan); stroke-linecap: round; stroke-dasharray: 100 0;
+  transform-box: fill-box; transform-origin: center; transform: rotate(-90deg);
+  filter: drop-shadow(0 0 6px rgba(0, 180, 255, 0.7));
+  transition: stroke-dasharray 520ms var(--ease);
+}
+.gate-lock { width: 36px; height: 36px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.gate-shackle { transition: transform 300ms cubic-bezier(0.34, 1.8, 0.64, 1); }
+.gate-status {
+  margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.gate-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
+
+.gate-panel[data-state="opening"] .gate-sweep,
+.gate-panel[data-state="going"] .gate-sweep { stroke-dasharray: 24 76; animation: gate-spin 900ms linear infinite; }
+.gate-panel[data-state="going"] .gate-sweep { animation-duration: 600ms; }
+.gate-panel[data-state="opening"] .gate-shackle { transform: translateY(-3.5px); }
+.gate-panel[data-state="opening"] .gate-status { color: rgba(255, 255, 255, 0.6); }
+.gate-panel[data-state="ready"] .gate-emblem::after { animation: gate-pulse 900ms var(--ease) 1; }
+@keyframes gate-spin { from { transform: rotate(-90deg); } to { transform: rotate(270deg); } }
+@keyframes gate-pulse { 0% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 180, 255, 0.55); } 100% { opacity: 0; box-shadow: 0 0 0 22px rgba(0, 180, 255, 0); } }
+
+/* the two portals */
+.gate-options { display: grid; gap: 12px; width: 100%; margin-top: 12px; }
+.gate-option {
+  position: relative; overflow: hidden; display: grid; grid-template-columns: 44px 1fr 20px; align-items: center; column-gap: 14px; row-gap: 0;
+  padding: 16px 18px; border-radius: 18px; text-align: left; text-decoration: none; color: #fff;
+  background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 260ms var(--ease), border-color 260ms var(--ease), box-shadow 260ms var(--ease), opacity 300ms var(--ease), background-color 260ms var(--ease);
+}
+.gate[open] .gate-option { animation: gate-rise 520ms var(--ease) both; }
+.gate[open] .gate-option:nth-child(1) { animation-delay: 380ms; }
+.gate[open] .gate-option:nth-child(2) { animation-delay: 460ms; }
+@keyframes gate-rise { from { opacity: 0; transform: translateY(12px); } }
+/* a light that passes over the card on hover */
+.gate-option::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(0, 180, 255, 0.16) 50%, transparent 65%);
+  transform: translateX(-100%);
+}
+.gate-option:hover, .gate-option:focus-visible {
+  border-color: rgba(0, 180, 255, 0.65); background: rgba(0, 180, 255, 0.07);
+  box-shadow: 0 0 0 4px rgba(0, 180, 255, 0.12), 0 18px 36px -20px rgba(0, 180, 255, 0.5); transform: translateY(-2px);
+}
+.gate-option:hover::after { transform: translateX(100%); transition: transform 900ms var(--ease); }
+.gate-option:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.gate-icon { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; background: rgba(0, 180, 255, 0.12); color: var(--cyan); }
+.gate-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.gate-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.gate-text strong { font-size: 17px; font-weight: 700; }
+.gate-text span { font-size: 14px; color: rgba(255, 255, 255, 0.68); }
+.gate-arrow { width: 10px; height: 10px; border-right: 2px solid currentColor; border-top: 2px solid currentColor; transform: rotate(45deg); opacity: 0.6; transition: transform 260ms var(--ease), opacity 260ms; justify-self: center; }
+.gate-option:hover .gate-arrow { transform: translateX(3px) rotate(45deg); opacity: 1; }
+.gate-url {
+  grid-column: 2 / -1; justify-self: start; margin-top: 10px; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.5px; font-weight: 600; letter-spacing: 0.01em; color: rgba(255, 255, 255, 0.8);
+  padding: 4px 10px 4px 8px; border-radius: 999px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.gate-url svg { width: 12px; height: 12px; fill: none; stroke: #3DDC97; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* the hand-off checklist inside the chosen card */
+.gate-more { grid-column: 1 / -1; display: grid; grid-template-rows: 0fr; transition: grid-template-rows 380ms var(--ease); }
+.gate-more-inner { overflow: hidden; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
+.gate-steps { display: flex; flex-direction: column; gap: 8px; padding-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 14px; }
+.gate-steps span { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255, 255, 255, 0.45); transition: color 240ms var(--ease); padding-top: 6px; }
+.gate-steps span::before {
+  content: ""; flex: none; width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.3);
+  transition: background-color 240ms var(--ease), border-color 240ms var(--ease), box-shadow 240ms;
+}
+.gate-steps span.done { color: #fff; }
+.gate-steps span.done::before {
+  border-color: var(--cyan); box-shadow: 0 0 10px rgba(0, 180, 255, 0.6);
+  background: var(--cyan) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.3l2.2 2.2 4.8-5' fill='none' stroke='%230B1F3B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat;
+}
+.gate-progress { height: 3px; border-radius: 3px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+.gate-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--cyan), #7FDBFF); box-shadow: 0 0 12px var(--cyan); }
+
+.gate-panel[data-state="going"] .gate-option:not(.is-chosen) { opacity: 0.25; transform: scale(0.98); pointer-events: none; }
+.gate-option.is-chosen { border-color: rgba(0, 180, 255, 0.7); background: rgba(0, 180, 255, 0.08); transform: none; }
+.gate-option.is-chosen .gate-more { grid-template-rows: 1fr; }
+.gate-option.is-chosen .gate-progress span { width: 100%; transition: width 1150ms cubic-bezier(0.45, 0, 0.2, 1) 150ms; }
+.gate-option.is-chosen .gate-arrow { opacity: 0; }
+
+.gate-note { display: flex; align-items: flex-start; gap: 8px; margin: 10px 0 0; max-width: 42ch; text-align: left; font-size: 13px; color: rgba(255, 255, 255, 0.58); }
+.gate-note svg { flex: none; width: 16px; height: 16px; margin-top: 1px; fill: none; stroke: #3DDC97; stroke-width: 2; stroke-linejoin: round; }
+.gate-close {
+  position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.06); color: rgba(255, 255, 255, 0.8); cursor: pointer;
+  transition: background-color 200ms, color 200ms;
+}
+.gate-close:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+.gate-close svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+
+/* /signin without the dialog */
+.gate-page { min-height: calc(100vh - 140px); display: grid; place-items: center; padding: 48px var(--pad) 80px; background: radial-gradient(60% 50% at 50% 40%, rgba(0, 180, 255, 0.1), transparent 70%); }
+.gate-page .gate-panel { width: 100%; max-width: 540px; animation: gate-in 520ms var(--ease) both; }
+
+/* phones: a sheet from the bottom */
+@media (max-width: 600px) {
+  .gate { width: 100%; max-width: none; margin: auto 0 0; max-height: 92dvh; }
+  .gate-panel { border-radius: 26px 26px 0 0; padding: 30px 18px calc(22px + env(safe-area-inset-bottom)); overflow-y: auto; max-height: 92dvh; }
+  .gate[open] .gate-panel { animation-name: gate-sheet; }
+  @keyframes gate-sheet { from { transform: translateY(100%); } }
+  .gate-option { grid-template-columns: 40px 1fr 16px; padding: 14px; column-gap: 12px; }
+  .gate-icon { width: 40px; height: 40px; }
+  .gate-page { padding: 24px 12px 48px; }
+  .gate-page .gate-panel { border-radius: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gate[open] .gate-panel, .gate[open]::backdrop, .gate[open] .gate-option, .gate-page .gate-panel { animation: none; }
+  .gate-panel[data-state] .gate-sweep { animation: none; stroke-dasharray: 100 0; }
+  .gate-option::after { display: none; }
+}

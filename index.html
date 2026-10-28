@@ -34,7 +34,7 @@
       <a href="/services">Services</a>
       <a href="/services#approach">How we work</a>
       <a href="/#products">Products</a>
-      <a class="nav-employee" href="https://team.veridyne.eu/auth/login"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Employee sign-in</a>
+      <a class="nav-employee" href="/signin" data-gate><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Secure sign-in</a>
       <a class="nav-cta" href="/#contact">Contact</a>
     </nav>
   </div>
@@ -252,7 +252,7 @@
           <h2>Company</h2>
           <a href="/#contact">Contact</a>
           <a href="/privacy">Privacy</a>
-          <a href="https://team.veridyne.eu/auth/login">Employee sign-in</a>
+          <a href="/signin" data-gate>Secure sign-in</a>
         </div>
       </nav>
     </div>
@@ -262,5 +262,41 @@
     </div>
   </div>
 </footer>
+
+<dialog class="gate" id="gate" aria-labelledby="gate-title">
+  <div class="gate-panel" data-state="ready">
+    <div class="gate-emblem" aria-hidden="true">
+      <svg class="gate-ring" viewBox="0 0 120 120"><circle class="gate-track" cx="60" cy="60" r="54"/><circle class="gate-sweep" cx="60" cy="60" r="54" pathLength="100"/></svg>
+      <svg class="gate-lock" viewBox="0 0 24 24"><path class="gate-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/><rect x="4.5" y="11" width="15" height="10" rx="2.5"/><path d="M12 15v2.2"/></svg>
+    </div>
+    <p class="gate-status" role="status">Secure channel ready</p>
+    <h2 id="gate-title">Secure sign-in</h2>
+    <p class="gate-sub">Choose your portal. Both sign in through Veridyne single sign-on.</p>
+    <div class="gate-options">
+      <a class="gate-option" href="https://my.veridyne.eu/auth/login" data-host="my.veridyne.eu">
+        <span class="gate-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/><path d="M16 9h2a2 2 0 0 1 2 2v10M3 21h18M8 7h4M8 11h4M8 15h4"/></svg></span>
+        <span class="gate-text"><strong>Client portal</strong><span>Your projects, hours delivered and company details.</span></span>
+        <span class="gate-arrow" aria-hidden="true"></span>
+        <span class="gate-url"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>my.veridyne.eu</span>
+        <span class="gate-more" aria-hidden="true"><span class="gate-more-inner">
+          <span class="gate-steps"><span>Destination checked: my.veridyne.eu</span><span>Encrypted connection (HTTPS)</span><span>Handing off to Veridyne SSO</span></span>
+          <span class="gate-progress"><span></span></span>
+        </span></span>
+      </a>
+      <a class="gate-option" href="https://team.veridyne.eu/auth/login" data-host="team.veridyne.eu">
+        <span class="gate-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.7c2 .6 3.5 2.3 3.5 5.3"/></svg></span>
+        <span class="gate-text"><strong>Team</strong><span>For Veridyne employees.</span></span>
+        <span class="gate-arrow" aria-hidden="true"></span>
+        <span class="gate-url"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>team.veridyne.eu</span>
+        <span class="gate-more" aria-hidden="true"><span class="gate-more-inner">
+          <span class="gate-steps"><span>Destination checked: team.veridyne.eu</span><span>Encrypted connection (HTTPS)</span><span>Handing off to Veridyne SSO</span></span>
+          <span class="gate-progress"><span></span></span>
+        </span></span>
+      </a>
+    </div>
+    <p class="gate-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9.5C7.5 20.5 4 17 4 12V6z"/></svg>We never ask for your password on this website. You enter it only on auth.veridyne.eu or your Google sign-in.</p>
+    <button class="gate-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+</dialog>
 </body>
 </html>

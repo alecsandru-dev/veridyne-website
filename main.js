@@ -87,6 +87,78 @@
     });
   });
 
+  /* ---------- Secure sign-in: choose a portal, then a short hand-off to its own SSO ----------
+     Without JavaScript the links go to /signin, which lists the same two portals. */
+  var PORTALS = { 'my.veridyne.eu': true, 'team.veridyne.eu': true };
+  var gate = document.getElementById('gate');
+
+  function setState(panel, state, text) {
+    panel.setAttribute('data-state', state);
+    if (text) panel.querySelector('.gate-status').textContent = text;
+  }
+
+  function resetPanel(panel) {
+    setState(panel, 'ready', 'Secure channel ready');
+    panel.querySelectorAll('.is-chosen').forEach(function (o) { o.classList.remove('is-chosen'); });
+    panel.querySelectorAll('.gate-steps .done').forEach(function (s) { s.classList.remove('done'); });
+  }
+
+  function openGate() {
+    if (!gate || typeof gate.showModal !== 'function') return false;
+    var panel = gate.querySelector('.gate-panel');
+    resetPanel(panel);
+    gate.showModal();
+    if (!reduce) {
+      setState(panel, 'opening', 'Opening a secure channel');
+      setTimeout(function () { if (panel.getAttribute('data-state') === 'opening') setState(panel, 'ready', 'Secure channel ready'); }, 750);
+    }
+    return true;
+  }
+
+  document.querySelectorAll('[data-gate]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      if (openGate()) e.preventDefault();
+    });
+  });
+
+  if (gate) {
+    gate.querySelector('.gate-close').addEventListener('click', function () { gate.close(); });
+    // A click on the dimmed backdrop lands on the dialog itself.
+    gate.addEventListener('click', function (e) { if (e.target === gate) gate.close(); });
+  }
+
+  // Each step below is a check this code really makes before leaving the page.
+  document.querySelectorAll('.gate-option').forEach(function (option) {
+    option.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      var url;
+      try { url = new URL(option.href); } catch (err) { e.preventDefault(); return; }
+      if (url.protocol !== 'https:' || !PORTALS[url.host] || url.host !== option.getAttribute('data-host')) { e.preventDefault(); return; }
+      if (reduce) return;
+      e.preventDefault();
+      var panel = option.closest('.gate-panel');
+      if (panel.getAttribute('data-state') === 'going') return;
+      option.classList.add('is-chosen');
+      setState(panel, 'going', 'Connecting to ' + url.host);
+      var steps = option.querySelectorAll('.gate-steps span');
+      [260, 620, 980].forEach(function (t, i) {
+        setTimeout(function () {
+          steps[i].classList.add('done');
+          if (i === 2) setState(panel, 'going', 'Handing off to Veridyne SSO');
+        }, t);
+      });
+      setTimeout(function () { window.location.assign(url.href); }, 1400);
+    });
+  });
+
+  // Coming back with the Back button shows the page as it was left; start fresh.
+  window.addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    document.querySelectorAll('.gate-panel').forEach(resetPanel);
+    if (gate && gate.open) gate.close();
+  });
+
   /* ---------- Contact form: send with fetch and show the result inline ----------
      Without JavaScript the form posts normally and /api/contact redirects back with ?sent=. */
   var form = document.getElementById('contact-form');
