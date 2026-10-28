@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: "Archivo"; src: url("https://www.veridyne.eu/fonts/archivo-latin.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; }
+  html, body { margin: 0; }
+  .b { position: relative; overflow: hidden; width: 1200px; height: 280px; box-sizing: border-box; padding: 0 64px;
+    display: flex; align-items: center; gap: 44px; font-family: "Archivo", sans-serif; color: #fff; border-radius: 28px;
+    background: radial-gradient(70% 120% at 12% -20%, rgba(0,180,255,.30), transparent 60%),
+                radial-gradient(60% 120% at 100% 120%, rgba(0,112,184,.30), transparent 60%),
+                linear-gradient(180deg, #0D2443 0%, #081629 100%); }
+  .b::before { content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 28px 28px; -webkit-mask-image: radial-gradient(60% 120% at 20% 0%, #000, transparent 80%); }
+  .logo { position: relative; height: 84px; }
+  .rule { position: relative; width: 2px; height: 120px; background: linear-gradient(transparent, rgba(255,255,255,.22), transparent); }
+  .text { position: relative; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .t1 { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+  .t2 { white-space: nowrap; font-size: 23px; color: rgba(255,255,255,.72); }
+  .pill { white-space: nowrap; align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; padding: 9px 18px; border-radius: 999px;
+    font-size: 19px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #00B4FF;
+    background: rgba(0,180,255,.10); border: 1.5px solid rgba(0,180,255,.32); }
+  .pill i { width: 10px; height: 10px; border-radius: 50%; background: #00B4FF; box-shadow: 0 0 14px #00B4FF; }
+  .pill b { color: #fff; font-weight: 600; letter-spacing: .02em; text-transform: none; }
+  .emblem { position: relative; width: 132px; height: 132px; flex: none; border-radius: 50%; display: grid; place-items: center;
+    background: radial-gradient(circle at 50% 35%, #12305A, #0A1B35); box-shadow: 0 0 60px rgba(0,180,255,.35); }
+  .emblem svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .emblem .lock { position: relative; width: 52px; height: 52px; }
+</style></head>
+<body>
+  <div class="b">
+    <img class="logo" src="https://www.veridyne.eu/assets/veridyne-wordmark-dark.png" alt="">
+    <span class="rule"></span>
+    <div class="text">
+      <span class="t1">Secure sign-in, built right.</span>
+      <span class="t2">Auth0 and Okta consulting · Our own software</span>
+      <span class="pill"><i></i>Secure by default <b>veridyne.eu</b></span>
+    </div>
+    <div class="emblem">
+      <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" fill="none" stroke="#00B4FF" stroke-width="3" style="filter: drop-shadow(0 0 6px rgba(0,180,255,.8))"/></svg>
+      <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 11V7a4 4 0 0 1 8 0v4"/><rect x="4.5" y="11" width="15" height="10" rx="2.5"/><path d="M12 15v2.2"/></svg>
+    </div>
+  </div>
+</body></html>
