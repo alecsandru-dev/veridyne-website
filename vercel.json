@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/employees",
+      "destination": "https://team.veridyne.eu/auth/login",
+      "permanent": false
+    },
+    {
       "source": "/keystone",
       "destination": "/#consulting",
       "permanent": true
