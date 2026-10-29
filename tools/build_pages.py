@@ -170,19 +170,19 @@ def service_grid(full):
 # ---------- products ----------
 PRODUCTS = {
     'authlens': dict(
-        kind='Posture reports for Auth0 tenants',
+        kind='Posture reports for Auth0, Okta and Entra ID',
         name='AuthLens', cls='product-authlens', title_id='authlens-title',
         logo='<img class="product-logo" src="/assets/authlens-lockup.png" alt="AuthLens" width="729" height="214">',
         badge='<p class="badge">Early access</p>', card_badge='Early access',
         tagline='Find what is misconfigured, and fix it.',
-        lead='AuthLens reads an Auth0 tenant through one read-only app and reports what is misconfigured, with the vendor page behind each finding and the exact fix. Okta and Entra ID are next.',
-        card='Posture reports for Auth0 tenants: what is misconfigured, why, and the exact fix.',
+        lead='AuthLens reads an Auth0, Okta or Microsoft Entra ID tenant through one read-only app and reports what is misconfigured, with the vendor page behind each finding and the exact fix.',
+        card='Posture reports for Auth0, Okta and Entra ID: what is misconfigured, why, and the exact fix.',
         btn='<a class="btn btn-authlens" href="https://getauthlens.com">Visit getauthlens.com</a>',
         shot='<img src="/assets/authlens.png" alt="AuthLens: connect a tenant with read scopes, read its configuration, and get a report with a score and findings" width="1600" height="940"',
         features=[('Read-only by design', 'One app with read scopes only. Nothing in your tenant changes.'),
                   ('Every rule cites the vendor', 'Each finding links the documentation it is based on, with a fix.'),
                   ('Drift, weekly', 'A weekly run shows what was fixed, what regressed and what is new.')],
-        meta='AuthLens, by Veridyne: read-only posture reports for Auth0 tenants, with the vendor source and the exact fix for every finding.'),
+        meta='AuthLens, by Veridyne: read-only posture reports for Auth0, Okta and Microsoft Entra ID, with the vendor source and the exact fix for every finding.'),
     'authcanvas': dict(
         kind='Identity journey design',
         name='AuthCanvas', cls='product-ac', title_id='ac-title',
