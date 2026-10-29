@@ -106,6 +106,27 @@
     });
   });
 
+  /* ---------- Products stage: moves on when the time line under the chosen product fills ----------
+     Picking is plain radios and CSS; this only adds the turning. Paused on hover, focus and off screen. */
+  document.querySelectorAll('.pshow').forEach(function (show) {
+    if (reduce) return;
+    var radios = Array.prototype.slice.call(show.querySelectorAll('.pshow-tab input'));
+    if (radios.length < 2) return;
+    show.classList.add('is-playing');
+    show.addEventListener('animationend', function (e) {
+      if (e.animationName !== 'pshow-time') return;
+      var i = radios.findIndex(function (r) { return r.checked; });
+      radios[(i + 1) % radios.length].checked = true;
+    });
+    // A visitor who picks a product has chosen: stop turning.
+    radios.forEach(function (r) { r.addEventListener('click', function (e) { if (e.isTrusted) show.classList.remove('is-playing'); }); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { show.classList.toggle('is-paused', !en.isIntersecting); });
+      }, { threshold: 0.35 }).observe(show);
+    }
+  });
+
   /* ---------- Secure sign-in: choose a portal, then a short hand-off to its own SSO ----------
      Without JavaScript the links go to /signin, which lists the same two portals. */
   var PORTALS = { 'my.veridyne.eu': true, 'team.veridyne.eu': true };

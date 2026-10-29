@@ -111,6 +111,7 @@ FOOTER = '''
         </div>
         <div>
           <h2>Products</h2>
+          <a href="/authlens">AuthLens</a>
           <a href="/authcanvas">AuthCanvas</a>
           <a href="/roiall">Roiall</a>
           <a href="/sa-sparring">SA Sparring</a>
@@ -168,10 +169,25 @@ def service_grid(full):
 
 # ---------- products ----------
 PRODUCTS = {
+    'authlens': dict(
+        kind='Posture reports for Auth0 tenants',
+        name='AuthLens', cls='product-authlens', title_id='authlens-title',
+        logo='<img class="product-logo" src="/assets/authlens-lockup.png" alt="AuthLens" width="729" height="214">',
+        badge='<p class="badge">Early access</p>', card_badge='Early access',
+        tagline='Find what is misconfigured, and fix it.',
+        lead='AuthLens reads an Auth0 tenant through one read-only app and reports what is misconfigured, with the vendor page behind each finding and the exact fix. Okta and Entra ID are next.',
+        card='Posture reports for Auth0 tenants: what is misconfigured, why, and the exact fix.',
+        btn='<a class="btn btn-authlens" href="https://getauthlens.com">Visit getauthlens.com</a>',
+        shot='<img src="/assets/authlens.png" alt="AuthLens: connect a tenant with read scopes, read its configuration, and get a report with a score and findings" width="1600" height="940"',
+        features=[('Read-only by design', 'One app with read scopes only. Nothing in your tenant changes.'),
+                  ('Every rule cites the vendor', 'Each finding links the documentation it is based on, with a fix.'),
+                  ('Drift, weekly', 'A weekly run shows what was fixed, what regressed and what is new.')],
+        meta='AuthLens, by Veridyne: read-only posture reports for Auth0 tenants, with the vendor source and the exact fix for every finding.'),
     'authcanvas': dict(
+        kind='Identity journey design',
         name='AuthCanvas', cls='product-ac', title_id='ac-title',
         logo='<img class="product-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315">',
-        badge='<p class="badge">Private alpha</p>',
+        badge='<p class="badge">Private alpha</p>', card_badge='Private alpha',
         tagline='Design the login before you build it.',
         lead='Teams moving off a legacy login draw the journeys they want on Auth0, Okta or Entra ID. Every block is checked as they go.',
         card='Draw identity journeys on Auth0, Okta or Entra ID, checked as you go.',
@@ -182,6 +198,7 @@ PRODUCTS = {
                   ('ACE, our identity expert', 'An AI adviser recommends how to build each step.')],
         meta='AuthCanvas, by Veridyne: design identity journeys on Auth0, Okta or Entra ID before you build them. In private alpha.'),
     'roiall': dict(
+        kind='Results of creator marketing',
         name='Roiall', cls='product-roiall', title_id='roiall-title',
         logo='<img class="product-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317">',
         badge='',
@@ -195,6 +212,7 @@ PRODUCTS = {
                   ('Week by week', 'See which campaigns and creators keep working.')],
         meta='Roiall, by Veridyne: see the real customers your creator and influencer deals bring in, confirmed at the counter.'),
     'sa-sparring': dict(
+        kind='Practice for Auth0 architects',
         name='SA Sparring', cls='product-sas', title_id='sas-title',
         logo='<span class="sas-mark sas-title">SA <em>Sparring</em></span>',
         badge='',
@@ -209,23 +227,38 @@ PRODUCTS = {
         meta='SA Sparring, by Veridyne: a practice ground for Auth0 solutions architects, with a simulated customer and graded answers.'),
 }
 
-def product_cards(exclude=None):
-    cards = []
-    for slug, p in PRODUCTS.items():
-        if slug == exclude:
-            continue
-        cards.append(f'''
-      <a class="pcard pcard-{slug} rise" href="/{slug}">
-        <span class="pcard-top">
-          {p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"')}
-          {'<span class="badge">Private alpha</span>' if slug == 'authcanvas' else ''}
-        </span>
-        <span class="pcard-tagline">{p['tagline']}</span>
-        <span class="pcard-text">{p['card']}</span>
-        <span class="pcard-more">Learn more</span>
-        <span class="pcard-shot">{p['shot']} loading="lazy"></span>
-      </a>''')
-    return ''.join(cards)
+def product_showcase(exclude=None, group='product'):
+    """The products as one stage: a list to pick from, the chosen product large on its own ground.
+    Picking works in CSS (:has on the radios); main.js only moves it on by itself. On phones the products stack."""
+    items = [(slug, p) for slug, p in PRODUCTS.items() if slug != exclude]
+    tabs, panels = [], []
+    for i, (slug, p) in enumerate(items):
+        logo = p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"')
+        badge = f'<span class="badge">{p["card_badge"]}</span>' if p.get('card_badge') else ''
+        tabs.append(f'''
+        <label class="pshow-tab">
+          <input type="radio" name="{group}" value="{slug}"{' checked' if i == 0 else ''}>
+          <span class="pshow-tab-name">{p['name']}</span>
+          <span class="pshow-tab-line">{p['kind']}</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>''')
+        panels.append(f'''
+        <a class="pshow-panel pcard-{slug}" href="/{slug}" data-for="{slug}">
+          <span class="pshow-copy">
+            <span class="pcard-top">{logo}{badge}</span>
+            <span class="pcard-tagline">{p['tagline']}</span>
+            <span class="pcard-text">{p['card']}</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about {p['name']}</span></span>
+          </span>
+          <span class="pshow-shot">{p['shot']} loading="lazy"></span>
+        </a>''')
+    return f'''
+    <div class="pshow rise">
+      <div class="pshow-tabs" role="radiogroup" aria-label="Products">{''.join(tabs)}
+      </div>
+      <div class="pshow-stage">{''.join(panels)}
+      </div>
+    </div>'''
 
 def product_page(slug):
     p = PRODUCTS[slug]
@@ -253,14 +286,13 @@ def product_page(slug):
     <div class="cta-inner rise">
       <h2 id="cta-title">Questions about {p['name']}?</h2>
       <p class="lead">Tell us what you need and we reply within one working day.</p>
-      <a class="btn" href="/?topic={p['name'].replace(' ', '%20') if slug != 'authcanvas' else 'AuthCanvas%20early%20access'}#contact">Contact us</a>
+      <a class="btn" href="/?topic={ {'authcanvas': 'AuthCanvas%20early%20access', 'authlens': 'AuthLens%20access'}.get(slug, p['name'].replace(' ', '%20')) }#contact">Contact us</a>
     </div>
   </section>
 
   <section class="more-products" aria-labelledby="more-title">
     <h2 id="more-title" class="rise">More from Veridyne</h2>
-    <div class="pcards pcards-two">{product_cards(exclude=slug)}
-    </div>
+    {product_showcase(exclude=slug, group='more-product')}
   </section>
 </main>
 '''
@@ -318,10 +350,10 @@ HOME = '''
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">AuthCanvas, Roiall and SA Sparring. Built, hosted and supported by us.</span>
+        <span class="split-text">AuthLens, AuthCanvas, Roiall and SA Sparring. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
-          <img src="/assets/sa-sparring.png" alt="" width="1720" height="940">
+          <img src="/assets/authlens.png" alt="" width="1600" height="940">
           <img src="/assets/authcanvas.png" alt="" width="1536" height="760">
           <img src="/assets/roiall-dashboard.png" alt="" width="1600" height="810">
         </span>
@@ -348,10 +380,9 @@ HOME = '''
     <div class="intro rise">
       <p class="division">Products</p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: three products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: four products, each made for its own users.</p>
     </div>
-    <div class="pcards">PRODUCT_CARDS
-    </div>
+    PRODUCT_SHOWCASE
   </section>
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
@@ -381,6 +412,7 @@ HOME = '''
           <label for="cf-topic">About</label>
           <select id="cf-topic" name="topic">
             <option>Identity &amp; access consulting</option>
+            <option>AuthLens access</option>
             <option>AuthCanvas early access</option>
             <option>Roiall</option>
             <option>SA Sparring</option>
@@ -404,7 +436,7 @@ HOME = '''
     </form>
   </section>
 </main>
-'''.replace('SERVICE_GRID', service_grid(False)).replace('PRODUCT_CARDS', product_cards())
+'''.replace('SERVICE_GRID', service_grid(False)).replace('PRODUCT_SHOWCASE', product_showcase())
 
 # ---------- services ----------
 SERVICES_PAGE = '''

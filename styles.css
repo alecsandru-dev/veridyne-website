@@ -380,14 +380,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* ---------- Home: product cards ---------- */
 .products-home { padding: clamp(88px, 11vw, 136px) var(--pad) clamp(88px, 11vw, 136px); background: var(--mist); border-radius: 32px 32px 0 0; }
-.pcards { max-width: var(--wide); margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.pcards-two { grid-template-columns: repeat(2, 1fr); margin-top: 32px; }
-.pcard {
-  position: relative; overflow: hidden; border-radius: var(--radius); padding: 32px 28px 0; min-height: 520px;
-  display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit;
-  transition: transform 400ms var(--ease), box-shadow 400ms var(--ease);
-}
-.pcard:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -30px rgba(var(--shadow-rgb), 0.45); }
 .pcard-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 32px; }
 .pcard-logo { height: 26px; width: auto; }
 .sas-mark.pcard-logo { height: auto; font-size: 22px; }
@@ -396,31 +388,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pcard-more { font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
 .pcard-more::after { content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-top: 2px solid currentColor; transform: rotate(45deg); transition: transform 200ms var(--ease); }
 .pcard:hover .pcard-more::after { transform: translateX(3px) rotate(45deg); }
-.pcard-shot { margin-top: auto; padding-top: 28px; display: block; }
-.pcard-shot img {
-  width: 150%; max-width: none; height: auto; border-radius: 12px 12px 0 0; display: block;
-  transition: transform 700ms var(--ease);
-}
-.pcard:hover .pcard-shot img { transform: translate(-4%, -6px); }
-.pcard .badge { font-size: 13px; padding: 5px 10px; }
+.pshow-panel .badge { font-size: 13px; padding: 5px 10px; }
 
 .pcard-authcanvas { background: var(--ac-ground); color: #fff; }
 .pcard-authcanvas .pcard-logo { filter: brightness(1.35); }
 .pcard-authcanvas .badge { background: rgba(47, 107, 255, 0.18); color: #A9C2FF; border: 1px solid rgba(47, 107, 255, 0.45); }
 .pcard-authcanvas .pcard-text { color: #AEB9CC; }
 .pcard-authcanvas .pcard-more { color: #8FB0FF; }
-.pcard-authcanvas .pcard-shot img { border: 1px solid rgba(255, 255, 255, 0.12); border-bottom: 0; }
 .pcard-roiall { background: var(--white); color: var(--roiall-ink); box-shadow: inset 0 0 0 1px var(--line); }
-.pcard-roiall:hover { box-shadow: inset 0 0 0 1px var(--line), 0 30px 60px -30px rgba(var(--shadow-rgb), 0.45); }
 .pcard-roiall .pcard-text { color: var(--muted); }
 .pcard-roiall .pcard-more { color: #0A7366; }
-.pcard-roiall .pcard-shot img { border: 1px solid var(--line); border-bottom: 0; }
 .pcard-sa-sparring { background: var(--sas-ground); color: #fff; }
 .pcard-sa-sparring .sas-mark { color: #fff; }
 .pcard-sa-sparring .sas-mark em { color: var(--sas-yellow); }
 .pcard-sa-sparring .pcard-text { color: #B3B6BD; }
 .pcard-sa-sparring .pcard-more { color: var(--sas-yellow); }
-.pcard-sa-sparring .pcard-shot img { border: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 0; }
 
 /* ---------- Inner pages ---------- */
 .page-hero { padding: clamp(64px, 9vw, 112px) var(--pad) 0; }
@@ -444,7 +426,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .cta-inner h2 { font-size: var(--t-h2); line-height: 1.1; letter-spacing: -0.03em; }
 .more-products { padding: 0 var(--pad) clamp(88px, 11vw, 128px); }
 .more-products > h2 { text-align: center; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.025em; }
-.more-products .pcard { min-height: 460px; }
 
 /* ---------- Contact ---------- */
 .contact { padding: clamp(96px, 12vw, 144px) var(--pad); max-width: var(--wide); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.25fr; gap: 64px; align-items: start; }
@@ -532,8 +513,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .security { grid-template-columns: 1fr; }
   .security ul { grid-template-columns: 1fr 1fr; }
   .contact { grid-template-columns: 1fr; gap: 40px; }
-  .pcards { grid-template-columns: 1fr 1fr; }
-  .pcards > .pcard:first-child:not(:only-child) { grid-column: 1 / -1; }
   .services-foot { justify-content: center; }
 }
 
@@ -623,10 +602,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .product-roiall .features li { border-top-color: var(--line); }
 
   .contact { padding: 88px var(--pad); gap: 32px; }
-  .pcards, .pcards-two { grid-template-columns: 1fr; gap: 12px; margin-top: 36px; }
-  .pcards > .pcard:first-child:not(:only-child) { grid-column: auto; }
-  .pcard, .more-products .pcard { min-height: 0; padding: 26px 22px 0; border-radius: 20px; }
-  .pcard-shot img { width: 135%; }
   .services-foot { flex-direction: column; }
   .chips { justify-content: center; }
   .cta-inner { border-radius: 20px; }
@@ -670,6 +645,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .gate::backdrop { background: rgba(6, 18, 36, 0.55); backdrop-filter: blur(10px) saturate(1.2); -webkit-backdrop-filter: blur(10px) saturate(1.2); }
 .gate[open]::backdrop { animation: gate-fade 360ms var(--ease) both; }
+/* While the dialog is open the page behind stands still, so the blurred backdrop is not redrawn every frame (Safari flickers otherwise) */
+body:has(.gate[open]) main *, body:has(.gate[open]) main *::before, body:has(.gate[open]) main *::after, body:has(.gate[open]) .pill-dot { animation-play-state: paused !important; }
+body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--page); }
 .gate[open] .gate-panel { animation: gate-in 520ms var(--ease) both; }
 @keyframes gate-fade { from { opacity: 0; } }
 @keyframes gate-in { from { opacity: 0; transform: translateY(14px) scale(0.97); } }
@@ -882,3 +860,88 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   }
   .nav-links .theme-toggle-label { position: static; width: auto; height: auto; clip: auto; }
 }
+
+/* ---------- Products as one stage ----------
+   A list to pick from and the chosen product large on its own ground. The radios do the picking (:has);
+   main.js moves on by itself when the time line under the chosen product fills. Phones stack the products. */
+.pshow { max-width: var(--wide); margin: 48px auto 0; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.more-products .pshow { margin-top: 32px; }
+.pshow-tabs { display: flex; flex-direction: column; gap: 6px; }
+.pshow-tab { position: relative; display: grid; gap: 4px; padding: 18px 20px 20px; border-radius: 18px; cursor: pointer; overflow: hidden; transition: background-color 260ms var(--ease); }
+.pshow-tab input { position: absolute; opacity: 0; pointer-events: none; }
+.pshow-tab:hover { background: color-mix(in srgb, var(--card) 55%, transparent); }
+.pshow-tab:has(input:checked) { background: var(--card); box-shadow: 0 1px 2px rgba(var(--shadow-rgb), 0.05), 0 12px 30px -18px rgba(var(--shadow-rgb), 0.3); }
+.pshow-tab:has(input:focus-visible) { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.pshow-tab-name { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--muted); transition: color 200ms; }
+.pshow-tab-line { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.pshow-tab:has(input:checked) .pshow-tab-name, .pshow-tab:hover .pshow-tab-name { color: var(--ink); }
+.pshow-time { position: absolute; left: 20px; right: 20px; bottom: 9px; height: 2px; border-radius: 2px; background: var(--line); opacity: 0; transition: opacity 200ms; }
+.pshow-time span { display: block; height: 100%; width: 0; border-radius: 2px; background: var(--cyan); }
+.pshow.is-playing .pshow-tab:has(input:checked) .pshow-time { opacity: 1; }
+.pshow.is-playing .pshow-tab:has(input:checked) .pshow-time span { animation: pshow-time 7s linear both; }
+.pshow.is-playing:hover .pshow-time span, .pshow.is-playing:focus-within .pshow-time span, .pshow.is-paused .pshow-time span { animation-play-state: paused !important; }
+@keyframes pshow-time { from { width: 0; } to { width: 100%; } }
+
+.pshow-stage { display: grid; min-height: 540px; }
+.pshow-panel {
+  grid-area: 1 / 1; position: relative; overflow: hidden; border-radius: var(--radius); text-decoration: none; color: inherit;
+  display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.99);
+  transition: opacity 420ms var(--ease), transform 520ms var(--ease), visibility 0s linear 420ms;
+}
+.pshow:has(input[value="authlens"]:checked) [data-for="authlens"],
+.pshow:has(input[value="authcanvas"]:checked) [data-for="authcanvas"],
+.pshow:has(input[value="roiall"]:checked) [data-for="roiall"],
+.pshow:has(input[value="sa-sparring"]:checked) [data-for="sa-sparring"] { opacity: 1; visibility: visible; transform: none; transition: opacity 420ms var(--ease), transform 520ms var(--ease); }
+@supports not selector(:has(*)) { .pshow-panel:first-child { opacity: 1; visibility: visible; transform: none; } }
+.pshow-copy { display: flex; flex-direction: column; gap: 12px; padding: 44px 0 44px 44px; }
+.pshow-copy .pcard-tagline { margin-top: 18px; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1; }
+.pshow-copy .pcard-text { font-size: 16px; line-height: 1.55; max-width: 30ch; }
+.pshow-copy .pcard-more { margin-top: 10px; }
+.pshow-panel .pcard-logo { height: 30px; }
+.pshow-panel .sas-mark.pcard-logo { font-size: 26px; }
+.pshow-shot { align-self: end; padding: 56px 0 0 40px; }
+.pshow-shot img { display: block; width: 135%; max-width: none; height: auto; border-radius: 14px 0 0 0; box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.55); transition: transform 800ms var(--ease); }
+.pshow-panel:hover .pshow-shot img { transform: translate(-3%, -8px); }
+.pshow-panel:hover .pcard-more::after { transform: translateX(3px) rotate(45deg); }
+.pcard-authcanvas .pshow-shot img { border: 1px solid rgba(255, 255, 255, 0.12); border-width: 1px 0 0 1px; }
+.pcard-roiall { box-shadow: inset 0 0 0 1px var(--line); }
+.pcard-roiall .pshow-shot img { border: 1px solid var(--line); border-width: 1px 0 0 1px; box-shadow: 0 30px 80px -40px rgba(20, 30, 58, 0.35); }
+.pcard-sa-sparring .pshow-shot img { border: 1px solid rgba(255, 255, 255, 0.1); border-width: 1px 0 0 1px; }
+.pcard-authlens { background: #0B1618; color: #EEF5F2; }
+.pcard-authlens::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 70% at 80% 100%, rgba(16, 185, 129, 0.18), transparent 70%); }
+.pcard-authlens > * { position: relative; }
+.pcard-authlens .badge { background: rgba(16, 185, 129, 0.16); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.45); }
+.pcard-authlens .pcard-text { color: #A9C1BB; }
+.pcard-authlens .pcard-more { color: #34D399; }
+.pcard-authlens .pshow-shot img { border: 1px solid rgba(209, 250, 229, 0.14); border-width: 1px 0 0 1px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 1100px) {
+  .pshow { grid-template-columns: 240px minmax(0, 1fr); }
+  .pshow-copy { padding: 36px 0 36px 32px; }
+  .pshow-panel { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@media (max-width: 900px) {
+  .pshow { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 36px; }
+  .pshow-tabs { display: none; }
+  .pshow-stage { min-height: 0; gap: 12px; }
+  .pshow-panel { grid-area: auto; grid-template-columns: minmax(0, 1fr); opacity: 1; visibility: visible; transform: none; border-radius: 20px; }
+  .pshow-copy { padding: 28px 24px 0; }
+  .pshow-copy .pcard-tagline { margin-top: 10px; }
+  .pshow-shot { padding: 28px 0 0 24px; }
+  .pshow-shot img { width: 125%; }
+}
+@media (prefers-reduced-motion: reduce) { .pshow-panel, .pshow-shot img { transition: none; } }
+
+/* ---------- AuthLens product page ---------- */
+.product-authlens { background: #0B1618; color: #EEF5F2; position: relative; }
+.product-authlens::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(50% 40% at 50% 62%, rgba(16, 185, 129, 0.16), transparent 70%); }
+.product-authlens > * { position: relative; }
+.product-authlens .badge { background: rgba(16, 185, 129, 0.16); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.45); }
+.product-authlens .product-lead, .product-authlens .features p { color: #A9C1BB; }
+.product-authlens .crumb { color: #A9C1BB; }
+.product-authlens .product-shot { border: 1px solid rgba(209, 250, 229, 0.14); box-shadow: 0 40px 120px -50px rgba(16, 185, 129, 0.45); }
+.product-authlens .features h3::before { content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; margin-bottom: 14px; background: #10B981; }
+.btn-authlens { background: #10B981; color: #03241B; }
+.btn-authlens:hover { background: #34D399; }

@@ -92,10 +92,10 @@
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">AuthCanvas, Roiall and SA Sparring. Built, hosted and supported by us.</span>
+        <span class="split-text">AuthLens, AuthCanvas, Roiall and SA Sparring. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
-          <img src="/assets/sa-sparring.png" alt="" width="1720" height="940">
+          <img src="/assets/authlens.png" alt="" width="1600" height="940">
           <img src="/assets/authcanvas.png" alt="" width="1536" height="760">
           <img src="/assets/roiall-dashboard.png" alt="" width="1600" height="810">
         </span>
@@ -143,39 +143,74 @@
     <div class="intro rise">
       <p class="division">Products</p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: three products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: four products, each made for its own users.</p>
     </div>
-    <div class="pcards">
-      <a class="pcard pcard-authcanvas rise" href="/authcanvas">
-        <span class="pcard-top">
-          <img class="pcard-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315">
-          <span class="badge">Private alpha</span>
-        </span>
-        <span class="pcard-tagline">Design the login before you build it.</span>
-        <span class="pcard-text">Draw identity journeys on Auth0, Okta or Entra ID, checked as you go.</span>
-        <span class="pcard-more">Learn more</span>
-        <span class="pcard-shot"><img src="/assets/authcanvas.png" alt="AuthCanvas: a login flow drawn as connected blocks, with ACE's recommendation for the MFA step in the side panel" width="1536" height="760" loading="lazy"></span>
-      </a>
-      <a class="pcard pcard-roiall rise" href="/roiall">
-        <span class="pcard-top">
-          <img class="pcard-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317">
-          
-        </span>
-        <span class="pcard-tagline">See what creator deals really bring in.</span>
-        <span class="pcard-text">The real customers your creator and influencer deals bring in.</span>
-        <span class="pcard-more">Learn more</span>
-        <span class="pcard-shot"><img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy"></span>
-      </a>
-      <a class="pcard pcard-sa-sparring rise" href="/sa-sparring">
-        <span class="pcard-top">
-          <span class="sas-mark pcard-logo">SA <em>Sparring</em></span>
-          
-        </span>
-        <span class="pcard-tagline">Practice the call. Get graded.</span>
-        <span class="pcard-text">A practice ground for Auth0 solutions architects, graded like a senior SA would.</span>
-        <span class="pcard-more">Learn more</span>
-        <span class="pcard-shot"><img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy"></span>
-      </a>
+    
+    <div class="pshow rise">
+      <div class="pshow-tabs" role="radiogroup" aria-label="Products">
+        <label class="pshow-tab">
+          <input type="radio" name="product" value="authlens" checked>
+          <span class="pshow-tab-name">AuthLens</span>
+          <span class="pshow-tab-line">Posture reports for Auth0 tenants</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+        <label class="pshow-tab">
+          <input type="radio" name="product" value="authcanvas">
+          <span class="pshow-tab-name">AuthCanvas</span>
+          <span class="pshow-tab-line">Identity journey design</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+        <label class="pshow-tab">
+          <input type="radio" name="product" value="roiall">
+          <span class="pshow-tab-name">Roiall</span>
+          <span class="pshow-tab-line">Results of creator marketing</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+        <label class="pshow-tab">
+          <input type="radio" name="product" value="sa-sparring">
+          <span class="pshow-tab-name">SA Sparring</span>
+          <span class="pshow-tab-line">Practice for Auth0 architects</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+      </div>
+      <div class="pshow-stage">
+        <a class="pshow-panel pcard-authlens" href="/authlens" data-for="authlens">
+          <span class="pshow-copy">
+            <span class="pcard-top"><img class="pcard-logo" src="/assets/authlens-lockup.png" alt="AuthLens" width="729" height="214"><span class="badge">Early access</span></span>
+            <span class="pcard-tagline">Find what is misconfigured, and fix it.</span>
+            <span class="pcard-text">Posture reports for Auth0 tenants: what is misconfigured, why, and the exact fix.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about AuthLens</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/authlens.png" alt="AuthLens: connect a tenant with read scopes, read its configuration, and get a report with a score and findings" width="1600" height="940" loading="lazy"></span>
+        </a>
+        <a class="pshow-panel pcard-authcanvas" href="/authcanvas" data-for="authcanvas">
+          <span class="pshow-copy">
+            <span class="pcard-top"><img class="pcard-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315"><span class="badge">Private alpha</span></span>
+            <span class="pcard-tagline">Design the login before you build it.</span>
+            <span class="pcard-text">Draw identity journeys on Auth0, Okta or Entra ID, checked as you go.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about AuthCanvas</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/authcanvas.png" alt="AuthCanvas: a login flow drawn as connected blocks, with ACE's recommendation for the MFA step in the side panel" width="1536" height="760" loading="lazy"></span>
+        </a>
+        <a class="pshow-panel pcard-roiall" href="/roiall" data-for="roiall">
+          <span class="pshow-copy">
+            <span class="pcard-top"><img class="pcard-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317"></span>
+            <span class="pcard-tagline">See what creator deals really bring in.</span>
+            <span class="pcard-text">The real customers your creator and influencer deals bring in.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about Roiall</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy"></span>
+        </a>
+        <a class="pshow-panel pcard-sa-sparring" href="/sa-sparring" data-for="sa-sparring">
+          <span class="pshow-copy">
+            <span class="pcard-top"><span class="sas-mark pcard-logo">SA <em>Sparring</em></span></span>
+            <span class="pcard-tagline">Practice the call. Get graded.</span>
+            <span class="pcard-text">A practice ground for Auth0 solutions architects, graded like a senior SA would.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about SA Sparring</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy"></span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -206,6 +241,7 @@
           <label for="cf-topic">About</label>
           <select id="cf-topic" name="topic">
             <option>Identity &amp; access consulting</option>
+            <option>AuthLens access</option>
             <option>AuthCanvas early access</option>
             <option>Roiall</option>
             <option>SA Sparring</option>
@@ -247,6 +283,7 @@
         </div>
         <div>
           <h2>Products</h2>
+          <a href="/authlens">AuthLens</a>
           <a href="/authcanvas">AuthCanvas</a>
           <a href="/roiall">Roiall</a>
           <a href="/sa-sparring">SA Sparring</a>

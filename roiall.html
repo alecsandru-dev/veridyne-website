@@ -70,27 +70,57 @@
 
   <section class="more-products" aria-labelledby="more-title">
     <h2 id="more-title" class="rise">More from Veridyne</h2>
-    <div class="pcards pcards-two">
-      <a class="pcard pcard-authcanvas rise" href="/authcanvas">
-        <span class="pcard-top">
-          <img class="pcard-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315">
-          <span class="badge">Private alpha</span>
-        </span>
-        <span class="pcard-tagline">Design the login before you build it.</span>
-        <span class="pcard-text">Draw identity journeys on Auth0, Okta or Entra ID, checked as you go.</span>
-        <span class="pcard-more">Learn more</span>
-        <span class="pcard-shot"><img src="/assets/authcanvas.png" alt="AuthCanvas: a login flow drawn as connected blocks, with ACE's recommendation for the MFA step in the side panel" width="1536" height="760" loading="lazy"></span>
-      </a>
-      <a class="pcard pcard-sa-sparring rise" href="/sa-sparring">
-        <span class="pcard-top">
-          <span class="sas-mark pcard-logo">SA <em>Sparring</em></span>
-          
-        </span>
-        <span class="pcard-tagline">Practice the call. Get graded.</span>
-        <span class="pcard-text">A practice ground for Auth0 solutions architects, graded like a senior SA would.</span>
-        <span class="pcard-more">Learn more</span>
-        <span class="pcard-shot"><img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy"></span>
-      </a>
+    
+    <div class="pshow rise">
+      <div class="pshow-tabs" role="radiogroup" aria-label="Products">
+        <label class="pshow-tab">
+          <input type="radio" name="more-product" value="authlens" checked>
+          <span class="pshow-tab-name">AuthLens</span>
+          <span class="pshow-tab-line">Posture reports for Auth0 tenants</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+        <label class="pshow-tab">
+          <input type="radio" name="more-product" value="authcanvas">
+          <span class="pshow-tab-name">AuthCanvas</span>
+          <span class="pshow-tab-line">Identity journey design</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+        <label class="pshow-tab">
+          <input type="radio" name="more-product" value="sa-sparring">
+          <span class="pshow-tab-name">SA Sparring</span>
+          <span class="pshow-tab-line">Practice for Auth0 architects</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+      </div>
+      <div class="pshow-stage">
+        <a class="pshow-panel pcard-authlens" href="/authlens" data-for="authlens">
+          <span class="pshow-copy">
+            <span class="pcard-top"><img class="pcard-logo" src="/assets/authlens-lockup.png" alt="AuthLens" width="729" height="214"><span class="badge">Early access</span></span>
+            <span class="pcard-tagline">Find what is misconfigured, and fix it.</span>
+            <span class="pcard-text">Posture reports for Auth0 tenants: what is misconfigured, why, and the exact fix.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about AuthLens</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/authlens.png" alt="AuthLens: connect a tenant with read scopes, read its configuration, and get a report with a score and findings" width="1600" height="940" loading="lazy"></span>
+        </a>
+        <a class="pshow-panel pcard-authcanvas" href="/authcanvas" data-for="authcanvas">
+          <span class="pshow-copy">
+            <span class="pcard-top"><img class="pcard-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315"><span class="badge">Private alpha</span></span>
+            <span class="pcard-tagline">Design the login before you build it.</span>
+            <span class="pcard-text">Draw identity journeys on Auth0, Okta or Entra ID, checked as you go.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about AuthCanvas</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/authcanvas.png" alt="AuthCanvas: a login flow drawn as connected blocks, with ACE's recommendation for the MFA step in the side panel" width="1536" height="760" loading="lazy"></span>
+        </a>
+        <a class="pshow-panel pcard-sa-sparring" href="/sa-sparring" data-for="sa-sparring">
+          <span class="pshow-copy">
+            <span class="pcard-top"><span class="sas-mark pcard-logo">SA <em>Sparring</em></span></span>
+            <span class="pcard-tagline">Practice the call. Get graded.</span>
+            <span class="pcard-text">A practice ground for Auth0 solutions architects, graded like a senior SA would.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about SA Sparring</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy"></span>
+        </a>
+      </div>
     </div>
   </section>
 </main>
@@ -112,6 +142,7 @@
         </div>
         <div>
           <h2>Products</h2>
+          <a href="/authlens">AuthLens</a>
           <a href="/authcanvas">AuthCanvas</a>
           <a href="/roiall">Roiall</a>
           <a href="/sa-sparring">SA Sparring</a>
