@@ -8,6 +8,25 @@
   onScrollHeader();
   window.addEventListener('scroll', onScrollHeader, { passive: true });
 
+  /* ---------- Theme switch (the theme itself is set by js-flag.js before paint) ---------- */
+  var root = document.documentElement;
+  var themeButtons = document.querySelectorAll('.theme-toggle');
+  function labelTheme() {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    themeButtons.forEach(function (b) {
+      b.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+      var l = b.querySelector('.theme-toggle-label');
+      if (l) l.textContent = next === 'dark' ? 'Dark theme' : 'Light theme';
+    });
+  }
+  themeButtons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (window.veridyneTheme) window.veridyneTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      labelTheme();
+    });
+  });
+  labelTheme();
+
   /* ---------- Phone menu ---------- */
   var toggle = document.querySelector('.nav-toggle');
   if (header && toggle) {

@@ -40,7 +40,8 @@ def header(current):
 <header class="site-header" id="top">
   <div class="site-header-inner">
     <a class="wordmark" href="/" aria-label="Veridyne Solutions home">
-      <img src="/assets/veridyne-wordmark.png" alt="" width="190" height="38">
+      <img class="logo-light" src="/assets/veridyne-wordmark.png" alt="" width="190" height="38">
+      <img class="logo-dark" src="/assets/veridyne-wordmark-dark.png" alt="" width="171" height="38">
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-bars" aria-hidden="true"></span><span class="nav-toggle-label">Menu</span></button>
     <nav class="nav-links" id="site-nav" aria-label="Main">
@@ -49,6 +50,7 @@ def header(current):
       <a href="/#products"{cur("products")}>Products</a>
       <a class="nav-employee" href="/signin" data-gate><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Secure sign-in</a>
       <a class="nav-cta" href="/#contact">Contact</a>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme"><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span class="theme-toggle-label">Dark theme</span></button>
     </nav>
   </div>
 </header>
@@ -96,7 +98,8 @@ FOOTER = '''
   <div class="footer-inner">
     <div class="footer-cols">
       <div class="footer-brand">
-        <img src="/assets/veridyne-wordmark.png" alt="Veridyne Solutions" width="190" height="38" loading="lazy">
+        <img class="logo-light" src="/assets/veridyne-wordmark.png" alt="Veridyne Solutions" width="190" height="38" loading="lazy">
+        <img class="logo-dark" src="/assets/veridyne-wordmark-dark.png" alt="Veridyne Solutions" width="171" height="38" loading="lazy">
         <p><a href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a><br><a href="tel:+40755577744">+40 755 577 744</a><br>Bucharest, Romania</p>
       </div>
       <nav class="footer-links" aria-label="Footer">
