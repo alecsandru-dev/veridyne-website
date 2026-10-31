@@ -82,9 +82,9 @@ def gate_panel(title_id, closable):
     <p class="gate-status" role="status">Secure channel ready</p>
     <h2 id="{title_id}">Secure sign-in</h2>
     <p class="gate-sub">Choose your portal. Both sign in through Veridyne single sign-on.</p>
-    <div class="gate-options">{option("https://my.veridyne.eu/auth/login", "my.veridyne.eu", building, "Client portal", "Your projects, hours delivered and company details.")}{option("https://team.veridyne.eu/auth/login", "team.veridyne.eu", team, "Team", "For Veridyne employees.")}
+    <div class="gate-options">{option("https://my.veridyne.eu/auth/login", "my.veridyne.eu", building, "Client portal", "Your projects, hours delivered and company details.")}{option("https://team.veridyne.eu/auth/login?connection=Employees", "team.veridyne.eu", team, "Team", "For Veridyne employees.")}
     </div>
-    <p class="gate-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9.5C7.5 20.5 4 17 4 12V6z"/></svg>We never ask for your password on this website. You enter it only on auth.veridyne.eu or your Google sign-in.</p>
+    <p class="gate-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9.5C7.5 20.5 4 17 4 12V6z"/></svg>We never ask for your password on this website. You enter it only on auth.veridyne.eu.</p>
     {close}
   </div>'''
 
@@ -111,10 +111,11 @@ FOOTER = '''
         </div>
         <div>
           <h2>Products</h2>
+          <a href="/authbeam">AuthBeam</a>
           <a href="/authlens">AuthLens</a>
           <a href="/authcanvas">AuthCanvas</a>
-          <a href="/roiall">Roiall</a>
           <a href="/sa-sparring">SA Sparring</a>
+          <a href="/roiall">Roiall</a>
         </div>
         <div>
           <h2>Company</h2>
@@ -169,6 +170,20 @@ def service_grid(full):
 
 # ---------- products ----------
 PRODUCTS = {
+    'authbeam': dict(
+        kind='Free user migration between identity platforms',
+        name='AuthBeam', cls='product-authbeam', title_id='authbeam-title',
+        logo='<img class="product-logo" src="/assets/authbeam-lockup.png" alt="AuthBeam" width="742" height="180">',
+        badge='<p class="badge">Free tool</p>', card_badge='Free tool',
+        tagline='Move your users. Keep them yours.',
+        lead='AuthBeam moves users between Auth0, Okta and Microsoft Entra ID. It tells you what happens to every password before you commit, and it never keeps a copy.',
+        card='Move users between Auth0, Okta and Entra ID, and know what happens to every password first.',
+        btn='<a class="btn btn-authbeam" href="https://authbeam.app">Visit authbeam.app</a>',
+        shot='<img src="/assets/authbeam.png" alt="AuthBeam: a sample migration from Okta to Auth0 that reads the users, plans each password and moves a pilot first" width="1600" height="900"',
+        features=[('Know each password first', 'See which passwords can move and which people must reset, before you commit.'),
+                  ('No copy kept', 'Your users are read in your browser and held only in that tab.'),
+                  ('Pilot before everyone', 'Move a small group first, then the rest.')],
+        meta='AuthBeam, by Veridyne: a free tool that moves users between Auth0, Okta and Microsoft Entra ID and shows what happens to every password first.'),
     'authlens': dict(
         kind='Posture reports for Auth0, Okta and Entra ID',
         name='AuthLens', cls='product-authlens', title_id='authlens-title',
@@ -197,20 +212,6 @@ PRODUCTS = {
                   ('Checked as you go', 'Every block and connection is validated while you design.'),
                   ('ACE, our identity expert', 'An AI adviser recommends how to build each step.')],
         meta='AuthCanvas, by Veridyne: design identity journeys on Auth0, Okta or Entra ID before you build them. In private alpha.'),
-    'roiall': dict(
-        kind='Results of creator marketing',
-        name='Roiall', cls='product-roiall', title_id='roiall-title',
-        logo='<img class="product-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317">',
-        badge='',
-        tagline='See what creator deals really bring in.',
-        lead='Roiall shows businesses the real customers their creator and influencer deals bring, confirmed at the counter.',
-        card='The real customers your creator and influencer deals bring in.',
-        btn='<a class="btn btn-roiall" href="https://roiall.ro">Visit roiall.ro</a>',
-        shot='<img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810"',
-        features=[('Real customers', 'Each visit is confirmed at the counter, not guessed from clicks.'),
-                  ('Cost per customer', 'What every customer from a creator actually cost you.'),
-                  ('Week by week', 'See which campaigns and creators keep working.')],
-        meta='Roiall, by Veridyne: see the real customers your creator and influencer deals bring in, confirmed at the counter.'),
     'sa-sparring': dict(
         kind='Practice for Auth0 architects',
         name='SA Sparring', cls='product-sas', title_id='sas-title',
@@ -225,6 +226,20 @@ PRODUCTS = {
                   ('Graded answers', 'Each answer is graded the way a senior SA would grade it.'),
                   ('By invitation', 'Sign in with Google or GitHub once you are invited.')],
         meta='SA Sparring, by Veridyne: a practice ground for Auth0 solutions architects, with a simulated customer and graded answers.'),
+    'roiall': dict(
+        kind='Results of creator marketing',
+        name='Roiall', cls='product-roiall', title_id='roiall-title',
+        logo='<img class="product-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317">',
+        badge='',
+        tagline='See what creator deals really bring in.',
+        lead='Roiall shows businesses the real customers their creator and influencer deals bring, confirmed at the counter.',
+        card='The real customers your creator and influencer deals bring in.',
+        btn='<a class="btn btn-roiall" href="https://roiall.ro">Visit roiall.ro</a>',
+        shot='<img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810"',
+        features=[('Real customers', 'Each visit is confirmed at the counter, not guessed from clicks.'),
+                  ('Cost per customer', 'What every customer from a creator actually cost you.'),
+                  ('Week by week', 'See which campaigns and creators keep working.')],
+        meta='Roiall, by Veridyne: see the real customers your creator and influencer deals bring in, confirmed at the counter.'),
 }
 
 def product_showcase(exclude=None, group='product'):
@@ -350,12 +365,12 @@ HOME = '''
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">AuthLens, AuthCanvas, Roiall and SA Sparring. Built, hosted and supported by us.</span>
+        <span class="split-text">AuthBeam, AuthLens, AuthCanvas, SA Sparring and Roiall. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
-          <img src="/assets/authlens.png" alt="" width="1600" height="940">
           <img src="/assets/authcanvas.png" alt="" width="1536" height="760">
-          <img src="/assets/roiall-dashboard.png" alt="" width="1600" height="810">
+          <img src="/assets/authlens.png" alt="" width="1600" height="940">
+          <img src="/assets/authbeam.png" alt="" width="1600" height="900">
         </span>
       </a>
     </div>
@@ -380,7 +395,7 @@ HOME = '''
     <div class="intro rise">
       <p class="division">Products</p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: four products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: five products, each made for its own users.</p>
     </div>
     PRODUCT_SHOWCASE
   </section>
@@ -412,10 +427,11 @@ HOME = '''
           <label for="cf-topic">About</label>
           <select id="cf-topic" name="topic">
             <option>Identity &amp; access consulting</option>
+            <option>AuthBeam</option>
             <option>AuthLens access</option>
             <option>AuthCanvas early access</option>
-            <option>Roiall</option>
             <option>SA Sparring</option>
+            <option>Roiall</option>
             <option>Something else</option>
           </select>
         </div>

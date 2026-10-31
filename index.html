@@ -92,12 +92,12 @@
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">AuthLens, AuthCanvas, Roiall and SA Sparring. Built, hosted and supported by us.</span>
+        <span class="split-text">AuthBeam, AuthLens, AuthCanvas, SA Sparring and Roiall. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
-          <img src="/assets/authlens.png" alt="" width="1600" height="940">
           <img src="/assets/authcanvas.png" alt="" width="1536" height="760">
-          <img src="/assets/roiall-dashboard.png" alt="" width="1600" height="810">
+          <img src="/assets/authlens.png" alt="" width="1600" height="940">
+          <img src="/assets/authbeam.png" alt="" width="1600" height="900">
         </span>
       </a>
     </div>
@@ -143,13 +143,19 @@
     <div class="intro rise">
       <p class="division">Products</p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: four products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: five products, each made for its own users.</p>
     </div>
     
     <div class="pshow rise">
       <div class="pshow-tabs" role="radiogroup" aria-label="Products">
         <label class="pshow-tab">
-          <input type="radio" name="product" value="authlens" checked>
+          <input type="radio" name="product" value="authbeam" checked>
+          <span class="pshow-tab-name">AuthBeam</span>
+          <span class="pshow-tab-line">Free user migration between identity platforms</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+        <label class="pshow-tab">
+          <input type="radio" name="product" value="authlens">
           <span class="pshow-tab-name">AuthLens</span>
           <span class="pshow-tab-line">Posture reports for Auth0, Okta and Entra ID</span>
           <span class="pshow-time" aria-hidden="true"><span></span></span>
@@ -161,19 +167,28 @@
           <span class="pshow-time" aria-hidden="true"><span></span></span>
         </label>
         <label class="pshow-tab">
-          <input type="radio" name="product" value="roiall">
-          <span class="pshow-tab-name">Roiall</span>
-          <span class="pshow-tab-line">Results of creator marketing</span>
-          <span class="pshow-time" aria-hidden="true"><span></span></span>
-        </label>
-        <label class="pshow-tab">
           <input type="radio" name="product" value="sa-sparring">
           <span class="pshow-tab-name">SA Sparring</span>
           <span class="pshow-tab-line">Practice for Auth0 architects</span>
           <span class="pshow-time" aria-hidden="true"><span></span></span>
         </label>
+        <label class="pshow-tab">
+          <input type="radio" name="product" value="roiall">
+          <span class="pshow-tab-name">Roiall</span>
+          <span class="pshow-tab-line">Results of creator marketing</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
       </div>
       <div class="pshow-stage">
+        <a class="pshow-panel pcard-authbeam" href="/authbeam" data-for="authbeam">
+          <span class="pshow-copy">
+            <span class="pcard-top"><img class="pcard-logo" src="/assets/authbeam-lockup.png" alt="AuthBeam" width="742" height="180"><span class="badge">Free tool</span></span>
+            <span class="pcard-tagline">Move your users. Keep them yours.</span>
+            <span class="pcard-text">Move users between Auth0, Okta and Entra ID, and know what happens to every password first.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about AuthBeam</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/authbeam.png" alt="AuthBeam: a sample migration from Okta to Auth0 that reads the users, plans each password and moves a pilot first" width="1600" height="900" loading="lazy"></span>
+        </a>
         <a class="pshow-panel pcard-authlens" href="/authlens" data-for="authlens">
           <span class="pshow-copy">
             <span class="pcard-top"><img class="pcard-logo" src="/assets/authlens-lockup.png" alt="AuthLens" width="729" height="214"><span class="badge">Early access</span></span>
@@ -192,15 +207,6 @@
           </span>
           <span class="pshow-shot"><img src="/assets/authcanvas.png" alt="AuthCanvas: a login flow drawn as connected blocks, with the decision for one block open beside it, showing a check, its fix and ACE's recommendation" width="1536" height="760" loading="lazy"></span>
         </a>
-        <a class="pshow-panel pcard-roiall" href="/roiall" data-for="roiall">
-          <span class="pshow-copy">
-            <span class="pcard-top"><img class="pcard-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317"></span>
-            <span class="pcard-tagline">See what creator deals really bring in.</span>
-            <span class="pcard-text">The real customers your creator and influencer deals bring in.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about Roiall</span></span>
-          </span>
-          <span class="pshow-shot"><img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy"></span>
-        </a>
         <a class="pshow-panel pcard-sa-sparring" href="/sa-sparring" data-for="sa-sparring">
           <span class="pshow-copy">
             <span class="pcard-top"><span class="sas-mark pcard-logo">SA <em>Sparring</em></span></span>
@@ -209,6 +215,15 @@
             <span class="pcard-more">Learn more<span class="sr-only"> about SA Sparring</span></span>
           </span>
           <span class="pshow-shot"><img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy"></span>
+        </a>
+        <a class="pshow-panel pcard-roiall" href="/roiall" data-for="roiall">
+          <span class="pshow-copy">
+            <span class="pcard-top"><img class="pcard-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317"></span>
+            <span class="pcard-tagline">See what creator deals really bring in.</span>
+            <span class="pcard-text">The real customers your creator and influencer deals bring in.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about Roiall</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810" loading="lazy"></span>
         </a>
       </div>
     </div>
@@ -241,10 +256,11 @@
           <label for="cf-topic">About</label>
           <select id="cf-topic" name="topic">
             <option>Identity &amp; access consulting</option>
+            <option>AuthBeam</option>
             <option>AuthLens access</option>
             <option>AuthCanvas early access</option>
-            <option>Roiall</option>
             <option>SA Sparring</option>
+            <option>Roiall</option>
             <option>Something else</option>
           </select>
         </div>
@@ -283,10 +299,11 @@
         </div>
         <div>
           <h2>Products</h2>
+          <a href="/authbeam">AuthBeam</a>
           <a href="/authlens">AuthLens</a>
           <a href="/authcanvas">AuthCanvas</a>
-          <a href="/roiall">Roiall</a>
           <a href="/sa-sparring">SA Sparring</a>
+          <a href="/roiall">Roiall</a>
         </div>
         <div>
           <h2>Company</h2>
@@ -323,7 +340,7 @@
           <span class="gate-progress"><span></span></span>
         </span></span>
       </a>
-      <a class="gate-option" href="https://team.veridyne.eu/auth/login" data-host="team.veridyne.eu">
+      <a class="gate-option" href="https://team.veridyne.eu/auth/login?connection=Employees" data-host="team.veridyne.eu">
         <span class="gate-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.7c2 .6 3.5 2.3 3.5 5.3"/></svg></span>
         <span class="gate-text"><strong>Team</strong><span>For Veridyne employees.</span></span>
         <span class="gate-arrow" aria-hidden="true"></span>
@@ -334,7 +351,7 @@
         </span></span>
       </a>
     </div>
-    <p class="gate-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9.5C7.5 20.5 4 17 4 12V6z"/></svg>We never ask for your password on this website. You enter it only on auth.veridyne.eu or your Google sign-in.</p>
+    <p class="gate-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9.5C7.5 20.5 4 17 4 12V6z"/></svg>We never ask for your password on this website. You enter it only on auth.veridyne.eu.</p>
     <button class="gate-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
 </dialog>

@@ -4,7 +4,7 @@
   "redirects": [
     {
       "source": "/employees",
-      "destination": "https://team.veridyne.eu/auth/login",
+      "destination": "https://team.veridyne.eu/auth/login?connection=Employees",
       "permanent": false
     },
     {

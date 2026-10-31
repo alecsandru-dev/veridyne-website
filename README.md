@@ -5,7 +5,7 @@ Static site for Veridyne Solutions, served by Vercel (project `veridyne-website`
 
 ## Layout
 
-- `index.html`, `services.html`, `roiall.html`, `authcanvas.html`, `sa-sparring.html`, `signin.html`:
+- `index.html`, `services.html`, `authbeam.html`, `authlens.html`, `authcanvas.html`, `sa-sparring.html`, `roiall.html`, `signin.html`:
   generated pages (see below). `privacy.html` is hand-written.
 - `styles.css`, `main.js`, `js-flag.js`: one stylesheet and the scripts (the CSP is `script-src 'self'`,
   so no inline scripts).
