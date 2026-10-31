@@ -224,7 +224,7 @@ PRODUCTS = {
         shot='<img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940"',
         features=[('Real conversations', 'Customer scenarios built on how Auth0 calls actually go.'),
                   ('Graded answers', 'Each answer is graded the way a senior SA would grade it.'),
-                  ('By invitation', 'Sign in with Google or GitHub once you are invited.')],
+                  ('By invitation', 'Sign in with email or GitHub once you are invited.')],
         meta='SA Sparring, by Veridyne: a practice ground for Auth0 solutions architects, with a simulated customer and graded answers.'),
     'roiall': dict(
         kind='Results of creator marketing',
