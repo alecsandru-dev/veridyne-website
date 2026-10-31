@@ -219,7 +219,7 @@ PRODUCTS = {
         tagline='Practice the call. Get graded.',
         lead='A practice ground for Auth0 solutions architects. A simulated customer pushes back on every call.',
         card='A practice ground for Auth0 solutions architects, graded like a senior SA would.',
-        btn='<a class="btn btn-sas" href="https://www.auth0shell.dev">Visit auth0shell.dev</a>',
+        btn='<a class="btn btn-sas" href="https://spar.auth0shell.dev">Visit SA Sparring</a>',
         shot='<img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940"',
         features=[('Real conversations', 'Customer scenarios built on how Auth0 calls actually go.'),
                   ('Graded answers', 'Each answer is graded the way a senior SA would grade it.'),
