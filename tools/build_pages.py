@@ -114,6 +114,7 @@ FOOTER = '''
           <a href="/authbeam">AuthBeam</a>
           <a href="/authlens">AuthLens</a>
           <a href="/authcanvas">AuthCanvas</a>
+          <a href="/companion">Veridyne Companion</a>
           <a href="/sa-sparring">SA Sparring</a>
           <a href="/roiall">Roiall</a>
         </div>
@@ -212,6 +213,22 @@ PRODUCTS = {
                   ('Checked as you go', 'Every block and connection is validated while you design.'),
                   ('ACE, our identity expert', 'An AI adviser recommends how to build each step.')],
         meta='AuthCanvas, by Veridyne: design identity journeys on Auth0, Okta or Entra ID before you build them. In private alpha.'),
+    'companion': dict(
+        kind='The mobile app for clients and teams',
+        name='Veridyne Companion', cls='product-companion', title_id='companion-title',
+        logo='<span class="companion-mark"><img src="/assets/veridyne-icon-dark.png" alt="" width="188" height="123">Companion</span>',
+        badge='<p class="badge">Coming soon</p>', card_badge='Coming soon',
+        tagline='Your work with Veridyne, on your phone.',
+        lead='The Veridyne companion app gives clients and employees their portal in their pocket, and approves every sign-in with VeriGate, our built-in authenticator.',
+        card='Your Veridyne portal on your phone, with VeriGate to approve every sign-in.',
+        btn='''<span class="store-badge"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Coming soon to</small>iOS</span></span>
+        <span class="store-badge"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#00A0FF" d="M1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924z"/><path fill="#00F076" d="M13.544 10.989l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973z"/><path fill="#FFE000" d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594z"/><path fill="#FF3A44" d="M13.544 13.056l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg><span><small>Coming soon to</small>Android</span></span>''',
+        shot='<img src="/assets/companion.png" alt="Two phones running the Veridyne companion app with sample data: a client home with projects and hours delivered, and an employee profile with leave and work schedule" width="1040" height="940"',
+        caption='Screens from the app, shown with sample data.',
+        features=[('For clients', 'Follow your projects, the hours delivered and the latest notes from Veridyne.'),
+                  ('For employees', 'See your profile and schedule, request leave and photograph receipts.'),
+                  ('VeriGate built in', 'Approve sign-ins to Veridyne apps with a push and your fingerprint.')],
+        meta='Veridyne Companion: the mobile app for Veridyne clients and employees, with VeriGate to approve every sign-in. Coming soon to iOS and Android.'),
     'sa-sparring': dict(
         kind='Practice for Auth0 architects',
         name='SA Sparring', cls='product-sas', title_id='sas-title',
@@ -248,7 +265,7 @@ def product_showcase(exclude=None, group='product'):
     items = [(slug, p) for slug, p in PRODUCTS.items() if slug != exclude]
     tabs, panels = [], []
     for i, (slug, p) in enumerate(items):
-        logo = p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"')
+        logo = p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"')
         badge = f'<span class="badge">{p["card_badge"]}</span>' if p.get('card_badge') else ''
         tabs.append(f'''
         <label class="pshow-tab">
@@ -278,6 +295,7 @@ def product_showcase(exclude=None, group='product'):
 def product_page(slug):
     p = PRODUCTS[slug]
     feats = ''.join(f'<li><h3>{h}</h3><p>{t}</p></li>' for h, t in p['features'])
+    caption = f'<figcaption>{p["caption"]}</figcaption>' if p.get('caption') else ''
     body = f'''
 <main id="main">
   <section class="product product-page {p['cls']}" aria-labelledby="{p['title_id']}">
@@ -292,7 +310,7 @@ def product_page(slug):
       </div>
     </div>
     <figure class="product-shot rise">
-      {p['shot']}>
+      {p['shot']}>{caption}
     </figure>
     <ul class="features rise">{feats}</ul>
   </section>
@@ -365,7 +383,7 @@ HOME = '''
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">AuthBeam, AuthLens, AuthCanvas, SA Sparring and Roiall. Built, hosted and supported by us.</span>
+        <span class="split-text">AuthBeam, AuthLens, AuthCanvas, Veridyne Companion, SA Sparring and Roiall. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
           <img src="/assets/authcanvas.png" alt="" width="1536" height="760">
@@ -395,7 +413,7 @@ HOME = '''
     <div class="intro rise">
       <p class="division">Products</p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: five products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: six products, each made for its own users.</p>
     </div>
     PRODUCT_SHOWCASE
   </section>
@@ -430,6 +448,7 @@ HOME = '''
             <option>AuthBeam</option>
             <option>AuthLens access</option>
             <option>AuthCanvas early access</option>
+            <option>Veridyne Companion</option>
             <option>SA Sparring</option>
             <option>Roiall</option>
             <option>Something else</option>

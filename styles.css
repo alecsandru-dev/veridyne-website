@@ -346,6 +346,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .btn-ac { background: var(--ac-blue); color: #fff; }
 .btn-ac:hover { background: #1E4FD0; }
 
+.companion-mark { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: clamp(30px, 3.4vw, 42px); letter-spacing: -0.02em; color: #fff; }
+.companion-mark img { height: 0.95em; width: auto; }
+.companion-mark.pcard-logo { height: auto; font-size: 24px; }
+.product-companion { background: #071427; color: #fff; position: relative; }
+.product-companion::before {
+  content: ""; position: absolute; left: 50%; top: 32%; width: 1200px; height: 700px; transform: translateX(-50%); pointer-events: none;
+  background: radial-gradient(closest-side, rgba(0, 180, 255, 0.16), rgba(0, 180, 255, 0) 70%);
+}
+.product-companion > * { position: relative; }
+.product-companion .badge { background: rgba(0, 180, 255, 0.14); color: #8CC8FF; border: 1px solid rgba(0, 180, 255, 0.4); }
+.product-companion .product-lead, .product-companion .features p { color: var(--on-dark-muted); }
+.product-companion .product-shot { border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 40px 120px -40px rgba(0, 180, 255, 0.4); }
+.product-companion .product-shot { max-width: 640px; background: #071427; }
+.product-companion .product-shot img { width: 100%; max-width: 100%; aspect-ratio: auto; object-fit: contain; }
+.product-companion .product-shot figcaption { padding: 10px 16px; background: #071427; color: var(--on-dark-muted); font-size: 13px; text-align: center; }
+.product-companion .features h3::before { background: var(--cyan); }
+.product-companion .product-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.store-badge { display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 8px 18px; border-radius: 12px; background: #0D2443; border: 1px solid rgba(255, 255, 255, 0.22); color: #fff; font-weight: 600; font-size: 17px; line-height: 1.15; }
+.store-badge small { display: block; font-size: 11px; font-weight: 400; color: var(--on-dark-muted); }
 .product-authbeam { background: var(--ab-ground); color: #fff; position: relative; }
 .product-authbeam::before {
   content: ""; position: absolute; left: 50%; top: 32%; width: 1200px; height: 700px; transform: translateX(-50%); pointer-events: none;
@@ -410,6 +429,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pcard-authcanvas .badge { background: rgba(47, 107, 255, 0.18); color: #A9C2FF; border: 1px solid rgba(47, 107, 255, 0.45); }
 .pcard-authcanvas .pcard-text { color: #AEB9CC; }
 .pcard-authcanvas .pcard-more { color: #8FB0FF; }
+.pcard-companion { background: #071427; color: #fff; }
+.pcard-companion .badge { background: rgba(0, 180, 255, 0.14); color: #8CC8FF; border: 1px solid rgba(0, 180, 255, 0.4); }
+.pcard-companion .pcard-tagline { color: #fff; }
+.pcard-companion .pcard-text { color: var(--on-dark-muted); }
+.pcard-companion .pcard-more { color: #5CCBFF; }
 .pcard-authbeam { background: var(--ab-ground); color: #fff; }
 .pcard-authbeam .badge { background: rgba(255, 159, 10, 0.16); color: #FFD44D; border: 1px solid rgba(255, 159, 10, 0.45); }
 .pcard-authbeam .pcard-tagline { color: #fff; }
@@ -912,6 +936,7 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .pshow:has(input[value="authbeam"]:checked) [data-for="authbeam"],
 .pshow:has(input[value="authlens"]:checked) [data-for="authlens"],
 .pshow:has(input[value="authcanvas"]:checked) [data-for="authcanvas"],
+.pshow:has(input[value="companion"]:checked) [data-for="companion"],
 .pshow:has(input[value="roiall"]:checked) [data-for="roiall"],
 .pshow:has(input[value="sa-sparring"]:checked) [data-for="sa-sparring"] { opacity: 1; visibility: visible; transform: none; transition: opacity 420ms var(--ease), transform 520ms var(--ease); }
 @supports not selector(:has(*)) { .pshow-panel:first-child { opacity: 1; visibility: visible; transform: none; } }
@@ -922,6 +947,8 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .pshow-panel .pcard-logo { height: 30px; }
 .pshow-panel .sas-mark.pcard-logo { font-size: 26px; }
 .pshow-shot { align-self: end; padding: 56px 0 0 40px; }
+.pcard-companion .pshow-shot { padding: 24px 0 0; }
+.pcard-companion .pshow-shot img { width: 100%; border-radius: 0; box-shadow: none; }
 .pshow-shot img { display: block; width: 135%; max-width: none; height: auto; border-radius: 14px 0 0 0; box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.55); transition: transform 800ms var(--ease); }
 .pshow-panel:hover .pshow-shot img { transform: translate(-3%, -8px); }
 .pshow-panel:hover .pcard-more::after { transform: translateX(3px) rotate(45deg); }
