@@ -1,6 +1,9 @@
-// Contact form endpoint. Sends the enquiry to the Veridyne inbox through Resend.
+// Contact form endpoint. Emails the sender a confirmation link through Resend. Only pressing the button behind that
+// link sends the enquiry to the Veridyne inbox (api/contact-confirm.js).
 // Env: RESEND_API_KEY (required), CONTACT_FROM (a sender on a domain verified in Resend),
 // CONTACT_TO (defaults to solutions@veridyne.eu).
+
+import { seal } from './_contact-token.js';
 
 const LIMITS = { name: 100, email: 200, company: 150, topic: 60, message: 4000 };
 const TOPICS = ['Identity & access consulting', 'AuthLens access', 'AuthCanvas early access', 'Roiall', 'SA Sparring', 'Something else'];
@@ -9,7 +12,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Scam senders register lookalike domains such as search-getauthlens.com and pitch search listings or SEO.
 const OUR_DOMAINS = new Set(['veridyne.eu', 'getauthlens.com']);
 const LOOKALIKE_RE = /veridyne|authlens|authcanvas|authbeam/;
-const PITCH_RE = /\b(seo|search index|search engine|search result|backlinks?|lead generation|marketing|outsourc\w*|web design)\b|https?:\/\/|\bwww\.|\b[a-z0-9-]+\.(live|xyz|top|click|online|site|shop)\b/i;
+const recent = new Map();
 
 function field(body, key) {
   return String(body[key] ?? '').trim().slice(0, LIMITS[key]);
@@ -50,8 +53,12 @@ export default async function handler(req, res) {
   const domain = email.split('@')[1];
   if (LOOKALIKE_RE.test(domain) && !OUR_DOMAINS.has(domain)) return reply(200, { ok: true });
 
-  // A likely pitch still arrives, marked, so a real enquiry is never lost.
-  const mark = PITCH_RE.test(`${name} ${company} ${message}`) ? '[Likely spam] ' : '';
+  // A few requests per address per hour is plenty; this keeps the confirmation from being used as a relay.
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  const now = Date.now();
+  const hits = (recent.get(ip) || []).filter((t) => now - t < 3600000);
+  if (hits.length >= 5) return reply(429, { error: 'too_many' });
+  recent.set(ip, [...hits, now]);
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
@@ -59,16 +66,7 @@ export default async function handler(req, res) {
     return reply(503, { error: 'not_configured' });
   }
 
-  const text = [
-    `Name: ${name}`,
-    `Email: ${email}`,
-    `Company: ${company || '—'}`,
-    `About: ${topic}`,
-    '',
-    message,
-    '',
-    '— Sent from the contact form on veridyne.eu',
-  ].join('\n');
+  const link = `https://www.veridyne.eu/api/contact-confirm?t=${seal({ name, email, company, topic, message })}`;
 
   try {
     const response = await fetch('https://api.resend.com/emails', {
@@ -76,10 +74,10 @@ export default async function handler(req, res) {
       headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         from: process.env.CONTACT_FROM || 'Veridyne Website <website@veridyne.eu>',
-        to: [process.env.CONTACT_TO || 'solutions@veridyne.eu'],
-        reply_to: email,
-        subject: `${mark}Website enquiry: ${topic} — ${name}`,
-        text,
+        to: [email],
+        subject: 'Confirm your message to Veridyne',
+        // Echoes nothing they typed, so this can't carry a message to a stranger.
+        text: `Please confirm your message to Veridyne:\n\n${link}\n\nThe link works for 48 hours. If this was not you, ignore this email and nothing more will be sent.`,
       }),
     });
     if (!response.ok) {

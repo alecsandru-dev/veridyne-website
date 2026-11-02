@@ -212,8 +212,11 @@
   }
 
   var sent = new URLSearchParams(window.location.search).get('sent');
-  if (sent === '1') say('ok', 'Thank you, your message has been sent. We will reply within one working day.');
+  if (sent === '1') say('ok', 'Almost done. Check your inbox and press the link we sent to confirm your message.');
   if (sent === '0') say('err', 'Your message could not be sent. ' + FALLBACK);
+  var confirmed = new URLSearchParams(window.location.search).get('confirmed');
+  if (confirmed === '1') say('ok', 'Thank you, your message has been sent. We will reply within one working day.');
+  if (confirmed === '0') say('err', 'That link has expired. Send the form again for a new one.');
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -241,7 +244,7 @@
       .then(function (res) {
         if (res.ok) {
           form.reset();
-          say('ok', 'Thank you, your message has been sent. We will reply within one working day.');
+          say('ok', 'Almost done. Check your inbox and press the link we sent to confirm your message.');
         } else if (res.status === 400) {
           say('err', 'Please check the form: name, a valid email and a message are required.');
         } else {
