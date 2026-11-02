@@ -6,6 +6,11 @@ const LIMITS = { name: 100, email: 200, company: 150, topic: 60, message: 4000 }
 const TOPICS = ['Identity & access consulting', 'AuthLens access', 'AuthCanvas early access', 'Roiall', 'SA Sparring', 'Something else'];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Scam senders register lookalike domains such as search-getauthlens.com and pitch search listings or SEO.
+const OUR_DOMAINS = new Set(['veridyne.eu', 'getauthlens.com']);
+const LOOKALIKE_RE = /veridyne|authlens|authcanvas|authbeam/;
+const PITCH_RE = /\b(seo|search index|search engine|search result|backlinks?|lead generation|marketing|outsourc\w*|web design)\b|https?:\/\/|\bwww\.|\b[a-z0-9-]+\.(live|xyz|top|click|online|site|shop)\b/i;
+
 function field(body, key) {
   return String(body[key] ?? '').trim().slice(0, LIMITS[key]);
 }
@@ -41,6 +46,13 @@ export default async function handler(req, res) {
     return reply(400, { error: 'invalid_input' });
   }
 
+  // Nobody real writes from a lookalike domain. Pretend success, as the honeypot does.
+  const domain = email.split('@')[1];
+  if (LOOKALIKE_RE.test(domain) && !OUR_DOMAINS.has(domain)) return reply(200, { ok: true });
+
+  // A likely pitch still arrives, marked, so a real enquiry is never lost.
+  const mark = PITCH_RE.test(`${name} ${company} ${message}`) ? '[Likely spam] ' : '';
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error('contact: RESEND_API_KEY is not set');
@@ -66,7 +78,7 @@ export default async function handler(req, res) {
         from: process.env.CONTACT_FROM || 'Veridyne Website <website@veridyne.eu>',
         to: [process.env.CONTACT_TO || 'solutions@veridyne.eu'],
         reply_to: email,
-        subject: `Website enquiry: ${topic} — ${name}`,
+        subject: `${mark}Website enquiry: ${topic} — ${name}`,
         text,
       }),
     });
