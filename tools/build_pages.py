@@ -186,8 +186,8 @@ PRODUCTS = {
                   ('Built from real projects', 'Scenario questions and use cases on Auth0 and Okta, timed and taken online.'),
                   ('A badge anyone can verify', 'Every certification has its own code and a public record, valid for two years.')],
         gallery=[('/assets/certifications-home.png', 1600, 940, 'Your certifications, vouchers and profile in one place.', 'Veridyne Certifications home for a sample person: two certifications earned, one voucher available, with the Developer and Consultant badges'),
-                 ('/assets/certifications-exam.png', 1000, 620, 'One question at a time, against the clock.', 'A sample Architect exam question: locking leavers out of an API within the hour without shorter token lifetimes, with four answers and the time left'),
-                 ('/assets/certifications-verify.png', 1100, 682, 'A public record behind every badge.', 'The public verification page for a sample Consultant certification: valid, with its code and dates')],
+                 ('/assets/certifications-exam-v2.png', 1000, 620, 'One question at a time, against the clock.', 'A sample Architect exam question: locking leavers out of an API within the hour without shorter token lifetimes, with four answers and the time left'),
+                 ('/assets/certifications-verify-v2.png', 1000, 620, 'A public record behind every badge.', 'The public verification page for a sample Consultant certification: valid, with its code and dates')],
         caption='Screens from the app, shown with sample data.',
         meta='Veridyne Certifications: exams for identity work on Auth0 and Okta for Consultants, Architects, Project Managers and Developers, with a badge anyone can verify.'),
     'authbeam': dict(
