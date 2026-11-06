@@ -173,12 +173,12 @@ def service_grid(full):
 # ---------- products ----------
 PRODUCTS = {
     'certifications': dict(
-        kind='Certifications for Auth0 and Okta work',
+        kind='Our own certifications for Auth0 and Okta work',
         name='Veridyne Certifications', cls='product-cert', title_id='cert-title',
         logo='<img class="product-logo" src="/assets/certifications-lockup.png" alt="Veridyne Certifications" width="469" height="81">',
         badge='<p class="badge">New</p>', card_badge='New',
         tagline='Prove you can do identity work.',
-        lead='Veridyne Certifications are our own exams for people who deliver identity projects on Auth0 and Okta: Consultant, Architect, Project Manager and Developer. Each pass earns a badge with a code anyone can check.',
+        lead='Veridyne Certifications are our own exams for people who deliver identity projects on Auth0 and Okta: Consultant, Architect, Project Manager and Developer. Each pass earns a badge with a code anyone can check. They are independent of Okta, Inc.: not Okta or Auth0 certifications, and not a replacement for them.',
         card='Exams for Consultants, Architects, Project Managers and Developers on Auth0 and Okta, with a badge anyone can verify.',
         btn='<a class="btn btn-cert" href="https://certifications.veridyne.eu/get-certified">Get certified</a>\n        <a class="btn btn-cert-ghost" href="https://certifications.veridyne.eu/pricing">See pricing</a>',
         shot='<img src="/assets/certifications.png" alt="Veridyne Certifications home page: Validate skills. Track progress. Pass with confidence., with the Consultant, Architect, Project Manager and Developer badges" width="1600" height="820"',
@@ -188,8 +188,8 @@ PRODUCTS = {
         gallery=[('/assets/certifications-home.png', 1600, 940, 'Your certifications, vouchers and profile in one place.', 'Veridyne Certifications home for a sample person: two certifications earned, one voucher available, with the Developer and Consultant badges'),
                  ('/assets/certifications-exam-v2.png', 1000, 620, 'One question at a time, against the clock.', 'A sample Architect exam question: locking leavers out of an API within the hour without shorter token lifetimes, with four answers and the time left'),
                  ('/assets/certifications-verify-v2.png', 1000, 620, 'A public record behind every badge.', 'The public verification page for a sample Consultant certification: valid, with its code and dates')],
-        caption='Screens from the app, shown with sample data.',
-        meta='Veridyne Certifications: exams for identity work on Auth0 and Okta for Consultants, Architects, Project Managers and Developers, with a badge anyone can verify.'),
+        caption='Screens from the app, shown with sample data. Veridyne Certifications are independent of Okta, Inc.; Okta and Auth0 are trademarks of Okta, Inc.',
+        meta='Veridyne Certifications: Veridyne\'s own exams for identity work on Auth0 and Okta, for Consultants, Architects, Project Managers and Developers, with a badge anyone can verify. Independent of Okta, Inc.'),
     'authbeam': dict(
         kind='Free user migration between identity platforms',
         name='AuthBeam', cls='product-authbeam', title_id='authbeam-title',
