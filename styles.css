@@ -933,6 +933,7 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
   opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.99);
   transition: opacity 420ms var(--ease), transform 520ms var(--ease), visibility 0s linear 420ms;
 }
+.pshow:has(input[value="certifications"]:checked) [data-for="certifications"],
 .pshow:has(input[value="authbeam"]:checked) [data-for="authbeam"],
 .pshow:has(input[value="authlens"]:checked) [data-for="authlens"],
 .pshow:has(input[value="authcanvas"]:checked) [data-for="authcanvas"],
@@ -994,3 +995,32 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .product-authlens .features h3::before { content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; margin-bottom: 14px; background: #10B981; }
 .btn-authlens { background: #10B981; color: #03241B; }
 .btn-authlens:hover { background: #34D399; }
+
+/* ---------- Veridyne Certifications ---------- */
+.product-cert { background: #081230; color: #F2F6FF; position: relative; }
+.product-cert::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(50% 36% at 50% 34%, rgba(0, 229, 255, 0.14), transparent 70%), radial-gradient(40% 30% at 50% 80%, rgba(37, 99, 255, 0.16), transparent 70%); }
+.product-cert > * { position: relative; }
+.product-cert .product-logo { height: clamp(40px, 4.6vw, 60px); }
+.product-cert .badge, .pcard-certifications .badge { background: rgba(0, 229, 255, 0.12); color: #7DF3FF; border: 1px solid rgba(0, 229, 255, 0.4); }
+.product-cert .product-lead, .product-cert .features p { color: #B4C1DA; }
+.product-cert .crumb { color: #B4C1DA; }
+.product-cert .product-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.product-cert .product-shot { border: 1px solid rgba(160, 200, 255, 0.16); box-shadow: 0 40px 120px -40px rgba(0, 229, 255, 0.35); }
+.product-cert .features h3::before { content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; margin-bottom: 14px; background: linear-gradient(90deg, #2563FF, #00E5FF); }
+.btn-cert { background: #00E5FF; color: #04122E; }
+.btn-cert:hover { background: #5CF0FF; color: #04122E; }
+.btn-cert-ghost { background: transparent; color: #F2F6FF; box-shadow: inset 0 0 0 1px rgba(242, 246, 255, 0.35); }
+.btn-cert-ghost:hover { background: rgba(242, 246, 255, 0.08); color: #F2F6FF; }
+.product-gallery { max-width: 1080px; margin: 64px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.product-gallery .gallery-shot:first-child { grid-column: 1 / -1; }
+.gallery-shot { margin: 0; border-radius: 16px; overflow: hidden; border: 1px solid rgba(160, 200, 255, 0.16); background: #0B1736; display: flex; flex-direction: column; }
+.gallery-shot img { width: 100%; height: auto; display: block; }
+.gallery-shot figcaption { padding: 14px 18px; font-size: 14px; color: #B4C1DA; margin-top: auto; }
+.gallery-note { max-width: 1080px; margin: 16px auto 0; text-align: center; font-size: 13px; color: #8E9BB8; }
+.pcard-certifications { background: #081230; color: #F2F6FF; }
+.pcard-certifications::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 70% at 80% 100%, rgba(0, 229, 255, 0.16), transparent 70%); }
+.pcard-certifications > * { position: relative; }
+.pcard-certifications .pcard-text { color: #B4C1DA; }
+.pcard-certifications .pcard-more { color: #00E5FF; }
+.pcard-certifications .pshow-shot img { border: 1px solid rgba(160, 200, 255, 0.16); border-width: 1px 0 0 1px; }
+@media (max-width: 760px) { .product-gallery { grid-template-columns: 1fr; } }

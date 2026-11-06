@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.veridyne.eu/</loc></url>
-  <url><loc>https://www.veridyne.eu/services</loc></url>
-  <url><loc>https://www.veridyne.eu/authbeam</loc></url>
-  <url><loc>https://www.veridyne.eu/authlens</loc></url>
-  <url><loc>https://www.veridyne.eu/authcanvas</loc></url>
-  <url><loc>https://www.veridyne.eu/companion</loc></url>
-  <url><loc>https://www.veridyne.eu/roiall</loc></url>
-  <url><loc>https://www.veridyne.eu/privacy</loc></url>
+  <url><loc>https://www.veridyne.eu/</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://www.veridyne.eu/services</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://www.veridyne.eu/certifications</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://www.veridyne.eu/authbeam</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://www.veridyne.eu/authlens</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://www.veridyne.eu/authcanvas</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://www.veridyne.eu/companion</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://www.veridyne.eu/sa-sparring</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://www.veridyne.eu/roiall</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://www.veridyne.eu/privacy</loc><lastmod>2026-11-06</lastmod></url>
 </urlset>

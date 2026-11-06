@@ -111,6 +111,7 @@ FOOTER = '''
         </div>
         <div>
           <h2>Products</h2>
+          <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>
           <a href="/authlens">AuthLens</a>
           <a href="/authcanvas">AuthCanvas</a>
@@ -171,6 +172,24 @@ def service_grid(full):
 
 # ---------- products ----------
 PRODUCTS = {
+    'certifications': dict(
+        kind='Certifications for Auth0 and Okta work',
+        name='Veridyne Certifications', cls='product-cert', title_id='cert-title',
+        logo='<img class="product-logo" src="/assets/certifications-lockup.png" alt="Veridyne Certifications" width="469" height="81">',
+        badge='<p class="badge">New</p>', card_badge='New',
+        tagline='Prove you can do identity work.',
+        lead='Veridyne Certifications are our own exams for people who deliver identity projects on Auth0 and Okta: Consultant, Architect, Project Manager and Developer. Each pass earns a badge with a code anyone can check.',
+        card='Exams for Consultants, Architects, Project Managers and Developers on Auth0 and Okta, with a badge anyone can verify.',
+        btn='<a class="btn btn-cert" href="https://certifications.veridyne.eu/get-certified">Get certified</a>\n        <a class="btn btn-cert-ghost" href="https://certifications.veridyne.eu/pricing">See pricing</a>',
+        shot='<img src="/assets/certifications.png" alt="Veridyne Certifications home page: Validate skills. Track progress. Pass with confidence., with the Consultant, Architect, Project Manager and Developer badges" width="1600" height="820"',
+        features=[('Four roles, one standard', 'Consultant, Architect, Project Manager and Developer, each tested on what that role really does.'),
+                  ('Built from real projects', 'Scenario questions and use cases on Auth0 and Okta, timed and taken online.'),
+                  ('A badge anyone can verify', 'Every certification has its own code and a public record, valid for two years.')],
+        gallery=[('/assets/certifications-home.png', 1600, 940, 'Your certifications, vouchers and profile in one place.', 'Veridyne Certifications home for a sample person: two certifications earned, one voucher available, with the Developer and Consultant badges'),
+                 ('/assets/certifications-exam.png', 1000, 620, 'One question at a time, against the clock.', 'An exam question for the Architect certification, with four answers, a progress bar and the time left'),
+                 ('/assets/certifications-verify.png', 1100, 560, 'A public record behind every badge.', 'The public verification page for a sample Consultant certification: valid, with its code and dates')],
+        caption='Screens from the app, shown with sample data.',
+        meta='Veridyne Certifications: exams for identity work on Auth0 and Okta for Consultants, Architects, Project Managers and Developers, with a badge anyone can verify.'),
     'authbeam': dict(
         kind='Free user migration between identity platforms',
         name='AuthBeam', cls='product-authbeam', title_id='authbeam-title',
@@ -295,7 +314,15 @@ def product_showcase(exclude=None, group='product'):
 def product_page(slug):
     p = PRODUCTS[slug]
     feats = ''.join(f'<li><h3>{h}</h3><p>{t}</p></li>' for h, t in p['features'])
-    caption = f'<figcaption>{p["caption"]}</figcaption>' if p.get('caption') else ''
+    caption = f'<figcaption>{p["caption"]}</figcaption>' if p.get('caption') and not p.get('gallery') else ''
+    gallery = ''
+    if p.get('gallery'):
+        figs = ''.join(f'''
+      <figure class="gallery-shot rise"><img src="{src}" alt="{alt}" width="{w}" height="{h}" loading="lazy"><figcaption>{cap}</figcaption></figure>''' for src, w, h, cap, alt in p['gallery'])
+        gallery = f'''
+    <div class="product-gallery">{figs}
+    </div>
+    <p class="gallery-note rise">{p.get('caption', '')}</p>'''
     body = f'''
 <main id="main">
   <section class="product product-page {p['cls']}" aria-labelledby="{p['title_id']}">
@@ -312,7 +339,7 @@ def product_page(slug):
     <figure class="product-shot rise">
       {p['shot']}>{caption}
     </figure>
-    <ul class="features rise">{feats}</ul>
+    <ul class="features rise">{feats}</ul>{gallery}
   </section>
 
   <section class="cta-band" aria-labelledby="cta-title">
@@ -383,12 +410,12 @@ HOME = '''
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">AuthBeam, AuthLens, AuthCanvas, Veridyne Companion, SA Sparring and Roiall. Built, hosted and supported by us.</span>
+        <span class="split-text">Veridyne Certifications, AuthBeam, AuthLens, AuthCanvas, Veridyne Companion, SA Sparring and Roiall. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
-          <img src="/assets/authcanvas.png" alt="" width="1536" height="760">
           <img src="/assets/authlens.png" alt="" width="1600" height="940">
           <img src="/assets/authbeam.png" alt="" width="1600" height="900">
+          <img src="/assets/certifications.png" alt="" width="1600" height="820">
         </span>
       </a>
     </div>
@@ -413,7 +440,7 @@ HOME = '''
     <div class="intro rise">
       <p class="division">Products</p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: six products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: seven products, each made for its own users.</p>
     </div>
     PRODUCT_SHOWCASE
   </section>
@@ -445,6 +472,7 @@ HOME = '''
           <label for="cf-topic">About</label>
           <select id="cf-topic" name="topic">
             <option>Identity &amp; access consulting</option>
+            <option>Veridyne Certifications</option>
             <option>AuthBeam</option>
             <option>AuthLens access</option>
             <option>AuthCanvas early access</option>
@@ -530,7 +558,7 @@ SERVICES_PAGE = '''
 
 pages = {
     'index.html': head('Veridyne Solutions — Auth0 and Okta consulting, and our own software',
-                       'Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds AuthCanvas, Roiall and SA Sparring.', '/')
+                       'Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds Veridyne Certifications, AuthLens, AuthBeam, AuthCanvas and more.', '/')
                   + header('home') + HOME + FOOTER,
     'services.html': head('Professional Services — Veridyne Solutions',
                           'Auth0 and Okta consulting from Bucharest: new setups, migrations, security reviews and developer training, secure by default.', '/services')
