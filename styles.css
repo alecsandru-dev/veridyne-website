@@ -914,13 +914,15 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .pshow { max-width: var(--wide); margin: 48px auto 0; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 16px; align-items: stretch; }
 .more-products .pshow { margin-top: 32px; }
 .pshow-tabs { display: flex; flex-direction: column; gap: 6px; }
-.pshow-tab { position: relative; display: grid; gap: 4px; padding: 18px 20px 20px; border-radius: 18px; cursor: pointer; overflow: hidden; transition: background-color 260ms var(--ease); }
+.pshow-tab { position: relative; display: grid; gap: 4px; padding: 13px 20px 14px; border-radius: 18px; cursor: pointer; overflow: hidden; transition: background-color 260ms var(--ease); }
 .pshow-tab input { position: absolute; opacity: 0; pointer-events: none; }
 .pshow-tab:hover { background: color-mix(in srgb, var(--card) 55%, transparent); }
 .pshow-tab:has(input:checked) { background: var(--card); box-shadow: 0 1px 2px rgba(var(--shadow-rgb), 0.05), 0 12px 30px -18px rgba(var(--shadow-rgb), 0.3); }
 .pshow-tab:has(input:focus-visible) { outline: 2px solid var(--cyan); outline-offset: 2px; }
 .pshow-tab-name { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--muted); transition: color 200ms; }
-.pshow-tab-line { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.pshow-tab-line { display: none; font-size: 14px; color: var(--muted); line-height: 1.4; }
+.pshow-tab:has(input:checked) .pshow-tab-line { display: block; }
+@supports not selector(:has(*)) { .pshow-tab-line { display: block; } }
 .pshow-tab:has(input:checked) .pshow-tab-name, .pshow-tab:hover .pshow-tab-name { color: var(--ink); }
 .pshow-time { position: absolute; left: 20px; right: 20px; bottom: 9px; height: 2px; border-radius: 2px; background: var(--line); opacity: 0; transition: opacity 200ms; }
 .pshow-time span { display: block; height: 100%; width: 0; border-radius: 2px; background: var(--cyan); }
