@@ -114,6 +114,7 @@ FOOTER = '''
           <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>
           <a href="/authlens">AuthLens</a>
+          <a href="/eot">Eye of the Tenant</a>
           <a href="/authcanvas">AuthCanvas</a>
           <a href="/companion">Veridyne Companion</a>
           <a href="/sa-sparring">SA Sparring</a>
@@ -218,6 +219,21 @@ PRODUCTS = {
                   ('Every rule cites the vendor', 'Each finding links the documentation it is based on, with a fix.'),
                   ('Drift, weekly', 'A weekly run shows what was fixed, what regressed and what is new.')],
         meta='AuthLens, by Veridyne: read-only posture reports for Auth0, Okta and Microsoft Entra ID, with the vendor source and the exact fix for every finding.'),
+    'eot': dict(
+        kind='Go-live monitoring for Auth0 and Okta',
+        name='Eye of the Tenant', cls='product-eot', title_id='eot-title',
+        logo='<span class="eot-mark product-logo"><img src="/assets/eot-mark.svg" alt="" width="120" height="80">Eye of the Tenant</span>',
+        badge='<p class="badge">New</p>', card_badge='New',
+        tagline='Watch your go-live, not the logs.',
+        lead='Eye of the Tenant watches your Auth0 or Okta tenant through a go-live. It reads the logs every minute, learns what normal looks like, and explains anything that breaks in plain English. It only reads; it never changes your tenant.',
+        card='Watches your Auth0 or Okta tenant through a go-live and explains anything that breaks, in plain English.',
+        btn='<a class="btn btn-eot" href="https://my.veridyne.eu/eot">Sign in to Eye of the Tenant</a>',
+        shot='<img src="/assets/eot.png" alt="Eye of the Tenant live view with sample data: an Auth0 tenant being watched through go-live, the runtime clock, the latest log read and three open findings" width="1600" height="812"',
+        caption='Shown with sample data.',
+        features=[('Read-only', 'It reads your logs every minute and never changes your tenant.'),
+                  ('Every finding explained', 'What is happening, the likely causes and what to check first.'),
+                  ('Pay for runtime only', 'Hours count only while monitoring runs. Pause any time.')],
+        meta='Eye of the Tenant, by Veridyne: go-live monitoring for Auth0 and Okta that reads your logs every minute and explains anything that breaks, in plain English.'),
     'authcanvas': dict(
         kind='Identity journey design',
         name='AuthCanvas', cls='product-ac', title_id='ac-title',
@@ -284,7 +300,7 @@ def product_showcase(exclude=None, group='product'):
     items = [(slug, p) for slug, p in PRODUCTS.items() if slug != exclude]
     tabs, panels = [], []
     for i, (slug, p) in enumerate(items):
-        logo = p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"')
+        logo = p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"')
         badge = f'<span class="badge">{p["card_badge"]}</span>' if p.get('card_badge') else ''
         tabs.append(f'''
         <label class="pshow-tab">
@@ -410,7 +426,7 @@ HOME = '''
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">Veridyne Certifications, AuthBeam, AuthLens, AuthCanvas, Veridyne Companion, SA Sparring and Roiall. Built, hosted and supported by us.</span>
+        <span class="split-text">Veridyne Certifications, AuthBeam, AuthLens, Eye of the Tenant, AuthCanvas, Veridyne Companion, SA Sparring and Roiall. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
           <img src="/assets/authlens.png" alt="" width="1600" height="940">
@@ -440,7 +456,7 @@ HOME = '''
     <div class="intro rise">
       <p class="division">Products</p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: seven products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: eight products, each made for its own users.</p>
     </div>
     PRODUCT_SHOWCASE
   </section>
@@ -475,6 +491,7 @@ HOME = '''
             <option>Veridyne Certifications</option>
             <option>AuthBeam</option>
             <option>AuthLens access</option>
+            <option>Eye of the Tenant</option>
             <option>AuthCanvas early access</option>
             <option>Veridyne Companion</option>
             <option>SA Sparring</option>
@@ -558,7 +575,7 @@ SERVICES_PAGE = '''
 
 pages = {
     'index.html': head('Veridyne Solutions — Auth0 and Okta consulting, and our own software',
-                       'Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds Veridyne Certifications, AuthLens, AuthBeam, AuthCanvas and more.', '/')
+                       'Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds Veridyne Certifications, AuthLens, Eye of the Tenant, AuthBeam, AuthCanvas and more.', '/')
                   + header('home') + HOME + FOOTER,
     'services.html': head('Professional Services — Veridyne Solutions',
                           'Auth0 and Okta consulting from Bucharest: new setups, migrations, security reviews and developer training, secure by default.', '/services')
