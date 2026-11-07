@@ -258,4 +258,19 @@
         button.disabled = false;
       });
   });
+
+  /* ---------- Launch offer: copy the code, close the bar ---------- */
+  document.querySelectorAll('.promo-code').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var label = b.querySelector('.promo-copy');
+      var done = function () { if (label) { label.textContent = 'Copied'; setTimeout(function () { label.textContent = 'Copy'; }, 1800); } };
+      if (navigator.clipboard) navigator.clipboard.writeText(b.getAttribute('data-copy')).then(done, function () {});
+    });
+  });
+  document.querySelectorAll('.promo-close').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.documentElement.classList.add('promo-closed');
+      try { localStorage.setItem('veridyne-promo-closed', 'LAUNCH50'); } catch (e) {}
+    });
+  });
 })();

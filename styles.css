@@ -1053,3 +1053,28 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .pcard-certifications .pcard-more { color: #00E5FF; }
 .pcard-certifications .pshow-shot img { border: 1px solid rgba(160, 200, 255, 0.16); border-width: 1px 0 0 1px; }
 @media (max-width: 760px) { .product-gallery { grid-template-columns: 1fr; } }
+
+/* ---------- Certifications launch offer (bar above the header, callout on /certifications) ---------- */
+.promo-bar { position: relative; background: linear-gradient(90deg, #071330, #0B1F4A 60%, #0A2A5C); color: #EAF6FF; font-size: 14px; }
+.promo-bar-inner { max-width: var(--wide); margin: 0 auto; padding: 8px 52px 8px var(--pad); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 14px; text-align: center; }
+.promo-bar b { color: #FFFFFF; }
+.promo-bar a { color: #00E5FF; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.promo-bar a:hover { text-decoration: underline; }
+.promo-when { color: #9FB0D6; }
+.promo-short { display: none; }
+.promo-code { display: inline-flex; align-items: center; gap: 7px; border: 0; cursor: pointer; border-radius: 6px; padding: 3px 8px; background: #00E5FF; color: #04122E; font: 700 13px/1.4 ui-monospace, Menlo, monospace; letter-spacing: 0.06em; vertical-align: middle; }
+.promo-code:hover { background: #5CF0FF; }
+.promo-code:focus-visible, .promo-close:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }
+.promo-copy { font: 600 11px/1 "Archivo", system-ui, sans-serif; letter-spacing: 0; opacity: 0.75; }
+.promo-close { position: absolute; right: max(8px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border: 0; background: transparent; color: #9FB0D6; font-size: 20px; line-height: 1; cursor: pointer; border-radius: 8px; }
+.promo-close:hover { color: #FFFFFF; }
+.promo-callout { margin-top: 22px; border: 1px solid rgba(0, 229, 255, 0.35); border-radius: 14px; padding: 16px 18px; background: linear-gradient(120deg, #071330, #0B2A5C); color: #EAF6FF; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; text-align: left; }
+.promo-callout p { margin: 0; max-width: 56ch; }
+.promo-callout-title { font-weight: 700; font-size: 17px; color: #FFFFFF; margin-bottom: 4px !important; }
+.promo-ended .promo-bar, .promo-ended .promo-callout, .promo-closed .promo-bar { display: none; }
+@media (max-width: 720px) {
+  .promo-bar { font-size: 13px; }
+  .promo-long, .promo-when { display: none; }
+  .promo-short { display: inline; }
+  .promo-callout .btn { width: 100%; }
+}
