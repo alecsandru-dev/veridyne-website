@@ -33,31 +33,24 @@ def head(title, desc, path):
 <a class="skip-link" href="#main">Skip to content</a>
 '''
 
-# Certifications launch offer. The bar and the callout leave the built pages after END; js-flag.js also hides them
-# in visitors' browsers from END (end of 31 Dec in Bucharest), and the bar for anyone who closed it.
-PROMO = dict(code='LAUNCH50', end='2026-12-31T21:59:59Z', until='31 December', until_full='31 December 2026', uses=10)
-import datetime
-PROMO_ON = datetime.datetime.now(datetime.timezone.utc) < datetime.datetime.fromisoformat(PROMO['end'].replace('Z', '+00:00'))
-
+# Certifications offer. The text comes from certifications.veridyne.eu/api/offer (the code marked "Show on website" in
+# its admin): main.js fills these in and shows them only while the code can be used. Without an offer, or without
+# JavaScript, they stay hidden, so the site never advertises a code that has stopped working.
 def promo_code_button():
-    return f'<button class="promo-code" type="button" data-copy="{PROMO["code"]}" aria-label="Copy the code {PROMO["code"]}">{PROMO["code"]}<span class="promo-copy" aria-hidden="true">Copy</span></button>'
+    return '<button class="promo-code" type="button" aria-label="Copy the code"><span data-offer="code"></span><span class="promo-copy" aria-hidden="true">Copy</span></button>'
 
 def promo_bar():
-    if not PROMO_ON:
-        return ''
     return f'''
-<aside class="promo-bar" aria-label="Launch offer">
-  <p class="promo-bar-inner"><span><b>Launch offer:</b> <span class="promo-long">50% off every Veridyne Certifications voucher</span><span class="promo-short">50% off certification vouchers</span></span>{promo_code_button()}<span class="promo-when">until {PROMO["until"]}, first {PROMO["uses"]} vouchers</span><a href="https://certifications.veridyne.eu/get-certified">Get certified <span aria-hidden="true">→</span></a></p>
+<aside class="promo-bar" aria-label="Offer" hidden>
+  <p class="promo-bar-inner"><span><b>Launch offer:</b> <span class="promo-long" data-offer="long"></span><span class="promo-short" data-offer="short"></span></span>{promo_code_button()}<span class="promo-when" data-offer="when"></span><a href="https://certifications.veridyne.eu/get-certified">Get certified <span aria-hidden="true">→</span></a></p>
   <button class="promo-close" type="button" aria-label="Hide the offer">×</button>
 </aside>'''
 
 def promo_callout():
-    if not PROMO_ON:
-        return ''
     return f'''
-      <div class="promo-callout">
-        <div><p class="promo-callout-title">50% off with {promo_code_button()}</p>
-        <p>Type the code on the payment page for half off any voucher: exam, retake or maintenance. For the first {PROMO["uses"]} vouchers, until {PROMO["until_full"]}.</p></div>
+      <div class="promo-callout" hidden>
+        <div><p class="promo-callout-title"><span data-offer="percent"></span> off with {promo_code_button()}</p>
+        <p data-offer="body"></p></div>
         <a class="btn btn-cert" href="https://certifications.veridyne.eu/get-certified">Get certified</a>
       </div>'''
 

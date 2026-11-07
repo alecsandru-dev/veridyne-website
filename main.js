@@ -199,6 +199,51 @@
     if (gate && gate.open) gate.close();
   });
 
+  /* ---------- Certifications offer: shown only while certifications.veridyne.eu says the code still works ---------- */
+  var bar = document.querySelector('.promo-bar');
+  var callout = document.querySelector('.promo-callout');
+  if ((bar || callout) && window.fetch) {
+    fetch('https://certifications.veridyne.eu/api/offer').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      var o = d && d.offer;
+      if (!o || !o.code || !o.percent) return;
+      var closedKey = 'veridyne-offer-closed';
+      var closed = null;
+      try { closed = localStorage.getItem(closedKey); } catch (e) {}
+      var pc = o.percent + '%';
+      var what = o.certification ? 'the Veridyne Certified ' + o.certification + ' voucher' : 'every Veridyne Certifications voucher';
+      var day = o.ends ? new Date(o.ends).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'Europe/Bucharest' }) : '';
+      var dayFull = o.ends ? new Date(o.ends).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Bucharest' }) : '';
+      var left = o.uses != null && o.left != null ? o.left + ' of ' + o.uses + ' left' : '';
+      var text = {
+        code: o.code,
+        percent: pc,
+        long: pc + ' off ' + what,
+        short: pc + ' off ' + (o.certification ? 'the ' + o.certification + ' voucher' : 'certification vouchers'),
+        when: [day ? 'until ' + day : '', left].filter(Boolean).join(', '),
+        body: 'Type the code on the payment page for ' + pc + ' off ' + (o.certification ? 'the ' + o.certification + ' voucher' : 'any voucher') + ': exam, retake or maintenance.' +
+          (left || dayFull ? ' ' + [left ? left.charAt(0).toUpperCase() + left.slice(1) : '', dayFull ? 'until ' + dayFull : ''].filter(Boolean).join(', ') + '.' : '')
+      };
+      document.querySelectorAll('[data-offer]').forEach(function (el) { el.textContent = text[el.getAttribute('data-offer')] || ''; });
+      document.querySelectorAll('.promo-code').forEach(function (b) {
+        b.setAttribute('aria-label', 'Copy the code ' + o.code);
+        b.addEventListener('click', function () {
+          var label = b.querySelector('.promo-copy');
+          var done = function () { if (label) { label.textContent = 'Copied'; setTimeout(function () { label.textContent = 'Copy'; }, 1800); } };
+          if (navigator.clipboard) navigator.clipboard.writeText(o.code).then(done, function () {});
+        });
+      });
+      if (callout) callout.hidden = false;
+      if (bar && closed !== o.code) {
+        bar.hidden = false;
+        var close = bar.querySelector('.promo-close');
+        if (close) close.addEventListener('click', function () {
+          bar.hidden = true;
+          try { localStorage.setItem(closedKey, o.code); } catch (e) {}
+        });
+      }
+    }).catch(function () {});
+  }
+
   /* ---------- Contact form: send with fetch and show the result inline ----------
      Without JavaScript the form posts normally and /api/contact redirects back with ?sent=. */
   var form = document.getElementById('contact-form');
@@ -259,18 +304,4 @@
       });
   });
 
-  /* ---------- Launch offer: copy the code, close the bar ---------- */
-  document.querySelectorAll('.promo-code').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var label = b.querySelector('.promo-copy');
-      var done = function () { if (label) { label.textContent = 'Copied'; setTimeout(function () { label.textContent = 'Copy'; }, 1800); } };
-      if (navigator.clipboard) navigator.clipboard.writeText(b.getAttribute('data-copy')).then(done, function () {});
-    });
-  });
-  document.querySelectorAll('.promo-close').forEach(function (b) {
-    b.addEventListener('click', function () {
-      document.documentElement.classList.add('promo-closed');
-      try { localStorage.setItem('veridyne-promo-closed', 'LAUNCH50'); } catch (e) {}
-    });
-  });
 })();

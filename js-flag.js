@@ -21,9 +21,3 @@ document.documentElement.classList.add('js');
   document.addEventListener('DOMContentLoaded', function () { apply(root.getAttribute('data-theme')); });
 })();
 
-/* Launch offer: hidden everywhere once it has ended, and the top bar hidden for anyone who closed it. */
-(function () {
-  var root = document.documentElement;
-  if (Date.now() > Date.parse('2026-12-31T21:59:59Z')) root.classList.add('promo-ended');
-  try { if (localStorage.getItem('veridyne-promo-closed') === 'LAUNCH50') root.classList.add('promo-closed'); } catch (e) {}
-})();

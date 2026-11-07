@@ -1071,7 +1071,7 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .promo-callout { margin-top: 22px; border: 1px solid rgba(0, 229, 255, 0.35); border-radius: 14px; padding: 16px 18px; background: linear-gradient(120deg, #071330, #0B2A5C); color: #EAF6FF; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; text-align: left; }
 .promo-callout p { margin: 0; max-width: 56ch; }
 .promo-callout-title { font-weight: 700; font-size: 17px; color: #FFFFFF; margin-bottom: 4px !important; }
-.promo-ended .promo-bar, .promo-ended .promo-callout, .promo-closed .promo-bar { display: none; }
+.promo-bar[hidden], .promo-callout[hidden] { display: none; }
 @media (max-width: 720px) {
   .promo-bar { font-size: 13px; }
   .promo-long, .promo-when { display: none; }
