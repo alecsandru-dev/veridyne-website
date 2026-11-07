@@ -214,16 +214,21 @@
       var day = o.ends ? new Date(o.ends).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'Europe/Bucharest' }) : '';
       var dayFull = o.ends ? new Date(o.ends).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Bucharest' }) : '';
       var left = o.uses != null && o.left != null ? o.left + ' of ' + o.uses + ' left' : '';
+      var bn = o.banner || {};
+      var showDetails = bn.details !== false;
       var text = {
         code: o.code,
         percent: pc,
-        long: pc + ' off ' + what,
-        short: pc + ' off ' + (o.certification ? 'the ' + o.certification + ' voucher' : 'certification vouchers'),
-        when: [day ? 'until ' + day : '', left].filter(Boolean).join(', '),
-        body: 'Type the code on the payment page for ' + pc + ' off ' + (o.certification ? 'the ' + o.certification + ' voucher' : 'any voucher') + ': exam, retake or maintenance.' +
-          (left || dayFull ? ' ' + [left ? left.charAt(0).toUpperCase() + left.slice(1) : '', dayFull ? 'until ' + dayFull : ''].filter(Boolean).join(', ') + '.' : '')
+        label: (bn.label || 'Launch offer') + ':',
+        long: bn.text || pc + ' off ' + what,
+        short: bn.short || pc + ' off ' + (o.certification ? 'the ' + o.certification + ' voucher' : 'certification vouchers'),
+        when: showDetails ? [day ? 'until ' + day : '', left].filter(Boolean).join(', ') : '',
+        link: bn.link || 'Get certified',
+        body: (bn.body || 'Type the code on the payment page for ' + pc + ' off ' + (o.certification ? 'the ' + o.certification + ' voucher' : 'any voucher') + ': exam, retake or maintenance.') +
+          (showDetails && (left || dayFull) ? ' ' + [left ? left.charAt(0).toUpperCase() + left.slice(1) : '', dayFull ? 'until ' + dayFull : ''].filter(Boolean).join(', ') + '.' : '')
       };
       document.querySelectorAll('[data-offer]').forEach(function (el) { el.textContent = text[el.getAttribute('data-offer')] || ''; });
+      document.querySelectorAll('.promo-when').forEach(function (el) { el.hidden = !text.when; });
       document.querySelectorAll('.promo-code').forEach(function (b) {
         b.setAttribute('aria-label', 'Copy the code ' + o.code);
         b.addEventListener('click', function () {

@@ -42,7 +42,7 @@ def promo_code_button():
 def promo_bar():
     return f'''
 <aside class="promo-bar" aria-label="Offer" hidden>
-  <p class="promo-bar-inner"><span><b>Launch offer:</b> <span class="promo-long" data-offer="long"></span><span class="promo-short" data-offer="short"></span></span>{promo_code_button()}<span class="promo-when" data-offer="when"></span><a href="https://certifications.veridyne.eu/get-certified">Get certified <span aria-hidden="true">→</span></a></p>
+  <p class="promo-bar-inner"><span><b data-offer="label"></b> <span class="promo-long" data-offer="long"></span><span class="promo-short" data-offer="short"></span></span>{promo_code_button()}<span class="promo-when" data-offer="when"></span><a href="https://certifications.veridyne.eu/get-certified"><span data-offer="link">Get certified</span> <span aria-hidden="true">→</span></a></p>
   <button class="promo-close" type="button" aria-label="Hide the offer">×</button>
 </aside>'''
 
@@ -51,7 +51,7 @@ def promo_callout():
       <div class="promo-callout" hidden>
         <div><p class="promo-callout-title"><span data-offer="percent"></span> off with {promo_code_button()}</p>
         <p data-offer="body"></p></div>
-        <a class="btn btn-cert" href="https://certifications.veridyne.eu/get-certified">Get certified</a>
+        <a class="btn btn-cert" href="https://certifications.veridyne.eu/get-certified"><span data-offer="link">Get certified</span></a>
       </div>'''
 
 def header(current):
