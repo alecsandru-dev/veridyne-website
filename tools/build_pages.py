@@ -118,7 +118,6 @@ FOOTER = '''
           <a href="/authcanvas">AuthCanvas</a>
           <a href="/companion">Veridyne Companion</a>
           <a href="/sa-sparring">SA Sparring</a>
-          <a href="/roiall">Roiall</a>
         </div>
         <div>
           <h2>Company</h2>
@@ -279,20 +278,6 @@ PRODUCTS = {
                   ('Graded answers', 'Each answer is graded the way a senior SA would grade it.'),
                   ('By invitation', 'Sign in with email or GitHub once you are invited.')],
         meta='SA Sparring, by Veridyne: a practice ground for Auth0 solutions architects, with a simulated customer and graded answers.'),
-    'roiall': dict(
-        kind='Results of creator marketing',
-        name='Roiall', cls='product-roiall', title_id='roiall-title',
-        logo='<img class="product-logo" src="/assets/roiall-lockup-on-light.png" alt="Roiall" width="1137" height="317">',
-        badge='',
-        tagline='See what creator deals really bring in.',
-        lead='Roiall shows businesses the real customers their creator and influencer deals bring, confirmed at the counter.',
-        card='The real customers your creator and influencer deals bring in.',
-        btn='<a class="btn btn-roiall" href="https://roiall.ro">Visit roiall.ro</a>',
-        shot='<img src="/assets/roiall-dashboard.png" alt="Roiall dashboard: customers brought by creators this month, cost per customer and a weekly chart" width="1600" height="810"',
-        features=[('Real customers', 'Each visit is confirmed at the counter, not guessed from clicks.'),
-                  ('Cost per customer', 'What every customer from a creator actually cost you.'),
-                  ('Week by week', 'See which campaigns and creators keep working.')],
-        meta='Roiall, by Veridyne: see the real customers your creator and influencer deals bring in, confirmed at the counter.'),
 }
 
 def product_showcase(exclude=None, group='product'):
@@ -427,7 +412,7 @@ HOME = '''
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">Eye of the Tenant, Veridyne Certifications, AuthBeam, AuthLens, AuthCanvas, Veridyne Companion, SA Sparring and Roiall. Built, hosted and supported by us.</span>
+        <span class="split-text">Eye of the Tenant, Veridyne Certifications, AuthBeam, AuthLens, AuthCanvas, Veridyne Companion and SA Sparring. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
           <img src="/assets/authlens.png" alt="" width="1600" height="940">
@@ -457,7 +442,7 @@ HOME = '''
     <div class="intro rise">
       <p class="division">Products</p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: eight products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: seven products, each made for its own users.</p>
     </div>
     PRODUCT_SHOWCASE
   </section>
@@ -496,7 +481,6 @@ HOME = '''
             <option>AuthCanvas early access</option>
             <option>Veridyne Companion</option>
             <option>SA Sparring</option>
-            <option>Roiall</option>
             <option>Something else</option>
           </select>
         </div>

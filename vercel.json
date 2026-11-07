@@ -41,6 +41,11 @@
       "source": "/logos/:file(veridyne-lockup.*)",
       "destination": "/assets/veridyne-wordmark.png",
       "permanent": false
+    },
+    {
+      "source": "/roiall",
+      "destination": "/#products",
+      "permanent": false
     }
   ],
   "headers": [
