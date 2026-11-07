@@ -111,10 +111,10 @@ FOOTER = '''
         </div>
         <div>
           <h2>Products</h2>
+          <a href="/eot">Eye of the Tenant</a>
           <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>
           <a href="/authlens">AuthLens</a>
-          <a href="/eot">Eye of the Tenant</a>
           <a href="/authcanvas">AuthCanvas</a>
           <a href="/companion">Veridyne Companion</a>
           <a href="/sa-sparring">SA Sparring</a>
@@ -173,6 +173,21 @@ def service_grid(full):
 
 # ---------- products ----------
 PRODUCTS = {
+    'eot': dict(
+        kind='Go-live monitoring for Auth0 and Okta',
+        name='Eye of the Tenant', cls='product-eot', title_id='eot-title',
+        logo='<span class="eot-mark product-logo"><img src="/assets/eot-mark.svg" alt="" width="120" height="80">Eye of the Tenant</span>',
+        badge='<p class="badge">New</p>', card_badge='New',
+        tagline='Watch your go-live, not the logs.',
+        lead='Eye of the Tenant watches your Auth0 or Okta tenant through a go-live. It reads the logs every minute, learns what normal looks like, and explains anything that breaks in plain English. It only reads; it never changes your tenant.',
+        card='Watches your Auth0 or Okta tenant through a go-live and explains anything that breaks, in plain English.',
+        btn='<a class="btn btn-eot" href="https://my.veridyne.eu/eot">Sign in to Eye of the Tenant</a>',
+        shot='<img src="/assets/eot.png" alt="Eye of the Tenant live view with sample data: an Auth0 tenant being watched through go-live, the runtime clock, the latest log read and three open findings" width="1600" height="812"',
+        caption='Shown with sample data.',
+        features=[('Read-only', 'It reads your logs every minute and never changes your tenant.'),
+                  ('Every finding explained', 'What is happening, the likely causes and what to check first.'),
+                  ('Pay for runtime only', 'Hours count only while monitoring runs. Pause any time.')],
+        meta='Eye of the Tenant, by Veridyne: go-live monitoring for Auth0 and Okta that reads your logs every minute and explains anything that breaks, in plain English.'),
     'certifications': dict(
         kind='Our own certifications for Auth0 and Okta work',
         name='Veridyne Certifications', cls='product-cert', title_id='cert-title',
@@ -219,21 +234,6 @@ PRODUCTS = {
                   ('Every rule cites the vendor', 'Each finding links the documentation it is based on, with a fix.'),
                   ('Drift, weekly', 'A weekly run shows what was fixed, what regressed and what is new.')],
         meta='AuthLens, by Veridyne: read-only posture reports for Auth0, Okta and Microsoft Entra ID, with the vendor source and the exact fix for every finding.'),
-    'eot': dict(
-        kind='Go-live monitoring for Auth0 and Okta',
-        name='Eye of the Tenant', cls='product-eot', title_id='eot-title',
-        logo='<span class="eot-mark product-logo"><img src="/assets/eot-mark.svg" alt="" width="120" height="80">Eye of the Tenant</span>',
-        badge='<p class="badge">New</p>', card_badge='New',
-        tagline='Watch your go-live, not the logs.',
-        lead='Eye of the Tenant watches your Auth0 or Okta tenant through a go-live. It reads the logs every minute, learns what normal looks like, and explains anything that breaks in plain English. It only reads; it never changes your tenant.',
-        card='Watches your Auth0 or Okta tenant through a go-live and explains anything that breaks, in plain English.',
-        btn='<a class="btn btn-eot" href="https://my.veridyne.eu/eot">Sign in to Eye of the Tenant</a>',
-        shot='<img src="/assets/eot.png" alt="Eye of the Tenant live view with sample data: an Auth0 tenant being watched through go-live, the runtime clock, the latest log read and three open findings" width="1600" height="812"',
-        caption='Shown with sample data.',
-        features=[('Read-only', 'It reads your logs every minute and never changes your tenant.'),
-                  ('Every finding explained', 'What is happening, the likely causes and what to check first.'),
-                  ('Pay for runtime only', 'Hours count only while monitoring runs. Pause any time.')],
-        meta='Eye of the Tenant, by Veridyne: go-live monitoring for Auth0 and Okta that reads your logs every minute and explains anything that breaks, in plain English.'),
     'authcanvas': dict(
         kind='Identity journey design',
         name='AuthCanvas', cls='product-ac', title_id='ac-title',
@@ -252,18 +252,19 @@ PRODUCTS = {
         kind='The mobile app for clients and teams',
         name='Veridyne Companion', cls='product-companion', title_id='companion-title',
         logo='<span class="companion-mark"><img src="/assets/veridyne-icon-dark.png" alt="" width="188" height="123">Companion</span>',
-        badge='<p class="badge">Coming soon</p>', card_badge='Coming soon',
+        badge='<p class="badge">Now on iOS</p>', card_badge='Now on iOS',
         tagline='Your work with Veridyne, on your phone.',
         lead='The Veridyne companion app gives clients and employees their portal in their pocket, and approves every sign-in with VeriGate, our built-in authenticator.',
         card='Your Veridyne portal on your phone, with VeriGate to approve every sign-in.',
-        btn='''<span class="store-badge"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Coming soon to</small>iOS</span></span>
-        <span class="store-badge"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#00A0FF" d="M1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924z"/><path fill="#00F076" d="M13.544 10.989l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973z"/><path fill="#FFE000" d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594z"/><path fill="#FF3A44" d="M13.544 13.056l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg><span><small>Coming soon to</small>Android</span></span>''',
-        shot='<img src="/assets/companion.png" alt="Two phones running the Veridyne companion app with sample data: a client home with projects and hours delivered, and an employee profile with leave and work schedule" width="1040" height="940"',
+        btn='''<a class="store-badge" href="https://apps.apple.com/app/id6829765330"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small>App Store</span></a>
+        <span class="store-badge"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#00A0FF" d="M1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924z"/><path fill="#00F076" d="M13.544 10.989l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973z"/><path fill="#FFE000" d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594z"/><path fill="#FF3A44" d="M13.544 13.056l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg><span><small>In beta testing</small>Android, coming soon</span></span>
+        <p class="store-note">On the App Store worldwide. In the EU it follows once Apple approves it there.</p>''',
+        shot='<img src="/assets/companion-v2.png" alt="Two phones running the Veridyne companion app with sample data: a client home with Eye of the Tenant watching a go-live and a project, and an employee home with today\'s hours, this week and meetings" width="1040" height="940"',
         caption='Screens from the app, shown with sample data.',
         features=[('For clients', 'Follow your projects, the hours delivered and the latest notes from Veridyne.'),
                   ('For employees', 'See your profile and schedule, request leave and photograph receipts.'),
                   ('VeriGate built in', 'Approve sign-ins to Veridyne apps with a push and your fingerprint.')],
-        meta='Veridyne Companion: the mobile app for Veridyne clients and employees, with VeriGate to approve every sign-in. Coming soon to iOS and Android.'),
+        meta='Veridyne Companion: the mobile app for Veridyne clients and employees, with VeriGate to approve every sign-in. On the App Store now, and coming soon to Android.'),
     'sa-sparring': dict(
         kind='Practice for Auth0 architects',
         name='SA Sparring', cls='product-sas', title_id='sas-title',
@@ -426,7 +427,7 @@ HOME = '''
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">Veridyne Certifications, AuthBeam, AuthLens, Eye of the Tenant, AuthCanvas, Veridyne Companion, SA Sparring and Roiall. Built, hosted and supported by us.</span>
+        <span class="split-text">Eye of the Tenant, Veridyne Certifications, AuthBeam, AuthLens, AuthCanvas, Veridyne Companion, SA Sparring and Roiall. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
           <img src="/assets/authlens.png" alt="" width="1600" height="940">
@@ -488,10 +489,10 @@ HOME = '''
           <label for="cf-topic">About</label>
           <select id="cf-topic" name="topic">
             <option>Identity &amp; access consulting</option>
+            <option>Eye of the Tenant</option>
             <option>Veridyne Certifications</option>
             <option>AuthBeam</option>
             <option>AuthLens access</option>
-            <option>Eye of the Tenant</option>
             <option>AuthCanvas early access</option>
             <option>Veridyne Companion</option>
             <option>SA Sparring</option>
@@ -575,7 +576,7 @@ SERVICES_PAGE = '''
 
 pages = {
     'index.html': head('Veridyne Solutions — Auth0 and Okta consulting, and our own software',
-                       'Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds Veridyne Certifications, AuthLens, Eye of the Tenant, AuthBeam, AuthCanvas and more.', '/')
+                       'Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds Eye of the Tenant, Veridyne Certifications, AuthLens, AuthBeam, AuthCanvas and more.', '/')
                   + header('home') + HOME + FOOTER,
     'services.html': head('Professional Services — Veridyne Solutions',
                           'Auth0 and Okta consulting from Bucharest: new setups, migrations, security reviews and developer training, secure by default.', '/services')

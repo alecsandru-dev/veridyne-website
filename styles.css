@@ -365,6 +365,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .product-companion .product-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 .store-badge { display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 8px 18px; border-radius: 12px; background: #0D2443; border: 1px solid rgba(255, 255, 255, 0.22); color: #fff; font-weight: 600; font-size: 17px; line-height: 1.15; }
 .store-badge small { display: block; font-size: 11px; font-weight: 400; color: var(--on-dark-muted); }
+a.store-badge { text-decoration: none; transition: border-color 160ms, background 160ms; }
+a.store-badge:hover { border-color: rgba(92, 203, 255, 0.7); background: #12305A; }
+.store-note { flex-basis: 100%; margin: 4px 0 0; text-align: center; font-size: 14px; color: var(--on-dark-muted); }
 .product-authbeam { background: var(--ab-ground); color: #fff; position: relative; }
 .product-authbeam::before {
   content: ""; position: absolute; left: 50%; top: 32%; width: 1200px; height: 700px; transform: translateX(-50%); pointer-events: none;

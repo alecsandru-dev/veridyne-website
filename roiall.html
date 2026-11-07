@@ -74,7 +74,13 @@
     <div class="pshow rise">
       <div class="pshow-tabs" role="radiogroup" aria-label="Products">
         <label class="pshow-tab">
-          <input type="radio" name="more-product" value="certifications" checked>
+          <input type="radio" name="more-product" value="eot" checked>
+          <span class="pshow-tab-name">Eye of the Tenant</span>
+          <span class="pshow-tab-line">Go-live monitoring for Auth0 and Okta</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+        <label class="pshow-tab">
+          <input type="radio" name="more-product" value="certifications">
           <span class="pshow-tab-name">Veridyne Certifications</span>
           <span class="pshow-tab-line">Our own certifications for Auth0 and Okta work</span>
           <span class="pshow-time" aria-hidden="true"><span></span></span>
@@ -89,12 +95,6 @@
           <input type="radio" name="more-product" value="authlens">
           <span class="pshow-tab-name">AuthLens</span>
           <span class="pshow-tab-line">Posture reports for Auth0, Okta and Entra ID</span>
-          <span class="pshow-time" aria-hidden="true"><span></span></span>
-        </label>
-        <label class="pshow-tab">
-          <input type="radio" name="more-product" value="eot">
-          <span class="pshow-tab-name">Eye of the Tenant</span>
-          <span class="pshow-tab-line">Go-live monitoring for Auth0 and Okta</span>
           <span class="pshow-time" aria-hidden="true"><span></span></span>
         </label>
         <label class="pshow-tab">
@@ -117,6 +117,15 @@
         </label>
       </div>
       <div class="pshow-stage">
+        <a class="pshow-panel pcard-eot" href="/eot" data-for="eot">
+          <span class="pshow-copy">
+            <span class="pcard-top"><span class="eot-mark pcard-logo"><img src="/assets/eot-mark.svg" alt="" width="120" height="80">Eye of the Tenant</span><span class="badge">New</span></span>
+            <span class="pcard-tagline">Watch your go-live, not the logs.</span>
+            <span class="pcard-text">Watches your Auth0 or Okta tenant through a go-live and explains anything that breaks, in plain English.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about Eye of the Tenant</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/eot.png" alt="Eye of the Tenant live view with sample data: an Auth0 tenant being watched through go-live, the runtime clock, the latest log read and three open findings" width="1600" height="812" loading="lazy"></span>
+        </a>
         <a class="pshow-panel pcard-certifications" href="/certifications" data-for="certifications">
           <span class="pshow-copy">
             <span class="pcard-top"><img class="pcard-logo" src="/assets/certifications-lockup.png" alt="Veridyne Certifications" width="469" height="81"><span class="badge">New</span></span>
@@ -144,15 +153,6 @@
           </span>
           <span class="pshow-shot"><img src="/assets/authlens.png" alt="AuthLens: connect a tenant with read scopes, read its configuration, and get a report with a score and findings" width="1600" height="940" loading="lazy"></span>
         </a>
-        <a class="pshow-panel pcard-eot" href="/eot" data-for="eot">
-          <span class="pshow-copy">
-            <span class="pcard-top"><span class="eot-mark pcard-logo"><img src="/assets/eot-mark.svg" alt="" width="120" height="80">Eye of the Tenant</span><span class="badge">New</span></span>
-            <span class="pcard-tagline">Watch your go-live, not the logs.</span>
-            <span class="pcard-text">Watches your Auth0 or Okta tenant through a go-live and explains anything that breaks, in plain English.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about Eye of the Tenant</span></span>
-          </span>
-          <span class="pshow-shot"><img src="/assets/eot.png" alt="Eye of the Tenant live view with sample data: an Auth0 tenant being watched through go-live, the runtime clock, the latest log read and three open findings" width="1600" height="812" loading="lazy"></span>
-        </a>
         <a class="pshow-panel pcard-authcanvas" href="/authcanvas" data-for="authcanvas">
           <span class="pshow-copy">
             <span class="pcard-top"><img class="pcard-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315"><span class="badge">Private alpha</span></span>
@@ -164,12 +164,12 @@
         </a>
         <a class="pshow-panel pcard-companion" href="/companion" data-for="companion">
           <span class="pshow-copy">
-            <span class="pcard-top"><span class="companion-mark pcard-logo"><img src="/assets/veridyne-icon-dark.png" alt="" width="188" height="123">Companion</span><span class="badge">Coming soon</span></span>
+            <span class="pcard-top"><span class="companion-mark pcard-logo"><img src="/assets/veridyne-icon-dark.png" alt="" width="188" height="123">Companion</span><span class="badge">Now on iOS</span></span>
             <span class="pcard-tagline">Your work with Veridyne, on your phone.</span>
             <span class="pcard-text">Your Veridyne portal on your phone, with VeriGate to approve every sign-in.</span>
             <span class="pcard-more">Learn more<span class="sr-only"> about Veridyne Companion</span></span>
           </span>
-          <span class="pshow-shot"><img src="/assets/companion.png" alt="Two phones running the Veridyne companion app with sample data: a client home with projects and hours delivered, and an employee profile with leave and work schedule" width="1040" height="940" loading="lazy"></span>
+          <span class="pshow-shot"><img src="/assets/companion-v2.png" alt="Two phones running the Veridyne companion app with sample data: a client home with Eye of the Tenant watching a go-live and a project, and an employee home with today's hours, this week and meetings" width="1040" height="940" loading="lazy"></span>
         </a>
         <a class="pshow-panel pcard-sa-sparring" href="/sa-sparring" data-for="sa-sparring">
           <span class="pshow-copy">
@@ -202,10 +202,10 @@
         </div>
         <div>
           <h2>Products</h2>
+          <a href="/eot">Eye of the Tenant</a>
           <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>
           <a href="/authlens">AuthLens</a>
-          <a href="/eot">Eye of the Tenant</a>
           <a href="/authcanvas">AuthCanvas</a>
           <a href="/companion">Veridyne Companion</a>
           <a href="/sa-sparring">SA Sparring</a>
