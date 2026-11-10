@@ -961,6 +961,7 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
   opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.99);
   transition: opacity 420ms var(--ease), transform 520ms var(--ease), visibility 0s linear 420ms;
 }
+.pshow:has(input[value="verigate"]:checked) [data-for="verigate"],
 .pshow:has(input[value="certifications"]:checked) [data-for="certifications"],
 .pshow:has(input[value="authbeam"]:checked) [data-for="authbeam"],
 .pshow:has(input[value="authlens"]:checked) [data-for="authlens"],
@@ -1047,6 +1048,31 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .product-eot .features h3::before { content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; margin-bottom: 14px; background: linear-gradient(90deg, #00E6C3, #06CFFB); }
 .btn-eot { background: #06CFFB; color: #04202B; }
 .btn-eot:hover { background: #4DDCFC; }
+/* VeriGate: the app's own soft lime on black */
+.vg-mark { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.02em; color: #F4F5EE; white-space: nowrap; }
+.vg-mark img { height: 1.25em; width: auto; border-radius: 22%; }
+.pshow-panel .vg-mark.pcard-logo, .vg-mark.pcard-logo { height: auto; font-size: 24px; }
+.pcard-verigate { background: #000; color: #F4F5EE; }
+.pcard-verigate::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 70% at 80% 100%, rgba(195, 219, 86, 0.14), transparent 70%); }
+.pcard-verigate > * { position: relative; }
+.pcard-verigate .badge, .product-verigate .badge { white-space: nowrap; background: rgba(195, 219, 86, 0.12); color: #C3DB56; border: 1px solid rgba(195, 219, 86, 0.45); }
+.pcard-verigate .pcard-tagline { color: #fff; }
+.pcard-verigate .pcard-text { color: #A3A39B; }
+.pcard-verigate .pcard-more { color: #C3DB56; }
+.pcard-verigate .pshow-shot img { border: 1px solid rgba(163, 163, 155, 0.2); border-width: 1px 0 0 1px; }
+.product-verigate { background: #000; color: #F4F5EE; position: relative; }
+.product-verigate::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(50% 40% at 50% 55%, rgba(195, 219, 86, 0.12), transparent 70%); }
+.product-verigate > * { position: relative; }
+.product-verigate .product-lead, .product-verigate .features p, .product-verigate .crumb { color: #A3A39B; }
+.product-verigate .product-shot { border: 1px solid rgba(163, 163, 155, 0.2); box-shadow: 0 40px 120px -50px rgba(195, 219, 86, 0.35); background: #000; }
+.product-verigate .features h3::before { content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; margin-bottom: 14px; background: #C3DB56; }
+.product-verigate .gallery-shot { background: #0E0F0C; border-color: rgba(163, 163, 155, 0.2); }
+.product-verigate .gallery-shot figcaption { color: #A3A39B; }
+.product-verigate .gallery-note { color: #8A8A82; }
+.btn-verigate { background: #C3DB56; color: #0B0D00; }
+.btn-verigate:hover { background: #D2E67A; }
+.btn-verigate-ghost { background: transparent; color: #C3DB56; box-shadow: inset 0 0 0 1px rgba(195, 219, 86, 0.5); }
+.btn-verigate-ghost:hover { background: rgba(195, 219, 86, 0.1); }
 
 /* ---------- Veridyne Certifications ---------- */
 .product-cert { background: #081230; color: #F2F6FF; position: relative; }

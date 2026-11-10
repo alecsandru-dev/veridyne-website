@@ -132,6 +132,7 @@ FOOTER = '''
         </div>
         <div>
           <h2>Products</h2>
+          <a href="/verigate">VeriGate</a>
           <a href="/eot">Eye of the Tenant</a>
           <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>
@@ -193,6 +194,24 @@ def service_grid(full):
 
 # ---------- products ----------
 PRODUCTS = {
+    'verigate': dict(
+        kind='A free app for two-step sign-in codes',
+        name='VeriGate', cls='product-verigate', title_id='verigate-title',
+        logo='<span class="vg-mark product-logo"><img src="/assets/verigate-mark.svg" alt="" width="80" height="80">VeriGate</span>',
+        badge='<p class="badge">Own your own codes soon</p>', card_badge='Own your own codes soon',
+        tagline='Your codes. Nobody else\'s.',
+        lead='VeriGate keeps your two-step sign-in codes on your phone. There is no account to make. Codes are encrypted before anything leaves the phone, and the optional backup is one we can\'t read. The apps will be open source when VeriGate reaches the stores.',
+        card='Two-step sign-in codes that stay yours: no account, an encrypted backup we can\'t read, open source apps.',
+        btn='<a class="btn btn-verigate" href="https://verigate.me">Visit verigate.me</a>\n        <a class="btn btn-verigate-ghost" href="https://verigate.me/whitepaper">Read the whitepaper</a>',
+        shot='<img src="/assets/verigate.png" alt="VeriGate on a phone and on an open foldable, showing sign-in codes for sample accounts" width="1600" height="900"',
+        features=[('No account', 'No email, no phone number, no name. Nothing about you to hand over.'),
+                  ('A backup we can\'t read', 'Encrypted on your phone first, sent through a relay that hides your IP address.'),
+                  ('Open source apps', 'The code goes public when VeriGate reaches the stores, for anyone to review.')],
+        gallery=[('/assets/verigate-whitepaper.jpg', 1600, 992, 'The whitepaper explains every part, page by page.', 'Two pages of the VeriGate whitepaper: how the keys fit together, and the PIN check'),
+                 ('/assets/verigate-privacy.jpg', 1600, 993, 'What stays on your phone, and the little that reaches us.', 'The VeriGate privacy page on verigate.me'),
+                 ('/assets/verigate-open-source.jpg', 1600, 992, 'The apps\' code goes public at store launch.', 'The VeriGate open source page on verigate.me')],
+        caption='Screens from the test builds and from verigate.me, shown with sample accounts. Not yet in the app stores. Built for the Galaxy Z Fold 8 and iPhone Duo too.',
+        meta='VeriGate, by Veridyne: a free app for two-step sign-in codes. No account, an encrypted backup we can\'t read, open source apps. Coming soon to the App Store and Google Play.'),
     'eot': dict(
         kind='Go-live monitoring for Auth0 and Okta',
         name='Eye of the Tenant', cls='product-eot', title_id='eot-title',
@@ -307,7 +326,7 @@ def product_showcase(exclude=None, group='product'):
     items = [(slug, p) for slug, p in PRODUCTS.items() if slug != exclude]
     tabs, panels = [], []
     for i, (slug, p) in enumerate(items):
-        logo = p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"')
+        logo = p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"')
         badge = f'<span class="badge">{p["card_badge"]}</span>' if p.get('card_badge') else ''
         tabs.append(f'''
         <label class="pshow-tab">
@@ -440,7 +459,7 @@ HOME = '''
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">Eye of the Tenant, Veridyne Certifications, AuthBeam, AuthLens, AuthCanvas, Veridyne Companion and SA Sparring. Built, hosted and supported by us.</span>
+        <span class="split-text">VeriGate, Eye of the Tenant, Veridyne Certifications, AuthBeam, AuthLens, AuthCanvas, Veridyne Companion and SA Sparring. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
           <img src="/assets/authlens.png" alt="" width="1600" height="940">
@@ -470,7 +489,7 @@ HOME = '''
     <div class="intro rise">
       <p class="division">Products</p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: seven products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: eight products, each made for its own users.</p>
     </div>
     PRODUCT_SHOWCASE
   </section>
@@ -502,6 +521,7 @@ HOME = '''
           <label for="cf-topic">About</label>
           <select id="cf-topic" name="topic">
             <option>Identity &amp; access consulting</option>
+            <option>VeriGate</option>
             <option>Eye of the Tenant</option>
             <option>Veridyne Certifications</option>
             <option>AuthBeam</option>

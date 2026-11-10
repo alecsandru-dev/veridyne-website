@@ -6,7 +6,7 @@
 import { seal } from './_contact-token.js';
 
 const LIMITS = { name: 100, email: 200, company: 150, topic: 60, message: 4000 };
-const TOPICS = ['Identity & access consulting', 'Veridyne Certifications', 'AuthBeam', 'AuthLens access', 'Eye of the Tenant', 'AuthCanvas early access', 'Veridyne Companion', 'SA Sparring', 'Something else'];
+const TOPICS = ['Identity & access consulting', 'VeriGate', 'Veridyne Certifications', 'AuthBeam', 'AuthLens access', 'Eye of the Tenant', 'AuthCanvas early access', 'Veridyne Companion', 'SA Sparring', 'Something else'];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Scam senders register lookalike domains such as search-getauthlens.com and pitch search listings or SEO.

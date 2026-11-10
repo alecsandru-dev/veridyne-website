@@ -78,7 +78,13 @@
     <div class="pshow rise">
       <div class="pshow-tabs" role="radiogroup" aria-label="Products">
         <label class="pshow-tab">
-          <input type="radio" name="more-product" value="certifications" checked>
+          <input type="radio" name="more-product" value="verigate" checked>
+          <span class="pshow-tab-name">VeriGate</span>
+          <span class="pshow-tab-line">A free app for two-step sign-in codes</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+        <label class="pshow-tab">
+          <input type="radio" name="more-product" value="certifications">
           <span class="pshow-tab-name">Veridyne Certifications</span>
           <span class="pshow-tab-line">Our own certifications for Auth0 and Okta work</span>
           <span class="pshow-time" aria-hidden="true"><span></span></span>
@@ -115,6 +121,15 @@
         </label>
       </div>
       <div class="pshow-stage">
+        <a class="pshow-panel pcard-verigate" href="/verigate" data-for="verigate">
+          <span class="pshow-copy">
+            <span class="pcard-top"><span class="vg-mark pcard-logo"><img src="/assets/verigate-mark.svg" alt="" width="80" height="80">VeriGate</span><span class="badge">Own your own codes soon</span></span>
+            <span class="pcard-tagline">Your codes. Nobody else's.</span>
+            <span class="pcard-text">Two-step sign-in codes that stay yours: no account, an encrypted backup we can't read, open source apps.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about VeriGate</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/verigate.png" alt="VeriGate on a phone and on an open foldable, showing sign-in codes for sample accounts" width="1600" height="900" loading="lazy"></span>
+        </a>
         <a class="pshow-panel pcard-certifications" href="/certifications" data-for="certifications">
           <span class="pshow-copy">
             <span class="pcard-top"><img class="pcard-logo" src="/assets/certifications-lockup.png" alt="Veridyne Certifications" width="469" height="81"><span class="badge">New</span></span>
@@ -191,6 +206,7 @@
         </div>
         <div>
           <h2>Products</h2>
+          <a href="/verigate">VeriGate</a>
           <a href="/eot">Eye of the Tenant</a>
           <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>

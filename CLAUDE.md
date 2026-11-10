@@ -8,7 +8,7 @@ framework, no build step on Vercel. Live at https://www.veridyne.eu. Design = "V
 compact), rebuilt on the Oct 2026 brand. Offer: two things only, consulting and in-house products (no programs/packages).
 
 ## Status
-Live. Last commit a22cb5e (2026-11-08). Pages: / , /services, /certifications, /authbeam, /authlens, /eot, /authcanvas,
+Live. Last commit a22cb5e (2026-11-08). Pages: / , /services, /verigate, /certifications, /authbeam, /authlens, /eot, /authcanvas,
 /companion, /sa-sparring, /privacy, /signin. Roiall is benched (2026-11-08: off list, footer, form, sitemap; /roiall
 redirects to /#products, temporary). Rentolio is not shown.
 
@@ -18,7 +18,7 @@ Static HTML + one `styles.css` + `main.js` + `js-flag.js`; `api/*.js` Vercel Nod
 
 ## Repo layout
 - `tools/build_pages.py` source of shared head/header/footer/gate dialog + PRODUCTS dict + SERVICES + HOME/SERVICES_PAGE.
-  Generated: index, services, certifications, authbeam, authlens, eot, authcanvas, companion, sa-sparring, signin.
+  Generated: index, services, verigate, certifications, authbeam, authlens, eot, authcanvas, companion, sa-sparring, signin.
   `privacy.html`, `styles.css`, `main.js`, `sitemap.xml`, `robots.txt` are hand-edited.
 - `api/contact.js`, `api/contact-confirm.js`, `api/_contact-token.js` contact form (see below).
 - `assets/` logos, product screenshots, `photos/` (HQ + business card), OG image, email-signature banner. Public,

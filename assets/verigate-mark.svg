@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="VeriGate V shaped lock app icon">
+ <defs>
+  <linearGradient id="bg" x1="0" y1="0" x2=".2" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#1E1F1B"/><stop offset=".34" stop-color="#0E0F0C"/><stop offset="1" stop-color="#000000"/></linearGradient>
+  <radialGradient id="bgLight" cx=".28" cy=".08" r="1"><stop stop-color="#3A3D30" stop-opacity=".62"/><stop offset=".7" stop-color="#0E0F0C" stop-opacity="0"/></radialGradient>
+  <linearGradient id="leftV" x1=".03" y1=".1" x2=".86" y2=".9" gradientUnits="objectBoundingBox"><stop stop-color="#C9CDBE"/><stop offset=".3" stop-color="#9DA193"/><stop offset=".73" stop-color="#6C7064"/><stop offset="1" stop-color="#45483F"/></linearGradient>
+  <linearGradient id="rightV" x1="1" y1="0" x2=".08" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#FFFFFF"/><stop offset=".32" stop-color="#F1F3E8"/><stop offset=".72" stop-color="#D5D8CA"/><stop offset="1" stop-color="#B4B8A8"/></linearGradient>
+  <linearGradient id="shackle" x1=".2" y1="0" x2=".8" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#DDEC8D"/><stop offset=".43" stop-color="#C3DB56"/><stop offset="1" stop-color="#9AB037"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="17"/></filter>
+ </defs>
+ <!-- The rounded navy app tile -->
+ <rect x="32" y="32" width="960" height="960" rx="220" fill="url(#bg)"/>
+ <rect x="32" y="32" width="960" height="960" rx="220" fill="url(#bgLight)"/>
+ <!-- V: two broad rounded arms, crossing only at the bottom; left arm darker, right arm cyan -->
+ <path d="M 173 333 H 295 Q 318 333 332 359 L 519 667 L 459 767 Q 441 798 409 771 L 151 389 Q 133 355 153 340 Q 161 333 173 333 Z" fill="url(#leftV)"/>
+ <path d="M 727 333 H 854 Q 881 333 876 359 Q 875 370 866 386 L 607 771 Q 595 791 569 791 H 458 Q 441 791 430 776 Q 462 798 485 765 L 672 459 L 728 355 Q 736 333 727 333 Z" fill="url(#rightV)"/>
+ <!-- Rounded lower join defining the recognizable V -->
+ <path d="M 430 776 Q 468 807 511 777 L 565 696 L 608 770 Q 596 790 569 791 H 458 Q 440 791 430 776 Z" fill="#45483F" opacity=".22"/>
+ <!-- Padlock arch: drawn as a thick U-shaped outline, open at bottom -->
+ <path d="M 391 352 V 274 C 391 207 444 157 512 157 C 580 157 633 207 633 274 V 352" fill="none" stroke="url(#shackle)" stroke-width="48" stroke-linecap="round"/>
+ <!-- dark center lockhole silhouette with white keyhole -->
+ <path d="M 512 387 C 477 387 451 413 451 448 C 451 474 466 495 487 507 L 476 565 Q 474 581 491 581 H 533 Q 550 581 548 565 L 537 507 C 558 495 573 474 573 448 C 573 413 547 387 512 387 Z" fill="#000000" opacity=".55"/>
+ <circle cx="512" cy="452" r="35" fill="#F7F9EE"/>
+ <path d="M 497 471 H 527 L 537 545 Q 538 556 527 556 H 497 Q 486 556 487 545 Z" fill="#F7F9EE"/>
+ </svg>
