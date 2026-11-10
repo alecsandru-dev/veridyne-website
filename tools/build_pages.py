@@ -386,6 +386,12 @@ HOME = '''
 <main id="main">
 
   <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-stage">
+    <!-- Ambient loop: decorative, muted, started by main.js unless the visitor prefers reduced motion -->
+    <video class="hero-video" muted loop playsinline preload="none" poster="/assets/hero/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+      <source src="/assets/hero/hero-loop.webm" type="video/webm">
+      <source src="/assets/hero/hero-loop.mp4" type="video/mp4">
+    </video>
     <div class="hero-copy">
       <p class="pill rise"><span class="pill-dot"></span>Identity and access, Auth0 and Okta</p>
       <h1 id="hero-title" class="rise">Secure sign-in, built right from the first login.</h1>
@@ -394,6 +400,7 @@ HOME = '''
         <a class="btn" href="#contact" data-topic="Identity &amp; access consulting">Book a free call</a>
         <a class="link-more" href="/services">Our services</a>
       </div>
+    </div>
     </div>
 
     <!-- A sign-in moving through its checks: decorative, the text above says it all -->

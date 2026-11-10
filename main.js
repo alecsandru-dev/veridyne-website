@@ -8,6 +8,24 @@
   onScrollHeader();
   window.addEventListener('scroll', onScrollHeader, { passive: true });
 
+  /* ---------- Hero video: play only with motion allowed, pause while off screen ---------- */
+  var heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    if (reduce) {
+      heroVideo.remove();
+    } else {
+      heroVideo.preload = 'auto';
+      var playHero = function () { var p = heroVideo.play(); if (p && p.catch) p.catch(function () {}); };
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) playHero(); else heroVideo.pause(); });
+        }, { threshold: 0.05 }).observe(heroVideo);
+      } else {
+        playHero();
+      }
+    }
+  }
+
   /* ---------- Theme switch (the theme itself is set by js-flag.js before paint) ---------- */
   var root = document.documentElement;
   var themeButtons = document.querySelectorAll('.theme-toggle');
