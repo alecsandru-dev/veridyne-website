@@ -177,9 +177,9 @@ SERVICES = [
     ('review', 'Security reviews',
      'Findings ranked by risk, with a fix for each one.',
      'A review of the setup you already run, with findings ranked by risk and a fix for each one.'),
-    ('train', 'Developer training',
+    ('train', 'IAM team training',
      'Hands-on sessions for the team who will own it.',
-     'Hands-on sessions for the developers who will own the setup after we leave.'),
+     'Hands-on sessions for the IAM team who will own the setup after we leave.'),
 ]
 
 def service_grid(full):
@@ -591,7 +591,7 @@ pages = {
                        'Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds Eye of the Tenant, Veridyne Certifications, AuthLens, AuthBeam, AuthCanvas and more.', '/')
                   + header('home') + HOME + FOOTER,
     'services.html': head('Professional Services — Veridyne Solutions',
-                          'Auth0 and Okta consulting from Bucharest: new setups, migrations, security reviews and developer training, secure by default.', '/services')
+                          'Auth0 and Okta consulting from Bucharest: new setups, migrations, security reviews and IAM team training, secure by default.', '/services')
                      + header('services') + SERVICES_PAGE + FOOTER,
 }
 for slug in PRODUCTS:
