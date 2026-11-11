@@ -272,6 +272,15 @@ PRODUCTS = {
         features=[('Read-only by design', 'One app with read scopes only. Nothing in your tenant changes.'),
                   ('Every rule cites the vendor', 'Each finding links the documentation it is based on, with a fix.'),
                   ('Drift, weekly', 'A weekly run shows what was fixed, what regressed and what is new.')],
+        extra='''
+    <aside class="lensmark-callout rise" aria-labelledby="lensmark-title">
+      <div>
+        <p class="lensmark-kind">New · Lensmark</p>
+        <h2 id="lensmark-title">A profile your tenant can meet</h2>
+        <p>Lensmark is a short set of identity rules a little above the OAuth 2.0 and OpenID Connect baseline, built in the way SMART on FHIR and FAPI are. Every AuthLens report shows the Lensmark level a tenant reaches: Level 1 Essentials or Level 2 Strong.</p>
+      </div>
+      <a class="btn btn-authlens" href="https://getauthlens.com/lensmark">Read the Lensmark rules</a>
+    </aside>''',
         meta='AuthLens, by Veridyne: read-only posture reports for Auth0, Okta and Microsoft Entra ID, with the vendor source and the exact fix for every finding.'),
     'authcanvas': dict(
         kind='Identity journey design',
@@ -381,7 +390,7 @@ def product_page(slug):
     <figure class="product-shot rise">
       {p['shot']}>{caption}
     </figure>
-    <ul class="features rise">{feats}</ul>{gallery}
+    <ul class="features rise">{feats}</ul>{p.get('extra', '')}{gallery}
   </section>
 
   <section class="cta-band" aria-labelledby="cta-title">

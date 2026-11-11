@@ -1127,3 +1127,10 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
   .promo-short { display: inline; }
   .promo-callout .btn { width: 100%; }
 }
+
+/* AuthLens page: the Lensmark callout under the features. */
+.lensmark-callout { max-width: 1080px; margin: 56px auto 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; padding: 26px 28px; border-radius: 18px; border: 1px solid rgba(16, 185, 129, 0.35); background: #112528; text-align: left; }
+.lensmark-callout > div { flex: 1 1 420px; min-width: 0; }
+.lensmark-callout h2 { font-size: 22px; letter-spacing: -0.01em; margin: 0 0 8px; color: #EEF5F2; }
+.lensmark-callout p { margin: 0; color: #A9C1BB; font-size: 15px; max-width: 62ch; }
+.lensmark-kind { font-family: "Courier New", ui-monospace, monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; font-size: 12.5px; color: #6EE7B7 !important; margin-bottom: 8px !important; }
