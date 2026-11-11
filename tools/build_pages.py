@@ -98,7 +98,7 @@ def gate_panel(title_id, closable):
     return f'''<div class="gate-panel" data-state="ready">
     <div class="gate-emblem" aria-hidden="true">
       <svg class="gate-ring" viewBox="0 0 120 120"><circle class="gate-track" cx="60" cy="60" r="54"/><circle class="gate-sweep" cx="60" cy="60" r="54" pathLength="100"/></svg>
-      <svg class="gate-lock" viewBox="0 0 24 24"><path class="gate-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/><rect x="4.5" y="11" width="15" height="10" rx="2.5"/><path d="M12 15v2.2"/></svg>
+      <svg class="gate-lock" viewBox="0 0 24 24"><path class="gate-keyhole" d="M12 3.6a4.4 4.4 0 0 1 2.5 8l1.5 8.8H8l1.5-8.8a4.4 4.4 0 0 1 2.5-8z"/></svg>
     </div>
     <p class="gate-status" role="status">Secure channel ready</p>
     <h2 id="{title_id}">Secure sign-in</h2>
@@ -395,6 +395,8 @@ def product_page(slug):
     <ul class="features rise">{feats}</ul>{p.get('extra', '')}{gallery}
   </section>
 
+  <div class="thread" aria-hidden="true"></div>
+
   <section class="cta-band" aria-labelledby="cta-title">
     <div class="cta-inner rise">
       <h2 id="cta-title">Questions about {p['name']}?</h2>
@@ -542,20 +544,30 @@ HOME = '''
 # ---------- services ----------
 SERVICES_PAGE = '''
 <main id="main">
-  <section class="page-hero" aria-labelledby="page-title">
-    <div class="intro rise">
-      <p class="division">Professional Services</p>
-      <h1 id="page-title">Auth0 and Okta,<br> set up properly.</h1>
-      <p class="lead">We plan, build and review how customers and staff sign in. Every engagement ends with documentation your team can own.</p>
-      <div class="hero-actions">
-        <a class="btn" href="/?topic=Identity%20%26%20access%20consulting#contact">Book a free call</a>
-        <a class="link-more" href="#approach">How we work</a>
+  <section class="hero hero-sub" aria-labelledby="page-title">
+    <div class="hero-stage">
+      <picture class="hero-pic">
+        <source type="image/webp" srcset="/assets/vie/services-hero.webp">
+        <img class="hero-scene" src="/assets/vie/services-hero.jpg" alt="" width="1400" height="966" fetchpriority="high">
+      </picture>
+      <div class="hero-copy">
+        <p class="pill rise"><span class="pill-dot"></span>Professional Services</p>
+        <h1 id="page-title" class="rise">Auth0 and Okta,<br> set up properly.</h1>
+        <p class="lead rise">We plan, build and review how customers and staff sign in. Every engagement ends with documentation your team can own.</p>
+        <div class="hero-actions rise">
+          <a class="btn" href="/?topic=Identity%20%26%20access%20consulting#contact">Book a free call</a>
+          <a class="link-more" href="#approach">How we work</a>
+        </div>
       </div>
     </div>
   </section>
 
+  <div class="thread" aria-hidden="true"></div>
+
   <section class="services services-page" aria-label="What we do">
     SERVICE_GRID
+
+    <div class="thread thread-short" aria-hidden="true"></div>
 
     <div class="security rise" id="security">
       <h2>Secure by default</h2>
@@ -566,6 +578,8 @@ SERVICES_PAGE = '''
         <li><strong>Logs you can audit</strong><span>Sign-in events streamed to where your team already looks.</span></li>
       </ul>
     </div>
+
+    <div class="thread thread-short" aria-hidden="true"></div>
 
     <div class="engagement" id="approach">
       <div class="engagement-text rise">
@@ -583,6 +597,8 @@ SERVICES_PAGE = '''
       </figure>
     </div>
   </section>
+
+  <div class="thread" aria-hidden="true"></div>
 
   <section class="cta-band" aria-labelledby="cta-title">
     <div class="cta-inner rise">
@@ -611,6 +627,7 @@ pages['signin.html'] = (head('Secure sign-in — Veridyne Solutions',
                         + header('signin')
                         + f'''
 <main id="main" class="gate-page">
+  <img class="gate-page-scene" src="/assets/vie/hero-end-1600.webp" alt="" width="1600" height="960">
   {gate_panel("signin-title", False)}
 </main>
 ''' + FOOTER)

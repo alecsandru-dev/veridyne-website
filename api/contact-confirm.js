@@ -5,19 +5,23 @@ import { open } from './_contact-token.js';
 const PITCH_RE = /\b(seo|search index|search engine|search result|backlinks?|lead generation|marketing|outsourc\w*|web design)\b|https?:\/\/|\bwww\.|\b[a-z0-9-]+\.(live|xyz|top|click|online|site|shop)\b/i;
 
 const page = (title, text, action) => `<!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#050C18">
 <title>${title} | Veridyne</title>
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<main style="max-width: 460px; margin: 18vh auto 0; padding: 0 16px; display: flex; flex-direction: column; gap: 16px">
-  <h1 style="font-size: 28px; margin: 0">${title}</h1>
-  <p style="margin: 0">${text}</p>
-  ${action}
+<main class="confirm-page">
+  <div class="confirm-card">
+    <img src="/assets/veridyne-wordmark-dark.png" alt="Veridyne Solutions" width="171" height="38">
+    <h1>${title}</h1>
+    <p>${text}</p>
+    ${action}
+  </div>
 </main>
 </body>
 </html>`;
@@ -29,7 +33,7 @@ export default async function handler(req, res) {
     const html = open(token)
       ? page('Confirm your message', 'Press the button and your message reaches our team.',
         `<form action="/api/contact-confirm" method="post"><input type="hidden" name="token" value="${token}"><button class="btn" type="submit">Send my message</button></form>`)
-      : page('This link has expired', 'Send your message again and we will email you a new link.', '<p style="margin: 0"><a class="btn" href="/#contact">Contact us</a></p>');
+      : page('This link has expired', 'Send your message again and we will email you a new link.', '<p><a class="btn" href="/#contact">Contact us</a></p>');
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     return res.status(200).send(html);
   }

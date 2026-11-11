@@ -1359,3 +1359,56 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
   .hero-stage::after { background: linear-gradient(180deg, rgba(2, 6, 15, 1) 0, rgba(2, 6, 15, 1) 14px, rgba(2, 6, 15, 0) 64px), linear-gradient(0deg, rgba(2, 6, 15, 1) 0%, rgba(2, 6, 15, 1) calc(100% - var(--vband)), rgba(2, 6, 15, 0) calc(100% - var(--vband) + 60px)); }
 }
 @media (max-width: 640px) { .hero-stage .hero-copy { max-width: none; } }
+
+/* ---------- The whole site in one look (v3): product pages, sign-in, services, closing stages ---------- */
+.thread-short { height: clamp(40px, 5vw, 64px); margin-top: 16px; margin-bottom: 26px; }
+
+/* Product pages share the site's ground; each product keeps its own accent (logo, buttons, badge, glow). */
+.product.product-page { background: #050C18; padding-bottom: clamp(56px, 7vw, 88px); }
+.product-page .product-shot { border: 1px solid rgba(127, 219, 255, 0.16); }
+.product-page .gallery-shot { border-radius: 18px; overflow: hidden; border: 1px solid rgba(127, 219, 255, 0.14); background: rgba(255, 255, 255, 0.03); }
+.product-page .product-gallery { max-width: var(--wide); }
+
+/* "Questions about …?": the same closing stage as the home page's contact */
+.cta-band { padding-top: clamp(40px, 5vw, 64px); }
+.cta-inner, [data-theme="dark"] .cta-inner {
+  position: relative; overflow: hidden; color: #E9EFF7; border: 1px solid rgba(127, 219, 255, 0.14);
+  background: linear-gradient(180deg, rgba(4, 10, 22, 0.7), rgba(4, 10, 22, 0.84)), #050C18 url("/assets/vie/contact.jpg") center 58% / cover no-repeat;
+  box-shadow: 0 50px 120px -80px rgba(0, 180, 255, 0.5);
+  --ink: #E9EFF7; --muted: #9FB0C6; --btn-bg: #00B4FF; --btn-hover: #33C3FF; --btn-ink: #04121F; --cyan-ink: #4CC8FF;
+}
+.cta-inner .lead { color: #B7C4D6; }
+
+/* Services page: the hall stage, and the two panels in glass */
+.hero-sub .hero-stage { min-height: clamp(440px, 56vh, 600px); }
+.hero-sub .hero-pic .hero-scene { object-position: 100% 42%; }
+.hero-sub .hero-stage::after { content: ""; background: linear-gradient(90deg, rgba(2, 6, 15, 0.94) 0%, rgba(2, 6, 15, 0.8) 36%, rgba(2, 6, 15, 0.15) 66%, rgba(2, 6, 15, 0) 100%); }
+.services-page { padding-top: clamp(40px, 5vw, 64px); }
+.security, [data-theme="dark"] .security { background: linear-gradient(180deg, rgba(17, 36, 66, 0.72), rgba(9, 20, 38, 0.72)), #081629; border: 1px solid rgba(127, 219, 255, 0.14); }
+[data-theme="dark"] .engagement-photo { border: 1px solid rgba(127, 219, 255, 0.14); }
+@media (max-width: 1280px) { .hero-sub .hero-stage::after { background: linear-gradient(0deg, rgba(2, 6, 15, 1) 0%, rgba(2, 6, 15, 1) calc(100% - var(--vband)), rgba(2, 6, 15, 0) calc(100% - var(--vband) + 60px)); } .hero-sub .hero-pic .hero-scene { -webkit-mask-image: none; mask-image: none; width: 100%; aspect-ratio: auto; object-position: 100% 40%; } }
+
+/* Secure sign-in: the panel in the site's glass, with the keyhole gateway behind its emblem */
+.gate-panel {
+  border-color: rgba(127, 219, 255, 0.22);
+  background:
+    radial-gradient(110% 60% at 50% -10%, rgba(0, 180, 255, 0.3), transparent 62%),
+    linear-gradient(180deg, #0A1D38 0%, #060E1C 100%);
+  box-shadow: 0 50px 120px -40px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 180, 255, 0.06), 0 40px 120px -60px rgba(0, 180, 255, 0.55);
+}
+.gate::backdrop { background: rgba(2, 6, 15, 0.7); }
+.gate-option { border-color: rgba(127, 219, 255, 0.16); background: rgba(10, 24, 46, 0.72); }
+.gate-option:hover, .gate-option:focus-visible { border-color: rgba(127, 219, 255, 0.5); }
+.gate-lock .gate-keyhole { fill: rgba(0, 180, 255, 0.16); }
+/* /signin: the panel on the left, the gateway beside it */
+.gate-page { position: relative; isolation: isolate; overflow: hidden; background: #02060F; min-height: calc(100vh - 120px); justify-items: start; padding-left: max(var(--pad), calc((100vw - var(--wide)) / 2)); }
+.gate-page-scene { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 100% 30%; }
+.gate-page::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(2, 6, 15, 0.96) 0%, rgba(2, 6, 15, 0.82) 40%, rgba(2, 6, 15, 0.1) 72%, rgba(2, 6, 15, 0) 100%), linear-gradient(180deg, rgba(2, 6, 15, 1) 0%, rgba(2, 6, 15, 0) 16%); }
+@media (max-width: 900px) { .gate-page { justify-items: center; padding-left: var(--pad); } .gate-page-scene { opacity: 0.35; object-position: 78% 30%; } }
+
+/* The page behind the link in the contact confirmation email */
+.confirm-page { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; background: radial-gradient(60% 50% at 50% 30%, rgba(0, 180, 255, 0.14), transparent 70%), #050C18; }
+.confirm-card { width: 100%; max-width: 480px; display: grid; gap: 16px; justify-items: start; padding: 36px 32px; border-radius: var(--radius); border: 1px solid rgba(127, 219, 255, 0.18); background: linear-gradient(180deg, rgba(17, 36, 66, 0.72), rgba(9, 20, 38, 0.72)); color: #E9EFF7; }
+.confirm-card img { height: 30px; width: auto; margin-bottom: 8px; }
+.confirm-card h1 { font-size: 28px; letter-spacing: -0.02em; margin: 0; }
+.confirm-card p { margin: 0; color: #B7C4D6; }

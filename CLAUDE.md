@@ -114,6 +114,13 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
   hover loops (loop-<slug>.mp4, fetched only on hover on desktops) and the launch video (veridyne-vie-launch.mp4,
   fetched only on Play, in `dialog#film`; its quiet opening is lifted ~12 dB for the web copy). No video loads by itself.
 - A new product needs `assets/vie/scene-<slug>.jpg` and `loop-<slug>.mp4`.
+- One look on every page (2026-11-11): `/services` opens with a hero stage (`.hero-sub`, `services-hero.webp`); every
+  product page sits on the same ground (#050C18) with framed galleries; every `cta-band` is a closing stage on
+  `contact.jpg` with a `.thread` before it (`.thread-short` between smaller blocks).
+- Sign-in: the dialog is a glass panel with a keyhole emblem (`.gate-keyhole`, no image behind it: that looked
+  cluttered); `/signin` shows the panel on the left and the finished gateway (`hero-end-1600.webp`) on the right,
+  centred below 900px. The page behind the emailed confirm link (`api/contact-confirm.js`) uses `.confirm-page` /
+  `.confirm-card` from styles.css (no inline styles, CSP).
 
 ## Branches
 main (live). Old: redesign, redesign-2026, companion-app, privacy-cloudflare (all fully merged into main; origin has
