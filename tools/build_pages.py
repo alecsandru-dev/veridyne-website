@@ -183,9 +183,11 @@ SERVICES = [
 ]
 
 def service_grid(full):
+    """The four services, each a tile on its own scene (stills from our films), like the product tiles."""
     items = ''.join(
         f'''
-      <li class="service rise">
+      <li class="service stile rise">
+        <span class="stile-media" aria-hidden="true"><img src="/assets/vie/svc-{icon}.jpg" alt="" width="1280" height="724" loading="lazy"></span>
         {ICONS[icon]}
         <h3>{name}</h3>
         <p>{long if full else short}</p>
@@ -415,8 +417,11 @@ HOME = '''
 
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-stage">
-    <!-- A still from the launch film. The film is fetched only when a visitor presses "Watch the film". -->
-    <img class="hero-scene" src="/assets/vie/hero.jpg" alt="" width="1920" height="1080" fetchpriority="high">
+    <!-- A still from the launch video. The video is fetched only when a visitor presses "Watch the launch video". -->
+    <picture>
+      <source type="image/webp" srcset="/assets/vie/hero-1600.webp 1600w, /assets/vie/hero-2560.webp 2560w" sizes="(min-width: 1400px) 1400px, 100vw">
+      <img class="hero-scene" src="/assets/vie/hero.jpg" alt="" width="1920" height="1086" fetchpriority="high">
+    </picture>
     <div class="hero-copy">
       <p class="pill rise"><span class="pill-dot"></span>Identity and access, Auth0 and Okta</p>
       <h1 id="hero-title" class="rise">Secure sign-in, built right from the first login.</h1>
@@ -424,58 +429,14 @@ HOME = '''
       <div class="hero-actions rise">
         <a class="btn" href="#contact" data-topic="Identity &amp; access consulting">Book a free call</a>
         <a class="link-more" href="/services">Our services</a>
-        <a class="film-link" href="/assets/vie/veridyne-vie-launch.mp4" data-film><span class="film-play" aria-hidden="true"></span>Watch the film<span class="film-len"> 2:30</span></a>
+        <a class="film-link" href="/assets/vie/veridyne-vie-launch.mp4" data-film><span class="film-play" aria-hidden="true"></span>Watch the launch video<span class="film-len"> 2:30</span></a>
       </div>
     </div>
     </div>
 
-    <!-- A sign-in moving through its checks: decorative, the text above says it all -->
-    <div class="flow rise" aria-hidden="true">
-      <div class="flow-card flow-login">
-        <img src="/assets/veridyne-icon-dark.png" alt="" width="52" height="34">
-        <p class="flow-h">Sign in</p>
-        <p class="flow-field">elena@company.com</p>
-        <p class="flow-btn"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="4"/><path d="M2 21c0-3.3 2.7-6 6-6M14 13l2-2 2 2v6l-2 2-2-2z"/></svg>Continue with passkey</p>
-      </div>
-      <div class="flow-wire"><span></span></div>
-      <div class="flow-card flow-checks">
-        <p class="flow-h">Checks</p>
-        <ul>
-          <li><i></i>Passkey verified</li>
-          <li><i></i>Known device</li>
-          <li><i></i>Risk score low</li>
-          <li><i></i>Role: finance-viewer</li>
-        </ul>
-      </div>
-      <div class="flow-wire"><span></span></div>
-      <div class="flow-card flow-token">
-        <svg class="flow-shield" viewBox="0 0 32 32"><path d="M16 3l11 4.5V15c0 7.5-4.8 12-11 14C9.8 27 5 22.5 5 15V7.5z"/><path d="M11 16l3.5 3.5L21.5 12"/></svg>
-        <p class="flow-h">Access granted</p>
-        <code>sub: auth0|8f2c41…<br>amr: ["mfa"]<br>exp: 15 min</code>
-      </div>
-    </div>
-
-    <div class="split">
-      <a class="split-tile split-services rise" href="/services">
-        <span class="split-kind">Professional Services</span>
-        <span class="split-title">Auth0 and Okta consulting</span>
-        <span class="split-text">Setups, migrations, security reviews and training, by the people who do the work.</span>
-        <span class="split-more">Explore services</span>
-        <img src="/assets/photos/veridyne-hq.jpg" alt="The Veridyne Solutions logo on the front of our headquarters building" width="396" height="364">
-      </a>
-      <a class="split-tile split-products rise" href="#products">
-        <span class="split-kind">Products</span>
-        <span class="split-title">Software we build</span>
-        <span class="split-text">VeriGate, Eye of the Tenant, Veridyne Certifications, AuthBeam, AuthLens, Veridyne FGA, AuthCanvas and Veridyne Companion. Built, hosted and supported by us.</span>
-        <span class="split-more">See the products</span>
-        <span class="split-shots" aria-hidden="true">
-          <img src="/assets/authlens.png" alt="" width="1600" height="940">
-          <img src="/assets/authbeam.png" alt="" width="1600" height="900">
-          <img src="/assets/certifications.png" alt="" width="1600" height="820">
-        </span>
-      </a>
-    </div>
   </section>
+
+  <div class="thread" aria-hidden="true"></div>
 
   <section class="services services-home" id="services" aria-labelledby="services-title">
     <div class="intro rise">
@@ -488,9 +449,11 @@ HOME = '''
       <ul class="chips" aria-label="Secure by default">
         <li>Passkeys and MFA</li><li>Least privilege</li><li>Short-lived tokens</li><li>Auditable logs</li>
       </ul>
-      <a class="link-more" href="/services">How we work</a>
+      <span class="services-actions"><a class="btn" href="#contact" data-topic="Identity &amp; access consulting">Book a free call</a><a class="link-more" href="/services">How we work</a></span>
     </div>
   </section>
+
+  <div class="thread" aria-hidden="true"></div>
 
   <section class="products-home" id="products" aria-labelledby="products-title">
     <div class="intro rise">
@@ -498,17 +461,20 @@ HOME = '''
       <p class="vie-mark"><strong>V.I.E</strong><span>Veridyne Identity Environment</span></p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
       <p class="lead">Separate from our consulting work: eight products, each made for its own users.</p>
-      <a class="film-link" href="/assets/vie/veridyne-vie-launch.mp4" data-film><span class="film-play" aria-hidden="true"></span>Watch the film<span class="film-len"> 2:30</span></a>
+      <a class="film-link" href="/assets/vie/veridyne-vie-launch.mp4" data-film><span class="film-play" aria-hidden="true"></span>Watch the launch video<span class="film-len"> 2:30</span></a>
     </div>
     PRODUCT_SHOWCASE
   </section>
 
-  <dialog class="film" id="film" aria-label="V.I.E launch film">
+  <div class="thread" aria-hidden="true"></div>
+
+  <dialog class="film" id="film" aria-label="V.I.E launch video">
     <video controls playsinline preload="none" poster="/assets/vie/hero.jpg" data-src="/assets/vie/veridyne-vie-launch.mp4"></video>
     <form method="dialog"><button class="film-close" type="submit">Close</button></form>
   </dialog>
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
+    <img class="contact-scene" src="/assets/vie/contact.jpg" alt="" width="1920" height="1086" loading="lazy">
     <div class="contact-head rise">
       <h2 id="contact-title">Let’s talk.</h2>
       <p class="lead">A consulting project or one of our products: tell us where you are. We reply within one working day.</p>

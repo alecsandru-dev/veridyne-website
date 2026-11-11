@@ -1147,11 +1147,10 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
    ========================================================================== */
 [data-theme="dark"] { --page: #050C18; --card: #0B182C; --mist: #0A1528; --mist-2: #10223E; --line: #1A2F4E; --header-bg: rgba(5, 12, 24, 0.72); }
 [data-theme="dark"] body { background: radial-gradient(1100px 520px at 50% -160px, rgba(0, 180, 255, 0.13), rgba(0, 180, 255, 0) 70%) no-repeat, var(--page); }
-.glass-edge, [data-theme="dark"] .service, [data-theme="dark"] .flow-card, [data-theme="dark"] .form, [data-theme="dark"] .cta-inner, [data-theme="dark"] .engagement-text {
+.glass-edge, [data-theme="dark"] .form, [data-theme="dark"] .cta-inner, [data-theme="dark"] .engagement-text {
   border: 1px solid rgba(127, 219, 255, 0.12);
   background: linear-gradient(180deg, rgba(17, 36, 66, 0.72), rgba(9, 20, 38, 0.72));
 }
-[data-theme="dark"] .service:hover { background: linear-gradient(180deg, rgba(22, 46, 82, 0.85), rgba(11, 24, 46, 0.85)); border-color: rgba(127, 219, 255, 0.3); }
 
 /* ---------- Hero: a still from the launch film, wide ---------- */
 .hero { padding-top: clamp(20px, 3vw, 36px); }
@@ -1169,7 +1168,7 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .hero-stage h1 { font-size: clamp(40px, 5vw, 64px); text-wrap: balance; }
 @media (prefers-reduced-motion: no-preference) {
   .hero-scene { animation: hero-drift 36s ease-in-out infinite alternate; transform-origin: 70% 40%; }
-  @keyframes hero-drift { from { transform: scale(1); } to { transform: scale(1.09); } }
+  @keyframes hero-drift { from { transform: scale(1); } to { transform: scale(1.05); } }
 }
 
 /* "Watch the film" */
@@ -1282,3 +1281,54 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
   dialog.film { width: 100vw; border-radius: 0; }
 }
 @media (prefers-reduced-motion: reduce) { a.ptile, .ptile-media img, .ptile-shot { transition: none; } a.ptile:hover { transform: none; } }
+
+/* ---------- One story: hero, services, products, contact, joined by a thread of light ---------- */
+.hero { padding-bottom: 0; }
+.thread { position: relative; width: 1px; height: clamp(72px, 9vw, 120px); margin: 0 auto; background: linear-gradient(180deg, rgba(0, 180, 255, 0), rgba(0, 180, 255, 0.75)); }
+.thread::after { content: ""; position: absolute; left: 50%; bottom: -4px; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: #7FDBFF; box-shadow: 0 0 0 5px rgba(0, 180, 255, 0.16), 0 0 26px 6px rgba(0, 180, 255, 0.6); }
+.services-home { padding-top: clamp(40px, 5vw, 64px); padding-bottom: clamp(40px, 5vw, 64px); }
+.products-home, [data-theme="dark"] .products-home { background: none; border: 0; border-radius: 0; padding-top: clamp(40px, 5vw, 64px); padding-bottom: clamp(40px, 5vw, 64px); }
+.intro .division { letter-spacing: 0.14em; text-transform: uppercase; font-size: 13px; }
+
+/* Services: four tiles on their scenes, the same family as the product tiles */
+.service-grid { gap: 16px; grid-template-columns: 1fr 1fr; }
+.service.stile, [data-theme="dark"] .service.stile {
+  position: relative; isolation: isolate; overflow: hidden; min-height: 330px; padding: 28px;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 8px;
+  border-radius: var(--radius); color: #fff; background: #050C18; border: 1px solid rgba(127, 219, 255, 0.14);
+  transition: transform 420ms var(--ease), border-color 300ms var(--ease), box-shadow 420ms var(--ease);
+}
+.service.stile:hover { transform: translateY(-4px); background: #050C18; border-color: rgba(127, 219, 255, 0.5); box-shadow: 0 34px 90px -44px rgba(0, 180, 255, 0.7); }
+.stile-media { position: absolute; inset: 0; z-index: -1; }
+.stile-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1400ms var(--ease); }
+.service.stile:hover .stile-media img { transform: scale(1.05); }
+.stile-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3, 8, 18, 0.5) 0%, rgba(3, 8, 18, 0.05) 30%, rgba(3, 8, 18, 0.55) 58%, rgba(3, 8, 18, 0.95) 100%), linear-gradient(90deg, rgba(3, 8, 18, 0.55) 0%, rgba(3, 8, 18, 0) 55%); }
+.service.stile svg { position: absolute; left: 20px; top: 20px; width: 46px; height: 46px; padding: 10px; margin: 0; border-radius: 14px; stroke: #7FDBFF; background: rgba(5, 12, 24, 0.55); border: 1px solid rgba(127, 219, 255, 0.3); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.service.stile h3 { font-size: clamp(24px, 2.3vw, 30px); letter-spacing: -0.02em; color: #fff; }
+.service.stile p { font-size: 16px; line-height: 1.45; color: #B7C4D6; max-width: 30em; }
+.services-page .service.stile { min-height: 360px; }
+.services-foot { margin-top: 20px; padding: 18px 22px; border-radius: var(--radius); border: 1px solid rgba(127, 219, 255, 0.12); background: linear-gradient(180deg, rgba(17, 36, 66, 0.55), rgba(9, 20, 38, 0.55)); }
+[data-theme="light"] .services-foot { background: var(--mist); border-color: var(--line); }
+.services-actions { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; }
+
+/* Contact: the closing stage, the hero's twin */
+.contact, [data-theme="dark"] .contact {
+  position: relative; isolation: isolate; overflow: hidden;
+  width: calc(100% - 2 * var(--pad)); max-width: 1400px; margin: clamp(40px, 5vw, 64px) auto clamp(72px, 9vw, 112px);
+  padding: clamp(48px, 6vw, 88px) clamp(24px, 6vw, 96px); border-radius: var(--radius);
+  background: #050C18; color: #E9EFF7; border: 1px solid rgba(127, 219, 255, 0.14); box-shadow: 0 60px 140px -80px rgba(0, 180, 255, 0.5);
+  --ink: #E9EFF7; --ink-2: #C9D4E1; --muted: #9FB0C6; --card: #0B182C; --mist: #0A1528; --line: #1E3352; --line-2: #29426A; --line-3: #35507A;
+  --cyan-ink: #4CC8FF; --btn-bg: #00B4FF; --btn-hover: #33C3FF; --btn-ink: #04121F; --ok: #3DDC97; --err: #FF8A75; color-scheme: dark;
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23E9EFF7' stroke-width='1.8'/%3E%3C/svg%3E");
+}
+.contact-scene { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.contact::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(4, 10, 22, 0.9) 0%, rgba(4, 10, 22, 0.62) 50%, rgba(4, 10, 22, 0.78) 100%); }
+.contact-head { position: static; }
+.contact-head h2 { font-size: clamp(40px, 5vw, 64px); }
+.contact .form, [data-theme="dark"] .contact .form { background: rgba(8, 18, 34, 0.72); border: 1px solid rgba(127, 219, 255, 0.18); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.site-footer, [data-theme="dark"] .site-footer { position: relative; background: transparent; border-top: 1px solid rgba(127, 219, 255, 0.12); }
+[data-theme="light"] .site-footer { background: var(--mist); border-top-color: var(--line); }
+
+@media (max-width: 1000px) { .service.stile { min-height: 280px; } }
+@media (max-width: 640px) { .service-grid { grid-template-columns: 1fr; } .service.stile, .services-page .service.stile { min-height: 250px; } .contact { width: calc(100% - 24px); } }
+@media (prefers-reduced-motion: reduce) { .service.stile, .stile-media img { transition: none; } .service.stile:hover { transform: none; } }

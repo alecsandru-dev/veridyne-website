@@ -99,6 +99,16 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
 - When searching site-wide text (e.g. address changes) search all of ~: authbeam, authcanvas, Veyra, Roiall live outside
   "Veridyne rebrand".
 
+## Redesign v3 (branch `redesign-v3`, Nov 2026; not on main until Alecs says "go live")
+- Dark by default (js-flag.js: dark unless the visitor chose light; no longer follows the system). Look of the films.
+- Home = hero, Professional Services, Products (V.I.E), contact, joined by `.thread`. The sign-in sketch and the two
+  summary tiles were removed on purpose. Services are four scene tiles (`.service.stile`), products a grid of scene
+  tiles (`product_grid()`, `.ptile`; first two larger with the screenshot; compact grid under each product page).
+- `assets/vie/`: stills cut from the films' own artwork (hero-*.webp/jpg, scene-<slug>.jpg, svc-*.jpg, contact.jpg),
+  hover loops (loop-<slug>.mp4, fetched only on hover on desktops) and the launch video (veridyne-vie-launch.mp4,
+  fetched only on Play, in `dialog#film`; its quiet opening is lifted ~12 dB for the web copy). No video loads by itself.
+- A new product needs `assets/vie/scene-<slug>.jpg` and `loop-<slug>.mp4`.
+
 ## Branches
 main (live). Old: redesign, redesign-2026, companion-app, privacy-cloudflare (all fully merged into main; origin has
 redesign, redesign-2026). Nothing in flight. Working tree clean at time of writing.
