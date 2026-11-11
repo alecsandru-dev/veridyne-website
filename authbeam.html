@@ -102,6 +102,12 @@
           <span class="pshow-time" aria-hidden="true"><span></span></span>
         </label>
         <label class="pshow-tab">
+          <input type="radio" name="more-product" value="fga">
+          <span class="pshow-tab-name">Veridyne FGA</span>
+          <span class="pshow-tab-line">Fine-grained authorization, designed and tested</span>
+          <span class="pshow-time" aria-hidden="true"><span></span></span>
+        </label>
+        <label class="pshow-tab">
           <input type="radio" name="more-product" value="authcanvas">
           <span class="pshow-tab-name">AuthCanvas</span>
           <span class="pshow-tab-line">Identity journey design</span>
@@ -111,12 +117,6 @@
           <input type="radio" name="more-product" value="companion">
           <span class="pshow-tab-name">Veridyne Companion</span>
           <span class="pshow-tab-line">The mobile app for clients and teams</span>
-          <span class="pshow-time" aria-hidden="true"><span></span></span>
-        </label>
-        <label class="pshow-tab">
-          <input type="radio" name="more-product" value="sa-sparring">
-          <span class="pshow-tab-name">SA Sparring</span>
-          <span class="pshow-tab-line">Practice for Auth0 architects</span>
           <span class="pshow-time" aria-hidden="true"><span></span></span>
         </label>
       </div>
@@ -157,6 +157,15 @@
           </span>
           <span class="pshow-shot"><img src="/assets/authlens.png" alt="AuthLens: connect a tenant with read scopes, read its configuration, and get a report with a score and findings" width="1600" height="940" loading="lazy"></span>
         </a>
+        <a class="pshow-panel pcard-fga" href="/fga" data-for="fga">
+          <span class="pshow-copy">
+            <span class="pcard-top"><span class="fga-mark pcard-logo"><img src="/assets/fga-mark.png" alt="" width="543" height="512">Veridyne FGA</span><span class="badge">New</span></span>
+            <span class="pcard-tagline">Get authorization right before it ships.</span>
+            <span class="pcard-text">Describe, test and document an OpenFGA authorization model, then run it on your own servers.</span>
+            <span class="pcard-more">Learn more<span class="sr-only"> about Veridyne FGA</span></span>
+          </span>
+          <span class="pshow-shot"><img src="/assets/fga.png" alt="Veridyne FGA with sample data: the authorization model for an expenses portal, as code and as a diagram side by side" width="1600" height="900" loading="lazy"></span>
+        </a>
         <a class="pshow-panel pcard-authcanvas" href="/authcanvas" data-for="authcanvas">
           <span class="pshow-copy">
             <span class="pcard-top"><img class="pcard-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315"><span class="badge">Private alpha</span></span>
@@ -174,15 +183,6 @@
             <span class="pcard-more">Learn more<span class="sr-only"> about Veridyne Companion</span></span>
           </span>
           <span class="pshow-shot"><img src="/assets/companion-v2.png" alt="Two phones running the Veridyne companion app with sample data: a client home with Eye of the Tenant watching a go-live and a project, and an employee home with today's hours, this week and meetings" width="1040" height="940" loading="lazy"></span>
-        </a>
-        <a class="pshow-panel pcard-sa-sparring" href="/sa-sparring" data-for="sa-sparring">
-          <span class="pshow-copy">
-            <span class="pcard-top"><span class="sas-mark pcard-logo">SA <em>Sparring</em></span></span>
-            <span class="pcard-tagline">Practice the call. Get graded.</span>
-            <span class="pcard-text">A practice ground for Auth0 solutions architects, graded like a senior SA would.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about SA Sparring</span></span>
-          </span>
-          <span class="pshow-shot"><img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940" loading="lazy"></span>
         </a>
       </div>
     </div>
@@ -211,9 +211,9 @@
           <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>
           <a href="/authlens">AuthLens</a>
+          <a href="/fga">Veridyne FGA</a>
           <a href="/authcanvas">AuthCanvas</a>
           <a href="/companion">Veridyne Companion</a>
-          <a href="/sa-sparring">SA Sparring</a>
         </div>
         <div>
           <h2>Company</h2>

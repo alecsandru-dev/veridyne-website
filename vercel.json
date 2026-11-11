@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/sa-sparring",
+      "destination": "/#products",
+      "permanent": false
+    },
+    {
       "source": "/employees",
       "destination": "https://team.veridyne.eu/auth/login?connection=Employees",
       "permanent": false

@@ -43,8 +43,6 @@
   --ab-amber: #FF9F0A;
   --roiall-teal: #45E3CF;
   --roiall-ink: #141E3A;
-  --sas-yellow: #F7C21B;
-  --sas-ground: #111214;
 
   /* theme: every colour the light page hard-coded, so the dark theme can swap it */
   --page: var(--white);
@@ -332,8 +330,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   display: grid; place-items: center; height: 84px; padding: 0 20px; background: var(--white); border-radius: 16px; text-decoration: none;
   border: 1px solid transparent; transition: border-color 200ms var(--ease), transform 300ms var(--ease);
 }
-.sas-mark { font-weight: 700; font-size: 24px; letter-spacing: -0.02em; color: #111214; }
-.sas-mark em { font-style: normal; color: #C99700; }
 
 .product { padding: clamp(88px, 11vw, 136px) var(--pad); overflow: hidden; }
 .product-head { max-width: 720px; margin: 0 auto; text-align: center; display: grid; justify-items: center; gap: 16px; }
@@ -402,23 +398,15 @@ a.store-badge:hover { border-color: rgba(92, 203, 255, 0.7); background: #12305A
 .product-roiall { background: var(--white); color: var(--roiall-ink); }
 .product-roiall .product-lead, .product-roiall .features p { color: var(--muted); }
 .product-roiall .product-shot { border: 1px solid var(--line); box-shadow: 0 40px 100px -50px rgba(20, 30, 58, 0.45); }
-.product-roiall .features h3::before, .product-sas .features h3::before, .product-ac .features h3::before, .product-authbeam .features h3::before {
+.product-roiall .features h3::before, .product-ac .features h3::before, .product-authbeam .features h3::before {
   content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; margin-bottom: 14px;
 }
 .product-roiall .features h3::before { background: var(--roiall-teal); }
 .product-ac .features h3::before { background: var(--ac-blue); }
 .product-authbeam .features h3::before { background: var(--ab-amber); }
-.product-sas .features h3::before { background: var(--sas-yellow); }
 .btn-roiall { background: var(--roiall-ink); color: #fff; }
 .btn-roiall:hover { background: #24305A; }
 
-.product-sas { background: var(--sas-ground); color: #fff; }
-.product-sas .sas-title { font-size: clamp(30px, 3.2vw, 40px); color: #fff; }
-.product-sas .sas-title em { color: var(--sas-yellow); }
-.product-sas .product-lead, .product-sas .features p { color: #B3B6BD; }
-.product-sas .product-shot { border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 40px 120px -50px rgba(247, 194, 27, 0.35); }
-.btn-sas { background: var(--sas-yellow); color: #111214; }
-.btn-sas:hover { background: #FFD24A; }
 
 /* ---------- Home: compact services ---------- */
 .services-home { padding: clamp(88px, 11vw, 136px) var(--pad) clamp(56px, 7vw, 88px); }
@@ -438,7 +426,6 @@ a.store-badge:hover { border-color: rgba(92, 203, 255, 0.7); background: #12305A
 .products-home { padding: clamp(88px, 11vw, 136px) var(--pad) clamp(88px, 11vw, 136px); background: var(--mist); border-radius: 32px 32px 0 0; }
 .pcard-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 32px; }
 .pcard-logo { height: 26px; width: auto; }
-.sas-mark.pcard-logo { height: auto; font-size: 22px; }
 .pcard-tagline { margin-top: 10px; font-size: clamp(22px, 2vw, 26px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; }
 .pcard-text { font-size: 15px; }
 .pcard-more { font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
@@ -464,11 +451,6 @@ a.store-badge:hover { border-color: rgba(92, 203, 255, 0.7); background: #12305A
 .pcard-roiall { background: var(--white); color: var(--roiall-ink); box-shadow: inset 0 0 0 1px var(--line); }
 .pcard-roiall .pcard-text { color: var(--muted); }
 .pcard-roiall .pcard-more { color: #0A7366; }
-.pcard-sa-sparring { background: var(--sas-ground); color: #fff; }
-.pcard-sa-sparring .sas-mark { color: #fff; }
-.pcard-sa-sparring .sas-mark em { color: var(--sas-yellow); }
-.pcard-sa-sparring .pcard-text { color: #B3B6BD; }
-.pcard-sa-sparring .pcard-more { color: var(--sas-yellow); }
 
 /* ---------- Inner pages ---------- */
 .page-hero { padding: clamp(64px, 9vw, 112px) var(--pad) 0; }
@@ -481,7 +463,7 @@ a.store-badge:hover { border-color: rgba(92, 203, 255, 0.7); background: #12305A
 .crumb { font-size: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; opacity: 0.8; }
 .crumb::before { content: ""; width: 6px; height: 6px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); }
 .crumb:hover { opacity: 1; }
-.product-ac .crumb, .product-sas .crumb, .product-authbeam .crumb { color: #C9D4E1; }
+.product-ac .crumb, .product-authbeam .crumb { color: #C9D4E1; }
 .product-roiall .crumb { color: var(--muted); }
 
 .cta-band { padding: clamp(72px, 9vw, 112px) var(--pad); }
@@ -665,7 +647,6 @@ a.store-badge:hover { border-color: rgba(92, 203, 255, 0.7); background: #12305A
   /* a readable slice of the app instead of the whole screen shrunk */
   .product-shot { margin-top: 36px; border-radius: 14px; transform: none !important; }
   .product-shot img { aspect-ratio: 4 / 3.4; object-fit: cover; object-position: left top; }
-  .product-sas .product-shot img { object-position: 10% top; }
   .features { grid-template-columns: 1fr; gap: 0; margin-top: 28px; }
   .features li { padding: 16px 0; border-top: 1px solid rgba(127, 140, 160, 0.25); }
   .features h3::before { display: none !important; }
@@ -869,7 +850,7 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 
 /* ---------- Dark theme ----------
    js-flag.js sets data-theme before first paint: the saved choice, else the system setting.
-   Product grounds keep their own brand (AuthCanvas and SA Sparring are dark already; Roiall stays light). */
+   Product grounds keep their own brand (AuthCanvas and Veridyne FGA are dark already; Roiall stays light). */
 [data-theme="dark"] {
   color-scheme: dark;
   --page: #07111F;
@@ -969,14 +950,13 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .pshow:has(input[value="authcanvas"]:checked) [data-for="authcanvas"],
 .pshow:has(input[value="companion"]:checked) [data-for="companion"],
 .pshow:has(input[value="roiall"]:checked) [data-for="roiall"],
-.pshow:has(input[value="sa-sparring"]:checked) [data-for="sa-sparring"] { opacity: 1; visibility: visible; transform: none; transition: opacity 420ms var(--ease), transform 520ms var(--ease); }
+.pshow:has(input[value="fga"]:checked) [data-for="fga"] { opacity: 1; visibility: visible; transform: none; transition: opacity 420ms var(--ease), transform 520ms var(--ease); }
 @supports not selector(:has(*)) { .pshow-panel:first-child { opacity: 1; visibility: visible; transform: none; } }
 .pshow-copy { display: flex; flex-direction: column; gap: 12px; padding: 44px 0 44px 44px; }
 .pshow-copy .pcard-tagline { margin-top: 18px; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1; }
 .pshow-copy .pcard-text { font-size: 16px; line-height: 1.55; max-width: 30ch; }
 .pshow-copy .pcard-more { margin-top: 10px; }
 .pshow-panel .pcard-logo { height: 30px; }
-.pshow-panel .sas-mark.pcard-logo { font-size: 26px; }
 .pshow-shot { align-self: end; padding: 56px 0 0 40px; }
 .pcard-companion .pshow-shot { padding: 24px 0 0; }
 .pcard-companion .pshow-shot img { width: 100%; border-radius: 0; box-shadow: none; }
@@ -987,7 +967,6 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .pcard-authcanvas .pshow-shot img { border: 1px solid rgba(255, 255, 255, 0.12); border-width: 1px 0 0 1px; }
 .pcard-roiall { box-shadow: inset 0 0 0 1px var(--line); }
 .pcard-roiall .pshow-shot img { border: 1px solid var(--line); border-width: 1px 0 0 1px; box-shadow: 0 30px 80px -40px rgba(20, 30, 58, 0.35); }
-.pcard-sa-sparring .pshow-shot img { border: 1px solid rgba(255, 255, 255, 0.1); border-width: 1px 0 0 1px; }
 .pcard-authlens { background: #0B1618; color: #EEF5F2; }
 .pcard-authlens::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 70% at 80% 100%, rgba(16, 185, 129, 0.18), transparent 70%); }
 .pcard-authlens > * { position: relative; }
@@ -1134,3 +1113,30 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .lensmark-callout h2 { font-size: 22px; letter-spacing: -0.01em; margin: 0 0 8px; color: #EEF5F2; }
 .lensmark-callout p { margin: 0; color: #A9C1BB; font-size: 15px; max-width: 62ch; }
 .lensmark-kind { font-family: "Courier New", ui-monospace, monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; font-size: 12.5px; color: #6EE7B7 !important; margin-bottom: 8px !important; }
+
+/* Veridyne FGA: navy ground and blue sampled from the FGA logo (fga app tokens --fga-navy, --fga). */
+.fga-mark { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.02em; color: #EAF2FF; white-space: nowrap; }
+.fga-mark img { height: 1.3em; width: auto; }
+.pshow-panel .fga-mark.pcard-logo, .fga-mark.pcard-logo { height: auto; font-size: 24px; }
+.pcard-fga { background: #02102D; color: #EAF2FF; }
+.pcard-fga::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 70% at 80% 100%, rgba(19, 141, 253, 0.2), transparent 70%); }
+.pcard-fga > * { position: relative; }
+.pcard-fga .badge, .product-fga .badge { background: rgba(19, 141, 253, 0.16); color: #6FB8FF; border: 1px solid rgba(19, 141, 253, 0.5); }
+.pcard-fga .pcard-tagline { color: #fff; }
+.pcard-fga .pcard-text { color: #9AAED0; }
+.pcard-fga .pcard-more { color: #6FB8FF; }
+.pcard-fga .pshow-shot img { border: 1px solid rgba(154, 174, 208, 0.2); border-width: 1px 0 0 1px; }
+.product-fga { background: #02102D; color: #EAF2FF; position: relative; }
+.product-fga::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(50% 40% at 50% 60%, rgba(19, 141, 253, 0.18), transparent 70%); }
+.product-fga > * { position: relative; }
+.product-fga .product-lead, .product-fga .features p, .product-fga .crumb { color: #9AAED0; }
+.product-fga .product-shot { border: 1px solid rgba(154, 174, 208, 0.2); box-shadow: 0 40px 120px -50px rgba(19, 141, 253, 0.45); background: #02102D; }
+.product-fga .product-shot figcaption { padding: 10px 16px; color: #9AAED0; font-size: 13px; text-align: center; }
+.product-fga .features h3::before { content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; margin-bottom: 14px; background: linear-gradient(90deg, #138DFD, #00B4FF); }
+.product-fga .gallery-shot { background: #071733; border-color: rgba(154, 174, 208, 0.2); }
+.product-fga .gallery-shot figcaption { color: #9AAED0; }
+.product-fga .gallery-note { color: #8399BE; }
+.btn-fga { background: #138DFD; color: #02102D; }
+.btn-fga:hover { background: #4AA8FF; }
+.btn-fga-ghost { background: transparent; color: #6FB8FF; box-shadow: inset 0 0 0 1px rgba(19, 141, 253, 0.55); }
+.btn-fga-ghost:hover { background: rgba(19, 141, 253, 0.12); }

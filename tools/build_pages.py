@@ -137,9 +137,9 @@ FOOTER = '''
           <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>
           <a href="/authlens">AuthLens</a>
+          <a href="/fga">Veridyne FGA</a>
           <a href="/authcanvas">AuthCanvas</a>
           <a href="/companion">Veridyne Companion</a>
-          <a href="/sa-sparring">SA Sparring</a>
         </div>
         <div>
           <h2>Company</h2>
@@ -282,6 +282,24 @@ PRODUCTS = {
       <a class="btn btn-authlens" href="https://getauthlens.com/lensmark">Read the Lensmark rules</a>
     </aside>''',
         meta='AuthLens, by Veridyne: read-only posture reports for Auth0, Okta and Microsoft Entra ID, with the vendor source and the exact fix for every finding.'),
+    'fga': dict(
+        kind='Fine-grained authorization, designed and tested',
+        name='Veridyne FGA', cls='product-fga', title_id='fga-title',
+        logo='<span class="fga-mark product-logo"><img src="/assets/fga-mark.png" alt="" width="543" height="512">Veridyne FGA</span>',
+        badge='<p class="badge">New</p>', card_badge='New',
+        tagline='Get authorization right before it ships.',
+        lead='Veridyne FGA takes your team from a plain description of who can do what to a tested OpenFGA authorization model, a runbook for your team and a bundle that is ready to run. OpenFGA then runs on your own servers, with your data.',
+        card='Describe, test and document an OpenFGA authorization model, then run it on your own servers.',
+        btn='<a class="btn btn-fga" href="https://fga.veridyne.eu">Sign in to Veridyne FGA</a>\n        <a class="btn btn-fga-ghost" href="/#contact">Ask for access</a>',
+        shot='<img src="/assets/fga.png" alt="Veridyne FGA with sample data: the authorization model for an expenses portal, as code and as a diagram side by side" width="1600" height="900"',
+        features=[('Describe it in plain words', 'Answer a few questions. The model is written for you from known OpenFGA patterns.'),
+                  ('Test before you ship', 'Check who can do what with made-up data, in your browser, and see why each answer is yes or no.'),
+                  ('A runbook and a bundle', 'A PDF for your team and a Docker or Kubernetes bundle, pinned to an OpenFGA version.')],
+        gallery=[('/assets/fga-describe.png', 1600, 900, 'Describe the use case; the patterns appear as you type.', 'The Describe step with sample data: an expenses portal, the things people act on, and the OpenFGA patterns found'),
+                 ('/assets/fga-runbook.png', 1600, 900, 'A runbook PDF for your team, page by page.', 'The Runbook step with sample data: the sections to include and a preview of the cover page'),
+                 ('/assets/fga-production.png', 1600, 900, 'Where OpenFGA runs, and a bundle to start it.', 'The Production step with sample data: Docker Compose chosen and the files of the production bundle')],
+        caption='Screens from the app, shown with sample data. For Veridyne clients: ask us to switch it on for your company.',
+        meta='Veridyne FGA: design, test and document a fine-grained authorization model for OpenFGA, then run it on your own servers. For Veridyne clients.'),
     'authcanvas': dict(
         kind='Identity journey design',
         name='AuthCanvas', cls='product-ac', title_id='ac-title',
@@ -313,20 +331,6 @@ PRODUCTS = {
                   ('For employees', 'See your profile and schedule, request leave and photograph receipts.'),
                   ('VeriGate built in', 'Approve sign-ins to Veridyne apps with a push and your fingerprint.')],
         meta='Veridyne Companion: the mobile app for Veridyne clients and employees, with VeriGate to approve every sign-in. On the App Store now, and coming soon to Android.'),
-    'sa-sparring': dict(
-        kind='Practice for Auth0 architects',
-        name='SA Sparring', cls='product-sas', title_id='sas-title',
-        logo='<span class="sas-mark sas-title">SA <em>Sparring</em></span>',
-        badge='',
-        tagline='Practice the call. Get graded.',
-        lead='A practice ground for Auth0 solutions architects. A simulated customer pushes back on every call.',
-        card='A practice ground for Auth0 solutions architects, graded like a senior SA would.',
-        btn='<a class="btn btn-sas" href="https://spar.auth0shell.dev">Visit SA Sparring</a>',
-        shot='<img src="/assets/sa-sparring.png" alt="SA Sparring sign-in screen: Practice the call. Get graded." width="1720" height="940"',
-        features=[('Real conversations', 'Customer scenarios built on how Auth0 calls actually go.'),
-                  ('Graded answers', 'Each answer is graded the way a senior SA would grade it.'),
-                  ('By invitation', 'Sign in with email or GitHub once you are invited.')],
-        meta='SA Sparring, by Veridyne: a practice ground for Auth0 solutions architects, with a simulated customer and graded answers.'),
 }
 
 def product_showcase(exclude=None, group='product'):
@@ -335,7 +339,7 @@ def product_showcase(exclude=None, group='product'):
     items = [(slug, p) for slug, p in PRODUCTS.items() if slug != exclude]
     tabs, panels = [], []
     for i, (slug, p) in enumerate(items):
-        logo = p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"')
+        logo = p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"').replace('class="fga-mark product-logo"', 'class="fga-mark pcard-logo"')
         badge = f'<span class="badge">{p["card_badge"]}</span>' if p.get('card_badge') else ''
         tabs.append(f'''
         <label class="pshow-tab">
@@ -468,7 +472,7 @@ HOME = '''
       <a class="split-tile split-products rise" href="#products">
         <span class="split-kind">Products</span>
         <span class="split-title">Software we build</span>
-        <span class="split-text">VeriGate, Eye of the Tenant, Veridyne Certifications, AuthBeam, AuthLens, AuthCanvas, Veridyne Companion and SA Sparring. Built, hosted and supported by us.</span>
+        <span class="split-text">VeriGate, Eye of the Tenant, Veridyne Certifications, AuthBeam, AuthLens, Veridyne FGA, AuthCanvas and Veridyne Companion. Built, hosted and supported by us.</span>
         <span class="split-more">See the products</span>
         <span class="split-shots" aria-hidden="true">
           <img src="/assets/authlens.png" alt="" width="1600" height="940">
@@ -535,9 +539,9 @@ HOME = '''
             <option>Veridyne Certifications</option>
             <option>AuthBeam</option>
             <option>AuthLens access</option>
+            <option>Veridyne FGA</option>
             <option>AuthCanvas early access</option>
             <option>Veridyne Companion</option>
-            <option>SA Sparring</option>
             <option>Something else</option>
           </select>
         </div>

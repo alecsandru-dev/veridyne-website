@@ -9,7 +9,7 @@ compact), rebuilt on the Oct 2026 brand. Offer: two things only, consulting and 
 
 ## Status
 Live. Last commit a22cb5e (2026-11-08). Pages: / , /services, /verigate, /certifications, /authbeam, /authlens, /eot, /authcanvas,
-/companion, /sa-sparring, /privacy, /signin. Roiall is benched (2026-11-08: off list, footer, form, sitemap; /roiall
+/companion, /fga, /privacy, /signin. Roiall is benched (2026-11-08: off list, footer, form, sitemap; /roiall
 redirects to /#products, temporary). Rentolio is not shown.
 
 ## Stack
@@ -18,7 +18,7 @@ Static HTML + one `styles.css` + `main.js` + `js-flag.js`; `api/*.js` Vercel Nod
 
 ## Repo layout
 - `tools/build_pages.py` source of shared head/header/footer/gate dialog + PRODUCTS dict + SERVICES + HOME/SERVICES_PAGE.
-  Generated: index, services, verigate, certifications, authbeam, authlens, eot, authcanvas, companion, sa-sparring, signin.
+  Generated: index, services, verigate, certifications, authbeam, authlens, eot, fga, authcanvas, companion, signin.
   `privacy.html`, `styles.css`, `main.js`, `sitemap.xml`, `robots.txt` are hand-edited.
 - `api/contact.js`, `api/contact-confirm.js`, `api/_contact-token.js` contact form (see below).
 - `assets/` logos, product screenshots, `photos/` (HQ + business card), OG image, email-signature banner. Public,
@@ -69,7 +69,7 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
   line #E2E8EF. Dark theme (follows system + header switch): page #07111F, card #0C1A2E, ink #E9EFF7, line #1E3352,
   button fill becomes cyan.
 - Product accents (sections coloured per product): AuthCanvas blue #2459E6 on #070F1E, AuthBeam amber #FF9F0A on
-  #0B0C0E, Roiall teal #45E3CF / #141E3A, SA Sparring yellow #F7C21B on #111214.
+  #0B0C0E, Roiall teal #45E3CF / #141E3A, Veridyne FGA blue #138DFD on #02102D.
 - Type: Archivo only (self-hosted woff2 latin + latin-ext). Sora/Inter rejected as looking "generative AI". Mono for
   code only. Moderate sizes: hero clamp(38px,4.6vw,60px), h2 clamp(30px,3.4vw,46px), h3 20px, body 16px.
 - Layout tokens: --wide 1180px, --radius 22px, --ease cubic-bezier(0.22,1,0.36,1). Fluid animated motion; respect reduced motion.
