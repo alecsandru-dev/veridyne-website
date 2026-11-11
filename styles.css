@@ -1333,16 +1333,14 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
 @media (max-width: 640px) { .service-grid { grid-template-columns: 1fr; } .service.stile, .services-page .service.stile { min-height: 250px; } .contact { width: calc(100% - 24px); } }
 @media (prefers-reduced-motion: reduce) { .service.stile, .stile-media img { transition: none; } .service.stile:hover { transform: none; } }
 
-/* Hero: the Veridyne mark, rendered sharp from the logo file. No drift: it stays crisp. */
-.hero-stage { background: #040A16; }
-.hero-scene { object-position: 50% 50%; animation: none !important; }
-.hero-stage::after { background: linear-gradient(90deg, rgba(4, 10, 22, 0.55) 0%, rgba(4, 10, 22, 0.25) 36%, rgba(4, 10, 22, 0) 56%); }
-/* Narrower than a desktop: the mark sits in a band above the words, never behind them */
+/* Hero: sign-ins passing one gate, drawn on a canvas by main.js (sharp on any screen) */
+.hero-stage { background: radial-gradient(60% 90% at 74% 50%, rgba(0, 130, 230, 0.2), rgba(0, 130, 230, 0) 70%), linear-gradient(115deg, #040A16 0%, #071A33 100%); }
+.hero-stage::after { content: none; }
+.hero-flow { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
+@media (min-width: 1281px) { .hero-stage .hero-copy { max-width: min(640px, 45%); } }
+/* Narrower than a desktop: the drawing sits in a band above the words, never behind them */
 @media (max-width: 1280px) {
-  .hero-stage { --vband: clamp(236px, 36vw, 380px); padding-top: var(--vband); min-height: 0; }
+  .hero-stage { --vband: clamp(250px, 36vw, 380px); padding-top: var(--vband); min-height: 0; background: radial-gradient(70% 46% at 50% 22%, rgba(0, 130, 230, 0.22), rgba(0, 130, 230, 0) 70%), linear-gradient(180deg, #071A33 0%, #040A16 60%); }
   .hero-stage .hero-copy { max-width: 640px; }
-  .hero-scene { height: var(--vband); inset: 0 0 auto 0; object-position: 100% 50%; }
-  .hero-stage::after { background: linear-gradient(0deg, rgba(4, 10, 22, 1) 0%, rgba(4, 10, 22, 1) calc(100% - var(--vband)), rgba(4, 10, 22, 0) calc(100% - var(--vband) + 70px)); }
 }
 @media (max-width: 640px) { .hero-stage .hero-copy { max-width: none; } }
-@media (min-width: 1281px) { .hero-stage .hero-copy { max-width: min(640px, 45%); } }
