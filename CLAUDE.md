@@ -105,7 +105,7 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
   summary tiles were removed on purpose. Services are four scene tiles (`.service.stile`), products a grid of scene
   tiles (`product_grid()`, `.ptile`; first two larger with the screenshot; compact grid under each product page).
 - Hero = nanites building a keyhole gateway (Higgsfield, Nov 2026). Stills first (`hero-end-*.webp` everywhere,
-  `hero-start-*.webp` where the film will play); main.js fetches `hero-build.mp4` (3.3 MB, silent) after page load on
+  `hero-start-*.webp` where the film will play); main.js fetches `hero-build.mp4` (silent; the gateway rises out of a puddle of nanites on the floor) after page load on
   desktops with motion allowed, plays it once, then loops `hero-idle.mp4` (1.1 MB). Phones, reduced motion and data
   saver keep the finished-gateway still. All hero media are 5:3 (16:9 plus a smeared 6.7% top pad for headroom), so
   stills and films line up. Below 1281px the gateway sits in a band above the words. `film-poster.jpg` is the launch
