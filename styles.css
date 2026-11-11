@@ -1333,14 +1333,29 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
 @media (max-width: 640px) { .service-grid { grid-template-columns: 1fr; } .service.stile, .services-page .service.stile { min-height: 250px; } .contact { width: calc(100% - 24px); } }
 @media (prefers-reduced-motion: reduce) { .service.stile, .stile-media img { transition: none; } .service.stile:hover { transform: none; } }
 
-/* Hero: sign-ins passing one gate, drawn on a canvas by main.js (sharp on any screen) */
-.hero-stage { background: radial-gradient(60% 90% at 74% 50%, rgba(0, 130, 230, 0.2), rgba(0, 130, 230, 0) 70%), linear-gradient(115deg, #040A16 0%, #071A33 100%); }
-.hero-stage::after { content: none; }
-.hero-flow { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
+/* Hero: nanites build a keyhole gateway. Stills first, the film on top once it plays (main.js). */
+.hero-stage { background: #02060F; }
+.hero-pic, .hero-film { position: absolute; inset: 0; z-index: -2; }
+.hero-pic .hero-scene, .hero-film { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; animation: none !important; }
+.hero-film { opacity: 0; pointer-events: none; transition: opacity 500ms var(--ease); }
+.hero-pic-start { display: none; }
+/* Where the film will play, the first thing shown is its opening frame, so the build starts without a jump. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .js .hero-stage:not(.no-film):not(.film-done) .hero-pic-start { display: block; }
+  .js .hero-stage:not(.no-film):not(.film-done) .hero-pic-end { display: none; }
+}
+.hero-stage.film-on .hero-film-build { opacity: 1; }
+.hero-stage.film-idle .hero-film-idle { opacity: 1; }
+.hero-stage.film-idle .hero-film-build { opacity: 0; transition-delay: 500ms; }
+.hero-stage::after { content: ""; background: linear-gradient(180deg, rgba(2, 6, 15, 1) 0%, rgba(2, 6, 15, 0.85) 4%, rgba(2, 6, 15, 0) 13%), linear-gradient(90deg, rgba(2, 6, 15, 0.82) 0%, rgba(2, 6, 15, 0.6) 34%, rgba(2, 6, 15, 0) 58%); }
 @media (min-width: 1281px) { .hero-stage .hero-copy { max-width: min(640px, 45%); } }
-/* Narrower than a desktop: the drawing sits in a band above the words, never behind them */
+/* Narrower than a desktop: the gateway sits in a band above the words, never behind them */
 @media (max-width: 1280px) {
-  .hero-stage { --vband: clamp(250px, 36vw, 380px); padding-top: var(--vband); min-height: 0; background: radial-gradient(70% 46% at 50% 22%, rgba(0, 130, 230, 0.22), rgba(0, 130, 230, 0) 70%), linear-gradient(180deg, #071A33 0%, #040A16 60%); }
+  .hero-stage { --vband: clamp(250px, 38vw, 400px); padding-top: var(--vband); min-height: 0; }
   .hero-stage .hero-copy { max-width: 640px; }
+  .hero-pic { inset: 0 0 auto 0; height: var(--vband); }
+  .hero-pic .hero-scene { inset: 0 0 0 auto; width: auto; height: 100%; aspect-ratio: 5 / 3; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 34%); mask-image: linear-gradient(90deg, transparent 0, #000 34%); }
+  .hero-film { inset: 0 0 auto auto; width: auto; height: var(--vband); aspect-ratio: 5 / 3; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 34%); mask-image: linear-gradient(90deg, transparent 0, #000 34%); }
+  .hero-stage::after { background: linear-gradient(180deg, rgba(2, 6, 15, 1) 0, rgba(2, 6, 15, 1) 14px, rgba(2, 6, 15, 0) 64px), linear-gradient(0deg, rgba(2, 6, 15, 1) 0%, rgba(2, 6, 15, 1) calc(100% - var(--vband)), rgba(2, 6, 15, 0) calc(100% - var(--vband) + 60px)); }
 }
 @media (max-width: 640px) { .hero-stage .hero-copy { max-width: none; } }

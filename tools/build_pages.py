@@ -417,8 +417,19 @@ HOME = '''
 
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-stage">
-    <!-- Sign-ins passing one gate on their way to the apps: drawn by main.js, decorative. The words say it all. -->
-    <canvas class="hero-flow" aria-hidden="true"></canvas>
+    <!-- Nanites build a keyhole gateway. Stills first: the finished gateway everywhere, the opening frame where the
+         film will play (desktops with motion allowed). main.js then fetches the short silent film, plays the build
+         once and loops the idle. -->
+    <picture class="hero-pic hero-pic-end">
+      <source type="image/webp" srcset="/assets/vie/hero-end-1600.webp 1600w, /assets/vie/hero-end-2560.webp 2560w" sizes="(min-width: 1400px) 1400px, 100vw">
+      <img class="hero-scene" src="/assets/vie/hero-end.jpg" alt="" width="1920" height="1152" fetchpriority="high">
+    </picture>
+    <picture class="hero-pic hero-pic-start">
+      <source type="image/webp" srcset="/assets/vie/hero-start-1600.webp 1600w, /assets/vie/hero-start-2560.webp 2560w" sizes="(min-width: 1400px) 1400px, 100vw">
+      <img class="hero-scene" src="/assets/vie/hero-start-1600.webp" alt="" width="1600" height="960" loading="lazy">
+    </picture>
+    <video class="hero-film hero-film-build" muted playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="/assets/vie/hero-build.mp4"></video>
+    <video class="hero-film hero-film-idle" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="/assets/vie/hero-idle.mp4"></video>
     <div class="hero-copy">
       <p class="pill rise"><span class="pill-dot"></span>Identity and access, Auth0 and Okta</p>
       <h1 id="hero-title" class="rise">Secure sign-in, built right from the first login.</h1>

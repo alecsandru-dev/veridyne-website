@@ -104,9 +104,12 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
 - Home = hero, Professional Services, Products (V.I.E), contact, joined by `.thread`. The sign-in sketch and the two
   summary tiles were removed on purpose. Services are four scene tiles (`.service.stile`), products a grid of scene
   tiles (`product_grid()`, `.ptile`; first two larger with the screenshot; compact grid under each product page).
-- Hero = a canvas drawn by main.js (`.hero-flow`): sign-ins travel from people through one gate to their apps, now and
-  then one is refused (amber). No image file. Below 1281px it sits in a band above the words. Still with reduced motion.
-  `film-poster.jpg` is the launch video's poster. (A city still and a 3D V were tried and dropped.)
+- Hero = nanites building a keyhole gateway (Higgsfield, Nov 2026). Stills first (`hero-end-*.webp` everywhere,
+  `hero-start-*.webp` where the film will play); main.js fetches `hero-build.mp4` (3.3 MB, silent) after page load on
+  desktops with motion allowed, plays it once, then loops `hero-idle.mp4` (1.1 MB). Phones, reduced motion and data
+  saver keep the finished-gateway still. All hero media are 5:3 (16:9 plus a smeared 6.7% top pad for headroom), so
+  stills and films line up. Below 1281px the gateway sits in a band above the words. `film-poster.jpg` is the launch
+  video's poster. (A city still, a 3D V and a canvas drawing were tried and dropped.)
 - `assets/vie/`: stills cut from the films' own artwork (scene-<slug>.jpg, svc-*.jpg, contact.jpg),
   hover loops (loop-<slug>.mp4, fetched only on hover on desktops) and the launch video (veridyne-vie-launch.mp4,
   fetched only on Play, in `dialog#film`; its quiet opening is lifted ~12 dB for the web copy). No video loads by itself.
