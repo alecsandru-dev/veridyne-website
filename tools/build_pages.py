@@ -7,14 +7,14 @@ SITE = pathlib.Path(sys.argv[1])
 
 def head(title, desc, path):
     return f'''<!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="https://www.veridyne.eu{path}">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#07111F">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Veridyne Solutions">
 <meta property="og:title" content="{title}">
@@ -333,37 +333,32 @@ PRODUCTS = {
         meta='Veridyne Companion: the mobile app for Veridyne clients and employees, with VeriGate to approve every sign-in. On the App Store now, and coming soon to Android.'),
 }
 
-def product_showcase(exclude=None, group='product'):
-    """The products as one stage: a list to pick from, the chosen product large on its own ground.
-    Picking works in CSS (:has on the radios); main.js only moves it on by itself. On phones the products stack."""
+def product_logo(p):
+    return p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"').replace('class="fga-mark product-logo"', 'class="fga-mark pcard-logo"')
+
+def product_grid(exclude=None, compact=False):
+    """Every product at once, each a tile on its own scene from the launch film (a still; a short silent loop is
+    fetched only when a visitor on a desktop points at the tile, see main.js). The first two tiles of the full grid
+    are larger and carry the product's screenshot. The compact grid (under each product page) leaves the text out."""
     items = [(slug, p) for slug, p in PRODUCTS.items() if slug != exclude]
-    tabs, panels = [], []
+    tiles = []
     for i, (slug, p) in enumerate(items):
-        logo = p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"').replace('class="fga-mark product-logo"', 'class="fga-mark pcard-logo"')
+        big = not compact and i < 2
         badge = f'<span class="badge">{p["card_badge"]}</span>' if p.get('card_badge') else ''
-        tabs.append(f'''
-        <label class="pshow-tab">
-          <input type="radio" name="{group}" value="{slug}"{' checked' if i == 0 else ''}>
-          <span class="pshow-tab-name">{p['name']}</span>
-          <span class="pshow-tab-line">{p['kind']}</span>
-          <span class="pshow-time" aria-hidden="true"><span></span></span>
-        </label>''')
-        panels.append(f'''
-        <a class="pshow-panel pcard-{slug}" href="/{slug}" data-for="{slug}">
-          <span class="pshow-copy">
-            <span class="pcard-top">{logo}{badge}</span>
-            <span class="pcard-tagline">{p['tagline']}</span>
-            <span class="pcard-text">{p['card']}</span>
+        shot = f'\n          <span class="ptile-shot" aria-hidden="true">{p["shot"].split(" alt=")[0]} alt="" loading="lazy"></span>' if big else ''
+        text = '' if compact else f'\n            <span class="ptile-text">{p["card"]}</span>'
+        tiles.append(f'''
+        <a class="ptile pcard-{slug}{' ptile-big' if big else ''}" href="/{slug}">
+          <span class="ptile-media" aria-hidden="true"><img src="/assets/vie/scene-{slug}.jpg" alt="" width="1280" height="720" loading="lazy"><video muted loop playsinline preload="none" tabindex="-1" data-src="/assets/vie/loop-{slug}.mp4"></video></span>
+          <span class="pcard-top">{product_logo(p)}{badge}</span>
+          <span class="ptile-body">
+            <span class="ptile-kind">{p['kind']}</span>
+            <span class="ptile-tagline">{p['tagline']}</span>{text}
             <span class="pcard-more">Learn more<span class="sr-only"> about {p['name']}</span></span>
-          </span>
-          <span class="pshow-shot">{p['shot']} loading="lazy"></span>
+          </span>{shot}
         </a>''')
     return f'''
-    <div class="pshow rise">
-      <div class="pshow-tabs" role="radiogroup" aria-label="Products">{''.join(tabs)}
-      </div>
-      <div class="pshow-stage">{''.join(panels)}
-      </div>
+    <div class="pgrid{' pgrid-compact' if compact else ''} rise">{''.join(tiles)}
     </div>'''
 
 def product_page(slug):
@@ -381,6 +376,7 @@ def product_page(slug):
     body = f'''
 <main id="main">
   <section class="product product-page {p['cls']}" aria-labelledby="{p['title_id']}">
+    <div class="product-scene" aria-hidden="true"><img src="/assets/vie/scene-{slug}.jpg" alt="" width="1280" height="720"></div>
     <div class="product-head rise">
       <a class="crumb" href="/#products">Products</a>
       {p['badge']}
@@ -407,7 +403,7 @@ def product_page(slug):
 
   <section class="more-products" aria-labelledby="more-title">
     <h2 id="more-title" class="rise">More from Veridyne</h2>
-    {product_showcase(exclude=slug, group='more-product')}
+    {product_grid(exclude=slug, compact=True)}
   </section>
 </main>
 '''
@@ -419,11 +415,8 @@ HOME = '''
 
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-stage">
-    <!-- Ambient loop: decorative, muted, started by main.js unless the visitor prefers reduced motion -->
-    <video class="hero-video" muted loop playsinline preload="none" poster="/assets/hero/hero-poster.jpg" aria-hidden="true" tabindex="-1">
-      <source src="/assets/hero/hero-loop.webm" type="video/webm">
-      <source src="/assets/hero/hero-loop.mp4" type="video/mp4">
-    </video>
+    <!-- A still from the launch film. The film is fetched only when a visitor presses "Watch the film". -->
+    <img class="hero-scene" src="/assets/vie/hero.jpg" alt="" width="1920" height="1080" fetchpriority="high">
     <div class="hero-copy">
       <p class="pill rise"><span class="pill-dot"></span>Identity and access, Auth0 and Okta</p>
       <h1 id="hero-title" class="rise">Secure sign-in, built right from the first login.</h1>
@@ -431,6 +424,7 @@ HOME = '''
       <div class="hero-actions rise">
         <a class="btn" href="#contact" data-topic="Identity &amp; access consulting">Book a free call</a>
         <a class="link-more" href="/services">Our services</a>
+        <a class="film-link" href="/assets/vie/veridyne-vie-launch.mp4" data-film><span class="film-play" aria-hidden="true"></span>Watch the film<span class="film-len"> 2:30</span></a>
       </div>
     </div>
     </div>
@@ -501,11 +495,18 @@ HOME = '''
   <section class="products-home" id="products" aria-labelledby="products-title">
     <div class="intro rise">
       <p class="division">Products</p>
+      <p class="vie-mark"><strong>V.I.E</strong><span>Veridyne Identity Environment</span></p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
       <p class="lead">Separate from our consulting work: eight products, each made for its own users.</p>
+      <a class="film-link" href="/assets/vie/veridyne-vie-launch.mp4" data-film><span class="film-play" aria-hidden="true"></span>Watch the film<span class="film-len"> 2:30</span></a>
     </div>
     PRODUCT_SHOWCASE
   </section>
+
+  <dialog class="film" id="film" aria-label="V.I.E launch film">
+    <video controls playsinline preload="none" poster="/assets/vie/hero.jpg" data-src="/assets/vie/veridyne-vie-launch.mp4"></video>
+    <form method="dialog"><button class="film-close" type="submit">Close</button></form>
+  </dialog>
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="contact-head rise">
@@ -562,7 +563,7 @@ HOME = '''
     </form>
   </section>
 </main>
-'''.replace('SERVICE_GRID', service_grid(False)).replace('PRODUCT_SHOWCASE', product_showcase())
+'''.replace('SERVICE_GRID', service_grid(False)).replace('PRODUCT_SHOWCASE', product_grid())
 
 # ---------- services ----------
 SERVICES_PAGE = '''

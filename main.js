@@ -1,4 +1,4 @@
-// Veridyne site: header state, entrances, product screenshots on scroll, contact form.
+// Veridyne site: header state, films on demand, entrances, product screenshots on scroll, contact form.
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -8,22 +8,40 @@
   onScrollHeader();
   window.addEventListener('scroll', onScrollHeader, { passive: true });
 
-  /* ---------- Hero video: play only with motion allowed, pause while off screen ---------- */
-  var heroVideo = document.querySelector('.hero-video');
-  if (heroVideo) {
-    if (reduce) {
-      heroVideo.remove();
-    } else {
-      heroVideo.preload = 'auto';
-      var playHero = function () { var p = heroVideo.play(); if (p && p.catch) p.catch(function () {}); };
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) { if (e.isIntersecting) playHero(); else heroVideo.pause(); });
-        }, { threshold: 0.05 }).observe(heroVideo);
-      } else {
-        playHero();
-      }
-    }
+  /* ---------- Films: nothing is fetched until a visitor asks for it ----------
+     Product tiles show a still; on a desktop, pointing at one fetches and plays its short silent loop.
+     Skipped with reduced motion, data saver or a slow connection. */
+  var conn = navigator.connection || {};
+  var light = reduce || conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+  if (!light && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.ptile').forEach(function (tile) {
+      var v = tile.querySelector('video[data-src]');
+      if (!v) return;
+      tile.addEventListener('pointerenter', function () {
+        if (!v.src) v.src = v.getAttribute('data-src');
+        var p = v.play();
+        if (p && p.then) p.then(function () { tile.classList.add('is-live'); }, function () {});
+      });
+      tile.addEventListener('pointerleave', function () { tile.classList.remove('is-live'); v.pause(); });
+    });
+  }
+
+  /* "Watch the film": opens the launch film in a dialog and only then starts loading it.
+     Without JavaScript (or without <dialog>) the link opens the film file itself. */
+  var film = document.getElementById('film');
+  if (film && typeof film.showModal === 'function') {
+    var filmVideo = film.querySelector('video');
+    document.querySelectorAll('a[data-film]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!filmVideo.src) filmVideo.src = filmVideo.getAttribute('data-src');
+        film.showModal();
+        var p = filmVideo.play();
+        if (p && p.catch) p.catch(function () {});
+      });
+    });
+    film.addEventListener('close', function () { filmVideo.pause(); });
+    film.addEventListener('click', function (e) { if (e.target === film) film.close(); });
   }
 
   /* ---------- Theme switch (the theme itself is set by js-flag.js before paint) ---------- */
@@ -122,27 +140,6 @@
       var select = document.getElementById('cf-topic');
       if (select) select.value = link.getAttribute('data-topic');
     });
-  });
-
-  /* ---------- Products stage: moves on when the time line under the chosen product fills ----------
-     Picking is plain radios and CSS; this only adds the turning. Paused on hover, focus and off screen. */
-  document.querySelectorAll('.pshow').forEach(function (show) {
-    if (reduce) return;
-    var radios = Array.prototype.slice.call(show.querySelectorAll('.pshow-tab input'));
-    if (radios.length < 2) return;
-    show.classList.add('is-playing');
-    show.addEventListener('animationend', function (e) {
-      if (e.animationName !== 'pshow-time') return;
-      var i = radios.findIndex(function (r) { return r.checked; });
-      radios[(i + 1) % radios.length].checked = true;
-    });
-    // A visitor who picks a product has chosen: stop turning.
-    radios.forEach(function (r) { r.addEventListener('click', function (e) { if (e.isTrusted) show.classList.remove('is-playing'); }); });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { show.classList.toggle('is-paused', !en.isIntersecting); });
-      }, { threshold: 0.35 }).observe(show);
-    }
   });
 
   /* ---------- Secure sign-in: choose a portal, then a short hand-off to its own SSO ----------
