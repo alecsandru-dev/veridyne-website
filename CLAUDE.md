@@ -104,7 +104,9 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
 - Home = hero, Professional Services, Products (V.I.E), contact, joined by `.thread`. The sign-in sketch and the two
   summary tiles were removed on purpose. Services are four scene tiles (`.service.stile`), products a grid of scene
   tiles (`product_grid()`, `.ptile`; first two larger with the screenshot; compact grid under each product page).
-- `assets/vie/`: stills cut from the films' own artwork (hero-*.webp/jpg, scene-<slug>.jpg, svc-*.jpg, contact.jpg),
+- Hero image = the Veridyne V rendered in 3D from the logo's own SVG (never redrawn), `assets/vie/hero-*.webp` + hero.jpg;
+  below 1281px it sits in a band above the words, never behind them. `film-poster.jpg` is the launch video's poster.
+- `assets/vie/`: stills cut from the films' own artwork (scene-<slug>.jpg, svc-*.jpg, contact.jpg),
   hover loops (loop-<slug>.mp4, fetched only on hover on desktops) and the launch video (veridyne-vie-launch.mp4,
   fetched only on Play, in `dialog#film`; its quiet opening is lifted ~12 dB for the web copy). No video loads by itself.
 - A new product needs `assets/vie/scene-<slug>.jpg` and `loop-<slug>.mp4`.

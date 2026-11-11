@@ -417,10 +417,10 @@ HOME = '''
 
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-stage">
-    <!-- A still from the launch video. The video is fetched only when a visitor presses "Watch the launch video". -->
+    <!-- The Veridyne mark, rendered from the logo file. The launch video is fetched only when a visitor presses "Watch the launch video". -->
     <picture>
-      <source type="image/webp" srcset="/assets/vie/hero-1600.webp 1600w, /assets/vie/hero-2560.webp 2560w" sizes="(min-width: 1400px) 1400px, 100vw">
-      <img class="hero-scene" src="/assets/vie/hero.jpg" alt="" width="1920" height="1086" fetchpriority="high">
+      <source type="image/webp" srcset="/assets/vie/hero-1600.webp 1600w, /assets/vie/hero-2560.webp 2800w" sizes="(min-width: 1400px) 1400px, 100vw">
+      <img class="hero-scene" src="/assets/vie/hero.jpg" alt="" width="1920" height="960" fetchpriority="high">
     </picture>
     <div class="hero-copy">
       <p class="pill rise"><span class="pill-dot"></span>Identity and access, Auth0 and Okta</p>
@@ -469,7 +469,7 @@ HOME = '''
   <div class="thread" aria-hidden="true"></div>
 
   <dialog class="film" id="film" aria-label="V.I.E launch video">
-    <video controls playsinline preload="none" poster="/assets/vie/hero.jpg" data-src="/assets/vie/veridyne-vie-launch.mp4"></video>
+    <video controls playsinline preload="none" poster="/assets/vie/film-poster.jpg" data-src="/assets/vie/veridyne-vie-launch.mp4"></video>
     <form method="dialog"><button class="film-close" type="submit">Close</button></form>
   </dialog>
 

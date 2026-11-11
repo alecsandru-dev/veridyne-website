@@ -1,0 +1,71 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#07111F;overflow:hidden}</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script></head><body>
+<script type="module">
+import * as THREE from 'three';
+import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+const P = new URLSearchParams(location.search);
+const L = +P.get('L') || 1; const EM = P.get('em') ? +P.get('em') : 1;
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const W = +P.get('w') || 2560, H = +P.get('h') || 1440;
+const r = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+r.setSize(W, H); r.setPixelRatio(1); r.toneMapping = THREE.AgXToneMapping; r.toneMappingExposure = 1.0; if (P.get("tm")==="none") r.toneMapping = THREE.NoToneMapping;
+r.outputColorSpace = THREE.SRGBColorSpace; document.body.appendChild(r.domElement);
+const scene = new THREE.Scene();
+// background: deep navy with a soft cyan glow behind the mark
+const bg = document.createElement('canvas'); bg.width = 1600; bg.height = 900; const g = bg.getContext('2d');
+let grd = g.createLinearGradient(0, 0, 1600, 900); grd.addColorStop(0, '#040A16'); grd.addColorStop(1, P.get('b2') ? '#' + P.get('b2') : '#0A1F3A'); g.fillStyle = grd; g.fillRect(0, 0, 1600, 900);
+const GX = +P.get('gx') || 800, GR = +P.get('gr') || 560; grd = g.createRadialGradient(GX, 430, 0, GX, 430, GR); grd.addColorStop(0, 'rgba(0,160,240,' + (P.get('ga') || 0.55) + ')'); grd.addColorStop(0.45, 'rgba(0,110,210,' + ((P.get('ga') || 0.55) * 0.36) + ')'); grd.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = grd; g.fillRect(0, 0, 1600, 900);
+const bt = new THREE.CanvasTexture(bg); bt.colorSpace = THREE.SRGBColorSpace; scene.background = bt;
+const pm = new THREE.PMREMGenerator(r); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = +P.get('env') || 1;
+const cam = new THREE.PerspectiveCamera(30, W / H, 1, 10000); cam.position.set(0, 0, 2700);
+const svg = new SVGLoader().parse(await (await fetch('v.svg')).text());
+const mats = [
+  new THREE.MeshPhysicalMaterial({ color: 0x0C3266, metalness: 0.2, roughness: 0.3, clearcoat: 0.6, clearcoatRoughness: 0.1, emissive: 0x0B2D66, emissiveIntensity: 0.5, envMapIntensity: 0.15 }), // top facet: logo navy
+  new THREE.MeshPhysicalMaterial({ vertexColors: true, metalness: 0.35, roughness: 0.28, clearcoat: 1, clearcoatRoughness: 0.08, envMapIntensity: 0.55, emissive: 0x7D8CA0, emissiveIntensity: 0.3 }), // right facet: bright silver
+  new THREE.MeshPhysicalMaterial({ vertexColors: true, metalness: 0.0, roughness: 0.32, clearcoat: 0.5, clearcoatRoughness: 0.12, envMapIntensity: 0.08, emissive: 0x0078D8, emissiveIntensity: 0.12 }), // left facet: logo cyan gradient
+];
+const ZOFF = [0, 1.2, 2.4]; // same plane, only enough to keep the SVG paint order // paint order of the SVG: navy, then steel, then cyan on top
+mats.forEach(m => m.emissiveIntensity *= EM);
+const grp = new THREE.Group();
+svg.paths.forEach((p, i) => SVGLoader.createShapes(p).forEach((sh) => {
+  const geo = new THREE.ExtrudeGeometry(sh, { depth: 10, bevelEnabled: true, bevelThickness: 2, bevelSize: 1.6, bevelOffset: -1.6, bevelSegments: 3, curveSegments: 24 });
+  if (i === 2) { // the logo's own gradient: #00BCFE top-left to #0170C1 bottom-right (x1=300,y1=260 -> x2=780,y2=690)
+    const pa = geo.attributes.position, col = new Float32Array(pa.count * 3), A = new THREE.Color(0x00BCFE), M = new THREE.Color(0x009AE9), B = new THREE.Color(0x0170C1);
+    for (let k = 0; k < pa.count; k++) { const x = pa.getX(k), y = pa.getY(k); let t = ((x - 300) * 480 + (y - 260) * 430) / (480 * 480 + 430 * 430); t = Math.min(1, Math.max(0, t));
+      const c2 = t < .5 ? A.clone().lerp(M, t * 2) : M.clone().lerp(B, (t - .5) * 2); col[k*3] = c2.r; col[k*3+1] = c2.g; col[k*3+2] = c2.b; }
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3)); }
+  if (i === 1) { // silver: light at the top, logo grey lower down
+    const pa = geo.attributes.position, col = new Float32Array(pa.count * 3), A = new THREE.Color(0xF4F7FB), B = new THREE.Color(0xBAC5D3);
+    for (let k = 0; k < pa.count; k++) { let t = (pa.getY(k) - 20) / 640; t = Math.min(1, Math.max(0, t)); const c2 = A.clone().lerp(B, t); col[k*3] = c2.r; col[k*3+1] = c2.g; col[k*3+2] = c2.b; }
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3)); }
+  geo.translate(0, 0, ZOFF[i]);
+  const m = new THREE.Mesh(geo, mats[i]); grp.add(m);
+}));
+grp.scale.y = -1; // SVG y points down
+const box = new THREE.Box3().setFromObject(grp); const c = box.getCenter(new THREE.Vector3());
+grp.position.set(-c.x, -c.y, -35);
+const holder = new THREE.Group(); holder.add(grp); scene.add(holder);
+holder.rotation.set(+P.get('rx') || 0.07, +P.get('ry') || -0.14, +P.get('rz') || 0.02);
+holder.position.set(+P.get('px') || 0, +P.get('py') || 40, 0);
+const key = new THREE.DirectionalLight(0xffffff, 1.6 * L); key.position.set(-600, 800, 1200); scene.add(key);
+const rim = new THREE.PointLight(0x00B4FF, 1.5e6 * L, 0, 2); rim.position.set(700, -200, -500); scene.add(rim);
+const fill = new THREE.PointLight(0x7FD8FF, 0.8e6 * L, 0, 2); fill.position.set(-900, 600, 900); scene.add(fill);
+// floating points of light
+const N = 900, pos = new Float32Array(N * 3); for (let i = 0; i < N; i++) { const a = rnd() * 6.283, rr = 500 + rnd() * 1300; pos[i*3] = Math.cos(a) * rr * 1.5; pos[i*3+1] = (rnd() - .5) * 1400; pos[i*3+2] = (rnd() - .5) * 1200 - 200; }
+const pg = new THREE.BufferGeometry(); pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+const dot = document.createElement('canvas'); dot.width = dot.height = 64; const d = dot.getContext('2d'); const rg = d.createRadialGradient(32,32,0,32,32,32); rg.addColorStop(0,'rgba(255,255,255,1)'); rg.addColorStop(.3,'rgba(120,220,255,.8)'); rg.addColorStop(1,'rgba(0,120,255,0)'); d.fillStyle = rg; d.fillRect(0,0,64,64);
+scene.add(new THREE.Points(pg, new THREE.PointsMaterial({ size: 9, map: new THREE.CanvasTexture(dot), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0.8 })));
+const comp = new EffectComposer(r); comp.addPass(new RenderPass(scene, cam));
+comp.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), P.get('bl') ? +P.get('bl') : 0.32, 0.55, 0.8)); comp.addPass(new OutputPass());
+window.frame = (t) => { // t 0..1 over the closing seconds: a slow turn and a gentle drift of the points
+  holder.rotation.y = (+P.get('ry') || -0.14) + 0.12 * t; holder.rotation.x = (+P.get('rx') || 0.07) - 0.05 * t;
+  const tt = Math.min(1, t / (+P.get('settle') || 1)), e = tt * tt * (3 - 2 * tt); // ease in and out, done by 'settle'
+  cam.position.z = (+P.get('cz') || 2700) + 650 * e; holder.position.y = (+P.get('py') || 40) + 190 * e;
+  const u = Math.min(1, t / 0.18), e2 = u * u * (3 - 2 * u); holder.position.x = (+P.get('px') || 0) + (+P.get('shift') || 0) * e2; comp.render(); };
+window.frame(0); window.DONE = true;
+</script></body></html>

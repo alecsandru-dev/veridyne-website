@@ -1332,3 +1332,17 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
 @media (max-width: 1000px) { .service.stile { min-height: 280px; } }
 @media (max-width: 640px) { .service-grid { grid-template-columns: 1fr; } .service.stile, .services-page .service.stile { min-height: 250px; } .contact { width: calc(100% - 24px); } }
 @media (prefers-reduced-motion: reduce) { .service.stile, .stile-media img { transition: none; } .service.stile:hover { transform: none; } }
+
+/* Hero: the Veridyne mark, rendered sharp from the logo file. No drift: it stays crisp. */
+.hero-stage { background: #040A16; }
+.hero-scene { object-position: 50% 50%; animation: none !important; }
+.hero-stage::after { background: linear-gradient(90deg, rgba(4, 10, 22, 0.55) 0%, rgba(4, 10, 22, 0.25) 36%, rgba(4, 10, 22, 0) 56%); }
+/* Narrower than a desktop: the mark sits in a band above the words, never behind them */
+@media (max-width: 1280px) {
+  .hero-stage { --vband: clamp(236px, 36vw, 380px); padding-top: var(--vband); min-height: 0; }
+  .hero-stage .hero-copy { max-width: 640px; }
+  .hero-scene { height: var(--vband); inset: 0 0 auto 0; object-position: 100% 50%; }
+  .hero-stage::after { background: linear-gradient(0deg, rgba(4, 10, 22, 1) 0%, rgba(4, 10, 22, 1) calc(100% - var(--vband)), rgba(4, 10, 22, 0) calc(100% - var(--vband) + 70px)); }
+}
+@media (max-width: 640px) { .hero-stage .hero-copy { max-width: none; } }
+@media (min-width: 1281px) { .hero-stage .hero-copy { max-width: min(640px, 45%); } }
