@@ -4,11 +4,11 @@ Big picture: see ~/veridyne-context (README.md, PORTFOLIO.md, ARCHITECTURE.md).
 
 ## What it is
 Public marketing site of Veridyne Solutions S.R.L. (Auth0/Okta identity consulting + own products). Static HTML, no
-framework, no build step on Vercel. Live at https://www.veridyne.eu. Design = "Version B" (Apple-style centered tiles,
-compact), rebuilt on the Oct 2026 brand. Offer: two things only, consulting and in-house products (no programs/packages).
+framework, no build step on Vercel. Live at https://www.veridyne.eu. Design = Redesign v3 (dark, look of the films; see
+below), on the Oct 2026 brand. Offer: two things only, consulting and in-house products (no programs/packages).
 
 ## Status
-Live. Last commit a22cb5e (2026-11-08). Pages: / , /services, /verigate, /certifications, /authbeam, /authlens, /eot, /authcanvas,
+Live. Redesign v3 went live 2026-11-11. Pages: / , /services, /verigate, /certifications, /authbeam, /authlens, /eot, /authcanvas,
 /companion, /fga, /privacy, /signin. Roiall is benched (2026-11-08: off list, footer, form, sitemap; /roiall
 redirects to /#products, temporary). Rentolio is not shown.
 
@@ -99,7 +99,7 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
 - When searching site-wide text (e.g. address changes) search all of ~: authbeam, authcanvas, Veyra, Roiall live outside
   "Veridyne rebrand".
 
-## Redesign v3 (branch `redesign-v3`, Nov 2026; not on main until Alecs says "go live")
+## Redesign v3 (live on main since 2026-11-11; built on branch `redesign-v3`)
 - Dark by default (js-flag.js: dark unless the visitor chose light; no longer follows the system). Look of the films.
 - Home = hero, Professional Services, Products (V.I.E), contact, joined by `.thread`. The sign-in sketch and the two
   summary tiles were removed on purpose. Services are four scene tiles (`.service.stile`), products a grid of scene
@@ -123,5 +123,5 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
   `.confirm-card` from styles.css (no inline styles, CSP).
 
 ## Branches
-main (live). Old: redesign, redesign-2026, companion-app, privacy-cloudflare (all fully merged into main; origin has
-redesign, redesign-2026). Nothing in flight. Working tree clean at time of writing.
+main (live). Old: redesign, redesign-2026, redesign-v3, companion-app, privacy-cloudflare (all fully merged into main;
+origin has redesign, redesign-2026, redesign-v3). Nothing in flight. Working tree clean at time of writing.
