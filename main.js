@@ -298,7 +298,7 @@
       var what = o.certification ? 'the Veridyne Certified ' + o.certification + ' voucher' : 'every Veridyne Certifications voucher';
       var day = o.ends ? new Date(o.ends).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'Europe/Bucharest' }) : '';
       var dayFull = o.ends ? new Date(o.ends).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Bucharest' }) : '';
-      var left = o.uses != null && o.left != null ? o.left + ' of ' + o.uses + ' left' : '';
+      var left = o.left != null ? o.left + ' left' : '';
       var bn = o.banner || {};
       var showDetails = bn.details !== false;
       var text = {
