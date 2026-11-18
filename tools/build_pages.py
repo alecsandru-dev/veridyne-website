@@ -132,7 +132,7 @@ FOOTER = '''
         </div>
         <div>
           <h2>Products</h2>
-          <a href="/verigate">VeriGate</a>
+          <a href="/secure-ai">Veridyne Secure AI</a>
           <a href="/eot">Eye of the Tenant</a>
           <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>
@@ -140,6 +140,7 @@ FOOTER = '''
           <a href="/fga">Veridyne FGA</a>
           <a href="/authcanvas">AuthCanvas</a>
           <a href="/companion">Veridyne Companion</a>
+          <a href="/verigate">VeriGate</a>
         </div>
         <div>
           <h2>Company</h2>
@@ -333,10 +334,31 @@ PRODUCTS = {
                   ('For employees', 'See your profile and schedule, request leave and photograph receipts.'),
                   ('VeriGate built in', 'Approve sign-ins to Veridyne apps with a push and your fingerprint.')],
         meta='Veridyne Companion: the mobile app for Veridyne clients and employees, with VeriGate to approve every sign-in. On the App Store now, and coming soon to Android.'),
+    'secure-ai': dict(
+        kind='Identity designs for AI agents',
+        name='Veridyne Secure AI', cls='product-sai', title_id='sai-title',
+        logo='<span class="sai-mark product-logo"><img src="/assets/secure-ai-mark.png" alt="" width="128" height="125">Veridyne Secure AI</span>',
+        badge='<p class="badge">Pilot</p>', card_badge='Pilot',
+        tagline='An identity design for your AI agent.',
+        lead='Describe your AI agent in plain words. Veridyne Secure AI gives you a first design: who the agent acts as, how it gets access to each tool, and which Auth0 or Okta features cover it. The first design is free for Veridyne clients. When you want the full design, book a paid review with a Veridyne architect.',
+        card='Describe your AI agent and get a first identity design. Then book the full design with a Veridyne architect.',
+        btn='<a class="btn btn-sai" href="https://my.veridyne.eu/secure-ai">Sign in to Veridyne Secure AI</a>\n        <a class="btn btn-sai-ghost" href="/?topic=Veridyne%20Secure%20AI#contact">Ask for access</a>',
+        shot='<img src="/assets/secure-ai.png" alt="Veridyne Secure AI with sample data: a diagram of a trip assistant, its four tools, the Auth0 feature that covers each one and the service each tool calls" width="1600" height="900"',
+        features=[('Describe your agent', 'Write what it does and which tools it calls. A few follow-up questions fill the gaps.'),
+                  ('A design, tool by tool', 'Who the agent acts as, how it gets access and what covers each tool. Features that are not available to everyone yet are marked.'),
+                  ('The full design, by an architect', 'Book a paid review. A Veridyne architect checks the design and writes the full one: flows, tokens, permissions and setup steps.')],
+        gallery=[('/assets/secure-ai-brief.png', 1600, 900, 'Each design is a numbered document that keeps your own description.', 'The top of a design with sample data: document number, company, status and the description of a trip assistant'),
+                 ('/assets/secure-ai-tools.png', 1600, 900, 'What each tool needs: who it acts as, its credential and approval.', 'The tool table with sample data: four tools, who each acts as, the credential, whether the person approves first and the feature that covers it'),
+                 ('/assets/secure-ai-next.png', 1600, 900, 'What is not available yet, what to decide, and the next step.', 'The end of a design with sample data: a feature in Early Access, one open question and the next step with an architect')],
+        caption='Screens from the app, shown with sample data. In pilot with Veridyne clients: ask us to switch it on for your company.',
+        meta='Veridyne Secure AI: describe your AI agent and get a first identity design, tool by tool, for Auth0 or Okta. Then book the full design with a Veridyne architect. In pilot with Veridyne clients.'),
 }
 
+# Order on the site: Veridyne Secure AI first, VeriGate last (2026-11-18). The first two get the large tiles.
+PRODUCTS = {'secure-ai': PRODUCTS['secure-ai'], **{k: v for k, v in PRODUCTS.items() if k not in ('secure-ai', 'verigate')}, 'verigate': PRODUCTS['verigate']}
+
 def product_logo(p):
-    return p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"').replace('class="fga-mark product-logo"', 'class="fga-mark pcard-logo"')
+    return p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"').replace('class="fga-mark product-logo"', 'class="fga-mark pcard-logo"').replace('class="sai-mark product-logo"', 'class="sai-mark pcard-logo"')
 
 def product_grid(exclude=None, compact=False):
     """Every product at once, each a tile on its own scene from the launch film (a still; a short silent loop is
@@ -511,7 +533,7 @@ HOME = '''
           <label for="cf-topic">About</label>
           <select id="cf-topic" name="topic">
             <option>Identity &amp; access consulting</option>
-            <option>VeriGate</option>
+            <option>Veridyne Secure AI</option>
             <option>Eye of the Tenant</option>
             <option>Veridyne Certifications</option>
             <option>AuthBeam</option>
@@ -519,6 +541,7 @@ HOME = '''
             <option>Veridyne FGA</option>
             <option>AuthCanvas early access</option>
             <option>Veridyne Companion</option>
+            <option>VeriGate</option>
             <option>Something else</option>
           </select>
         </div>

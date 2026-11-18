@@ -8,8 +8,9 @@ framework, no build step on Vercel. Live at https://www.veridyne.eu. Design = Re
 below), on the Oct 2026 brand. Offer: two things only, consulting and in-house products (no programs/packages).
 
 ## Status
-Live. Redesign v3 went live 2026-11-11. Pages: / , /services, /verigate, /certifications, /authbeam, /authlens, /eot, /authcanvas,
-/companion, /fga, /privacy, /signin. Roiall is benched (2026-11-08: off list, footer, form, sitemap; /roiall
+Live. Redesign v3 went live 2026-11-11. Pages: / , /services, /secure-ai, /verigate, /certifications, /authbeam, /authlens, /eot,
+/authcanvas, /companion, /fga, /privacy, /signin. Product order (2026-11-18): Veridyne Secure AI first, VeriGate last (set by the
+line under PRODUCTS in build_pages.py; the first two get the large tiles). Roiall is benched (2026-11-08: off list, footer, form, sitemap; /roiall
 redirects to /#products, temporary). Rentolio is not shown.
 
 ## Stack
@@ -69,7 +70,7 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
   line #E2E8EF. Dark theme (follows system + header switch): page #07111F, card #0C1A2E, ink #E9EFF7, line #1E3352,
   button fill becomes cyan.
 - Product accents (sections coloured per product): AuthCanvas blue #2459E6 on #070F1E, AuthBeam amber #FF9F0A on
-  #0B0C0E, Roiall teal #45E3CF / #141E3A, Veridyne FGA blue #138DFD on #02102D.
+  #0B0C0E, Roiall teal #45E3CF / #141E3A, Veridyne FGA blue #138DFD on #02102D. Veridyne Secure AI purple #8A3FFC on #0B0F3B (lavender #DCC7FF).
 - Type: Archivo only (self-hosted woff2 latin + latin-ext). Sora/Inter rejected as looking "generative AI". Mono for
   code only. Moderate sizes: hero clamp(38px,4.6vw,60px), h2 clamp(30px,3.4vw,46px), h3 20px, body 16px.
 - Layout tokens: --wide 1180px, --radius 22px, --ease cubic-bezier(0.22,1,0.36,1). Fluid animated motion; respect reduced motion.
@@ -114,6 +115,10 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
   hover loops (loop-<slug>.mp4, fetched only on hover on desktops) and the launch video (veridyne-vie-launch.mp4,
   fetched only on Play, in `dialog#film`; its quiet opening is lifted ~12 dB for the web copy). No video loads by itself.
 - A new product needs `assets/vie/scene-<slug>.jpg` and `loop-<slug>.mp4`.
+- Veridyne Secure AI (2026-11-18): page `/secure-ai` (the app itself is in the client portal, my.veridyne.eu/secure-ai, pilot
+  companies only). Its screenshots are the portal's own design components rendered with the "travel" test fixture and
+  sample names; the "Features that cover it" part is left out on purpose (plan lines there are still "needs validation").
+  Privacy notice has its paragraph (`#secure-ai`), legal basis sentence and the AI provider in the processor list.
 - One look on every page (2026-11-11): `/services` opens with a hero stage (`.hero-sub`, `services-hero.webp`); every
   product page sits on the same ground (#050C18) with framed galleries; every `cta-band` is a closing stage on
   `contact.jpg` with a `.thread` before it (`.thread-short` between smaller blocks).

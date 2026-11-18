@@ -1141,6 +1141,33 @@ body:has(.gate[open]) .site-header { backdrop-filter: none; -webkit-backdrop-fil
 .btn-fga-ghost { background: transparent; color: #6FB8FF; box-shadow: inset 0 0 0 1px rgba(19, 141, 253, 0.55); }
 .btn-fga-ghost:hover { background: rgba(19, 141, 253, 0.12); }
 
+/* Veridyne Secure AI: its purple palette (portal tokens --sa-*: deep navy #0B0F3B, indigo #4B2BBE, electric purple #8A3FFC, lavender #DCC7FF). */
+.sai-mark { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.02em; color: #F1EBFF; white-space: nowrap; }
+.sai-mark img { height: 1.3em; width: auto; border-radius: 0.3em; }
+.pshow-panel .sai-mark.pcard-logo, .sai-mark.pcard-logo { height: auto; font-size: 24px; }
+.pcard-secure-ai { background: #0B0F3B; color: #F1EBFF; }
+.pcard-secure-ai::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 70% at 80% 100%, rgba(138, 63, 252, 0.26), transparent 70%); }
+.pcard-secure-ai > * { position: relative; }
+.pcard-secure-ai .badge, .product-sai .badge { background: rgba(138, 63, 252, 0.18); color: #DCC7FF; border: 1px solid rgba(138, 63, 252, 0.55); }
+.pcard-secure-ai .pcard-tagline { color: #fff; }
+.pcard-secure-ai .pcard-text { color: #B4AEDB; }
+.pcard-secure-ai .pcard-more { color: #C9B0FF; }
+.pcard-secure-ai .pshow-shot img { border: 1px solid rgba(180, 174, 219, 0.2); border-width: 1px 0 0 1px; }
+.product-sai { background: #0B0F3B; color: #F1EBFF; position: relative; }
+.product-sai::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(50% 40% at 50% 60%, rgba(138, 63, 252, 0.2), transparent 70%); }
+.product-sai > * { position: relative; }
+.product-sai .product-lead, .product-sai .features p, .product-sai .crumb { color: #B4AEDB; }
+.product-sai .product-shot { border: 1px solid rgba(180, 174, 219, 0.2); box-shadow: 0 40px 120px -50px rgba(138, 63, 252, 0.5); background: #0B0F3B; }
+.product-sai .product-shot figcaption { padding: 10px 16px; color: #B4AEDB; font-size: 13px; text-align: center; }
+.product-sai .features h3::before { content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; margin-bottom: 14px; background: linear-gradient(90deg, #8A3FFC, #B38BFF); }
+.product-sai .gallery-shot { background: #100F45; border-color: rgba(180, 174, 219, 0.2); }
+.product-sai .gallery-shot figcaption { color: #B4AEDB; }
+.product-sai .gallery-note { color: #9C96C4; }
+.btn-sai { background: #8A3FFC; color: #fff; }
+.btn-sai:hover { background: #9E5CFF; }
+.btn-sai-ghost { background: transparent; color: #DCC7FF; box-shadow: inset 0 0 0 1px rgba(138, 63, 252, 0.6); }
+.btn-sai-ghost:hover { background: rgba(138, 63, 252, 0.14); }
+
 /* ==========================================================================
    v3 (Nov 2026): the look of the films. Dark by default (js-flag.js), deep navy, cyan light, glass.
    Stills first: the launch film and the product loops are fetched only when a visitor asks (main.js).
