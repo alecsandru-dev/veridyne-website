@@ -638,9 +638,9 @@ WELCOME_PAGE = '''
 <main id="main">
   <section class="welcome-stage" aria-label="Veridyne Solutions film">
     <figure class="welcome-film">
-      <!-- Plays on arrival with the sound off (browsers only allow that); the button turns the sound on.
-           With reduced motion asked for, it waits for Play. -->
-      <video id="welcome-video" controls playsinline muted preload="metadata" poster="/assets/vie/welcome-poster.jpg">
+      <!-- Starts with sound where the browser allows it; where it does not, it plays muted and the first tap or key
+           anywhere (or the button) turns the sound on. With reduced motion asked for, it waits for Play. -->
+      <video id="welcome-video" controls playsinline preload="auto" poster="/assets/vie/welcome-poster.jpg">
         <source src="/assets/vie/veridyne-welcome.mp4" type="video/mp4">
         <a href="/assets/vie/veridyne-welcome.mp4">Watch the film</a>
       </video>
@@ -650,43 +650,48 @@ WELCOME_PAGE = '''
 
   <section class="welcome-intro" aria-labelledby="welcome-title">
     <div class="intro rise">
-      <p class="pill"><span class="pill-dot"></span>Veridyne Solutions</p>
+      <p class="pill"><span class="pill-dot"></span>About Veridyne</p>
       <h1 id="welcome-title">Identity, done right.</h1>
-      <p class="lead">We are an identity company in Bucharest. We help you set up, move and secure how your customers and staff sign in on Auth0 and Okta, and we build software of our own around it.</p>
+      <p class="lead">Veridyne Solutions is an identity company in Bucharest. Our work is Okta, Auth0 and the identity and access management around them: how your customers and staff sign in, and who can reach what.</p>
+    </div>
+  </section>
+
+  <div class="thread thread-short" aria-hidden="true"></div>
+
+  <section class="about-know" aria-labelledby="know-title">
+    <h2 id="know-title" class="rise">What we work with</h2>
+    <ul class="about-cards rise">
+      <li><strong>Auth0</strong><span>Customer sign-in: Universal Login, Actions, Organizations, social and enterprise connections, and moves off older systems.</span></li>
+      <li><strong>Okta</strong><span>Workforce sign-in: single sign-on, MFA and lifecycle management for staff and partners.</span></li>
+      <li><strong>Identity and access management</strong><span>The design around both: roles, least privilege, sessions and tokens, audit logs, and the team who will run it.</span></li>
+    </ul>
+  </section>
+
+  <div class="thread thread-short" aria-hidden="true"></div>
+
+  <section class="about-right" aria-labelledby="right-title">
+    <div class="security rise">
+      <h2 id="right-title">How we do identity right</h2>
+      <ul>
+        <li><strong>Secure by default</strong><span>Passkeys and MFA where your users can take them, short-lived tokens, least privilege.</span></li>
+        <li><strong>Agreed before built</strong><span>Scope, timeline and price in writing before any work starts.</span></li>
+        <li><strong>In the open</strong><span>The work happens on your tenant and you see every change.</span></li>
+        <li><strong>Yours to keep</strong><span>Full documentation at handover, and we stay reachable after.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="thread thread-short" aria-hidden="true"></div>
+
+  <section class="about-two" aria-labelledby="two-title">
+    <div class="intro rise">
+      <h2 id="two-title">Two ways to work with us</h2>
+      <p class="lead">Professional services on your Auth0 or Okta tenant, and V.I.E, the software we build, host and support.</p>
       <div class="hero-actions">
-        <a class="btn" href="/?topic=Identity%20%26%20access%20consulting#contact">Book a free call</a>
-        <a class="link-more" href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>
+        <a class="link-more" href="/services">Professional services</a>
+        <a class="link-more" href="/#products">Our products</a>
       </div>
     </div>
-  </section>
-
-  <div class="thread" aria-hidden="true"></div>
-
-  <section class="services services-home" aria-labelledby="w-services-title">
-    <div class="intro rise">
-      <p class="division">Professional Services</p>
-      <h2 id="w-services-title">Auth0 and Okta,<br> set up properly.</h2>
-      <p class="lead">We plan, build and review how customers and staff sign in. Every engagement ends with documentation your team can own.</p>
-    </div>
-    SERVICE_GRID
-    <div class="services-foot rise">
-      <ul class="chips" aria-label="Secure by default">
-        <li>Passkeys and MFA</li><li>Least privilege</li><li>Short-lived tokens</li><li>Auditable logs</li>
-      </ul>
-      <span class="services-actions"><a class="link-more" href="/services">How we work</a></span>
-    </div>
-  </section>
-
-  <div class="thread" aria-hidden="true"></div>
-
-  <section class="products-home" aria-labelledby="w-products-title">
-    <div class="intro rise">
-      <p class="division">Products</p>
-      <p class="vie-mark"><strong>V.I.E</strong><span>Veridyne Identity Environment</span></p>
-      <h2 id="w-products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Nine products, each made for its own users.</p>
-    </div>
-    PRODUCT_SHOWCASE
   </section>
 
   <div class="thread" aria-hidden="true"></div>
@@ -699,7 +704,7 @@ WELCOME_PAGE = '''
     </div>
   </section>
 </main>
-'''.replace('SERVICE_GRID', service_grid(False)).replace('PRODUCT_SHOWCASE', product_grid(compact=True))
+'''
 
 pages = {
     'index.html': head('Veridyne Solutions — Auth0 and Okta consulting, and our own software',
@@ -714,7 +719,7 @@ for slug in PRODUCTS:
 
 # /welcome is the link in client emails: kept out of search results and the sitemap.
 pages['welcome.html'] = (head('Welcome — Veridyne Solutions',
-                              'Veridyne Solutions in three minutes: Auth0 and Okta professional services, and the software we build, host and support.', '/welcome')
+                              'About Veridyne Solutions: an identity company in Bucharest working with Okta, Auth0 and identity and access management.', '/welcome')
                          .replace('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<meta name="theme-color"')
                          .replace('https://www.veridyne.eu/assets/og-image.png', 'https://www.veridyne.eu/assets/vie/welcome-poster.jpg')
                          + header('welcome') + WELCOME_PAGE + FOOTER)

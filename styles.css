@@ -1451,5 +1451,14 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
 .welcome-sound-icon::before { content: ""; position: absolute; left: 7px; top: 10px; width: 4px; height: 6px; background: #04121F; }
 .welcome-sound-icon::after { content: ""; position: absolute; left: 9px; top: 6px; border-right: 8px solid #04121F; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
 .welcome-intro { padding: clamp(56px, 7vw, 88px) var(--pad) 0; }
+.about-know, .about-right, .about-two { padding: 0 var(--pad); }
+.about-know > h2 { text-align: center; font-size: var(--t-h2); letter-spacing: -0.03em; line-height: 1.08; margin: 0 0 32px; }
+.about-cards { list-style: none; margin: 0 auto; padding: 0; max-width: var(--wide); display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.about-cards li { padding: 28px 26px; border-radius: var(--radius); background: linear-gradient(180deg, rgba(12, 26, 46, 0.92), rgba(7, 17, 31, 0.92)); border: 1px solid var(--line); }
+.about-cards strong { display: block; font-size: 20px; letter-spacing: -0.01em; margin-bottom: 10px; }
+.about-cards strong::before { content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; background: var(--cyan); margin-bottom: 16px; }
+.about-cards span { color: var(--muted); font-size: 15px; line-height: 1.55; }
+.about-right .security { max-width: var(--wide); margin: 0 auto; }
+@media (max-width: 860px) { .about-cards { grid-template-columns: 1fr; } }
 .welcome-intro h1 { font-size: clamp(38px, 4.6vw, 60px); line-height: 1.05; letter-spacing: -0.035em; margin: 0; }
 @media (max-width: 640px) { .welcome-film { border-radius: 14px; } .welcome-sound { left: 10px; top: 10px; font-size: 14px; } }

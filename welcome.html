@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Welcome — Veridyne Solutions</title>
-<meta name="description" content="Veridyne Solutions in three minutes: Auth0 and Okta professional services, and the software we build, host and support.">
+<meta name="description" content="About Veridyne Solutions: an identity company in Bucharest working with Okta, Auth0 and identity and access management.">
 <link rel="canonical" href="https://www.veridyne.eu/welcome">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#07111F">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Veridyne Solutions">
 <meta property="og:title" content="Welcome — Veridyne Solutions">
-<meta property="og:description" content="Veridyne Solutions in three minutes: Auth0 and Okta professional services, and the software we build, host and support.">
+<meta property="og:description" content="About Veridyne Solutions: an identity company in Bucharest working with Okta, Auth0 and identity and access management.">
 <meta property="og:url" content="https://www.veridyne.eu/welcome">
 <meta property="og:image" content="https://www.veridyne.eu/assets/vie/welcome-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -50,9 +50,9 @@
 <main id="main">
   <section class="welcome-stage" aria-label="Veridyne Solutions film">
     <figure class="welcome-film">
-      <!-- Plays on arrival with the sound off (browsers only allow that); the button turns the sound on.
-           With reduced motion asked for, it waits for Play. -->
-      <video id="welcome-video" controls playsinline muted preload="metadata" poster="/assets/vie/welcome-poster.jpg">
+      <!-- Starts with sound where the browser allows it; where it does not, it plays muted and the first tap or key
+           anywhere (or the button) turns the sound on. With reduced motion asked for, it waits for Play. -->
+      <video id="welcome-video" controls playsinline preload="auto" poster="/assets/vie/welcome-poster.jpg">
         <source src="/assets/vie/veridyne-welcome.mp4" type="video/mp4">
         <a href="/assets/vie/veridyne-welcome.mp4">Watch the film</a>
       </video>
@@ -62,150 +62,47 @@
 
   <section class="welcome-intro" aria-labelledby="welcome-title">
     <div class="intro rise">
-      <p class="pill"><span class="pill-dot"></span>Veridyne Solutions</p>
+      <p class="pill"><span class="pill-dot"></span>About Veridyne</p>
       <h1 id="welcome-title">Identity, done right.</h1>
-      <p class="lead">We are an identity company in Bucharest. We help you set up, move and secure how your customers and staff sign in on Auth0 and Okta, and we build software of our own around it.</p>
-      <div class="hero-actions">
-        <a class="btn" href="/?topic=Identity%20%26%20access%20consulting#contact">Book a free call</a>
-        <a class="link-more" href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>
-      </div>
+      <p class="lead">Veridyne Solutions is an identity company in Bucharest. Our work is Okta, Auth0 and the identity and access management around them: how your customers and staff sign in, and who can reach what.</p>
     </div>
   </section>
 
-  <div class="thread" aria-hidden="true"></div>
+  <div class="thread thread-short" aria-hidden="true"></div>
 
-  <section class="services services-home" aria-labelledby="w-services-title">
-    <div class="intro rise">
-      <p class="division">Professional Services</p>
-      <h2 id="w-services-title">Auth0 and Okta,<br> set up properly.</h2>
-      <p class="lead">We plan, build and review how customers and staff sign in. Every engagement ends with documentation your team can own.</p>
-    </div>
-    <ul class="service-grid service-grid-compact">
-      <li class="service stile rise">
-        <span class="stile-media" aria-hidden="true"><img src="/assets/vie/svc-setup.jpg" alt="" width="1280" height="724" loading="lazy"></span>
-        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="14" width="22" height="14" rx="3"/><path d="M10 14V10a6 6 0 0 1 12 0v4"/></svg>
-        <h3>New setups</h3>
-        <p>A new Auth0 or Okta tenant, planned and configured.</p>
-      </li>
-      <li class="service stile rise">
-        <span class="stile-media" aria-hidden="true"><img src="/assets/vie/svc-migrate.jpg" alt="" width="1280" height="724" loading="lazy"></span>
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 11h18l-5-5M27 21H9l5 5"/></svg>
-        <h3>Migrations</h3>
-        <p>Off ADFS, SiteMinder, Ping, Keycloak, Cognito or your own login.</p>
-      </li>
-      <li class="service stile rise">
-        <span class="stile-media" aria-hidden="true"><img src="/assets/vie/svc-review.jpg" alt="" width="1280" height="724" loading="lazy"></span>
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l10 4v7c0 7-4.5 11-10 13C10.5 26 6 22 6 15V8z"/><path d="M11.5 16l3 3 6-6"/></svg>
-        <h3>Security reviews</h3>
-        <p>Findings ranked by risk, with a fix for each one.</p>
-      </li>
-      <li class="service stile rise">
-        <span class="stile-media" aria-hidden="true"><img src="/assets/vie/svc-train.jpg" alt="" width="1280" height="724" loading="lazy"></span>
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 10l-6 6 6 6M21 10l6 6-6 6"/></svg>
-        <h3>IAM team training</h3>
-        <p>Hands-on sessions for the team who will own it.</p>
-      </li>
+  <section class="about-know" aria-labelledby="know-title">
+    <h2 id="know-title" class="rise">What we work with</h2>
+    <ul class="about-cards rise">
+      <li><strong>Auth0</strong><span>Customer sign-in: Universal Login, Actions, Organizations, social and enterprise connections, and moves off older systems.</span></li>
+      <li><strong>Okta</strong><span>Workforce sign-in: single sign-on, MFA and lifecycle management for staff and partners.</span></li>
+      <li><strong>Identity and access management</strong><span>The design around both: roles, least privilege, sessions and tokens, audit logs, and the team who will run it.</span></li>
     </ul>
-    <div class="services-foot rise">
-      <ul class="chips" aria-label="Secure by default">
-        <li>Passkeys and MFA</li><li>Least privilege</li><li>Short-lived tokens</li><li>Auditable logs</li>
+  </section>
+
+  <div class="thread thread-short" aria-hidden="true"></div>
+
+  <section class="about-right" aria-labelledby="right-title">
+    <div class="security rise">
+      <h2 id="right-title">How we do identity right</h2>
+      <ul>
+        <li><strong>Secure by default</strong><span>Passkeys and MFA where your users can take them, short-lived tokens, least privilege.</span></li>
+        <li><strong>Agreed before built</strong><span>Scope, timeline and price in writing before any work starts.</span></li>
+        <li><strong>In the open</strong><span>The work happens on your tenant and you see every change.</span></li>
+        <li><strong>Yours to keep</strong><span>Full documentation at handover, and we stay reachable after.</span></li>
       </ul>
-      <span class="services-actions"><a class="link-more" href="/services">How we work</a></span>
     </div>
   </section>
 
-  <div class="thread" aria-hidden="true"></div>
+  <div class="thread thread-short" aria-hidden="true"></div>
 
-  <section class="products-home" aria-labelledby="w-products-title">
+  <section class="about-two" aria-labelledby="two-title">
     <div class="intro rise">
-      <p class="division">Products</p>
-      <p class="vie-mark"><strong>V.I.E</strong><span>Veridyne Identity Environment</span></p>
-      <h2 id="w-products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Nine products, each made for its own users.</p>
-    </div>
-    
-    <div class="pgrid pgrid-compact rise">
-        <a class="ptile pcard-secure-ai" href="/secure-ai">
-          <span class="ptile-media" aria-hidden="true"><img src="/assets/vie/scene-secure-ai.jpg" alt="" width="1280" height="720" loading="lazy"><video muted loop playsinline preload="none" tabindex="-1" data-src="/assets/vie/loop-secure-ai.mp4"></video></span>
-          <span class="pcard-top"><span class="sai-mark pcard-logo"><img src="/assets/secure-ai-mark.png" alt="" width="128" height="125">Veridyne Secure AI</span><span class="badge">New</span></span>
-          <span class="ptile-body">
-            <span class="ptile-kind">Identity designs for AI agents</span>
-            <span class="ptile-tagline">An identity design for your AI agent.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about Veridyne Secure AI</span></span>
-          </span>
-        </a>
-        <a class="ptile pcard-eot" href="/eot">
-          <span class="ptile-media" aria-hidden="true"><img src="/assets/vie/scene-eot.jpg" alt="" width="1280" height="720" loading="lazy"><video muted loop playsinline preload="none" tabindex="-1" data-src="/assets/vie/loop-eot.mp4"></video></span>
-          <span class="pcard-top"><span class="eot-mark pcard-logo"><img src="/assets/eot-mark.svg" alt="" width="120" height="80">Eye of the Tenant</span><span class="badge">New</span></span>
-          <span class="ptile-body">
-            <span class="ptile-kind">Go-live monitoring for Auth0 and Okta</span>
-            <span class="ptile-tagline">Watch your go-live, not the logs.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about Eye of the Tenant</span></span>
-          </span>
-        </a>
-        <a class="ptile pcard-certifications" href="/certifications">
-          <span class="ptile-media" aria-hidden="true"><img src="/assets/vie/scene-certifications.jpg" alt="" width="1280" height="720" loading="lazy"><video muted loop playsinline preload="none" tabindex="-1" data-src="/assets/vie/loop-certifications.mp4"></video></span>
-          <span class="pcard-top"><img class="pcard-logo" src="/assets/certifications-lockup.png" alt="Veridyne Certifications" width="469" height="81"><span class="badge">New</span></span>
-          <span class="ptile-body">
-            <span class="ptile-kind">Our own certifications for Auth0 and Okta work</span>
-            <span class="ptile-tagline">Prove you can do identity work.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about Veridyne Certifications</span></span>
-          </span>
-        </a>
-        <a class="ptile pcard-authbeam" href="/authbeam">
-          <span class="ptile-media" aria-hidden="true"><img src="/assets/vie/scene-authbeam.jpg" alt="" width="1280" height="720" loading="lazy"><video muted loop playsinline preload="none" tabindex="-1" data-src="/assets/vie/loop-authbeam.mp4"></video></span>
-          <span class="pcard-top"><img class="pcard-logo" src="/assets/authbeam-lockup.png" alt="AuthBeam" width="742" height="180"><span class="badge">Free tool</span></span>
-          <span class="ptile-body">
-            <span class="ptile-kind">Free user migration between identity platforms</span>
-            <span class="ptile-tagline">Move your users. Keep them yours.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about AuthBeam</span></span>
-          </span>
-        </a>
-        <a class="ptile pcard-authlens" href="/authlens">
-          <span class="ptile-media" aria-hidden="true"><img src="/assets/vie/scene-authlens.jpg" alt="" width="1280" height="720" loading="lazy"><video muted loop playsinline preload="none" tabindex="-1" data-src="/assets/vie/loop-authlens.mp4"></video></span>
-          <span class="pcard-top"><img class="pcard-logo" src="/assets/authlens-lockup.png" alt="AuthLens" width="729" height="214"><span class="badge">Early access</span></span>
-          <span class="ptile-body">
-            <span class="ptile-kind">Posture reports for Auth0, Okta and Entra ID</span>
-            <span class="ptile-tagline">Find what is misconfigured, and fix it.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about AuthLens</span></span>
-          </span>
-        </a>
-        <a class="ptile pcard-fga" href="/fga">
-          <span class="ptile-media" aria-hidden="true"><img src="/assets/vie/scene-fga.jpg" alt="" width="1280" height="720" loading="lazy"><video muted loop playsinline preload="none" tabindex="-1" data-src="/assets/vie/loop-fga.mp4"></video></span>
-          <span class="pcard-top"><span class="fga-mark pcard-logo"><img src="/assets/fga-mark.png" alt="" width="543" height="512">Veridyne FGA</span><span class="badge">New</span></span>
-          <span class="ptile-body">
-            <span class="ptile-kind">Fine-grained authorization, designed and tested</span>
-            <span class="ptile-tagline">Get authorization right before it ships.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about Veridyne FGA</span></span>
-          </span>
-        </a>
-        <a class="ptile pcard-authcanvas" href="/authcanvas">
-          <span class="ptile-media" aria-hidden="true"><img src="/assets/vie/scene-authcanvas.jpg" alt="" width="1280" height="720" loading="lazy"><video muted loop playsinline preload="none" tabindex="-1" data-src="/assets/vie/loop-authcanvas.mp4"></video></span>
-          <span class="pcard-top"><img class="pcard-logo" src="/assets/authcanvas-logo.png" alt="AuthCanvas" width="1737" height="315"><span class="badge">Private alpha</span></span>
-          <span class="ptile-body">
-            <span class="ptile-kind">Identity journey design</span>
-            <span class="ptile-tagline">Design the login before you build it.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about AuthCanvas</span></span>
-          </span>
-        </a>
-        <a class="ptile pcard-companion" href="/companion">
-          <span class="ptile-media" aria-hidden="true"><img src="/assets/vie/scene-companion.jpg" alt="" width="1280" height="720" loading="lazy"><video muted loop playsinline preload="none" tabindex="-1" data-src="/assets/vie/loop-companion.mp4"></video></span>
-          <span class="pcard-top"><span class="companion-mark pcard-logo"><img src="/assets/veridyne-icon-dark.png" alt="" width="188" height="123">Companion</span><span class="badge">Now on iOS</span></span>
-          <span class="ptile-body">
-            <span class="ptile-kind">The mobile app for clients and teams</span>
-            <span class="ptile-tagline">Your work with Veridyne, on your phone.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about Veridyne Companion</span></span>
-          </span>
-        </a>
-        <a class="ptile pcard-verigate" href="/verigate">
-          <span class="ptile-media" aria-hidden="true"><img src="/assets/vie/scene-verigate.jpg" alt="" width="1280" height="720" loading="lazy"><video muted loop playsinline preload="none" tabindex="-1" data-src="/assets/vie/loop-verigate.mp4"></video></span>
-          <span class="pcard-top"><span class="vg-mark pcard-logo"><img src="/assets/verigate-mark.svg" alt="" width="80" height="80">VeriGate</span><span class="badge">Own your own codes soon</span></span>
-          <span class="ptile-body">
-            <span class="ptile-kind">A free app for two-step sign-in codes</span>
-            <span class="ptile-tagline">Your codes. Nobody else's.</span>
-            <span class="pcard-more">Learn more<span class="sr-only"> about VeriGate</span></span>
-          </span>
-        </a>
+      <h2 id="two-title">Two ways to work with us</h2>
+      <p class="lead">Professional services on your Auth0 or Okta tenant, and V.I.E, the software we build, host and support.</p>
+      <div class="hero-actions">
+        <a class="link-more" href="/services">Professional services</a>
+        <a class="link-more" href="/#products">Our products</a>
+      </div>
     </div>
   </section>
 

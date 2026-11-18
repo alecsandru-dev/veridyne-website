@@ -101,10 +101,12 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
   "Veridyne rebrand".
 
 ## /welcome (2026-11-18)
-Landing page for the link in client emails: the Veridyne film (`assets/vie/veridyne-welcome.mp4`, 2:56, ~2.2 Mbps, under
-50 MB for GitHub; poster `welcome-poster.jpg`) plays on arrival muted (browsers block sound) with a "Turn sound on" button
-(main.js), waits for Play under reduced motion. Below: intro, the four services, the compact product grid, contact band.
-`noindex`, not in the sitemap or nav. Film sources and build scripts are outside this repo (Claude workspace /home/claude/vp).
+About page for the link in client emails: the Veridyne film (`assets/vie/veridyne-welcome.mp4`, 2:56, ~2.2 Mbps, under
+50 MB for GitHub; poster `welcome-poster.jpg`) starts with sound where the browser allows it; otherwise it plays muted and
+the first tap/click/key anywhere (or the "Turn sound on" button) turns sound on (main.js). Waits for Play under reduced
+motion. Below: intro, what we work with (Auth0, Okta, IAM; never state years of experience), how we do identity right,
+two ways to work with us (links to /services and /#products; no product tiles here, the home page lists the apps),
+contact band. `noindex`, not in the sitemap or nav. Film sources and build scripts are outside this repo (/home/claude/vp).
 
 ## Redesign v3 (live on main since 2026-11-11; built on branch `redesign-v3`)
 - Dark by default (js-flag.js: dark unless the visitor chose light; no longer follows the system). Look of the films.
