@@ -633,6 +633,74 @@ SERVICES_PAGE = '''
 </main>
 '''.replace('SERVICE_GRID', service_grid(True))
 
+# ---------- welcome (the link we put in client emails: the film first, then who we are) ----------
+WELCOME_PAGE = '''
+<main id="main">
+  <section class="welcome-stage" aria-label="Veridyne Solutions film">
+    <figure class="welcome-film">
+      <!-- Plays on arrival with the sound off (browsers only allow that); the button turns the sound on.
+           With reduced motion asked for, it waits for Play. -->
+      <video id="welcome-video" controls playsinline muted preload="metadata" poster="/assets/vie/welcome-poster.jpg">
+        <source src="/assets/vie/veridyne-welcome.mp4" type="video/mp4">
+        <a href="/assets/vie/veridyne-welcome.mp4">Watch the film</a>
+      </video>
+      <button class="welcome-sound" type="button" hidden><span class="welcome-sound-icon" aria-hidden="true"></span><span class="welcome-sound-label">Turn sound on</span></button>
+    </figure>
+  </section>
+
+  <section class="welcome-intro" aria-labelledby="welcome-title">
+    <div class="intro rise">
+      <p class="pill"><span class="pill-dot"></span>Veridyne Solutions</p>
+      <h1 id="welcome-title">Identity, done right.</h1>
+      <p class="lead">We are an identity company in Bucharest. We help you set up, move and secure how your customers and staff sign in on Auth0 and Okta, and we build software of our own around it.</p>
+      <div class="hero-actions">
+        <a class="btn" href="/?topic=Identity%20%26%20access%20consulting#contact">Book a free call</a>
+        <a class="link-more" href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="thread" aria-hidden="true"></div>
+
+  <section class="services services-home" aria-labelledby="w-services-title">
+    <div class="intro rise">
+      <p class="division">Professional Services</p>
+      <h2 id="w-services-title">Auth0 and Okta,<br> set up properly.</h2>
+      <p class="lead">We plan, build and review how customers and staff sign in. Every engagement ends with documentation your team can own.</p>
+    </div>
+    SERVICE_GRID
+    <div class="services-foot rise">
+      <ul class="chips" aria-label="Secure by default">
+        <li>Passkeys and MFA</li><li>Least privilege</li><li>Short-lived tokens</li><li>Auditable logs</li>
+      </ul>
+      <span class="services-actions"><a class="link-more" href="/services">How we work</a></span>
+    </div>
+  </section>
+
+  <div class="thread" aria-hidden="true"></div>
+
+  <section class="products-home" aria-labelledby="w-products-title">
+    <div class="intro rise">
+      <p class="division">Products</p>
+      <p class="vie-mark"><strong>V.I.E</strong><span>Veridyne Identity Environment</span></p>
+      <h2 id="w-products-title">Software we build,<br> host and support.</h2>
+      <p class="lead">Nine products, each made for its own users.</p>
+    </div>
+    PRODUCT_SHOWCASE
+  </section>
+
+  <div class="thread" aria-hidden="true"></div>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="cta-inner rise">
+      <h2 id="cta-title">Ready when you are.</h2>
+      <p class="lead">The first call is free, 30 minutes, with the person who would do the work.</p>
+      <a class="btn" href="/?topic=Identity%20%26%20access%20consulting#contact">Contact us</a>
+    </div>
+  </section>
+</main>
+'''.replace('SERVICE_GRID', service_grid(False)).replace('PRODUCT_SHOWCASE', product_grid(compact=True))
+
 pages = {
     'index.html': head('Veridyne Solutions — Auth0 and Okta consulting, and our own software',
                        'Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds Eye of the Tenant, Veridyne Certifications, AuthLens, AuthBeam, AuthCanvas and more.', '/')
@@ -643,6 +711,13 @@ pages = {
 }
 for slug in PRODUCTS:
     pages[f'{slug}.html'] = product_page(slug)
+
+# /welcome is the link in client emails: kept out of search results and the sitemap.
+pages['welcome.html'] = (head('Welcome — Veridyne Solutions',
+                              'Veridyne Solutions in three minutes: Auth0 and Okta professional services, and the software we build, host and support.', '/welcome')
+                         .replace('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<meta name="theme-color"')
+                         .replace('https://www.veridyne.eu/assets/og-image.png', 'https://www.veridyne.eu/assets/vie/welcome-poster.jpg')
+                         + header('welcome') + WELCOME_PAGE + FOOTER)
 
 # /signin works without JavaScript and is a link people can bookmark.
 pages['signin.html'] = (head('Secure sign-in — Veridyne Solutions',

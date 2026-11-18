@@ -9,7 +9,7 @@ below), on the Oct 2026 brand. Offer: two things only, consulting and in-house p
 
 ## Status
 Live. Redesign v3 went live 2026-11-11. Pages: / , /services, /secure-ai, /verigate, /certifications, /authbeam, /authlens, /eot,
-/authcanvas, /companion, /fga, /privacy, /signin. Product order (2026-11-18): Veridyne Secure AI first, VeriGate last (set by the
+/authcanvas, /companion, /fga, /privacy, /signin, /welcome. Product order (2026-11-18): Veridyne Secure AI first, VeriGate last (set by the
 line under PRODUCTS in build_pages.py; the first two get the large tiles). Roiall is benched (2026-11-08: off list, footer, form, sitemap; /roiall
 redirects to /#products, temporary). Rentolio is not shown.
 
@@ -99,6 +99,12 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
 - Products list is compact (description only on the chosen one) to keep panel height with eight products.
 - When searching site-wide text (e.g. address changes) search all of ~: authbeam, authcanvas, Veyra, Roiall live outside
   "Veridyne rebrand".
+
+## /welcome (2026-11-18)
+Landing page for the link in client emails: the Veridyne film (`assets/vie/veridyne-welcome.mp4`, 2:56, ~2.2 Mbps, under
+50 MB for GitHub; poster `welcome-poster.jpg`) plays on arrival muted (browsers block sound) with a "Turn sound on" button
+(main.js), waits for Play under reduced motion. Below: intro, the four services, the compact product grid, contact band.
+`noindex`, not in the sitemap or nav. Film sources and build scripts are outside this repo (Claude workspace /home/claude/vp).
 
 ## Redesign v3 (live on main since 2026-11-11; built on branch `redesign-v3`)
 - Dark by default (js-flag.js: dark unless the visitor chose light; no longer follows the system). Look of the films.

@@ -1439,3 +1439,17 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
 .confirm-card img { height: 30px; width: auto; margin-bottom: 8px; }
 .confirm-card h1 { font-size: 28px; letter-spacing: -0.02em; margin: 0; }
 .confirm-card p { margin: 0; color: #B7C4D6; }
+
+/* ---------- /welcome: the film first, then who we are ---------- */
+.welcome-stage { padding: clamp(24px, 4vw, 48px) var(--pad) 0; }
+.welcome-film { position: relative; max-width: var(--wide); margin: 0 auto; border-radius: var(--radius); overflow: hidden; background: #000; box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55); border: 1px solid rgba(127, 219, 255, 0.16); }
+.welcome-film video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.welcome-sound { position: absolute; left: 18px; top: 18px; display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px 10px 12px; border-radius: 999px; border: 1px solid rgba(127, 219, 255, 0.45); background: rgba(5, 12, 24, 0.72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: #fff; font: 600 15px Archivo, sans-serif; cursor: pointer; transition: background 0.3s var(--ease), transform 0.3s var(--ease); }
+.welcome-sound:hover { background: rgba(0, 112, 184, 0.85); transform: translateY(-1px); }
+.welcome-sound[hidden] { display: none; }
+.welcome-sound-icon { width: 26px; height: 26px; border-radius: 50%; background: #00B4FF; position: relative; flex: none; }
+.welcome-sound-icon::before { content: ""; position: absolute; left: 7px; top: 10px; width: 4px; height: 6px; background: #04121F; }
+.welcome-sound-icon::after { content: ""; position: absolute; left: 9px; top: 6px; border-right: 8px solid #04121F; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.welcome-intro { padding: clamp(56px, 7vw, 88px) var(--pad) 0; }
+.welcome-intro h1 { font-size: clamp(38px, 4.6vw, 60px); line-height: 1.05; letter-spacing: -0.035em; margin: 0; }
+@media (max-width: 640px) { .welcome-film { border-radius: 14px; } .welcome-sound { left: 10px; top: 10px; font-size: 14px; } }

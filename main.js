@@ -77,6 +77,29 @@
     film.addEventListener('click', function (e) { if (e.target === film) film.close(); });
   }
 
+  /* /welcome: the film starts on arrival with the sound off (browsers block sound until the visitor acts),
+     the button turns it on. With reduced motion asked for, it waits for Play. */
+  var wv = document.getElementById('welcome-video');
+  if (wv) {
+    var ws = document.querySelector('.welcome-sound');
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var showSound = function () { if (ws) ws.hidden = !wv.muted || wv.paused; };
+    if (!calm) {
+      var wp = wv.play();
+      if (wp && wp.then) wp.then(showSound, function () {});
+    }
+    if (ws) {
+      ws.addEventListener('click', function () {
+        wv.muted = false;
+        if (wv.ended) wv.currentTime = 0;
+        var p2 = wv.play();
+        if (p2 && p2.catch) p2.catch(function () {});
+        showSound();
+      });
+    }
+    ['volumechange', 'play', 'pause'].forEach(function (ev) { wv.addEventListener(ev, showSound); });
+  }
+
   /* ---------- Theme switch (the theme itself is set by js-flag.js before paint) ---------- */
   var root = document.documentElement;
   var themeButtons = document.querySelectorAll('.theme-toggle');
