@@ -77,6 +77,43 @@
     film.addEventListener('click', function (e) { if (e.target === film) film.close(); });
   }
 
+  /* /welcome: the film starts with sound where the browser allows it. Where it does not (most first visits), it plays
+     muted, and the first tap, click or key anywhere on the page turns the sound on; the button does the same.
+     With reduced motion asked for, it waits for Play. */
+  var wv = document.getElementById('welcome-video');
+  if (wv) {
+    var ws = document.querySelector('.welcome-sound');
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var showSound = function () { if (ws) ws.hidden = !wv.muted || wv.paused; };
+    var soundOn = function () {
+      if (!wv.muted) return;
+      wv.muted = false;
+      if (wv.ended) wv.currentTime = 0;
+      var p = wv.play();
+      if (p && p.catch) p.catch(function () {});
+      showSound();
+    };
+    var firstTouch = function (e) {
+      if (e.target && e.target.closest && e.target.closest('a, video')) return;
+      soundOn();
+      ['pointerdown', 'keydown'].forEach(function (ev) { document.removeEventListener(ev, firstTouch, true); });
+    };
+    if (!calm) {
+      wv.muted = false;
+      var wp = wv.play();
+      if (wp && wp.then) {
+        wp.then(showSound, function () {
+          wv.muted = true;
+          var w2 = wv.play();
+          if (w2 && w2.then) w2.then(showSound, function () {});
+          ['pointerdown', 'keydown'].forEach(function (ev) { document.addEventListener(ev, firstTouch, true); });
+        });
+      }
+    }
+    if (ws) ws.addEventListener('click', function (e) { e.stopPropagation(); soundOn(); });
+    ['volumechange', 'play', 'pause'].forEach(function (ev) { wv.addEventListener(ev, showSound); });
+  }
+
   /* ---------- Theme switch (the theme itself is set by js-flag.js before paint) ---------- */
   var root = document.documentElement;
   var themeButtons = document.querySelectorAll('.theme-toggle');

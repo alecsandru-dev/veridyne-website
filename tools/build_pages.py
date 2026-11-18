@@ -633,6 +633,84 @@ SERVICES_PAGE = '''
 </main>
 '''.replace('SERVICE_GRID', service_grid(True))
 
+# ---------- welcome (the link we put in client emails: the film first, then who we are) ----------
+WELCOME_PAGE = '''
+<main id="main" class="about">
+  <section class="welcome-stage" aria-label="Veridyne Solutions film">
+    <figure class="welcome-film">
+      <!-- Starts with sound where the browser allows it; where it does not, it plays muted and the first tap or key
+           anywhere (or the button) turns the sound on. With reduced motion asked for, it waits for Play. -->
+      <video id="welcome-video" controls playsinline preload="auto" poster="/assets/vie/welcome-poster.jpg">
+        <source src="/assets/vie/veridyne-welcome.mp4" type="video/mp4">
+        <a href="/assets/vie/veridyne-welcome.mp4">Watch the film</a>
+      </video>
+      <button class="welcome-sound" type="button" hidden><span class="welcome-sound-icon" aria-hidden="true"></span><span class="welcome-sound-label">Turn sound on</span></button>
+    </figure>
+  </section>
+
+  <section class="about-open" aria-labelledby="welcome-title">
+    <h1 id="welcome-title" class="rise">Every sign-in is a promise.<span>We help you keep it.</span></h1>
+    <div class="about-open-side rise">
+      <p class="about-kicker">About Veridyne</p>
+      <p>Veridyne Solutions is an identity company in Bucharest. Our work is Okta, Auth0 and the identity and access management around them: how your customers and staff sign in, and who can reach what.</p>
+    </div>
+  </section>
+
+  <section class="chapter chapter-right" aria-labelledby="ch-auth0">
+    <img class="chapter-scene" src="/assets/vie/about-city.jpg" alt="" width="1920" height="1080" loading="lazy">
+    <div class="chapter-text rise">
+      <p class="about-kicker">Customer sign-in</p>
+      <h2 id="ch-auth0">Auth0</h2>
+      <p>Universal Login, Actions, Organizations, social and enterprise connections. New tenants, and moves off the systems you have outgrown.</p>
+    </div>
+  </section>
+
+  <section class="chapter" aria-labelledby="ch-okta">
+    <img class="chapter-scene" src="/assets/vie/about-team.jpg" alt="" width="1920" height="1080" loading="lazy">
+    <div class="chapter-text rise">
+      <p class="about-kicker">Workforce sign-in</p>
+      <h2 id="ch-okta">Okta</h2>
+      <p>Single sign-on, MFA and lifecycle management for staff and partners, from the first day to the last.</p>
+    </div>
+  </section>
+
+  <section class="chapter chapter-right chapter-long" aria-labelledby="ch-iam">
+    <img class="chapter-scene" src="/assets/vie/about-scan.jpg" alt="" width="1920" height="1080" loading="lazy">
+    <div class="chapter-text rise">
+      <p class="about-kicker">Identity and access management</p>
+      <h2 id="ch-iam">The design around both</h2>
+      <p>Roles and least privilege, sessions and tokens, audit logs, and the team who will run it after us.</p>
+    </div>
+  </section>
+
+  <section class="about-right" aria-labelledby="right-title">
+    <h2 id="right-title" class="rise">How we do identity right.</h2>
+    <ol class="about-rules">
+      <li class="rise"><strong>Secure by default.</strong><span>Passkeys and MFA where your users can take them, short-lived tokens, least privilege.</span></li>
+      <li class="rise"><strong>Agreed before built.</strong><span>Scope, timeline and price in writing before any work starts.</span></li>
+      <li class="rise"><strong>In the open.</strong><span>The work happens on your tenant and you see every change.</span></li>
+      <li class="rise"><strong>Yours to keep.</strong><span>Full documentation at handover, and we stay reachable after.</span></li>
+    </ol>
+  </section>
+
+  <section class="about-two" aria-label="Two ways to work with us">
+    <p class="rise">We work two ways: <a href="/services">professional services</a> on your Auth0 or Okta tenant, and <a href="/#products">V.I.E</a>, the software we build, host and support.</p>
+  </section>
+
+  <section class="about-close" aria-labelledby="close-title">
+    <img class="chapter-scene" src="/assets/vie/about-dawn.jpg" alt="" width="1920" height="1080" loading="lazy">
+    <div class="about-close-text rise">
+      <h2 id="close-title">Identity, done right.</h2>
+      <p>Ready when you are. The first call is free, 30 minutes, with the person who would do the work.</p>
+      <div class="hero-actions">
+        <a class="btn" href="/?topic=Identity%20%26%20access%20consulting#contact">Contact us</a>
+        <a class="link-more" href="mailto:solutions@veridyne.eu">solutions@veridyne.eu</a>
+      </div>
+    </div>
+  </section>
+</main>
+'''
+
 pages = {
     'index.html': head('Veridyne Solutions — Auth0 and Okta consulting, and our own software',
                        'Veridyne Solutions is a Bucharest technology company. Our professional services team sets up, migrates and reviews Auth0 and Okta. Our products team builds Eye of the Tenant, Veridyne Certifications, AuthLens, AuthBeam, AuthCanvas and more.', '/')
@@ -643,6 +721,13 @@ pages = {
 }
 for slug in PRODUCTS:
     pages[f'{slug}.html'] = product_page(slug)
+
+# /welcome is the link in client emails: kept out of search results and the sitemap.
+pages['welcome.html'] = (head('Welcome — Veridyne Solutions',
+                              'About Veridyne Solutions: an identity company in Bucharest working with Okta, Auth0 and identity and access management.', '/welcome')
+                         .replace('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<meta name="theme-color"')
+                         .replace('https://www.veridyne.eu/assets/og-image.png', 'https://www.veridyne.eu/assets/vie/welcome-poster.jpg')
+                         + header('welcome') + WELCOME_PAGE + FOOTER)
 
 # /signin works without JavaScript and is a link people can bookmark.
 pages['signin.html'] = (head('Secure sign-in — Veridyne Solutions',

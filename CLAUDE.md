@@ -9,7 +9,7 @@ below), on the Oct 2026 brand. Offer: two things only, consulting and in-house p
 
 ## Status
 Live. Redesign v3 went live 2026-11-11. Pages: / , /services, /secure-ai, /verigate, /certifications, /authbeam, /authlens, /eot,
-/authcanvas, /companion, /fga, /privacy, /signin. Product order (2026-11-18): Veridyne Secure AI first, VeriGate last (set by the
+/authcanvas, /companion, /fga, /privacy, /signin, /welcome. Product order (2026-11-18): Veridyne Secure AI first, VeriGate last (set by the
 line under PRODUCTS in build_pages.py; the first two get the large tiles). Roiall is benched (2026-11-08: off list, footer, form, sitemap; /roiall
 redirects to /#products, temporary). Rentolio is not shown.
 
@@ -99,6 +99,15 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
 - Products list is compact (description only on the chosen one) to keep panel height with eight products.
 - When searching site-wide text (e.g. address changes) search all of ~: authbeam, authcanvas, Veyra, Roiall live outside
   "Veridyne rebrand".
+
+## /welcome (2026-11-18)
+About page for the link in client emails: the Veridyne film (`assets/vie/veridyne-welcome.mp4`, 2:56, ~2.2 Mbps, under
+50 MB for GitHub; poster `welcome-poster.jpg`) starts with sound where the browser allows it; otherwise it plays muted and
+the first tap/click/key anywhere (or the "Turn sound on" button) turns sound on (main.js). Waits for Play under reduced
+motion. Below, an editorial run (no card grids; Alecs rejected the 3-column look): opening statement + short intro,
+three full-bleed chapters on film stills (`about-*.jpg`: Auth0, Okta, IAM; never state years of experience), "How we do
+identity right" as a numbered list with a sticky heading, one sentence on the two ways to work with us (links to
+/services and /#products; no product tiles, the home page lists the apps), closing stage on the dawn gate. `noindex`, not in the sitemap or nav. Film sources and build scripts are outside this repo (/home/claude/vp).
 
 ## Redesign v3 (live on main since 2026-11-11; built on branch `redesign-v3`)
 - Dark by default (js-flag.js: dark unless the visitor chose light; no longer follows the system). Look of the films.
