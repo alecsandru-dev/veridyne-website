@@ -338,7 +338,7 @@ PRODUCTS = {
         kind='Identity designs for AI agents',
         name='Veridyne Secure AI', cls='product-sai', title_id='sai-title',
         logo='<span class="sai-mark product-logo"><img src="/assets/secure-ai-mark.png" alt="" width="128" height="125">Veridyne Secure AI</span>',
-        badge='<p class="badge">Pilot</p>', card_badge='Pilot',
+        badge='<p class="badge">New</p>', card_badge='New',
         tagline='An identity design for your AI agent.',
         lead='Describe your AI agent in plain words. Veridyne Secure AI gives you a first design: who the agent acts as, how it gets access to each tool, and which Auth0 or Okta features cover it. The first design is free for Veridyne clients. When you want the full design, book a paid review with a Veridyne architect.',
         card='Describe your AI agent and get a first identity design. Then book the full design with a Veridyne architect.',
@@ -350,8 +350,8 @@ PRODUCTS = {
         gallery=[('/assets/secure-ai-brief.png', 1600, 900, 'Each design is a numbered document that keeps your own description.', 'The top of a design with sample data: document number, company, status and the description of a trip assistant'),
                  ('/assets/secure-ai-tools.png', 1600, 900, 'What each tool needs: who it acts as, its credential and approval.', 'The tool table with sample data: four tools, who each acts as, the credential, whether the person approves first and the feature that covers it'),
                  ('/assets/secure-ai-next.png', 1600, 900, 'What is not available yet, what to decide, and the next step.', 'The end of a design with sample data: a feature in Early Access, one open question and the next step with an architect')],
-        caption='Screens from the app, shown with sample data. In pilot with Veridyne clients: ask us to switch it on for your company.',
-        meta='Veridyne Secure AI: describe your AI agent and get a first identity design, tool by tool, for Auth0 or Okta. Then book the full design with a Veridyne architect. In pilot with Veridyne clients.'),
+        caption='Screens from the app, shown with sample data. Open to every Veridyne client in the client portal.',
+        meta='Veridyne Secure AI: describe your AI agent and get a first identity design, tool by tool, for Auth0 or Okta. Then book the full design with a Veridyne architect. For Veridyne clients.'),
 }
 
 # Order on the site: Veridyne Secure AI first, VeriGate last (2026-11-18). The first two get the large tiles.

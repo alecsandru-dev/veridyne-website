@@ -115,8 +115,8 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
   hover loops (loop-<slug>.mp4, fetched only on hover on desktops) and the launch video (veridyne-vie-launch.mp4,
   fetched only on Play, in `dialog#film`; its quiet opening is lifted ~12 dB for the web copy). No video loads by itself.
 - A new product needs `assets/vie/scene-<slug>.jpg` and `loop-<slug>.mp4`.
-- Veridyne Secure AI (2026-11-18): page `/secure-ai` (the app itself is in the client portal, my.veridyne.eu/secure-ai, pilot
-  companies only). Its screenshots are the portal's own design components rendered with the "travel" test fixture and
+- Veridyne Secure AI (2026-11-18): page `/secure-ai` (the app itself is in the client portal, my.veridyne.eu/secure-ai; badge "New",
+  open to every client since 2026-11-18 per Alecs). Its screenshots are the portal's own design components rendered with the "travel" test fixture and
   sample names; the "Features that cover it" part is left out on purpose (plan lines there are still "needs validation").
   Privacy notice has its paragraph (`#secure-ai`), legal basis sentence and the AI provider in the processor list.
 - One look on every page (2026-11-11): `/services` opens with a hero stage (`.hero-sub`, `services-hero.webp`); every
