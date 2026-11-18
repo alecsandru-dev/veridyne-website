@@ -1495,3 +1495,29 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
   .chapter::before, .chapter-right::before { background: linear-gradient(180deg, #07111F 0%, rgba(7, 17, 31, 0) 20%, rgba(5, 12, 24, 0.55) 55%, rgba(5, 12, 24, 0.95) 100%); }
   .about-rules li { grid-template-columns: 48px 1fr; }
 }
+
+/* Veridyne Neural Network: deep navy, cobalt, electric cyan and neural violet (its own brand board) */
+.vnn-mark { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.02em; color: #EAF0FF; white-space: nowrap; }
+.vnn-mark img { height: 1.3em; width: auto; }
+.pshow-panel .vnn-mark.pcard-logo, .vnn-mark.pcard-logo { height: auto; font-size: 24px; }
+.pcard-neural-network { background: #070F24; color: #EAF0FF; }
+.pcard-neural-network::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(60% 70% at 80% 100%, rgba(123, 77, 255, 0.22), transparent 70%), radial-gradient(50% 60% at 10% 0%, rgba(25, 194, 255, 0.12), transparent 70%); }
+.pcard-neural-network .badge, .product-vnn .badge { background: rgba(25, 194, 255, 0.14); color: #A9E6FF; border: 1px solid rgba(25, 194, 255, 0.5); }
+.pcard-neural-network .pcard-tagline { color: #fff; }
+.pcard-neural-network .pcard-text { color: #A9B6D6; }
+.pcard-neural-network .pcard-more { color: #8FB4FF; }
+.btn-vnn { background: linear-gradient(90deg, #0F4FDB, #7B4DFF); color: #fff; }
+.btn-vnn:hover { background: linear-gradient(90deg, #1E5FEA, #8A62FF); color: #fff; }
+.btn-vnn-ghost { background: transparent; color: #EAF0FF; border: 1px solid rgba(143, 180, 255, 0.45); }
+.btn-vnn-ghost:hover { background: rgba(15, 79, 219, 0.25); color: #fff; }
+.product-vnn { background: #070F24; color: #EAF0FF; position: relative; }
+.product-vnn::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(50% 40% at 50% 60%, rgba(15, 79, 219, 0.22), transparent 70%); }
+.product-vnn > * { position: relative; }
+.product-vnn .product-lead, .product-vnn .features p, .product-vnn .crumb { color: #A9B6D6; }
+.product-vnn .product-shot { border: 1px solid rgba(143, 180, 255, 0.2); box-shadow: 0 40px 120px -50px rgba(123, 77, 255, 0.5); background: #070F24; }
+.product-vnn .product-shot figcaption { padding: 10px 16px; color: #A9B6D6; font-size: 13px; text-align: center; }
+.product-vnn .features h3::before { content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; margin-bottom: 14px; background: linear-gradient(90deg, #19C2FF, #7B4DFF); }
+.product-vnn .gallery-shot { background: #0A1530; border-color: rgba(143, 180, 255, 0.2); }
+.product-vnn .gallery-shot figcaption { color: #A9B6D6; }
+.pcard-neural-network .pshow-shot img { border: 1px solid rgba(143, 180, 255, 0.2); border-width: 1px 0 0 1px; }
+.product-vnn .gallery-note { color: #8F9CC0; }

@@ -133,6 +133,7 @@ FOOTER = '''
         <div>
           <h2>Products</h2>
           <a href="/secure-ai">Veridyne Secure AI</a>
+          <a href="/neural-network">Veridyne Neural Network</a>
           <a href="/eot">Eye of the Tenant</a>
           <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>
@@ -352,13 +353,31 @@ PRODUCTS = {
                  ('/assets/secure-ai-next.png', 1600, 900, 'What is not available yet, what to decide, and the next step.', 'The end of a design with sample data: a feature in Early Access, one open question and the next step with an architect')],
         caption='Screens from the app, shown with sample data. Open to every Veridyne client in the client portal.',
         meta='Veridyne Secure AI: describe your AI agent and get a first identity design, tool by tool, for Auth0 or Okta. Then book the full design with a Veridyne architect. For Veridyne clients.'),
+    'neural-network': dict(
+        kind='AI agents in your Auth0 tenant',
+        name='Veridyne Neural Network', cls='product-vnn', title_id='vnn-title',
+        logo='<span class="vnn-mark product-logo"><img src="/assets/vnn-mark.png" alt="" width="110" height="110">Veridyne Neural Network</span>',
+        badge='<p class="badge">New</p>', card_badge='New',
+        tagline='Connected intelligence, clearly mapped.',
+        lead='See every AI agent in your Auth0 tenant, who it acts for and what it can reach. Veridyne Neural Network reads your tenant&rsquo;s configuration and log stream, draws each agent with the people it acts for and the APIs it can call, and checks it against guardrails you set. It never changes your applications, users or login. Auth0 today; Okta on request.',
+        card='A live map of the AI agents in your Auth0 tenant, and what needs fixing.',
+        btn='<a class="btn btn-vnn" href="https://my.veridyne.eu/neural-network">Sign in to Neural Network</a>\n        <a class="btn btn-vnn-ghost" href="/?topic=Veridyne%20Neural%20Network#contact">Ask for access</a>',
+        shot='<img src="/assets/vnn.png" alt="Veridyne Neural Network with demo data: the agent map, four agents between the people they act for and the APIs they can reach, with counts of agents, missing owners and unused grants" width="1600" height="900"',
+        features=[('Set up in minutes', 'A company admin connects the tenant in a guided setup. Neural Network creates the log stream it needs with one click.'),
+                  ('A live map of your agents', 'Who each agent acts for, which APIs it can reach and how often it asks for tokens. People are counted, never named.'),
+                  ('Guardrails and findings', 'Unused access, self-registered agents, long-lived tokens and old secrets are flagged with the fix for each. Alerts go to Slack, Teams, Google Chat or email.')],
+        gallery=[('/assets/vnn-map.png', 1600, 900, 'Pick an agent to see its grants, its token requests and what was found.', 'The agent map with demo data and one agent selected: its owner, the APIs it can reach, its scopes and a bar chart of token requests over 14 days'),
+                 ('/assets/vnn-agent.png', 1600, 900, 'Each agent: its owner, token requests over 14 days and the scopes on every grant.', 'One agent with demo data: owner, who it acts for, longest token, a bar chart of token requests and its grants on two APIs'),
+                 ('/assets/vnn-findings.png', 1600, 900, 'Every finding comes with the fix, for the agent&rsquo;s owner to make in Auth0.', 'The findings list with demo data: severity, what was found, the fix, the agent and buttons to request a change or dismiss')],
+        caption='Screens from the app, shown with demo data. In the client portal; Veridyne switches it on for your company.',
+        meta='Veridyne Neural Network: a live map of the AI agents in your Auth0 tenant, who each one acts for, what it can reach, and guardrails with a fix for every finding. For Veridyne clients.'),
 }
 
-# Order on the site: Veridyne Secure AI first, VeriGate last (2026-11-18). The first two get the large tiles.
-PRODUCTS = {'secure-ai': PRODUCTS['secure-ai'], **{k: v for k, v in PRODUCTS.items() if k not in ('secure-ai', 'verigate')}, 'verigate': PRODUCTS['verigate']}
+# Order on the site: Veridyne Secure AI first, Veridyne Neural Network second, VeriGate last (2026-11-18). The first two get the large tiles.
+PRODUCTS = {'secure-ai': PRODUCTS['secure-ai'], 'neural-network': PRODUCTS['neural-network'], **{k: v for k, v in PRODUCTS.items() if k not in ('secure-ai', 'neural-network', 'verigate')}, 'verigate': PRODUCTS['verigate']}
 
 def product_logo(p):
-    return p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"').replace('class="fga-mark product-logo"', 'class="fga-mark pcard-logo"').replace('class="sai-mark product-logo"', 'class="sai-mark pcard-logo"')
+    return p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"').replace('class="fga-mark product-logo"', 'class="fga-mark pcard-logo"').replace('class="sai-mark product-logo"', 'class="sai-mark pcard-logo"').replace('class="vnn-mark product-logo"', 'class="vnn-mark pcard-logo"')
 
 def product_grid(exclude=None, compact=False):
     """Every product at once, each a tile on its own scene from the launch film (a still; a short silent loop is
@@ -492,7 +511,7 @@ HOME = '''
       <p class="division">Products</p>
       <p class="vie-mark"><strong>V.I.E</strong><span>Veridyne Identity Environment</span></p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: nine products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: ten products, each made for its own users.</p>
       <a class="film-link" href="/assets/vie/veridyne-vie-launch.mp4" data-film><span class="film-play" aria-hidden="true"></span>Watch the launch video<span class="film-len"> 2:30</span></a>
     </div>
     PRODUCT_SHOWCASE
@@ -534,6 +553,7 @@ HOME = '''
           <select id="cf-topic" name="topic">
             <option>Identity &amp; access consulting</option>
             <option>Veridyne Secure AI</option>
+            <option>Veridyne Neural Network</option>
             <option>Eye of the Tenant</option>
             <option>Veridyne Certifications</option>
             <option>AuthBeam</option>

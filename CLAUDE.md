@@ -9,7 +9,7 @@ below), on the Oct 2026 brand. Offer: two things only, consulting and in-house p
 
 ## Status
 Live. Redesign v3 went live 2026-11-11. Pages: / , /services, /secure-ai, /verigate, /certifications, /authbeam, /authlens, /eot,
-/authcanvas, /companion, /fga, /privacy, /signin, /welcome. Product order (2026-11-18): Veridyne Secure AI first, VeriGate last (set by the
+/authcanvas, /companion, /fga, /neural-network, /privacy, /signin, /welcome. Product order (2026-11-18): Veridyne Secure AI first, Veridyne Neural Network second, VeriGate last (set by the
 line under PRODUCTS in build_pages.py; the first two get the large tiles). Roiall is benched (2026-11-08: off list, footer, form, sitemap; /roiall
 redirects to /#products, temporary). Rentolio is not shown.
 
@@ -70,7 +70,7 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
   line #E2E8EF. Dark theme (follows system + header switch): page #07111F, card #0C1A2E, ink #E9EFF7, line #1E3352,
   button fill becomes cyan.
 - Product accents (sections coloured per product): AuthCanvas blue #2459E6 on #070F1E, AuthBeam amber #FF9F0A on
-  #0B0C0E, Roiall teal #45E3CF / #141E3A, Veridyne FGA blue #138DFD on #02102D. Veridyne Secure AI purple #8A3FFC on #0B0F3B (lavender #DCC7FF).
+  #0B0C0E, Roiall teal #45E3CF / #141E3A, Veridyne FGA blue #138DFD on #02102D. Veridyne Secure AI purple #8A3FFC on #0B0F3B (lavender #DCC7FF). Veridyne Neural Network (own brand board): cobalt #0F4FDB, electric cyan #19C2FF, neural violet #7B4DFF on #070F24.
 - Type: Archivo only (self-hosted woff2 latin + latin-ext). Sora/Inter rejected as looking "generative AI". Mono for
   code only. Moderate sizes: hero clamp(38px,4.6vw,60px), h2 clamp(30px,3.4vw,46px), h3 20px, body 16px.
 - Layout tokens: --wide 1180px, --radius 22px, --ease cubic-bezier(0.22,1,0.36,1). Fluid animated motion; respect reduced motion.
@@ -99,6 +99,14 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
 - Products list is compact (description only on the chosen one) to keep panel height with eight products.
 - When searching site-wide text (e.g. address changes) search all of ~: authbeam, authcanvas, Veyra, Roiall live outside
   "Veridyne rebrand".
+
+## Veridyne Neural Network (2026-11-18)
+Page `/neural-network` (app in the client portal, my.veridyne.eu/neural-network; Veridyne switches it on per company via
+`vnn_entitlements`, so the page says "Ask for access"). Badge "New", tagline from its brand board ("Connected intelligence,
+clearly mapped."). Mark `assets/vnn-mark.png` is rendered from the portal's `public/brand/vnn/vnn-icon.svg`. Screenshots
+(`vnn.png`, `vnn-map.png`, `vnn-agent.png`, `vnn-findings.png`) are the portal's real components rendered with its demo
+tenant (`lib/vnn/demo.ts` on PGlite), labelled demo data. Scene/loop from Higgsfield (neural web over a glass plane).
+Privacy notice: `#neural-network` paragraph + legal basis sentence. Pricing (hours) is not on the site.
 
 ## /welcome (2026-11-18)
 About page for the link in client emails: the Veridyne film (`assets/vie/veridyne-welcome.mp4`, 2:56, ~2.2 Mbps, under
