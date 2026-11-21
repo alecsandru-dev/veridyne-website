@@ -110,7 +110,7 @@ Privacy notice: `#neural-network` paragraph + legal basis sentence. Pricing (hou
 
 ## Veridyne Transformer (2026-11-21)
 Page `/transformer`, badge "Pilot" (app at transformer.veridyne.eu, its own repo alecsandru-dev/veridyne-transformer).
-No Transformer logo file exists: the mark is the Veridyne V icon + "Transformer" text (like Companion); never draw one.
+Mark `assets/transformer-mark.png` (three chevrons) is cut from "Veridyne Transformer Brand Style Board.png" (~/Downloads, 21 Nov 2026), never redrawn; palette from that board (deep navy #0B1733, cobalt #0F4FDB, electric blue #19C2FF, coral #FF6B57 for buttons).
 Screenshots (`transformer*.png`) are the real web app in local mode with the engine's sample Okta tenant, project named
 "Northwind: Okta to Auth0 (sample)". Scene/loop from Higgsfield (cubes streaming into a new crystal tower); the tile
 shows the right side of the scene (object-position 82%). Privacy: `#transformer` paragraph + legal basis sentence.

@@ -375,7 +375,7 @@ PRODUCTS = {
     'transformer': dict(
         kind='Identity tenant migration planning',
         name='Veridyne Transformer', cls='product-tx', title_id='tx-title',
-        logo='<span class="tx-mark product-logo"><img src="/assets/veridyne-icon-dark.png" alt="" width="188" height="123">Transformer</span>',
+        logo='<span class="tx-mark product-logo"><img src="/assets/transformer-mark.png" alt="" width="202" height="101"><span class="tx-words"><span>Veridyne</span><span>Transformer</span></span></span>',
         badge='<p class="badge">Pilot</p>', card_badge='Pilot',
         tagline='Plan the move before you make it.',
         lead='Veridyne Transformer reads your Okta, Auth0, Microsoft Entra, Keycloak or PingFederate tenant, or an export of it, and maps every application, policy and setting to Auth0 or Okta. For each one you choose: migrate, keep on the source, build custom or drop. You leave with an assessment report, a runbook, a user migration plan and Terraform for the target. It gives you a starting plan; an identity architect still reviews it.',
