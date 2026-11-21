@@ -134,6 +134,7 @@ FOOTER = '''
           <h2>Products</h2>
           <a href="/secure-ai">Veridyne Secure AI</a>
           <a href="/neural-network">Veridyne Neural Network</a>
+          <a href="/transformer">Veridyne Transformer</a>
           <a href="/eot">Eye of the Tenant</a>
           <a href="/certifications">Veridyne Certifications</a>
           <a href="/authbeam">AuthBeam</a>
@@ -371,13 +372,31 @@ PRODUCTS = {
                  ('/assets/vnn-findings.png', 1600, 900, 'Every finding comes with the fix, for the agent&rsquo;s owner to make in Auth0.', 'The findings list with demo data: severity, what was found, the fix, the agent and buttons to request a change or dismiss')],
         caption='Screens from the app, shown with demo data. In the client portal; Veridyne switches it on for your company.',
         meta='Veridyne Neural Network: a live map of the AI agents in your Auth0 tenant, who each one acts for, what it can reach, and guardrails with a fix for every finding. For Veridyne clients.'),
+    'transformer': dict(
+        kind='Identity tenant migration planning',
+        name='Veridyne Transformer', cls='product-tx', title_id='tx-title',
+        logo='<span class="tx-mark product-logo"><img src="/assets/transformer-mark.png" alt="" width="202" height="101"><span class="tx-words"><span>Veridyne</span><span>Transformer</span></span></span>',
+        badge='<p class="badge">Pilot</p>', card_badge='Pilot',
+        tagline='Plan the move before you make it.',
+        lead='Veridyne Transformer reads your Okta, Auth0, Microsoft Entra, Keycloak or PingFederate tenant, or an export of it, and maps every application, policy and setting to Auth0 or Okta. For each one you choose: migrate, keep on the source, build custom or drop. You leave with an assessment report, a runbook, a user migration plan and Terraform for the target. It gives you a starting plan; an identity architect still reviews it.',
+        card='Reads your current tenant and maps every object to Auth0 or Okta, with a report, a runbook and Terraform.',
+        btn='<a class="btn btn-tx" href="https://transformer.veridyne.eu">Sign in to Transformer</a>\n        <a class="btn btn-tx-ghost" href="/?topic=Veridyne%20Transformer#contact">Ask about the pilot</a>',
+        shot='<img src="/assets/transformer.png" alt="Veridyne Transformer with a sample Okta tenant: the steps from connect to deliver, 58 objects in the plan, the questions the tenant cannot answer and the objects it can create on Auth0" width="1600" height="900"',
+        features=[('Reads the setup, never the users', 'A read-only key or an export file. Apps, policies, groups and settings are read; user records never pass through Transformer.'),
+                  ('A decision for every object', 'Each object maps to its equivalent on the target, with the reason and when to choose otherwise.'),
+                  ('Ready to hand over', 'Assessment report, runbook, a user migration path per group with lazy migration scripts, and Terraform for the target.')],
+        gallery=[('/assets/transformer-plan.png', 1600, 900, 'Every object, how it carries over and the recommended decision.', 'The plan with a sample tenant: applications with how each one carries over to Auth0, the reason and the recommended decision'),
+                 ('/assets/transformer-target.png', 1600, 900, 'What can be created on the target, ready as Terraform.', 'The Auth0 setup tab with a sample tenant: the custom domain, applications and APIs Transformer can create, with a Terraform download'),
+                 ('/assets/transformer-export.png', 1600, 900, 'The report, the runbook and Terraform, with what is still open.', 'The report and runbook tab with a sample tenant: downloads for the assessment report, runbook, Terraform and the plan')],
+        caption='Screens from the app, shown with a sample tenant. In pilot: tell us about your migration and we set you up.',
+        meta='Veridyne Transformer: reads an Okta, Auth0, Entra, Keycloak or PingFederate tenant and plans the move to Auth0 or Okta, object by object, with a report, runbook and Terraform. In pilot.'),
 }
 
-# Order on the site: Veridyne Secure AI first, Veridyne Neural Network second, VeriGate last (2026-11-18). The first two get the large tiles.
-PRODUCTS = {'secure-ai': PRODUCTS['secure-ai'], 'neural-network': PRODUCTS['neural-network'], **{k: v for k, v in PRODUCTS.items() if k not in ('secure-ai', 'neural-network', 'verigate')}, 'verigate': PRODUCTS['verigate']}
+# Order on the site: Veridyne Secure AI first, Veridyne Neural Network second, Veridyne Transformer third (2026-11-21), VeriGate last. The first two get the large tiles.
+PRODUCTS = {'secure-ai': PRODUCTS['secure-ai'], 'neural-network': PRODUCTS['neural-network'], 'transformer': PRODUCTS['transformer'], **{k: v for k, v in PRODUCTS.items() if k not in ('secure-ai', 'neural-network', 'transformer', 'verigate')}, 'verigate': PRODUCTS['verigate']}
 
 def product_logo(p):
-    return p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"').replace('class="fga-mark product-logo"', 'class="fga-mark pcard-logo"').replace('class="sai-mark product-logo"', 'class="sai-mark pcard-logo"').replace('class="vnn-mark product-logo"', 'class="vnn-mark pcard-logo"')
+    return p['logo'].replace('class="product-logo"', 'class="pcard-logo"').replace('class="sas-mark sas-title"', 'class="sas-mark pcard-logo"').replace('class="companion-mark"', 'class="companion-mark pcard-logo"').replace('class="eot-mark product-logo"', 'class="eot-mark pcard-logo"').replace('class="vg-mark product-logo"', 'class="vg-mark pcard-logo"').replace('class="fga-mark product-logo"', 'class="fga-mark pcard-logo"').replace('class="sai-mark product-logo"', 'class="sai-mark pcard-logo"').replace('class="vnn-mark product-logo"', 'class="vnn-mark pcard-logo"').replace('class="tx-mark product-logo"', 'class="tx-mark pcard-logo"')
 
 def product_grid(exclude=None, compact=False):
     """Every product at once, each a tile on its own scene from the launch film (a still; a short silent loop is
@@ -511,7 +530,7 @@ HOME = '''
       <p class="division">Products</p>
       <p class="vie-mark"><strong>V.I.E</strong><span>Veridyne Identity Environment</span></p>
       <h2 id="products-title">Software we build,<br> host and support.</h2>
-      <p class="lead">Separate from our consulting work: ten products, each made for its own users.</p>
+      <p class="lead">Separate from our consulting work: eleven products, each made for its own users.</p>
       <a class="film-link" href="/assets/vie/veridyne-vie-launch.mp4" data-film><span class="film-play" aria-hidden="true"></span>Watch the launch video<span class="film-len"> 2:30</span></a>
     </div>
     PRODUCT_SHOWCASE
@@ -554,6 +573,7 @@ HOME = '''
             <option>Identity &amp; access consulting</option>
             <option>Veridyne Secure AI</option>
             <option>Veridyne Neural Network</option>
+            <option>Veridyne Transformer</option>
             <option>Eye of the Tenant</option>
             <option>Veridyne Certifications</option>
             <option>AuthBeam</option>

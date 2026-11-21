@@ -9,7 +9,7 @@ below), on the Oct 2026 brand. Offer: two things only, consulting and in-house p
 
 ## Status
 Live. Redesign v3 went live 2026-11-11. Pages: / , /services, /secure-ai, /verigate, /certifications, /authbeam, /authlens, /eot,
-/authcanvas, /companion, /fga, /neural-network, /privacy, /signin, /welcome. Product order (2026-11-18): Veridyne Secure AI first, Veridyne Neural Network second, VeriGate last (set by the
+/authcanvas, /companion, /fga, /neural-network, /transformer, /privacy, /signin, /welcome. Product order (2026-11-18): Veridyne Secure AI first, Veridyne Neural Network second, Veridyne Transformer third (2026-11-21), VeriGate last (set by the
 line under PRODUCTS in build_pages.py; the first two get the large tiles). Roiall is benched (2026-11-08: off list, footer, form, sitemap; /roiall
 redirects to /#products, temporary). Rentolio is not shown.
 
@@ -107,6 +107,14 @@ clearly mapped."). Mark `assets/vnn-mark.png` is rendered from the portal's `pub
 (`vnn.png`, `vnn-map.png`, `vnn-agent.png`, `vnn-findings.png`) are the portal's real components rendered with its demo
 tenant (`lib/vnn/demo.ts` on PGlite), labelled demo data. Scene/loop from Higgsfield (neural web over a glass plane).
 Privacy notice: `#neural-network` paragraph + legal basis sentence. Pricing (hours) is not on the site.
+
+## Veridyne Transformer (2026-11-21)
+Page `/transformer`, badge "Pilot" (app at transformer.veridyne.eu, its own repo alecsandru-dev/veridyne-transformer).
+Mark `assets/transformer-mark.png` (three chevrons) is cut from "Veridyne Transformer Brand Style Board.png" (~/Downloads, 21 Nov 2026), never redrawn; palette from that board (deep navy #0B1733, cobalt #0F4FDB, electric blue #19C2FF, coral #FF6B57 for buttons).
+Screenshots (`transformer*.png`) are the real web app in local mode with the engine's sample Okta tenant, project named
+"Northwind: Okta to Auth0 (sample)". Scene/loop from Higgsfield (cubes streaming into a new crystal tower); the tile
+shows the right side of the scene (object-position 82%). Privacy: `#transformer` paragraph + legal basis sentence.
+Live reads/apply are not proven yet (pilot); the copy promises neither.
 
 ## /welcome (2026-11-18)
 About page for the link in client emails: the Veridyne film (`assets/vie/veridyne-welcome.mp4`, 2:56, ~2.2 Mbps, under

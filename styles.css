@@ -1521,3 +1521,32 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
 .product-vnn .gallery-shot figcaption { color: #A9B6D6; }
 .pcard-neural-network .pshow-shot img { border: 1px solid rgba(143, 180, 255, 0.2); border-width: 1px 0 0 1px; }
 .product-vnn .gallery-note { color: #8F9CC0; }
+
+/* Veridyne Transformer (own brand board): deep navy #0B1733, cobalt #0F4FDB, electric blue #19C2FF, coral #FF6B57 for actions */
+.tx-mark { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: clamp(30px, 3.4vw, 42px); letter-spacing: -0.02em; color: #fff; white-space: nowrap; }
+.tx-mark img { height: 1.1em; width: auto; }
+.tx-words { display: grid; line-height: 0.98; text-align: left; }
+.tx-words span:last-child { color: #FF6B57; }
+.tx-mark { font-size: clamp(26px, 2.8vw, 36px); gap: 14px; }
+.tx-mark.pcard-logo { height: auto; font-size: 19px; gap: 10px; }
+.pcard-transformer { background: #0B1733; color: #F5F8FF; }
+.pcard-transformer .badge, .product-tx .badge { background: rgba(255, 107, 87, 0.14); color: #FFB4A9; border: 1px solid rgba(255, 107, 87, 0.55); }
+.pcard-transformer .pcard-tagline { color: #fff; }
+.pcard-transformer .pcard-text { color: #A7B9CF; }
+.pcard-transformer .pcard-more { color: #FF8C7B; }
+.btn-tx { background: #FF6B57; color: #1A0905; }
+.btn-tx:hover { background: #FF8371; color: #1A0905; }
+.btn-tx-ghost { background: transparent; color: #F5F8FF; border: 1px solid rgba(25, 194, 255, 0.45); }
+.btn-tx-ghost:hover { background: rgba(0, 180, 255, 0.16); color: #fff; }
+.product-tx { background: #0B1733; color: #F5F8FF; position: relative; }
+.product-tx::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(50% 40% at 50% 60%, rgba(0, 180, 255, 0.16), transparent 70%); }
+.product-tx > * { position: relative; }
+.product-tx .product-lead, .product-tx .features p, .product-tx .crumb { color: #A7B9CF; }
+.product-tx .product-shot { border: 1px solid rgba(127, 219, 255, 0.2); box-shadow: 0 40px 120px -50px rgba(0, 180, 255, 0.45); background: #06142A; }
+.product-tx .product-shot figcaption { padding: 10px 16px; color: #A7B9CF; font-size: 13px; text-align: center; }
+.product-tx .features h3::before { content: ""; display: block; width: 22px; height: 3px; border-radius: 2px; margin-bottom: 14px; background: linear-gradient(90deg, #0F4FDB, #19C2FF 55%, #FF6B57); }
+.product-tx .gallery-shot { background: #0A1A33; border-color: rgba(127, 219, 255, 0.2); }
+.product-tx .gallery-shot figcaption, .product-tx .gallery-note { color: #A7B9CF; }
+.pcard-transformer .ptile-media img, .pcard-transformer .ptile-media video { object-position: 82% 50%; }
+.pgrid-compact .vnn-mark.pcard-logo { font-size: 19px; }
+.pgrid-compact .tx-mark.pcard-logo { font-size: 17px; }
