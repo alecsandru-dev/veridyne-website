@@ -499,7 +499,7 @@ HOME = '''
       <div class="hero-actions rise">
         <a class="btn" href="#contact" data-topic="Identity &amp; access consulting">Book a free call</a>
         <a class="link-more" href="/services">Our services</a>
-        <a class="film-link" href="/assets/vie/veridyne-vie-launch.mp4" data-film><span class="film-play" aria-hidden="true"></span>Watch the launch video<span class="film-len"> 2:30</span></a>
+        <a class="about-link" href="/welcome"><span class="about-thumb" aria-hidden="true"><img src="/assets/vie/welcome-thumb.jpg" alt="" width="224" height="126"><span class="about-play"></span></span><span class="about-text"><strong>About us</strong><span>Our story in 3 minutes</span></span></a>
       </div>
     </div>
     </div>
