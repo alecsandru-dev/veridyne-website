@@ -137,8 +137,9 @@ identity right" as a numbered list with a sticky heading, one sentence on the tw
   stills and films line up. Below 1281px the gateway sits in a band above the words. `film-poster.jpg` is the launch
   video's poster. (A city still, a 3D V and a canvas drawing were tried and dropped.)
 - `assets/vie/`: stills cut from the films' own artwork (scene-<slug>.jpg, svc-*.jpg, contact.jpg),
-  hover loops (loop-<slug>.mp4, fetched only on hover on desktops) and the launch video (veridyne-vie-launch.mp4,
-  fetched only on Play, in `dialog#film`; its quiet opening is lifted ~12 dB for the web copy). No video loads by itself.
+  hover loops (loop-<slug>.mp4, fetched only on hover on desktops) and the launch video (veridyne-vie-launch-v2.mp4, 3:03 since 2026-11-21: Secure AI, Neural Network, Transformer and
+  Client Portal added, Team Portal out, built from the welcome film's morphs on the launch's own soundtrack with two
+  phrase repeats; fetched only on Play, in `dialog#film`; its quiet opening is lifted ~12 dB for the web copy). No video loads by itself.
 - A new product needs `assets/vie/scene-<slug>.jpg` and `loop-<slug>.mp4`.
 - Veridyne Secure AI (2026-11-18): page `/secure-ai` (the app itself is in the client portal, my.veridyne.eu/secure-ai; badge "New",
   open to every client since 2026-11-18 per Alecs). Its screenshots are the portal's own design components rendered with the "travel" test fixture and
