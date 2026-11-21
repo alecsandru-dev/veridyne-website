@@ -117,7 +117,7 @@ shows the right side of the scene (object-position 82%). Privacy: `#transformer`
 Live reads/apply are not proven yet (pilot); the copy promises neither.
 
 ## /welcome (2026-11-18)
-About page for the link in client emails: the Veridyne film (`assets/vie/veridyne-welcome.mp4`, 2:56, ~2.2 Mbps, under
+About page for the link in client emails: the Veridyne film (`assets/vie/veridyne-welcome.mp4`, 3:12 since 2026-11-21 with Neural Network and Transformer, ~1.9 Mbps, under
 50 MB for GitHub; poster `welcome-poster.jpg`) starts with sound where the browser allows it; otherwise it plays muted and
 the first tap/click/key anywhere (or the "Turn sound on" button) turns sound on (main.js). Waits for Play under reduced
 motion. Below, an editorial run (no card grids; Alecs rejected the 3-column look): opening statement + short intro,
