@@ -1550,3 +1550,35 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
 .pcard-transformer .ptile-media img, .pcard-transformer .ptile-media video { object-position: 82% 50%; }
 .pgrid-compact .vnn-mark.pcard-logo { font-size: 19px; }
 .pgrid-compact .tx-mark.pcard-logo { font-size: 17px; }
+
+/* Home hero: "About us" opens /welcome (the film and who we are). A glass pill with a slow light running round its
+   edge and a still from the film, so it reads as the thing to press. */
+@property --about-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.about-link {
+  position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 14px; padding: 6px 22px 6px 6px;
+  border-radius: 999px; text-decoration: none; color: #fff; background: rgba(8, 20, 38, 0.72);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px -12px rgba(0, 180, 255, 0.55); transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
+}
+.about-link::before {
+  content: ""; position: absolute; inset: -1.5px; z-index: -1; border-radius: inherit; padding: 1.5px;
+  background: conic-gradient(from var(--about-a), rgba(0, 180, 255, 0.25), #7FDBFF, #FFFFFF, #00B4FF, rgba(0, 180, 255, 0.25) 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.about-link:hover { transform: translateY(-2px); box-shadow: 0 16px 50px -12px rgba(0, 180, 255, 0.75); }
+.about-thumb { position: relative; width: 74px; height: 42px; border-radius: 999px; overflow: hidden; flex: none; }
+.about-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease); }
+.about-link:hover .about-thumb img { transform: scale(1.12); }
+.about-play { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(4, 12, 24, 0.25); }
+.about-play::before { content: ""; width: 24px; height: 24px; border-radius: 50%; background: #00B4FF; box-shadow: 0 0 0 0 rgba(0, 180, 255, 0.6); }
+.about-play::after { content: ""; position: absolute; margin-left: 2px; border-left: 8px solid #04121F; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.about-text { display: grid; line-height: 1.15; text-align: left; }
+.about-text strong { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+.about-text span { font-size: 13px; color: #9FD8F2; }
+@media (prefers-reduced-motion: no-preference) {
+  .about-link::before { animation: about-spin 5s linear infinite; }
+  .about-play::before { animation: about-ping 2.4s var(--ease) infinite; }
+}
+@keyframes about-spin { to { --about-a: 360deg; } }
+@keyframes about-ping { 0% { box-shadow: 0 0 0 0 rgba(0, 180, 255, 0.6); } 70%, 100% { box-shadow: 0 0 0 12px rgba(0, 180, 255, 0); } }
+[data-theme="light"] .about-link { color: #fff; }

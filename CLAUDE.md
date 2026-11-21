@@ -123,7 +123,7 @@ the first tap/click/key anywhere (or the "Turn sound on" button) turns sound on 
 motion. Below, an editorial run (no card grids; Alecs rejected the 3-column look): opening statement + short intro,
 three full-bleed chapters on film stills (`about-*.jpg`: Auth0, Okta, IAM; never state years of experience), "How we do
 identity right" as a numbered list with a sticky heading, one sentence on the two ways to work with us (links to
-/services and /#products; no product tiles, the home page lists the apps), closing stage on the dawn gate. `noindex`, not in the sitemap or nav. Film sources and build scripts are outside this repo (/home/claude/vp).
+/services and /#products; no product tiles, the home page lists the apps), closing stage on the dawn gate. `noindex`, not in the sitemap or nav; the home hero links to it with the "About us" pill (`.about-link`, 2026-11-21, in place of "Watch the launch video"). Film sources and build scripts are outside this repo (/home/claude/vp).
 
 ## Redesign v3 (live on main since 2026-11-11; built on branch `redesign-v3`)
 - Dark by default (js-flag.js: dark unless the visitor chose light; no longer follows the system). Look of the films.
