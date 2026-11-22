@@ -30,6 +30,9 @@ Static HTML + one `styles.css` + `main.js` + `js-flag.js`; `api/*.js` Vercel Nod
 ## Run / edit / deploy
 - Edit pages: change `tools/build_pages.py`, then `python3 tools/build_pages.py .` and commit script AND generated HTML.
   Never hand-edit generated HTML (it is overwritten).
+- Pages load `/styles.css?v=YYYYMMDD` and `/main.js?v=YYYYMMDD` (build_pages.py head + privacy.html). Bump the date after a
+  change to vercel.json headers (CSP): an unchanged page answers 304 and browsers keep the OLD CSP (2026-11-22 holiday
+  themes: the season fetch stayed blocked until the HTML changed).
 - Preview: any static server in the folder (e.g. `python3 -m http.server`); `/api/*` needs `vercel dev`.
 - Deploy: `git push origin main` (Vercel project `veridyne-website`, prj_DN2ihhPSeo1SfkSeeuuL6JypqlE4, git-linked;
   GitHub public repo alecsandru-dev/veridyne-website). Commit as "Alecsandru Mihalcea"
@@ -77,7 +80,7 @@ HSTS; cleanUrls, no trailing slash. /fonts and /assets cached 1 day, CORS *.
 - Logo: new V mark + wordmark, cut from the brand board (ChatGPT brand board 3 in ~/Downloads). NEVER redraw it; use the
   files. Site copies in `assets/`: veridyne-wordmark.png (navy, light bg), veridyne-wordmark-dark.png (white, dark bg),
   veridyne-logo-square.png, veridyne-icon-dark.png, favicon-32, apple-touch-icon, icon-512, og-image.
-- Brand assets folder: `/Users/alecs/Veridyne rebrand/brand/` : veridyne-icon(.png/-dark), veridyne-wordmark(.png/-dark),
+- Brand assets folder: `/Users/alecs/Code/Veridyne rebrand/brand/` : veridyne-icon(.png/-dark), veridyne-wordmark(.png/-dark),
   veribot-slack-icon(.png/.svg), embroidery-108x70mm/ (V flat 3-colors, flat for dark shirts, gradient; pdf/png/svg),
   zoom-waiting-room (1600x800 png, 400 logo, html source, two mp4 videos + source), roiall-dashboard / roiall-lockup /
   rentolio-login screenshots. App tokens (team/clients/admin) live in each app's `app/globals.css`; --strong = button

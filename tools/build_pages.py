@@ -25,9 +25,9 @@ def head(title, desc, path):
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=20261122">
 <script src="/js-flag.js"></script>
-<script src="/main.js" defer></script>
+<script src="/main.js?v=20261122" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
