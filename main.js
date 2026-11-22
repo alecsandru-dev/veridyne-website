@@ -406,15 +406,17 @@
   }
 
   /* ---------- Holiday themes: the owner turns one on in the admin console (Setup → Theme switcher) ----------
-     my.veridyne.eu/api/public/season says which ("none", "thanksgiving" or "christmas"); the last answer is kept so a
-     return visit shows it at once. The hero never changes: the season shows from the first section after it, in the
-     threads between sections, beside the menu (Thanksgiving) and in a strip above the menu, under any running offer (Christmas). */
+     my.veridyne.eu/api/public/season says which ("none", "thanksgiving", "christmas" or "national", Romania's National
+     Day); the last answer is kept so a return visit shows it at once. The hero never changes: the season shows from the
+     first section after it, in the threads between sections, beside the menu (Thanksgiving, National Day) and in a strip
+     above the menu, under any running offer (Christmas, National Day). */
   (function () {
     var main = document.getElementById('main');
     if (!main) return;
     var KEY = 'veridyne-season';
     var MAPLE = 'M12 2L13.6 6.2L16.4 4.8L15.8 9L20 7.6L18.6 11L22 12.4L17.4 14.6L18.4 17L13 16L12.6 22L11.4 22L11 16L5.6 17L6.6 14.6L2 12.4L5.4 11L4 7.6L8.2 9L7.6 4.8L10.4 6.2Z';
     var LEAVES = ['#e8590c', '#c2410c', '#f2b33d', '#d9480f', '#b45309'];
+    var SEASONS = { thanksgiving: 1, christmas: 1, national: 1 };
     var layer = null;
     var placeLayer = function () {
       if (!layer) return;
@@ -427,7 +429,7 @@
       layer = null;
     };
     var apply = function (season) {
-      if (season !== 'thanksgiving' && season !== 'christmas') { clear(); return; }
+      if (!SEASONS[season]) { clear(); return; }
       if (root.getAttribute('data-season') === season && layer) return;
       clear();
       root.setAttribute('data-season', season);
@@ -454,20 +456,23 @@
       layer.appendChild(sky);
       main.prepend(layer);
       placeLayer();
-      if (season === 'thanksgiving') {
+      if (season === 'thanksgiving' || season === 'national') {
         var cta = document.querySelector('.nav-links .nav-cta');
         if (cta) {
           var greet = document.createElement('span');
           greet.className = 'season-greet';
-          greet.textContent = 'Happy Thanksgiving';
+          greet.textContent = season === 'national' ? 'Happy National Day' : 'Happy Thanksgiving';
           cta.parentNode.insertBefore(greet, cta);
         }
-      } else {
+      }
+      if (season === 'christmas' || season === 'national') {
         /* Shown with or without an offer: it sits under the offer bar, just above the menu. */
         var sb = document.createElement('aside');
         sb.className = 'season-bar';
         sb.setAttribute('aria-label', 'Season greeting');
-        sb.innerHTML = '<p><b>Happy holidays</b> from all of us in Bucharest.</p>';
+        sb.innerHTML = season === 'national'
+          ? '<p><b>1 December</b> · Happy National Day, Romania</p>'
+          : '<p><b>Happy holidays</b> from all of us in Bucharest.</p>';
         var head = document.querySelector('.site-header');
         if (head) head.parentNode.insertBefore(sb, head);
       }
@@ -480,7 +485,7 @@
     if (window.fetch) {
       fetch('https://my.veridyne.eu/api/public/season').then(function (res) { return res.ok ? res.json() : null; }).then(function (d) {
         if (!d) return;
-        var s = d.season === 'thanksgiving' || d.season === 'christmas' ? d.season : 'none';
+        var s = SEASONS[d.season] ? d.season : 'none';
         try { localStorage.setItem(KEY, s); } catch (e) {}
         apply(s);
       }).catch(function () {});
