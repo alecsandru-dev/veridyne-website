@@ -358,9 +358,8 @@
   /* ---------- Certifications offer: shown only while certifications.veridyne.eu says the code still works ---------- */
   var bar = document.querySelector('.promo-bar');
   var callout = document.querySelector('.promo-callout');
-  var offerDone = Promise.resolve();
   if ((bar || callout) && window.fetch) {
-    offerDone = fetch('https://certifications.veridyne.eu/api/offer').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    fetch('https://certifications.veridyne.eu/api/offer').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       var o = d && d.offer;
       if (!o || !o.code || !o.percent) return;
       var closedKey = 'veridyne-offer-closed';
@@ -409,7 +408,7 @@
   /* ---------- Holiday themes: the owner turns one on in the admin console (Setup → Theme switcher) ----------
      my.veridyne.eu/api/public/season says which ("none", "thanksgiving" or "christmas"); the last answer is kept so a
      return visit shows it at once. The hero never changes: the season shows from the first section after it, in the
-     threads between sections, beside the menu (Thanksgiving) and in the top bar when no offer runs (Christmas). */
+     threads between sections, beside the menu (Thanksgiving) and in a strip above the menu, under any running offer (Christmas). */
   (function () {
     var main = document.getElementById('main');
     if (!main) return;
@@ -464,16 +463,13 @@
           cta.parentNode.insertBefore(greet, cta);
         }
       } else {
-        offerDone.then(function () {
-          var promo = document.querySelector('.promo-bar');
-          if (root.getAttribute('data-season') !== 'christmas' || (promo && !promo.hidden) || document.querySelector('.season-bar')) return;
-          var sb = document.createElement('aside');
-          sb.className = 'season-bar';
-          sb.setAttribute('aria-label', 'Season greeting');
-          sb.innerHTML = '<p><b>Happy holidays</b> from all of us in Bucharest.</p>';
-          var head = document.querySelector('.site-header');
-          if (head) head.parentNode.insertBefore(sb, head);
-        });
+        /* Shown with or without an offer: it sits under the offer bar, just above the menu. */
+        var sb = document.createElement('aside');
+        sb.className = 'season-bar';
+        sb.setAttribute('aria-label', 'Season greeting');
+        sb.innerHTML = '<p><b>Happy holidays</b> from all of us in Bucharest.</p>';
+        var head = document.querySelector('.site-header');
+        if (head) head.parentNode.insertBefore(sb, head);
       }
     };
     var saved = null;

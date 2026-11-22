@@ -1685,6 +1685,9 @@ html[data-season="christmas"] { --season-bg: linear-gradient(180deg, #f0f6fb 0%,
 @media (max-width: 1080px) { .season-greet { display: none; } }
 .season-bar { background: linear-gradient(90deg, #4A1013, #0F3D2E 50%, #4A1013); color: #EAF6FF; font-size: 14px; text-align: center; }
 .season-bar p { margin: 0; padding: 9px 16px; }
+/* Under a running offer the strip is slimmer, so the two bars read as one top band. */
+.promo-bar:not([hidden]) + .season-bar { font-size: 13px; border-top: 1px solid rgba(234, 246, 255, .12); }
+.promo-bar:not([hidden]) + .season-bar p { padding: 6px 16px; }
 
 @media (prefers-reduced-motion: no-preference) {
   .season-sky i { animation: season-fall var(--d) linear infinite; animation-delay: var(--dl); }
