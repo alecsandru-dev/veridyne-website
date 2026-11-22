@@ -496,7 +496,7 @@ HOME = '''
       <p class="pill rise"><span class="pill-dot"></span>Identity and access, Auth0 and Okta</p>
       <h1 id="hero-title" class="rise">Secure sign-in, built right from the first login.</h1>
       <p class="lead rise">Veridyne is a technology company in Bucharest. Our consultants design and secure how your customers and staff sign in, and our product team builds software of its own.</p>
-      <a class="founder-link rise" href="/assets/vie/founder-video.mp4" data-founder aria-haspopup="dialog" aria-label="Play a 55-second video from our founder, Alecs"><span class="founder-thumb" aria-hidden="true"><video class="founder-teaser" muted loop playsinline preload="none" poster="/assets/vie/founder-poster.jpg" tabindex="-1" data-src="/assets/vie/founder-teaser.mp4"></video></span><span class="founder-text"><strong class="founder-title">A word from our founder</strong><span>55 sec &middot; Alecs</span></span><span class="founder-play" aria-hidden="true"></span></a>
+      <a class="founder-link rise" href="/assets/vie/founder-video-v2.mp4" data-founder aria-haspopup="dialog" aria-label="Play a 55-second video from our founder, Alecs"><span class="founder-thumb" aria-hidden="true"><video class="founder-teaser" muted loop playsinline preload="none" poster="/assets/vie/founder-poster-v2.jpg" tabindex="-1" data-src="/assets/vie/founder-teaser-v2.mp4"></video></span><span class="founder-text"><strong class="founder-title">A word from our founder</strong><span>55 sec &middot; Alecs</span></span><span class="founder-play" aria-hidden="true"></span></a>
       <div class="hero-actions rise">
         <a class="btn" href="#contact" data-topic="Identity &amp; access consulting">Book a free call</a>
         <a class="link-more" href="/services">Our services</a>
@@ -546,7 +546,7 @@ HOME = '''
 
   <dialog class="film founder-dialog" id="founder" aria-label="A word from our founder">
     <div class="founder-frame">
-      <video controls playsinline preload="none" poster="/assets/vie/founder-poster.jpg" data-src="/assets/vie/founder-video.mp4"><track kind="captions" srclang="en" label="English" src="/assets/vie/founder-video.en.vtt"></video>
+      <video controls playsinline preload="none" poster="/assets/vie/founder-poster-v2.jpg" data-src="/assets/vie/founder-video-v2.mp4"><track kind="captions" srclang="en" label="English" src="/assets/vie/founder-video.en.vtt"></video>
       <div class="founder-end" hidden>
         <p class="founder-end-kicker">Thanks for watching.</p>
         <p class="founder-end-title">Next: meet the team and the story behind Veridyne.</p>
