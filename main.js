@@ -77,6 +77,77 @@
     film.addEventListener('click', function (e) { if (e.target === film) film.close(); });
   }
 
+  /* "A word from our founder" (home hero): a small looping preview in the button, the 55-second video in a dialog
+     with sound, then an end screen that sends people on to /welcome. Closing after half the video marks the
+     "About us" pill as up next. Visitors who finished it once see "Watch again" and no attention pulse.
+     Without JavaScript (or without <dialog>) the link opens the video file itself. */
+  var founderLink = document.querySelector('a[data-founder]');
+  var founder = document.getElementById('founder');
+  if (founderLink && founder && typeof founder.showModal === 'function') {
+    var fv = founder.querySelector('video');
+    var fEnd = founder.querySelector('.founder-end');
+    var aboutLink = document.querySelector('.about-link');
+    var KEY = 'veridyneFounderWatched';
+    var seen = false;
+    try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
+    var markSeen = function () {
+      try { localStorage.setItem(KEY, '1'); } catch (e) {}
+      if (aboutLink) aboutLink.classList.add('up-next');
+    };
+    var fTitle = founderLink.querySelector('.founder-title');
+    if (seen) {
+      founderLink.classList.add('founder-seen');
+      if (fTitle) fTitle.textContent = 'Watch again';
+      if (aboutLink) aboutLink.classList.add('up-next');
+    }
+
+    var teaser = founderLink.querySelector('.founder-teaser');
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saver = navigator.connection && navigator.connection.saveData;
+    if (teaser && !still && !saver) {
+      var startTeaser = function () {
+        teaser.src = teaser.getAttribute('data-src');
+        var tp = teaser.play();
+        if (tp && tp.catch) tp.catch(function () {});
+      };
+      if (document.readyState === 'complete') startTeaser(); else window.addEventListener('load', startTeaser);
+    }
+
+    var reached = 0;
+    founderLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!fv.src) fv.src = fv.getAttribute('data-src');
+      fEnd.hidden = true;
+      founder.showModal();
+      var p = fv.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+    fv.addEventListener('timeupdate', function () {
+      if (!fv.duration) return;
+      var r = fv.currentTime / fv.duration;
+      if (r > reached) reached = r;
+      if (reached >= 0.9) markSeen();
+    });
+    fv.addEventListener('ended', function () { markSeen(); fEnd.hidden = false; });
+    fv.addEventListener('play', function () { fEnd.hidden = true; });
+    founder.querySelector('.founder-replay').addEventListener('click', function () {
+      fEnd.hidden = true;
+      fv.currentTime = 0;
+      var p = fv.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+    founder.querySelector('.founder-book').addEventListener('click', function () { founder.close(); });
+    founder.addEventListener('close', function () {
+      fv.pause();
+      if (!fv.ended && reached >= 0.5 && aboutLink) {
+        aboutLink.classList.add('up-next');
+        var box = aboutLink.getBoundingClientRect();
+        if (box.top < 0 || box.bottom > window.innerHeight) aboutLink.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
+      }
+    });
+    founder.addEventListener('click', function (e) { if (e.target === founder) founder.close(); });
+  }
+
   /* /welcome: the film starts with sound where the browser allows it. Where it does not (most first visits), it plays
      muted, and the first tap, click or key anywhere on the page turns the sound on; the button does the same.
      With reduced motion asked for, it waits for Play. */

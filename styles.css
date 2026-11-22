@@ -1582,3 +1582,72 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
 @keyframes about-spin { to { --about-a: 360deg; } }
 @keyframes about-ping { 0% { box-shadow: 0 0 0 0 rgba(0, 180, 255, 0.6); } 70%, 100% { box-shadow: 0 0 0 12px rgba(0, 180, 255, 0); } }
 [data-theme="light"] .about-link { color: #fff; }
+
+/* Home hero: "A word from our founder". A larger glass pill than "About us", with a round looping preview of the
+   founder's hologram head and a cyan-to-violet edge, so it is the first thing to press. The video plays in
+   dialog#founder; when it ends an end screen points to /welcome, and the "About us" pill gets an "Up next" tag. */
+.founder-link {
+  position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 16px;
+  margin: 0; padding: 8px 18px 8px 8px; border-radius: 999px; text-decoration: none; color: #fff;
+  background: rgba(8, 18, 40, 0.78); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  box-shadow: 0 12px 46px -14px rgba(34, 211, 238, 0.6), 0 0 0 0 rgba(139, 92, 246, 0);
+  transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
+}
+.founder-link::before {
+  content: ""; position: absolute; inset: -2px; z-index: -1; border-radius: inherit; padding: 2px;
+  background: linear-gradient(110deg, #22D3EE, #8B5CF6 55%, #22D3EE);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.founder-link:hover { transform: translateY(-2px); box-shadow: 0 18px 56px -12px rgba(34, 211, 238, 0.8), 0 0 40px -10px rgba(139, 92, 246, 0.7); }
+.founder-link:focus-visible { outline: 2px solid #22D3EE; outline-offset: 4px; }
+.founder-thumb { position: relative; width: 64px; height: 64px; border-radius: 50%; overflow: hidden; flex: none; background: #000; box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.35); }
+.founder-teaser { width: 100%; height: 100%; object-fit: cover; object-position: 26% 45%; display: block; }
+.founder-text { display: grid; line-height: 1.2; text-align: left; }
+.founder-text strong { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+.founder-text span { font-size: 13px; color: #B9C8FF; }
+.founder-play { position: relative; width: 34px; height: 34px; margin-left: 6px; border-radius: 50%; flex: none; background: linear-gradient(135deg, #22D3EE, #8B5CF6); }
+.founder-play::after { content: ""; position: absolute; left: 13px; top: 10px; border-left: 11px solid #06101F; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+@media (prefers-reduced-motion: no-preference) {
+  .founder-link { animation: founder-breathe 3s ease-in-out infinite; }
+  .founder-link:hover { animation: none; }
+  .founder-link:not(.founder-seen)::after {
+    content: ""; position: absolute; inset: -2px; z-index: -2; border-radius: inherit; pointer-events: none;
+    animation: founder-cue 8s var(--ease) 1.5s 3 both;
+  }
+}
+@keyframes founder-breathe { 0%, 100% { scale: 1; } 50% { scale: 1.02; } }
+@keyframes founder-cue {
+  0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.55); }
+  18%, 100% { box-shadow: 0 0 0 18px rgba(34, 211, 238, 0); }
+}
+[data-theme="light"] .founder-link { color: #fff; }
+
+/* The dialog reuses dialog.film; the end screen sits over the video. */
+.founder-frame { position: relative; }
+.founder-end {
+  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 10px; padding: 24px;
+  text-align: center; color: #fff; background: radial-gradient(70% 80% at 50% 45%, rgba(18, 28, 64, 0.92), rgba(3, 7, 16, 0.96));
+}
+.founder-end[hidden] { display: none; }
+.founder-end-kicker { margin: 0; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #7FE3F5; }
+.founder-end-title { margin: 0 0 10px; max-width: 22ch; font-size: clamp(24px, 3.2vw, 38px); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+.founder-end-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 24px; margin: 0; }
+.founder-end .link-more { color: #BFEFFF; }
+.founder-replay { margin-top: 6px; padding: 6px 12px; border: 0; background: none; color: #9FB0C8; font: 500 14px Archivo, sans-serif; text-decoration: underline; cursor: pointer; }
+.founder-replay:hover { color: #fff; }
+.founder-note { margin: 0; padding: 10px 16px; font-size: 13px; color: #8EA0B8; background: #000; text-align: center; }
+
+/* "Up next" tag on the About us pill after the founder video. */
+.about-link.up-next::after {
+  content: "Up next"; position: absolute; top: -11px; left: 18px; padding: 2px 10px; border-radius: 999px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #04121F; background: #22D3EE;
+  box-shadow: 0 4px 16px -4px rgba(34, 211, 238, 0.8);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .about-link.up-next::after { animation: up-next-in 400ms var(--ease) both; }
+}
+@keyframes up-next-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (max-width: 700px) {
+  .founder-link { justify-self: stretch; }
+  .founder-text strong { font-size: 16px; }
+}

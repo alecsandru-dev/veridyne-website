@@ -125,6 +125,16 @@ three full-bleed chapters on film stills (`about-*.jpg`: Auth0, Okta, IAM; never
 identity right" as a numbered list with a sticky heading, one sentence on the two ways to work with us (links to
 /services and /#products; no product tiles, the home page lists the apps), closing stage on the dawn gate. `noindex`, not in the sitemap or nav; the home hero links to it with the "About us" pill (`.about-link`, 2026-11-21, in place of "Watch the launch video"). Film sources and build scripts are outside this repo (/home/claude/vp).
 
+## Founder video (2026-11-22)
+Home hero has "A word from our founder" (`.founder-link`, above the hero actions): round looping preview
+(`assets/vie/founder-teaser.mp4`, 400x400, muted, starts after load unless reduced motion or data saver) and the 55 s
+AI dot-hologram video of Alecs (`founder-video.mp4`, 720p, poster `founder-poster.jpg`, captions burned in plus
+`founder-video.en.vtt` track off by default) in `dialog#founder`. End screen: "Watch our story" -> /welcome, "Book a
+30-minute call" -> #contact, Replay. Closing after 50% or finishing adds the "Up next" tag to the About us pill
+(`.about-link.up-next`); `localStorage.veridyneFounderWatched = "1"` at 90%/end turns the button into "Watch again".
+The line "Alecs's avatar and voice in this video are AI-generated." stays under the video (EU AI Act transparency).
+Video made in Higgsfield (Seedance lip-sync, ElevenLabs voice "Knox", ElevenLabs music); sources outside this repo.
+
 ## Redesign v3 (live on main since 2026-11-11; built on branch `redesign-v3`)
 - Dark by default (js-flag.js: dark unless the visitor chose light; no longer follows the system). Look of the films.
 - Home = hero, Professional Services, Products (V.I.E), contact, joined by `.thread`. The sign-in sketch and the two
