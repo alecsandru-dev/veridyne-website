@@ -358,8 +358,9 @@
   /* ---------- Certifications offer: shown only while certifications.veridyne.eu says the code still works ---------- */
   var bar = document.querySelector('.promo-bar');
   var callout = document.querySelector('.promo-callout');
+  var offerDone = Promise.resolve();
   if ((bar || callout) && window.fetch) {
-    fetch('https://certifications.veridyne.eu/api/offer').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    offerDone = fetch('https://certifications.veridyne.eu/api/offer').then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       var o = d && d.offer;
       if (!o || !o.code || !o.percent) return;
       var closedKey = 'veridyne-offer-closed';
@@ -404,6 +405,91 @@
       }
     }).catch(function () {});
   }
+
+  /* ---------- Holiday themes: the owner turns one on in the admin console (Setup → Theme switcher) ----------
+     my.veridyne.eu/api/public/season says which ("none", "thanksgiving" or "christmas"); the last answer is kept so a
+     return visit shows it at once. The hero never changes: the season shows from the first section after it, in the
+     threads between sections, beside the menu (Thanksgiving) and in the top bar when no offer runs (Christmas). */
+  (function () {
+    var main = document.getElementById('main');
+    if (!main) return;
+    var KEY = 'veridyne-season';
+    var MAPLE = 'M12 2L13.6 6.2L16.4 4.8L15.8 9L20 7.6L18.6 11L22 12.4L17.4 14.6L18.4 17L13 16L12.6 22L11.4 22L11 16L5.6 17L6.6 14.6L2 12.4L5.4 11L4 7.6L8.2 9L7.6 4.8L10.4 6.2Z';
+    var LEAVES = ['#e8590c', '#c2410c', '#f2b33d', '#d9480f', '#b45309'];
+    var layer = null;
+    var placeLayer = function () {
+      if (!layer) return;
+      var hero = main.querySelector(':scope > .hero');
+      layer.style.top = hero ? (hero.offsetTop + hero.offsetHeight) + 'px' : '0px';
+    };
+    var clear = function () {
+      root.removeAttribute('data-season');
+      document.querySelectorAll('.season-layer, .season-greet, .season-bar').forEach(function (el) { el.remove(); });
+      layer = null;
+    };
+    var apply = function (season) {
+      if (season !== 'thanksgiving' && season !== 'christmas') { clear(); return; }
+      if (root.getAttribute('data-season') === season && layer) return;
+      clear();
+      root.setAttribute('data-season', season);
+      layer = document.createElement('div');
+      layer.className = 'season-layer';
+      layer.setAttribute('aria-hidden', 'true');
+      var sky = document.createElement('div');
+      sky.className = 'season-sky';
+      var seed = 13;
+      var r = function () { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+      for (var i = 0; i < 18; i++) {
+        var f = document.createElement('i');
+        var d = 12 + r() * 12;
+        f.style.setProperty('--x', (r() * 100).toFixed(1) + '%');
+        f.style.setProperty('--z', Math.round(16 + r() * 14) + 'px');
+        f.style.setProperty('--s', (2 + r() * 4).toFixed(1) + 'px');
+        f.style.setProperty('--d', d.toFixed(1) + 's');
+        f.style.setProperty('--dl', (-r() * d).toFixed(1) + 's');
+        f.style.setProperty('--sx', Math.round((r() - 0.5) * 80) + 'px');
+        f.style.setProperty('--y', Math.round(r() * 90) + '%');
+        if (season === 'thanksgiving') f.innerHTML = '<svg viewBox="0 0 24 24"><path d="' + MAPLE + '" fill="' + LEAVES[i % LEAVES.length] + '"/></svg>';
+        sky.appendChild(f);
+      }
+      layer.appendChild(sky);
+      main.prepend(layer);
+      placeLayer();
+      if (season === 'thanksgiving') {
+        var cta = document.querySelector('.nav-links .nav-cta');
+        if (cta) {
+          var greet = document.createElement('span');
+          greet.className = 'season-greet';
+          greet.textContent = 'Happy Thanksgiving';
+          cta.parentNode.insertBefore(greet, cta);
+        }
+      } else {
+        offerDone.then(function () {
+          var promo = document.querySelector('.promo-bar');
+          if (root.getAttribute('data-season') !== 'christmas' || (promo && !promo.hidden) || document.querySelector('.season-bar')) return;
+          var sb = document.createElement('aside');
+          sb.className = 'season-bar';
+          sb.setAttribute('aria-label', 'Season greeting');
+          sb.innerHTML = '<p><b>Happy holidays</b> from all of us in Bucharest.</p>';
+          var head = document.querySelector('.site-header');
+          if (head) head.parentNode.insertBefore(sb, head);
+        });
+      }
+    };
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    if (saved) apply(saved);
+    window.addEventListener('resize', placeLayer);
+    window.addEventListener('load', placeLayer);
+    if (window.fetch) {
+      fetch('https://my.veridyne.eu/api/public/season').then(function (res) { return res.ok ? res.json() : null; }).then(function (d) {
+        if (!d) return;
+        var s = d.season === 'thanksgiving' || d.season === 'christmas' ? d.season : 'none';
+        try { localStorage.setItem(KEY, s); } catch (e) {}
+        apply(s);
+      }).catch(function () {});
+    }
+  })();
 
   /* ---------- Contact form: send with fetch and show the result inline ----------
      Without JavaScript the form posts normally and /api/contact redirects back with ?sent=. */

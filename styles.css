@@ -1651,3 +1651,47 @@ a.ptile-big:hover .ptile-shot { transform: perspective(1200px) rotateY(-4deg) ro
   .founder-link { justify-self: stretch; }
   .founder-text strong { font-size: 16px; }
 }
+
+/* ---------- Holiday themes ----------
+   The owner turns one on in the admin console (Setup → Theme switcher); main.js asks my.veridyne.eu and sets data-season
+   on <html>. The hero never changes: the layer starts under it. Colours here only, no new tokens elsewhere. */
+html[data-season] main { position: relative; }
+html[data-season="thanksgiving"] { --season-bg: linear-gradient(180deg, #fdf5ec 0%, #f9eee2 100%); --season-pat: rgba(194, 82, 20, 0.1); --season-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'180'%20height%3D'180'%20viewBox%3D'0%200%20180%20180'%3E%3Cpath%20transform%3D'translate(40%2044)%20rotate(-18)%20scale(1.6)%20translate(-12%20-12)'%20d%3D'M12%202L13.6%206.2L16.4%204.8L15.8%209L20%207.6L18.6%2011L22%2012.4L17.4%2014.6L18.4%2017L13%2016L12.6%2022L11.4%2022L11%2016L5.6%2017L6.6%2014.6L2%2012.4L5.4%2011L4%207.6L8.2%209L7.6%204.8L10.4%206.2Z'%2F%3E%3Cpath%20transform%3D'translate(130%20124)%20rotate(24)%20scale(1.1)%20translate(-12%20-12)'%20d%3D'M12%202L13.6%206.2L16.4%204.8L15.8%209L20%207.6L18.6%2011L22%2012.4L17.4%2014.6L18.4%2017L13%2016L12.6%2022L11.4%2022L11%2016L5.6%2017L6.6%2014.6L2%2012.4L5.4%2011L4%207.6L8.2%209L7.6%204.8L10.4%206.2Z'%2F%3E%3Cpath%20transform%3D'translate(142%2036)%20rotate(60)%20scale(0.7)%20translate(-12%20-12)'%20d%3D'M12%202L13.6%206.2L16.4%204.8L15.8%209L20%207.6L18.6%2011L22%2012.4L17.4%2014.6L18.4%2017L13%2016L12.6%2022L11.4%2022L11%2016L5.6%2017L6.6%2014.6L2%2012.4L5.4%2011L4%207.6L8.2%209L7.6%204.8L10.4%206.2Z'%2F%3E%3Cpath%20transform%3D'translate(48%20146)%20rotate(-40)%20scale(0.8)%20translate(-12%20-12)'%20d%3D'M12%202L13.6%206.2L16.4%204.8L15.8%209L20%207.6L18.6%2011L22%2012.4L17.4%2014.6L18.4%2017L13%2016L12.6%2022L11.4%2022L11%2016L5.6%2017L6.6%2014.6L2%2012.4L5.4%2011L4%207.6L8.2%209L7.6%204.8L10.4%206.2Z'%2F%3E%3C%2Fsvg%3E"); }
+html[data-season="christmas"] { --season-bg: linear-gradient(180deg, #f0f6fb 0%, #eaf4ef 100%); --season-pat: rgba(11, 79, 138, 0.09); --season-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'180'%20height%3D'180'%20viewBox%3D'0%200%20180%20180'%3E%3Cg%20fill%3D'none'%20stroke%3D'black'%20stroke-width%3D'1.4'%20stroke-linecap%3D'round'%3E%3Cg%20transform%3D'translate(42%2046)%20scale(1.5)'%3E%3Cpath%20d%3D'M0-10V10M-8.66-5L8.66%205M-8.66%205L8.66-5M-2.6-7.6L0-5.2L2.6-7.6M-2.6%207.6L0%205.2L2.6%207.6M-7.9-1.4L-5.6-3L-5.2-5.6M7.9%201.4L5.6%203L5.2%205.6M-7.9%201.4L-5.6%203L-5.2%205.6M7.9-1.4L5.6-3L5.2-5.6'%2F%3E%3C%2Fg%3E%3Cg%20transform%3D'translate(132%20128)%20scale(1)'%3E%3Cpath%20d%3D'M0-10V10M-8.66-5L8.66%205M-8.66%205L8.66-5M-2.6-7.6L0-5.2L2.6-7.6M-2.6%207.6L0%205.2L2.6%207.6M-7.9-1.4L-5.6-3L-5.2-5.6M7.9%201.4L5.6%203L5.2%205.6M-7.9%201.4L-5.6%203L-5.2%205.6M7.9-1.4L5.6-3L5.2-5.6'%2F%3E%3C%2Fg%3E%3Cg%20transform%3D'translate(140%2034)%20scale(0.6)'%3E%3Cpath%20d%3D'M0-10V10M-8.66-5L8.66%205M-8.66%205L8.66-5M-2.6-7.6L0-5.2L2.6-7.6M-2.6%207.6L0%205.2L2.6%207.6M-7.9-1.4L-5.6-3L-5.2-5.6M7.9%201.4L5.6%203L5.2%205.6M-7.9%201.4L-5.6%203L-5.2%205.6M7.9-1.4L5.6-3L5.2-5.6'%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3Ccircle%20cx%3D'96'%20cy%3D'84'%20r%3D'1.6'%2F%3E%3Ccircle%20cx%3D'30'%20cy%3D'140'%20r%3D'1.4'%2F%3E%3Ccircle%20cx%3D'164'%20cy%3D'86'%20r%3D'1.2'%2F%3E%3C%2Fsvg%3E"); --season-snow: rgba(11, 79, 138, 0.22); }
+[data-theme="dark"][data-season="thanksgiving"] { --season-bg: linear-gradient(180deg, #0d0c14 0%, #160d07 100%); --season-pat: rgba(255, 160, 80, 0.07); }
+[data-theme="dark"][data-season="christmas"] { --season-bg: linear-gradient(180deg, #05101a 0%, #041611 100%); --season-pat: rgba(220, 235, 255, 0.06); --season-snow: rgba(220, 235, 255, 0.4); }
+.season-layer { position: absolute; left: 0; right: 0; bottom: 0; z-index: -1; pointer-events: none; background: var(--season-bg);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 200px); mask-image: linear-gradient(to bottom, transparent 0, #000 200px); }
+.season-layer::before { content: ""; position: absolute; inset: 0; background: var(--season-pat);
+  -webkit-mask-image: var(--season-mask); mask-image: var(--season-mask); -webkit-mask-size: 180px 180px; mask-size: 180px 180px; }
+.season-sky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.season-sky i { position: absolute; top: -32px; left: var(--x); width: var(--z); height: var(--z); opacity: 0.4; }
+.season-sky svg { display: block; width: 100%; height: 100%; }
+[data-season="christmas"] .season-sky i { width: var(--s); height: var(--s); border-radius: 50%; background: var(--season-snow); opacity: 1; }
+
+/* The thread between sections: amber ending in a maple leaf, or three little lights and a gold end. */
+[data-season="thanksgiving"] .thread { background: linear-gradient(180deg, rgba(255, 154, 60, 0), rgba(255, 154, 60, 0.8)); }
+[data-season="thanksgiving"] .thread::after { width: 26px; height: 26px; margin-left: -13px; bottom: -14px; border-radius: 0; box-shadow: none;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2024%2024'%3E%3Cpath%20d%3D'M12%202L13.6%206.2L16.4%204.8L15.8%209L20%207.6L18.6%2011L22%2012.4L17.4%2014.6L18.4%2017L13%2016L12.6%2022L11.4%2022L11%2016L5.6%2017L6.6%2014.6L2%2012.4L5.4%2011L4%207.6L8.2%209L7.6%204.8L10.4%206.2Z'%20fill%3D'%23ff9a3c'%2F%3E%3C%2Fsvg%3E") center / contain no-repeat; filter: drop-shadow(0 0 10px rgba(255, 140, 50, 0.6)); }
+[data-season="christmas"] .thread { background: linear-gradient(180deg, rgba(160, 190, 170, 0), rgba(160, 190, 170, 0.6)); }
+[data-season="christmas"] .thread::after { background: #FFD36B; box-shadow: 0 0 0 5px rgba(255, 211, 107, 0.18), 0 0 26px 6px rgba(255, 211, 107, 0.6); }
+[data-season="christmas"] .thread::before { content: ""; position: absolute; left: -3px; top: 22%; width: 7px; height: 9px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  background: #FF6B5A; box-shadow: 3px 24px 0 #5FE0A0, -3px 48px 0 #FFD36B; filter: drop-shadow(0 0 5px rgba(255, 211, 107, 0.7)); }
+
+/* Thanksgiving: a turkey and the greeting beside the menu. Christmas: the greeting in the top bar when no offer runs. */
+.season-greet { display: inline-flex; align-items: center; min-height: 30px; padding: 4px 12px 4px 36px; border-radius: 980px; font-size: 13px; font-weight: 600; white-space: nowrap;
+  color: #B4530F; background: rgba(255, 154, 60, 0.16) url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2064%2064'%3E%3Cg%20transform%3D'rotate(-64%2032%2038)'%3E%3Cellipse%20cx%3D'32'%20cy%3D'17'%20rx%3D'6.5'%20ry%3D'15'%20fill%3D'%23c2410c'%2F%3E%3C%2Fg%3E%3Cg%20transform%3D'rotate(-32%2032%2038)'%3E%3Cellipse%20cx%3D'32'%20cy%3D'17'%20rx%3D'6.5'%20ry%3D'15'%20fill%3D'%23f2b33d'%2F%3E%3C%2Fg%3E%3Cellipse%20cx%3D'32'%20cy%3D'16'%20rx%3D'6.5'%20ry%3D'15'%20fill%3D'%23e8590c'%2F%3E%3Cg%20transform%3D'rotate(32%2032%2038)'%3E%3Cellipse%20cx%3D'32'%20cy%3D'17'%20rx%3D'6.5'%20ry%3D'15'%20fill%3D'%23f2b33d'%2F%3E%3C%2Fg%3E%3Cg%20transform%3D'rotate(64%2032%2038)'%3E%3Cellipse%20cx%3D'32'%20cy%3D'17'%20rx%3D'6.5'%20ry%3D'15'%20fill%3D'%23c2410c'%2F%3E%3C%2Fg%3E%3Cellipse%20cx%3D'32'%20cy%3D'41'%20rx%3D'12.5'%20ry%3D'13'%20fill%3D'%237a3f1d'%2F%3E%3Cellipse%20cx%3D'32'%20cy%3D'45'%20rx%3D'7.5'%20ry%3D'8'%20fill%3D'%23a3602f'%2F%3E%3Ccircle%20cx%3D'32'%20cy%3D'27'%20r%3D'7.5'%20fill%3D'%238f4f27'%2F%3E%3Ccircle%20cx%3D'29.3'%20cy%3D'25.6'%20r%3D'1.9'%20fill%3D'%23fff'%2F%3E%3Ccircle%20cx%3D'29.6'%20cy%3D'25.9'%20r%3D'1'%20fill%3D'%231a0b02'%2F%3E%3Ccircle%20cx%3D'34.7'%20cy%3D'25.6'%20r%3D'1.9'%20fill%3D'%23fff'%2F%3E%3Ccircle%20cx%3D'34.4'%20cy%3D'25.9'%20r%3D'1'%20fill%3D'%231a0b02'%2F%3E%3Cpath%20d%3D'M30.2%2028.6L33.8%2028.6L32%2031.6Z'%20fill%3D'%23f2b33d'%2F%3E%3Cpath%20d%3D'M33.4%2029.6c2.2%201.6%202.2%205%200%206.6c-1.4-1.6-1.4-5%200-6.6Z'%20fill%3D'%23e03c3c'%2F%3E%3Cpath%20d%3D'M28.5%2053.5v5M35.5%2053.5v5M26.5%2058.5h4M33.5%2058.5h4'%20stroke%3D'%23f2b33d'%20stroke-width%3D'1.8'%20stroke-linecap%3D'round'%20fill%3D'none'%2F%3E%3C%2Fsvg%3E") 7px 50% / 24px 24px no-repeat; }
+[data-theme="dark"] .season-greet { color: #FFC58A; }
+@media (max-width: 1080px) { .season-greet { display: none; } }
+.season-bar { background: linear-gradient(90deg, #4A1013, #0F3D2E 50%, #4A1013); color: #EAF6FF; font-size: 14px; text-align: center; }
+.season-bar p { margin: 0; padding: 9px 16px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .season-sky i { animation: season-fall var(--d) linear infinite; animation-delay: var(--dl); }
+  [data-season="thanksgiving"] .season-sky i { animation-name: season-leaf; }
+  [data-season="christmas"] .thread::before { animation: season-twinkle 2.4s ease-in-out infinite; }
+}
+@media (prefers-reduced-motion: reduce) { .season-sky i { top: var(--y); } }
+@keyframes season-fall { from { transform: translate(0, 0); } to { transform: translate(var(--sx), 110vh); } }
+@keyframes season-leaf { 0% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(var(--sx), 55vh) rotate(160deg); } 100% { transform: translate(0, 110vh) rotate(320deg); } }
+@keyframes season-twinkle { 50% { opacity: 0.5; } }
