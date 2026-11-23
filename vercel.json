@@ -51,6 +51,11 @@
       "source": "/roiall",
       "destination": "/#products",
       "permanent": false
+    },
+    {
+      "source": "/.well-known/change-password",
+      "destination": "/signin",
+      "permanent": false
     }
   ],
   "headers": [
@@ -89,6 +94,19 @@
         {
           "key": "Access-Control-Allow-Origin",
           "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/security.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
         }
       ]
     }
